@@ -1,0 +1,28 @@
+[
+  {
+    "listing": "/hw.html",
+    "items": [
+      "/hw/hw01.html"
+    ]
+  },
+  {
+    "listing": "/exam.html",
+    "items": [
+      "/exam/take_home_exam1.html",
+      "/exam/take_home_exam2.html"
+    ]
+  },
+  {
+    "listing": "/ws.html",
+    "items": []
+  },
+  {
+    "listing": "/exercise.html",
+    "items": [
+      "/exercise/exercise1.html",
+      "/exercise/exercise2.html",
+      "/exercise/exercise3.html",
+      "/exercise/exercise_mlr.html"
+    ]
+  }
+]

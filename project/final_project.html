@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Final Project: Learning Multiple Linear Regression with Generative AI – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1da5838089477fe5b285348978043904.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-311c866fdd058187a59d486837a94991.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-1da5838089477fe5b285348978043904.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Final Project: Learning Multiple Linear Regression with Generative AI – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="Homepage for MATH 4780 (MSSC 5780) - Statistical Methods at Marquette University, Fall 2026.">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Final Project: Learning Multiple Linear Regression with Generative AI</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-hours.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Help Desk Hours</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worksheet</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#submission-instructions" id="toc-submission-instructions" class="nav-link active" data-scroll-target="#submission-instructions">Submission Instructions</a></li>
+  <li><a href="#ai-use-policy" id="toc-ai-use-policy" class="nav-link" data-scroll-target="#ai-use-policy">AI Use Policy</a>
+  <ul class="collapse">
+  <li><a href="#allowed-uses" id="toc-allowed-uses" class="nav-link" data-scroll-target="#allowed-uses">Allowed uses</a></li>
+  <li><a href="#not-allowed-uses" id="toc-not-allowed-uses" class="nav-link" data-scroll-target="#not-allowed-uses">Not allowed uses</a></li>
+  </ul></li>
+  <li><a href="#data-set-choices" id="toc-data-set-choices" class="nav-link" data-scroll-target="#data-set-choices">Data Set Choices</a>
+  <ul class="collapse">
+  <li><a href="#important-rule-about-model-complexity" id="toc-important-rule-about-model-complexity" class="nav-link" data-scroll-target="#important-rule-about-model-complexity">Important rule about model complexity</a></li>
+  </ul></li>
+  <li><a href="#project-components" id="toc-project-components" class="nav-link" data-scroll-target="#project-components">Project Components</a>
+  <ul class="collapse">
+  <li><a href="#part-1.-data-analysis-report" id="toc-part-1.-data-analysis-report" class="nav-link" data-scroll-target="#part-1.-data-analysis-report">Part 1. Data Analysis Report</a>
+  <ul class="collapse">
+  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#required-sections" id="toc-required-sections" class="nav-link" data-scroll-target="#required-sections">Required sections</a></li>
+  </ul></li>
+  <li><a href="#part-2.-ai-use-record-and-conversation-evidence" id="toc-part-2.-ai-use-record-and-conversation-evidence" class="nav-link" data-scroll-target="#part-2.-ai-use-record-and-conversation-evidence">Part 2. AI Use Record and Conversation Evidence</a></li>
+  <li><a href="#part-3.-verification-and-reflection-memo" id="toc-part-3.-verification-and-reflection-memo" class="nav-link" data-scroll-target="#part-3.-verification-and-reflection-memo">Part 3. Verification and Reflection Memo</a>
+  <ul class="collapse">
+  <li><a href="#a.-verification-and-critique" id="toc-a.-verification-and-critique" class="nav-link" data-scroll-target="#a.-verification-and-critique">A. Verification and Critique</a></li>
+  <li><a href="#b.-reflection" id="toc-b.-reflection" class="nav-link" data-scroll-target="#b.-reflection">B. Reflection</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#starter-prompt-menu" id="toc-starter-prompt-menu" class="nav-link" data-scroll-target="#starter-prompt-menu">Starter Prompt Menu</a></li>
+  <li><a href="#project-evaluation" id="toc-project-evaluation" class="nav-link" data-scroll-target="#project-evaluation">Project Evaluation</a></li>
+  <li><a href="#final-advice" id="toc-final-advice" class="nav-link" data-scroll-target="#final-advice">Final Advice</a></li>
+  <li><a href="#data-source-note" id="toc-data-source-note" class="nav-link" data-scroll-target="#data-source-note">Data Source Note</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/project/final_project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Final Project: Learning Multiple Linear Regression with Generative AI</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Project</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an <strong>individual project</strong>. Plan to work on it over <strong>7 to 10 days</strong> rather than in one sitting.</p>
+<p>Please check <strong>D2L</strong> for the final due date and submission link. The downloadable CSV files for all data sets are linked below and included in the project package.</p>
+</div>
+</div>
+<p>This project asks you to do two things at the same time:</p>
+<ol type="1">
+<li>demonstrate your understanding of <strong>multiple linear regression</strong>, and<br>
+</li>
+<li>show that you can use <strong>generative AI as a learning tool</strong> in a thoughtful, critical, and responsible way.</li>
+</ol>
+<p>The goal is <strong>not</strong> to let AI complete the assignment for you. The goal is to use AI to help you learn something new, verify ideas, identify weaknesses in your understanding, and communicate your own conclusions clearly.</p>
+<p>By completing this project, you will practice how to:</p>
+<ul>
+<li>explore relationships among variables using graphs</li>
+<li>choose and justify a multiple linear regression model</li>
+<li>interpret coefficients and model fit in context</li>
+<li>check assumptions and discuss limitations</li>
+<li>use AI as a tutor, coach, critic, and study partner</li>
+<li>verify AI output instead of accepting it automatically</li>
+</ul>
+<section id="submission-instructions" class="level1">
+<h1>Submission Instructions</h1>
+<!-- # Download the Data Sets -->
+<!-- Choose **one** of the following CSV files. -->
+<!-- - [Download `medical_insurance_charges.csv`](medical_insurance_charges.csv) -->
+<!-- - [Download `car_fuel_efficiency.csv`](car_fuel_efficiency.csv) -->
+<!-- - [Download `diamond_prices.csv`](diamond_prices.csv) -->
+<!-- - [Download `house_sale_prices.csv`](house_sale_prices.csv) -->
+<!-- - [Download `student_achievement.csv`](student_achievement.csv) -->
+<!-- These are **cleaned course copies** prepared for this project so that the variable names in the files match the variable names used in this handout. -->
+<!-- Before choosing a data set, read the [Data Dictionary and Variable Guide](dataset_variable_guide.html). -->
+<p>Submit <strong>one PDF file</strong> to <strong>D2L &gt; Assessments &gt; Dropbox</strong>.</p>
+<p>Your PDF must include the following parts, in this order:</p>
+<ol type="1">
+<li><strong>Data Analysis Report</strong></li>
+<li><strong>AI Use Record and Conversation Evidence</strong></li>
+<li><strong>Verification and Reflection Memo</strong></li>
+</ol>
+<p>With your submission, you commit to academic integrity through the following honor pledge:</p>
+<blockquote class="blockquote">
+<p>I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor and responsibility, by which I earn the respect of others. I support the development of good character and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code.</p>
+</blockquote>
+</section>
+<section id="ai-use-policy" class="level1">
+<h1>AI Use Policy</h1>
+<p>You may use <strong>one general purpose text based generative AI tool</strong> as a learning support tool for this project. Examples include ChatGPT, Gemini, Copilot, Claude, or another instructor approved tool. You remain responsible for all statistical reasoning, all final written explanations, and all final conclusions.</p>
+<!-- AI is allowed for this project because part of the assignment is learning **how** to learn with AI. However, you remain responsible for all statistical reasoning, all final written explanations, and all final conclusions. -->
+<section id="allowed-uses" class="level2">
+<h2 class="anchored" data-anchor-id="allowed-uses">Allowed uses</h2>
+<p>You may use AI to:</p>
+<ul>
+<li>ask for plain language explanations of statistical ideas</li>
+<li>ask AI to quiz you or question you step by step</li>
+<li>ask for examples that are <strong>not</strong> based on your dataset</li>
+<li>ask what assumptions, limitations, or diagnostic checks might matter</li>
+<li>ask AI to critique your draft reasoning</li>
+<li>ask AI to help you notice unclear wording or possible mistakes</li>
+<li>ask AI to suggest what you should verify on your own</li>
+</ul>
+</section>
+<section id="not-allowed-uses" class="level2">
+<h2 class="anchored" data-anchor-id="not-allowed-uses">Not allowed uses</h2>
+<p>You may <strong>not</strong> use AI to:</p>
+<ul>
+<li>write your final report for you</li>
+<li>produce final report ready paragraphs that you submit as your own writing</li>
+<li>interpret your exact regression output and then copy that interpretation</li>
+<li>decide your final conclusion for this dataset</li>
+<li>replace your own reasoning with unverified AI claims</li>
+</ul>
+<p>A good rule is this:</p>
+<blockquote class="blockquote">
+<p>AI may support your learning process, but it may not replace your thinking.</p>
+</blockquote>
+</section>
+</section>
+<section id="data-set-choices" class="level1">
+<h1>Data Set Choices</h1>
+<p>Choose <strong>one</strong> of the following data sets. All students will do the same project, but with different data choices.</p>
+<p>See the <a href="dataset_variable_guide.html">Data Dictionary and Variable Guide</a> if you want plain language definitions of the variables.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Option 1. Medical Insurance Charges
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><a href="medical_insurance_charges.csv">Download <code>medical_insurance_charges.csv</code></a></p>
+<p><strong>Suggested response variable:</strong> <code>charges</code><br>
+<strong>Suggested predictors:</strong> <code>age</code>, <code>bmi</code>, <code>children</code>, <code>smoker</code></p>
+<p><strong>Context:</strong> The data record individual medical insurance charges along with personal characteristics and smoking status.</p>
+<p><strong>Variables included in the CSV:</strong> <code>age</code>, <code>sex</code>, <code>bmi</code>, <code>children</code>, <code>smoker</code>, <code>region</code>, <code>charges</code>.</p>
+<!-- **Why this is a good multiple regression data set:** -->
+<!-- - the response variable is quantitative -->
+<!-- - there are both numerical and categorical predictors -->
+<!-- - the relationships are more realistic than the original sleep data -->
+<!-- - interpretation in context is meaningful -->
+<!-- - the response may be right skewed, so diagnostics matter -->
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Option 2. Car Fuel Efficiency
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+<p><a href="car_fuel_efficiency.csv">Download <code>car_fuel_efficiency.csv</code></a></p>
+<p><strong>Suggested response variable:</strong> <code>mpg</code><br>
+<strong>Suggested predictors:</strong> <code>horsepower</code>, <code>weight</code>, <code>acceleration</code>, <code>origin</code></p>
+<p><strong>Context:</strong> The data describe automobiles and their fuel efficiency.</p>
+<p><strong>Variables included in the CSV:</strong> <code>mpg</code>, <code>horsepower</code>, <code>weight</code>, <code>acceleration</code>, <code>origin</code>, <code>cylinders</code>, <code>displacement</code>, <code>model_year</code>.</p>
+<!-- **Why this is a good multiple regression data set:** -->
+<!-- - the response variable is quantitative and easy to understand -->
+<!-- - the predictors have clear physical meaning -->
+<!-- - students can compare the effects of several predictors while holding others fixed -->
+<!-- - at least one categorical predictor can be included -->
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Option 3. Diamond Prices
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+<p><a href="diamond_prices.csv">Download <code>diamond_prices.csv</code></a></p>
+<p><strong>Suggested response variable:</strong> <code>price</code><br>
+<strong>Suggested predictors:</strong> <code>carat</code>, <code>depth</code>, <code>table</code>, <code>cut</code></p>
+<p><strong>Context:</strong> The data describe physical characteristics of diamonds and their market prices.</p>
+<p><strong>Variables included in the CSV:</strong> <code>price</code>, <code>carat</code>, <code>depth</code>, <code>table</code>, <code>cut</code>, <code>color</code>, <code>clarity</code>, <code>x</code>, <code>y</code>, <code>z</code>.</p>
+<!-- **Why this is a good multiple regression data set:** -->
+<!-- - the response variable is quantitative -->
+<!-- - the predictors have different roles and scales -->
+<!-- - one predictor can be categorical -->
+<!-- - the response may be skewed, so model checking is important -->
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Option 4. House Sale Prices
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+<p><a href="house_sale_prices.csv">Download <code>house_sale_prices.csv</code></a></p>
+<p><strong>Suggested response variable:</strong> <code>sale_price</code><br>
+<strong>Suggested predictors:</strong> <code>living_area</code>, <code>bedrooms</code>, <code>house_age</code>, <code>overall_quality</code></p>
+<p><strong>Context:</strong> The data describe residential homes and their sale prices.</p>
+<p><strong>Variables included in the CSV:</strong> <code>sale_price</code>, <code>living_area</code>, <code>bedrooms</code>, <code>house_age</code>, <code>overall_quality</code>, <code>overall_condition</code>, <code>lot_area</code>, <code>full_bath</code>, <code>neighborhood</code>, <code>year_built</code>, <code>year_sold</code>.</p>
+<!-- **Why this is a good multiple regression data set:** -->
+<!-- - the response variable is quantitative and highly interpretable -->
+<!-- - students must think about what predictors belong in the model -->
+<!-- - the context makes coefficient interpretation interesting -->
+<!-- - the response may be skewed, so diagnostics matter -->
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Option 5. Student Achievement
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+<p><a href="student_achievement.csv">Download <code>student_achievement.csv</code></a></p>
+<p><strong>Suggested response variable:</strong> <code>final_score</code><br>
+<strong>Suggested predictors:</strong> <code>study_time</code>, <code>absences</code>, <code>prior_score</code>, <code>internet_access</code></p>
+<p><strong>Context:</strong> The data describe student performance and study related variables.</p>
+<p><strong>Variables included in the CSV:</strong> <code>final_score</code>, <code>prior_score</code>, <code>first_period_score</code>, <code>study_time</code>, <code>absences</code>, <code>internet_access</code>, <code>failures</code>, <code>age</code>, <code>sex</code>, <code>go_out</code>, <code>health</code>.</p>
+<!-- **Why this is a good multiple regression data set:** -->
+<!-- - the response variable is quantitative -->
+<!-- - the predictors are familiar and easy to explain -->
+<!-- - students can interpret adjusted relationships in an education setting -->
+<!-- - there may be interesting limitations and confounding issues to discuss -->
+</div>
+</div>
+</div>
+<section id="important-rule-about-model-complexity" class="level2">
+<h2 class="anchored" data-anchor-id="important-rule-about-model-complexity">Important rule about model complexity</h2>
+<p>To keep the projects comparable, your final model must:</p>
+<ul>
+<li>use <strong>one quantitative response variable</strong> listed above</li>
+<li>include <strong>at least three predictors</strong></li>
+<li>include <strong>at least two quantitative predictors</strong></li>
+<li>keep the model at a level appropriate for introductory statistics</li>
+</ul>
+<p>You may use <strong>one categorical predictor</strong> if it is relevant.</p>
+<p>You do <strong>not</strong> need interaction terms unless you want to explore one and can justify it clearly.</p>
+<p>You may use a simple transformation such as <span class="math inline">\(\log(\text{response})\)</span> <strong>only if</strong> your graphs and diagnostics suggest it is reasonable. A transformation is optional, not required.</p>
+</section>
+</section>
+<section id="project-components" class="level1">
+<h1>Project Components</h1>
+<p>Your project has three parts.</p>
+<section id="part-1.-data-analysis-report" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-data-analysis-report">Part 1. Data Analysis Report</h2>
+<section id="format" class="level3">
+<h3 class="anchored" data-anchor-id="format">Format</h3>
+<ul>
+<li>Length: <strong>3 to 5 pages</strong></li>
+<li>Spacing: <strong>single space</strong></li>
+<li>Font: <strong>Times New Roman, 12 pt</strong></li>
+<li>Margins: <strong>one inch on all sides</strong></li>
+<li>Do <strong>not</strong> show code in the report</li>
+</ul>
+<p><a href="./template_part1_data_analysis_report.docx">Download report template</a></p>
+</section>
+<section id="required-sections" class="level3">
+<h3 class="anchored" data-anchor-id="required-sections">Required sections</h3>
+<p><strong>1. Introduction</strong></p>
+<p>Briefly introduce the context of your chosen data set. Define the response variable and the predictors in your final model. State the goal of the analysis and explain why those predictors are reasonable choices.</p>
+<p><strong>2. Exploratory Data Analysis</strong></p>
+<p>Create and discuss graphs that help you understand the relationships in your data.</p>
+<p>At minimum, include:</p>
+<ul>
+<li>one graph of the response variable</li>
+<li>scatterplots of the response versus each quantitative predictor in your final model</li>
+<li>if you use a categorical predictor, a suitable graph such as a side by side boxplot</li>
+</ul>
+<p>Describe patterns you notice. For example, discuss direction, strength, unusual points, possible nonlinearity, and whether the relationships appear roughly linear.</p>
+<p><strong>3. Model Building</strong></p>
+<p>Fit a multiple linear regression model using your chosen response and predictors.</p>
+<p>Include:</p>
+<ul>
+<li>the fitted regression equation</li>
+<li>the main model output</li>
+<li>a brief explanation of why this model is a reasonable choice</li>
+</ul>
+<p>If you decide to use a transformed response, briefly explain why.</p>
+<p><strong>4. Interpretation of Results</strong></p>
+<p>Interpret the following in context:</p>
+<ul>
+<li>the intercept</li>
+<li>at least <strong>two slope coefficients</strong> for quantitative predictors</li>
+<li>if applicable, <strong>one categorical predictor coefficient</strong></li>
+</ul>
+<p>Your interpretations should make clear that each coefficient is interpreted <strong>while holding the other predictors constant</strong>.</p>
+<p><strong>5. Model Fit, Assumptions, and Limitations</strong></p>
+<p>Discuss:</p>
+<ul>
+<li>what <span class="math inline">\(R^2\)</span> tells you in this setting</li>
+<li>whether the model appears useful for explanation or prediction</li>
+<li>at least <strong>two</strong> assumptions or diagnostic concerns</li>
+<li>at least <strong>one</strong> limitation of the analysis</li>
+</ul>
+<p>If you compared an untransformed and transformed response model, briefly explain which one you chose and why.</p>
+<p><strong>6. Conclusion</strong></p>
+<p>Write a short conclusion for a general audience. Summarize what the analysis suggests and what it does <strong>not</strong> prove.</p>
+</section>
+</section>
+<section id="part-2.-ai-use-record-and-conversation-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.-ai-use-record-and-conversation-evidence">Part 2. AI Use Record and Conversation Evidence</h2>
+<p><a href="./template_part2_ai_use_record_and_conversation_evidence.docx">Download AI usage template</a></p>
+<p>It should be about <strong>1 to 2 pages</strong>, not counting optional screenshots.</p>
+<p>Your goal is to show <strong>how</strong> you used AI, not to paste an unnecessarily long transcript.</p>
+<p>For your most important AI interactions, briefly record:</p>
+<ul>
+<li>what you were trying to learn</li>
+<li>what you asked AI</li>
+<li>what AI told you</li>
+<li>what you accepted, revised, or rejected</li>
+<li>how you checked or verified the idea</li>
+</ul>
+<p>Then include enough conversation evidence for me to understand your actual AI use. You may include:</p>
+<ul>
+<li>short transcript excerpts,</li>
+<li>screenshots,</li>
+<li>copied chat text,</li>
+<li>or a share link plus a few selected excerpts.</li>
+</ul>
+<p>Start this section with the starter prompt you chose.</p>
+<p>A long transcript by itself is <strong>not</strong> enough. This section should highlight the most meaningful parts of your AI use.</p>
+</section>
+<section id="part-3.-verification-and-reflection-memo" class="level2">
+<h2 class="anchored" data-anchor-id="part-3.-verification-and-reflection-memo">Part 3. Verification and Reflection Memo</h2>
+<p><a href="./template_part3_verification_and_reflection_memo.docx">Download Reflection template</a></p>
+<p>This section should be <strong>about 1 page total</strong>.</p>
+<section id="a.-verification-and-critique" class="level3">
+<h3 class="anchored" data-anchor-id="a.-verification-and-critique">A. Verification and Critique</h3>
+<p>Briefly describe:</p>
+<ul>
+<li><strong>one example</strong> where AI was incomplete, vague, misleading, or wrong, and</li>
+<li><strong>one example</strong> where AI genuinely helped you learn something useful.</li>
+</ul>
+<p>For the weak AI example, explain in a few sentences:</p>
+<ul>
+<li>what AI said</li>
+<li>why it was not fully satisfactory</li>
+<li>how you checked it</li>
+<li>what you concluded instead</li>
+</ul>
+</section>
+<section id="b.-reflection" class="level3">
+<h3 class="anchored" data-anchor-id="b.-reflection">B. Reflection</h3>
+<p>Write a short reflection of about <strong>150 to 250 words</strong> addressing questions such as:</p>
+<ul>
+<li>Which AI tool did you use?</li>
+<li>How did AI help you learn multiple linear regression?</li>
+<li>What did AI do well?</li>
+<li>What did AI do poorly?</li>
+<li>What would you do differently next time?</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="starter-prompt-menu" class="level1">
+<h1>Starter Prompt Menu</h1>
+<p>You do <strong>not</strong> have to use one exact prompt. Instead, choose <strong>one</strong> of the following starting prompts and then continue the conversation in your own way.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Prompt A. Concept Coach
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I am learning multiple linear regression for a class project using a real data set. Act as a concept coach. Do not write my report. Do not give me final interpretations for my dataset. Instead, teach me step by step in plain language. After each explanation, ask me one question so I have to think before moving on.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Prompt B. Socratic Tutor
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I am working on a multiple linear regression project. Act as a Socratic tutor. Ask me one question at a time about model setup, predictor choice, coefficient interpretation, model fit, assumptions, and limitations. Only explain more after I answer. Do not write final report text for me.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Prompt C. Critic and Checker
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I am going to explain my reasoning about a multiple linear regression project. Your job is to critique my reasoning, point out what is unclear or incomplete, and suggest what I should verify. Do not give me final report ready paragraphs, and do not decide my final conclusion for me.</p>
+</div>
+</div>
+</div>
+<p>You may revise the prompt after you begin. What matters is that your interaction supports learning rather than outsourcing.</p>
+<!-- # Suggested Workflow for 7 to 10 Days -->
+<!-- You do not need to follow this exactly, but it is a good pacing guide. -->
+<!-- ## Days 1 to 2 -->
+<!-- - Review the assignment -->
+<!-- - Choose one data set from D2L -->
+<!-- - Read the variable descriptions -->
+<!-- - Start your AI conversation -->
+<!-- - Learn or review the basic ideas of multiple linear regression -->
+<!-- ## Days 3 to 4 -->
+<!-- - Make the graphs -->
+<!-- - Decide on your predictors -->
+<!-- - Fit the model -->
+<!-- - Identify questions you still do not understand -->
+<!-- - Use AI to help clarify concepts, not to finish the writing -->
+<!-- ## Days 5 to 6 -->
+<!-- - Draft your interpretations -->
+<!-- - Ask AI to critique your reasoning -->
+<!-- - Verify key ideas yourself -->
+<!-- - Build your AI use record with a few strong excerpts -->
+<!-- ## Days 7 to 10 -->
+<!-- - Write and revise the final report -->
+<!-- - Finish the verification and reflection memo -->
+<!-- - Proofread and submit one PDF -->
+</section>
+<section id="project-evaluation" class="level1">
+<h1>Project Evaluation</h1>
+<p>Your project will be evaluated using the following categories.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Category</th>
+<th style="text-align: right;">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistical understanding and correctness</td>
+<td style="text-align: right;">30</td>
+</tr>
+<tr class="even">
+<td>Quality of graphs, model setup, and interpretation</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="odd">
+<td>AI use record and transparency of process</td>
+<td style="text-align: right;">20</td>
+</tr>
+<tr class="even">
+<td>Verification, critique, and reflection</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td>Writing quality, organization, and professionalism</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 100 points</strong></p>
+</section>
+<section id="final-advice" class="level1">
+<h1>Final Advice</h1>
+<p>A weak project uses AI to generate language.</p>
+<p>A strong project uses AI to improve understanding.</p>
+<p>The strongest projects show that you:</p>
+<ul>
+<li>asked meaningful questions,</li>
+<li>made sensible modeling choices,</li>
+<li>verified important ideas,</li>
+<li>noticed when AI was not reliable,</li>
+<li>and wrote the final analysis in your own words.</li>
+</ul>
+</section>
+<section id="data-source-note" class="level1">
+<h1>Data Source Note</h1>
+<p>The downloadable CSV files are cleaned course copies prepared from public data sources so that the headers are easier to use in an introductory statistics project.</p>
+<ul>
+<li>Medical insurance charges: course copy based on the commonly used insurance charges dataset.</li>
+<li>Car fuel efficiency: Auto MPG data.</li>
+<li>Diamond prices: <code>diamonds</code> data.</li>
+<li>House sale prices: Ames housing data.</li>
+<li>Student achievement: student mathematics performance data.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/project/final_project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

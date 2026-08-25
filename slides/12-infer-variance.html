@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.19">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>Inference About Population Variances  – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ac21d23c918e3e098212e454eda36928.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Inference About Population Variances r fontawesome::fa(&quot;people-arrows&quot;) – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4720/MSSC 5720 Introduction to Statistics">
+<meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/12-infer-variance/drug.jpeg">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Inference About Population Variances <svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 64a64 64 0 1 1 128 0A64 64 0 1 1 64 64zM25.9 233.4C29.3 191.9 64 160 105.6 160h44.8c27 0 51 13.4 65.5 34.1c-2.7 1.9-5.2 4-7.5 6.3l-64 64c-21.9 21.9-21.9 57.3 0 79.2L192 391.2V464c0 26.5-21.5 48-48 48H112c-26.5 0-48-21.5-48-48V348.3c-26.5-9.5-44.7-35.8-42.2-65.6l4.1-49.3zM448 64a64 64 0 1 1 128 0A64 64 0 1 1 448 64zM431.6 200.4c-2.3-2.3-4.9-4.4-7.5-6.3c14.5-20.7 38.6-34.1 65.5-34.1h44.8c41.6 0 76.3 31.9 79.7 73.4l4.1 49.3c2.5 29.8-15.7 56.1-42.2 65.6V464c0 26.5-21.5 48-48 48H496c-26.5 0-48-21.5-48-48V391.2l47.6-47.6c21.9-21.9 21.9-57.3 0-79.2l-64-64zM272 240v32h96V240c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2l64 64c9.4 9.4 9.4 24.6 0 33.9l-64 64c-6.9 6.9-17.2 8.9-26.2 5.2s-14.8-12.5-14.8-22.2V336H272v32c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-64-64c-9.4-9.4-9.4-24.6 0-33.9l64-64c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2z"></path></svg>
+</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-hours.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Help Desk Hours</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worksheet</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="12-infer-variance-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Inference About Population Variances <svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 64a64 64 0 1 1 128 0A64 64 0 1 1 64 64zM25.9 233.4C29.3 191.9 64 160 105.6 160h44.8c27 0 51 13.4 65.5 34.1c-2.7 1.9-5.2 4-7.5 6.3l-64 64c-21.9 21.9-21.9 57.3 0 79.2L192 391.2V464c0 26.5-21.5 48-48 48H112c-26.5 0-48-21.5-48-48V348.3c-26.5-9.5-44.7-35.8-42.2-65.6l4.1-49.3zM448 64a64 64 0 1 1 128 0A64 64 0 1 1 448 64zM431.6 200.4c-2.3-2.3-4.9-4.4-7.5-6.3c14.5-20.7 38.6-34.1 65.5-34.1h44.8c41.6 0 76.3 31.9 79.7 73.4l4.1 49.3c2.5 29.8-15.7 56.1-42.2 65.6V464c0 26.5-21.5 48-48 48H496c-26.5 0-48-21.5-48-48V391.2l47.6-47.6c21.9-21.9 21.9-57.3 0-79.2l-64-64zM272 240v32h96V240c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2l64 64c9.4 9.4 9.4 24.6 0 33.9l-64 64c-6.9 6.9-17.2 8.9-26.2 5.2s-14.8-12.5-14.8-22.2V336H272v32c0 9.7-5.8 18.5-14.8 22.2s-19.3 1.7-26.2-5.2l-64-64c-9.4-9.4-9.4-24.6 0-33.9l64-64c6.9-6.9 17.2-8.9 26.2-5.2s14.8 12.5 14.8 22.2z"></path></svg>
+</h1>
+<p class="subtitle lead">MATH 4720/MSSC 5720 Introduction to Statistics</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="section" class="level1" data-visibility="hidden"><h1 data-visibility="hidden"></h1>
+<!-- begin: webr fodder -->
+<!-- end: webr fodder -->
+<!-- # [Hypothesis Testing]{.orange}{background-image="https://upload.wikimedia.org/wikipedia/commons/4/42/William_Sealy_Gosset.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"} -->
+</section><section id="inference-about-population-variances" class="level1"><h1>Inference About Population Variances</h1>
+<ul>
+<li><h3 id="one-population-variance" class="anchored" data-anchor-id="inference-about-population-variances">One Population Variance</h3></li>
+<li><h3 id="comparing-two-population-variances" class="anchored">Comparing Two Population Variances</h3></li>
+</ul></section><section id="inference-for-one-population-variance" class="level1" data-background-image="./images/12-infer-variance/pearson_quote.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1 data-background-image="./images/12-infer-variance/pearson_quote.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><span class="orange">Inference for One Population Variance</span></h1>
+<section id="why-inference-for-population-variances" class="level2"><h2 class="anchored" data-anchor-id="why-inference-for-population-variances">Why Inference for Population Variances?</h2>
+<ul>
+<li>We like to know if <span class="math inline">\(\sigma_1 = \sigma_2\)</span>, so a correct or better method can be used.</li>
+</ul>
+<div class="question">
+<p>Which test we learned needs <span class="math inline">\(\sigma_1 = \sigma_2\)</span>?</p>
+</div>
+<p>. . .</p>
+<div class="center">
+<p>In some situations, we care about <em>variation</em>!</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>
+<span style="color:blue"> the variation in potency of drugs</span>: <em>affects patients’ health</em>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/12-infer-variance/drug.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>
+<span style="color:blue"> the variance of stock prices </span>: <em>the higher the variance, the riskier the investment</em>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/12-infer-variance/stock.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>When doing inference for population means,</li>
+<li>We like to know if <span class="math inline">\(\sigma_1 = \sigma_2\)</span>, so that a correct or better method can be used. For example, we use the pooled <span class="math inline">\(t\)</span>-test if <span class="math inline">\(\sigma_1 = \sigma_2\)</span> or they are very close to each other for higher power.</li>
+<li>drug for lowering BP. We hope the same amount or dose level of the drug provide the same effect on each individual. We don’t want some patients BP is lowered a lot, but some other patient’s BP is lowered just a little bit.</li>
+<li>We want the new treatment can provide consistent potency and efficacy for all patients.</li>
+</ul>
+</div>
+</section><section id="inference-for-population-variances" class="level2"><h2 class="anchored" data-anchor-id="inference-for-population-variances">Inference for Population Variances</h2>
+<ul>
+<li><p>The sample variance <span class="math inline">\(S^2 = \frac{\sum_{i=1}^n(X_i - \overline{X})^2}{n-1}\)</span> is our <strong>point estimator</strong> for the population variance <span class="math inline">\(\sigma^2\)</span>. <!-- + $S^2$ is an **unbiased estimator** for $\sigma^2$, i.e., $E(S^2) = \sigma^2$ --></p></li>
+<li><p>The inference for <span class="math inline">\(\sigma^2\)</span> needs the population to be <strong>normal</strong>.</p></li>
+</ul>
+<div class="alert">
+<p>❗ The methods can <strong>work poorly if the normality is violated, even the sample is large</strong>.</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/12-infer-variance/normal_dist.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>
+<p>In some situations, we do care about variation.</p>
+<ul>
+<li>
+<span style="color:blue"> the variation in potency of drugs</span>: affects patients’ health</li>
+<li>
+<span style="color:blue"> the variance of stock prices </span>: the higher the variance, the riskier the investment</li>
+</ul>
+</li>
+<li><p>Intuitively, the sample variance <span class="math inline">\(S^2 = \frac{\sum_{i=1}^n(X_i - \overline{X})^2}{n-1}\)</span> is our <strong>point estimator</strong> for the population variance <span class="math inline">\(\sigma^2\)</span>.</p></li>
+<li><p>For a random sample of size <span class="math inline">\(n\)</span> drawn from a population with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(S^2\)</span> is an <strong>unbiased estimator</strong> for <span class="math inline">\(\sigma^2\)</span>.</p></li>
+<li><p>In Chapter 7, we discuss inference methods for <span class="math inline">\(\sigma^2\)</span> when the population is assumed <strong>normal</strong>. <strong>The methods discussed here can work poorly if normality is violated, even if the sample is large</strong>.</p></li>
+</ul>
+</div>
+</section><section id="chi-squared-chi2-distribution" class="level2"><h2 class="anchored" data-anchor-id="chi-squared-chi2-distribution">Chi-Squared <span class="math inline">\(\chi^2\)</span> Distribution</h2>
+<p>The inference for <span class="math inline">\(\sigma^2\)</span> involves the <span class="math inline">\(\chi^2\)</span> distribution.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li><p>Defined over <em>positive</em> numbers</p></li>
+<li><p>Parameter: degrees of freedom <span class="math inline">\(df\)</span></p></li>
+<li><p><em>Right</em> skewed</p></li>
+<li><p>More symmetric as <span class="math inline">\(df\)</span> gets larger <!-- - [Chi-Squared Distribution](https://homepage.divms.uiowa.edu/~mbognar/applets/chisq.html) --></p></li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ## Chi-Squared $\chi^2$ Distribution Applet -->
+<!-- {{< include infer-var-chisq-ojs.qmd >}} -->
+</section><section id="upper-tail-and-lower-tail-of-chi-square" class="level2"><h2 class="anchored" data-anchor-id="upper-tail-and-lower-tail-of-chi-square">Upper Tail and Lower Tail of Chi-Square</h2>
+<!-- - $\chi^2_{c,\, df}$ is the $\chi^2$ value of $\chi^2_{df}$ distribution that has area to the **right** of $c$. -->
+<ul>
+<li><p><span class="math inline">\(\chi^2_{\frac{\alpha}{2},\, df}\)</span> has area to the <strong>right</strong> of <span class="math inline">\(\alpha/2\)</span>.</p></li>
+<li><p><span class="math inline">\(\chi^2_{1-\frac{\alpha}{2},\, df}\)</span> has area to the <strong>left</strong> of <span class="math inline">\(\alpha/2\)</span>.</p></li>
+<li><p>In <span class="math inline">\(N(0, 1)\)</span>, <span class="math inline">\(z_{1-\frac{\alpha}{2}} = -z_{\frac{\alpha}{2}}\)</span>. But <span class="math inline">\(\chi^2_{1-\frac{\alpha}{2},\,df} \ne -\chi^2_{\frac{\alpha}{2},\,df}\)</span> because of <strong>non</strong>-symmetry of the <span class="math inline">\(\chi^2\)</span> distribution.</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/chi2-critical-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Define critical values <span class="math inline">\(\chi_U^2\)</span> and <span class="math inline">\(\chi_L^2\)</span>.</li>
+<li>When constructing a CI with level <span class="math inline">\(1-\alpha\)</span>, we put <span class="math inline">\(1-\alpha\)</span> in the middle and</li>
+</ul>
+</div>
+</section><section id="sampling-distribution" class="level2"><h2 class="anchored" data-anchor-id="sampling-distribution">Sampling Distribution</h2>
+<ul>
+<li><p>When a random sample of size <span class="math inline">\(n\)</span> is from <span class="math inline">\(\color{red}{N(\mu, \sigma^2)}\)</span>, <span class="math display">\[ \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1} \]</span> <!-- - The sampling distribution is approximately normal for large sample sizes. --></p></li>
+<li><p>The inference method for <span class="math inline">\(\sigma^2\)</span> introduced here can work poorly if the normality assumption is violated, even for large samples!</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="alpha100-confidence-interval-for-sigma2" class="level2"><h2 class="anchored" data-anchor-id="alpha100-confidence-interval-for-sigma2">
+<span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\sigma^2\)</span>
+</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\((1-\alpha)100\%\)</span> CI for <span class="math inline">\(\sigma^2\)</span> is <span class="math display">\[\color{blue}{\left( \frac{(n-1)S^2}{\chi^2_{\frac{\alpha}{2}, \, n-1}}, \frac{(n-1)S^2}{\chi^2_{1-\frac{\alpha}{2}, \, n-1}} \right)}\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="alert">
+<p>❗ The CI for <span class="math inline">\(\sigma^2\)</span> <strong>cannot</strong> be expressed as <span class="math inline">\((S^2-m, S^2+m)\)</span> anymore!</p>
+</div>
+<!-- - $\chi_U^2$ is the upper-tail value of chi-square for $df = n-1$ with area $\alpha/2$ to its right. -->
+<!-- - $\chi_L^2$ is the lower-tail value of chi-square for $df = n-1$ with area $\alpha/2$ to its left. -->
+</section><section id="example-supermodel-heights" class="level2"><h2 class="anchored" data-anchor-id="example-supermodel-heights">Example: Supermodel Heights</h2>
+<div class="columns">
+<div class="column" style="width:85%;">
+<p>Listed below are heights (cm) for the simple random sample of 16 female supermodels:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">heights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">178</span>, <span class="fl">177</span>, <span class="fl">176</span>, <span class="fl">174</span>, <span class="fl">175</span>, <span class="fl">178</span>, <span class="fl">175</span>, <span class="fl">178</span>, </span>
+<span>             <span class="fl">178</span>, <span class="fl">177</span>, <span class="fl">180</span>, <span class="fl">176</span>, <span class="fl">180</span>, <span class="fl">178</span>, <span class="fl">180</span>, <span class="fl">176</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>The supermodels’ height is normally distributed.</li>
+<li>Construct a <span class="math inline">\(95\%\)</span> confidence interval for population standard deviation <span class="math inline">\(\sigma\)</span>.</li>
+</ul>
+</div><div class="column" style="width:15%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/12-infer-variance/models.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<ul>
+<li><p><span class="math inline">\(n = 16\)</span>, <span class="math inline">\(s^2 = 3.4\)</span>, <span class="math inline">\(\alpha = 0.05\)</span>.</p></li>
+<li><p><span class="math inline">\(\chi^2_{\alpha/2, n-1} = \chi^2_{0.025, 15} = 27.49\)</span></p></li>
+<li><p><span class="math inline">\(\chi^2_{1-\alpha/2, n-1} = \chi^2_{0.975, 15} = 6.26\)</span></p></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>The <span class="math inline">\(95\%\)</span> CI for <span class="math inline">\(\sigma\)</span> is <span class="math inline">\(\small \left( \sqrt{\frac{(n-1)s^2}{\chi^2_{\frac{\alpha}{2}, \, n-1}}}, \sqrt{\frac{(n-1)s^2}{\chi^2_{1-\frac{\alpha}{2}, \, n-1}}} \right) = \left( \sqrt{\frac{(16-1)(3.4)}{27.49}}, \sqrt{\frac{(16-1)(3.4)}{6.26}}\right) = (1.36, 2.85)\)</span>
+</li>
+</ul></section><section id="example-computation-in-r" class="level2"><h2 class="anchored" data-anchor-id="example-computation-in-r">Example: Computation in R</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">16</span></span>
+<span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">heights</span><span class="op">)</span></span>
+<span><span class="va">al</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
+<span></span>
+<span><span class="co">## two chi-square critical values</span></span>
+<span><span class="va">chi2_right</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, df <span class="op">=</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">chi2_left</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, df <span class="op">=</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## two bounds of CI for sigma2</span></span>
+<span><span class="va">ci_lwr</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s2</span> <span class="op">/</span> <span class="va">chi2_right</span></span>
+<span><span class="va">ci_upr</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s2</span> <span class="op">/</span> <span class="va">chi2_left</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## two bounds of CI for sigma</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">ci_lwr</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.36</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">ci_upr</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.85</code></pre>
+</div>
+</div>
+</section><section id="example-contd-testing" class="level2"><h2 class="anchored" data-anchor-id="example-contd-testing">Example Cont’d: Testing</h2>
+<p>Use <span class="math inline">\(\alpha = 0.05\)</span> to test the claim that “<em>supermodels have heights with a standard deviation that is less than <span class="math inline">\(\sigma = 7.5\)</span> cm for the population of women</em>”.</p>
+<p>. . .</p>
+<ul>
+<li>
+<strong>Step 1</strong>: <span class="math inline">\(H_0: \sigma = \sigma_0\)</span> vs.&nbsp;<span class="math inline">\(H_1: \sigma &lt; \sigma_0\)</span>. Here <span class="math inline">\(\sigma_0 = 7.5\)</span> cm</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<strong>Step 2</strong>: <span class="math inline">\(\alpha = 0.05\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<strong>Step 3</strong>: Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\chi_{test}^2 = \frac{(n-1)s^2}{\sigma_0^2} = \frac{(16-1)(3.4)}{7.5^2} = 0.91\)</span>, a statistic drawn from <span class="math inline">\(\chi^2_{n-1}\)</span>.</li>
+</ul>
+<p>. . .</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>
+<strong>Step 4-c</strong>: This is a left-tailed test. The critical value is <span class="math inline">\(\chi_{1-\alpha, df}^2 = \chi_{0.95, 15}^2 = 7.26\)</span>
+</li>
+<li>
+<strong>Step-5-c</strong>: Reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span> if <span class="math inline">\(\chi_{test}^2 &lt; \chi_{1-\alpha, df}^2\)</span>. Since <span class="math inline">\(0.91 &lt; 7.26\)</span>, we reject <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="example-contd-testing-1" class="level2"><h2 class="anchored" data-anchor-id="example-contd-testing-1">Example Cont’d: Testing</h2>
+<p>Use <span class="math inline">\(\alpha = 0.05\)</span> to test the claim that “<em>supermodels have heights with a standard deviation that is less than <span class="math inline">\(\sigma = 7.5\)</span> cm for the population of women</em>”.</p>
+<ul>
+<li><p><strong>Step 1</strong>: <span class="math inline">\(H_0: \sigma = \sigma_0\)</span> vs.&nbsp;<span class="math inline">\(H_1: \sigma &lt; \sigma_0\)</span>. Here <span class="math inline">\(\sigma_0 = 7.5\)</span> cm</p></li>
+<li><p><strong>Step 2</strong>: <span class="math inline">\(\alpha = 0.05\)</span></p></li>
+<li><p><strong>Step 3</strong>: Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\chi_{test}^2 = \frac{(n-1)s^2}{\sigma_0^2} = \frac{(16-1)(3.4)}{7.5^2} = 0.91\)</span>, a statistic drawn from <span class="math inline">\(\chi^2_{n-1}\)</span>.</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>
+<strong>Step 6</strong>: There is sufficient evidence to support the claim that supermodels have heights with a SD that is less than the SD for the population of women.</li>
+</ul>
+<p><em>Heights of supermodels vary less than heights of women in the general population.</em></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="back-to-pooled-t-test" class="level2"><h2 class="anchored" data-anchor-id="back-to-pooled-t-test">Back to Pooled t-Test</h2>
+<p>In a pooled t-test, we assume</p>
+<ul>
+<li><p><span style="color:blue"> both samples are of large size or drawn from a normal population. </span></p></li>
+<li><p><span style="color:blue"> <span class="math inline">\(\sigma_1 = \sigma_2\)</span> </span></p></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><p>Use QQ-plot (and normality tests, Anderson, Shapiro, etc) to check the assumption of normal distribution.</p></li>
+<li><p>We learn to check the assumption <span class="math inline">\(\sigma_1 = \sigma_2\)</span>.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Whenever we use t-statistics, there are assumptions.</li>
+</ul>
+</div>
+</section></section><section id="inference-for-comparing-two-population-variances" class="level1" data-background-image="./images/12-infer-variance/pearson_quote.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1 data-background-image="./images/12-infer-variance/pearson_quote.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><span class="orange">Inference for Comparing Two Population Variances</span></h1>
+<section id="f-distribution" class="level2"><h2 class="anchored" data-anchor-id="f-distribution">F Distribution</h2>
+<!-- - We use **$\chi^2$ distribution** for the inference about **one** population variance. -->
+<p>We use <strong><span class="math inline">\(F\)</span> distribution</strong> for the inference about <strong>two</strong> population variances.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li><p>Two parameters: <span class="math inline">\(df_1\)</span>, <span class="math inline">\(df_2\)</span></p></li>
+<li><p><em>Right</em> skewed</p></li>
+<li><p>Defined over <em>positive</em> numbers</p></li>
+</ul>
+<!-- - [F Distribution](https://homepage.divms.uiowa.edu/~mbognar/applets/f.html) --><!-- ] -->
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ## F Distribution Applet -->
+<!-- {{< include infer-var-f-ojs.qmd >}} -->
+</section><section id="upper-and-lower-tail-of-f-distribution" class="level2"><h2 class="anchored" data-anchor-id="upper-and-lower-tail-of-f-distribution">Upper and Lower Tail of F Distribution</h2>
+<ul>
+<li>We denote <span class="math inline">\(F_{\alpha, \, df_1, \, df_2}\)</span> as the <span class="math inline">\(F\)</span> quantile so that <span class="math inline">\(P(F_{df_1, df_2} &gt; F_{\alpha, \, df_1, \, df_2}) = \alpha\)</span>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/f-critical-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sampling-distribution-1" class="level2"><h2 class="anchored" data-anchor-id="sampling-distribution-1">Sampling Distribution</h2>
+<!-- - If $U_1 \sim \chi^2_{n_1-1}$ and $U_2 \sim \chi^2_{n_2-1}$ and $U_1$ and $U_2$ are independent, the random variable $$X =  \frac{\frac{U_1}{n_1-1}}{\frac{U_2}{n_2-1}}$$ follows $F_{n_1-1, \, n_2-1}$ distribution. -->
+<ul>
+<li><p>The random samples of size <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> are <em>independent</em> from two normal populations, <span class="math inline">\(N(\mu_1, \sigma_1^2)\)</span> and <span class="math inline">\(N(\mu_2, \sigma_2^2)\)</span>.</p></li>
+<li><p>The ratio <span class="math display">\[\frac{S_1^2/S_2^2}{\sigma_1^2/\sigma_2^2} \sim F_{n_1-1, \, n_2-1}\]</span></p></li>
+</ul>
+<div class="notes">
+<!-- .question[ -->
+<!-- Can you show why? -->
+<!-- ] -->
+<p><span class="math display">\[\frac{s_1^2/\sigma_1^2}{s_2^2/\sigma_2^2} = \frac{s_1^2/s_2^2}{\sigma_1^2/\sigma_2^2} \sim F_{n_1-1, \, n_2-1}\]</span></p>
+</div>
+</section><section id="alpha100-confidence-interval-for-sigma_12-sigma_22" class="level2"><h2 class="anchored" data-anchor-id="alpha100-confidence-interval-for-sigma_12-sigma_22">
+<span class="math inline">\((1-\alpha)100\%\)</span> Confidence Interval for <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span>
+</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><span class="math inline">\((1-\alpha)100\%\)</span> CI for <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span> is <span class="math display">\[\color{blue}{\left( \frac{s_1^2/s_2^2}{F_{\alpha/2, \, n_1 - 1, \, n_2 - 1}}, \frac{s_1^2/s_2^2}{F_{1-\alpha/2, \, \, n_1 - 1, \, n_2 - 1}} \right)}\]</span></p>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="alert">
+<p>❗ The CI for <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span> <strong>cannot</strong> be expressed as <span class="math inline">\(\left(\frac{s_1^2}{s_2^2}-m, \frac{s_1^2}{s_2^2} + m\right)\)</span> anymore!</p>
+</div>
+</section><section id="f-test-for-comparing-sigma_12-and-sigma_22" class="level2"><h2 class="anchored" data-anchor-id="f-test-for-comparing-sigma_12-and-sigma_22">F test for comparing <span class="math inline">\(\sigma_1^2\)</span> and <span class="math inline">\(\sigma_2^2\)</span>
+</h2>
+<div class="midi">
+<ul>
+<li>
+<strong>Step 1</strong>: right-tailed <span style="color:blue"> <span class="math inline">\(\small \begin{align} &amp;H_0: \sigma_1 \le \sigma_2 \\ &amp;H_1: \sigma_1 &gt; \sigma_2 \end{align}\)</span> </span> and two-tailed <span style="color:green"> <span class="math inline">\(\small \begin{align} &amp;H_0: \sigma_1 = \sigma_2 \\ &amp;H_1: \sigma_1 \ne \sigma_2 \end{align}\)</span> </span>
+</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>
+<strong>Step 2</strong>: <span class="math inline">\(\alpha = 0.05\)</span>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Step 3</strong>: Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\sigma_1 = \sigma_2\)</span>, and the test statistic is</li>
+</ul>
+<p><span class="math display">\[\small F_{test} = \frac{s_1^2/s_2^2}{\sigma_1^2/\sigma_2^2} = \frac{s_1^2}{s_2^2} \sim F_{n_1-1, \, n_2-1}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Step 4-c</strong>:
+<ul>
+<li>Right-tailed: <span style="color:blue"> <span class="math inline">\(F_{\alpha, \, n_1-1, \, n_2-1}\)</span> </span>.</li>
+<li>Two-tailed: <span style="color:green"> <span class="math inline">\(F_{\alpha/2, \, n_1-1, \, n_2-1}\)</span> or <span class="math inline">\(F_{1-\alpha/2, \, n_1-1, \, n_2-1}\)</span> </span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Step 5-c</strong>:
+<ul>
+<li>Right-tailed: reject <span class="math inline">\(H_0\)</span> if <span style="color:blue"> <span class="math inline">\(F_{test} \ge F_{\alpha, \, n_1-1, \, n_2-1}\)</span></span>.</li>
+<li>Two-tailed: reject <span class="math inline">\(H_0\)</span> if <span style="color:green"> <span class="math inline">\(F_{test} \ge F_{\alpha/2, \, n_1-1, \, n_2-1}\)</span> or <span class="math inline">\(F_{test} \le F_{1-\alpha/2, \, n_1-1, \, n_2-1}\)</span></span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section><section id="back-to-the-weight-loss-example" class="level2"><h2 class="anchored" data-anchor-id="back-to-the-weight-loss-example">Back to the Weight Loss Example</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<p>A study was conducted to see the effectiveness of a weight loss program.</p>
+<ul>
+<li><p>Two groups (Control and Experimental) of 10 subjects were selected.</p></li>
+<li><p>The two populations are normally distributed and have the same SD.</p></li>
+</ul>
+</div><div class="column" style="width:20%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/12-infer-variance/weight.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>
+<p>The data on weight loss was collected at the end of six months</p>
+<ul>
+<li>
+<strong>Control</strong>: <span class="math inline">\(n_1 = 10\)</span>, <span class="math inline">\(\overline{x}_1 = 2.1\, lb\)</span>, <span class="math inline">\(s_1 = 0.5\, lb\)</span>
+</li>
+<li>
+<strong>Experimental</strong>: <span class="math inline">\(n_2 = 10\)</span>, <span class="math inline">\(\overline{x}_2 = 4.2\, lb\)</span>, <span class="math inline">\(s_2 = 0.7\, lb\)</span>
+</li>
+</ul>
+</li>
+<li>
+<p>Assumptions:</p>
+<ul>
+<li><p><span style="color:blue"> <span class="math inline">\(\sigma_1 = \sigma_2\)</span> </span></p></li>
+<li><p>The weight loss for both groups are normally distributed.</p></li>
+</ul>
+</li>
+</ul></section><section id="back-to-the-weight-loss-example-check-if-sigma_1-sigma_2" class="level2"><h2 class="anchored" data-anchor-id="back-to-the-weight-loss-example-check-if-sigma_1-sigma_2">Back to the Weight Loss Example: Check if <span class="math inline">\(\sigma_1 = \sigma_2\)</span>
+</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li><p><span class="math inline">\(n_1 = 10\)</span>, <span class="math inline">\(s_1 = 0.5 \, lb\)</span></p></li>
+<li><p><span class="math inline">\(n_2 = 10\)</span>, <span class="math inline">\(s_2 = 0.7 \, lb\)</span></p></li>
+<li><p><strong>Step 1</strong>: <span class="math inline">\(\begin{align} &amp;H_0: \sigma_1 = \sigma_2 \\ &amp;H_1: \sigma_1 \ne \sigma_2 \end{align}\)</span></p></li>
+<li><p><strong>Step 2</strong>: <span class="math inline">\(\alpha = 0.05\)</span></p></li>
+<li><p><strong>Step 3</strong>: <span class="math inline">\(F_{test} = \frac{s_1^2}{s_2^2} = \frac{0.5^2}{0.7^2} = 0.51\)</span>.</p></li>
+<li><p><strong>Step 4-c</strong>: Two-tailed test. The critical value is <span class="math inline">\(F_{0.05/2, \, 10-1, \, 10-1} = 4.03\)</span> or <span class="math inline">\(F_{1-0.05/2, \, 10-1, \, 10-1} = 0.25\)</span>.</p></li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><p><strong>Step 5-c</strong>: Is <span class="math inline">\(F_{test} &gt; 4.03\)</span> or <span class="math inline">\(F_{test} &lt; 0.25\)</span>? No.</p></li>
+<li><p><strong>Step 6</strong>: The evidence is not sufficient to reject the claim that <span class="math inline">\(\sigma_1 = \sigma_2\)</span>.</p></li>
+</ul></section><section id="back-to-the-weight-loss-example-95-ci-for-sigma_12-sigma_22" class="level2"><h2 class="anchored" data-anchor-id="back-to-the-weight-loss-example-95-ci-for-sigma_12-sigma_22">Back to the Weight Loss Example: 95% CI for <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span>
+</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<ul>
+<li>The 95% CI for <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span> is <span class="math display">\[\small \begin{align} &amp;\left( \frac{s_1^2/s_2^2}{F_{\alpha/2, \, df_1, \, df_2}}, \frac{s_1^2/s_2^2}{F_{1-\alpha/2, \, df_1, \, df_2}} \right) \\ &amp;= \left( \frac{0.51}{4.03}, \frac{0.51}{0.25} \right) = \left(0.13, 2.04\right)\end{align}\]</span>
+</li>
+<li>We are 95% confident that the ratio <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span> is between 0.13 and 2.04.</li>
+</ul>
+<!-- - $\small F_{\alpha/2, \, df_1, \, df_2} = F_{0.05/2, \, 10-1, \, 10-1} = 4.03$  --><!-- - $\small F_{1-\alpha/2, \, df_1, \, df_2} = F_{1-0.05/2, \, 10-1, \, 10-1} = 0.25$ --><!-- - $\small \frac{s_1^2}{s_2^2} = \frac{0.5^2}{0.7^2} = 0.51$ -->
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="12-infer-variance_files/figure-revealjs/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="implementing-f-test-in-r" class="level2"><h2 class="anchored" data-anchor-id="implementing-f-test-in-r">Implementing F-test in R</h2>
+<!-- - **`qf(p = alpha, df1 = n1 - 1, df2 = n2 - 1, lower.tail = FALSE)`** to find $F_{\alpha, \, n_1-1, \, n_2-1}$. -->
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fl">10</span>; <span class="va">n2</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>; <span class="va">s2</span> <span class="op">&lt;-</span> <span class="fl">0.7</span></span>
+<span><span class="va">al</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
+<span></span>
+<span><span class="co">## 95% CI for sigma_1^2 / sigma_2^2</span></span>
+<span><span class="va">f_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">qf</a></span><span class="op">(</span>p <span class="op">=</span> <span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, </span>
+<span>              df1 <span class="op">=</span> <span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span>, df2 <span class="op">=</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>              lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">f_big</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">qf</a></span><span class="op">(</span>p <span class="op">=</span> <span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, </span>
+<span>            df1 <span class="op">=</span> <span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span>, df2 <span class="op">=</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>            lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## lower bound</span></span>
+<span><span class="op">(</span><span class="va">s1</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">/</span> <span class="va">s2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="va">f_big</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.127</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## upper bound</span></span>
+<span><span class="op">(</span><span class="va">s1</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">/</span> <span class="va">s2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="va">f_small</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.05</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Testing sigma_1 = sigma_2</span></span>
+<span><span class="op">(</span><span class="va">test_stats</span> <span class="op">&lt;-</span> <span class="va">s1</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">/</span> <span class="va">s2</span> <span class="op">^</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.51</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">cri_big</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">qf</a></span><span class="op">(</span>p <span class="op">=</span> <span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, </span>
+<span>               df1 <span class="op">=</span> <span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>               df2 <span class="op">=</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>               lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.03</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">cri_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Fdist.html">qf</a></span><span class="op">(</span>p <span class="op">=</span> <span class="va">al</span> <span class="op">/</span> <span class="fl">2</span>, </span>
+<span>                 df1 <span class="op">=</span> <span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>                 df2 <span class="op">=</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span>, </span>
+<span>                 lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.248</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># var.test(x, y, alternative = "two.sided")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+
+
+</div>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script></section></section></main><!-- /main --><script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../slides";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/slides/12-infer-variance.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>

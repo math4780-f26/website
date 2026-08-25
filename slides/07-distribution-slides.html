@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.19">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>MATH 4780 (MSSC 5780) - Fall 2026 – Probability Distributions </title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-54281ac7c2b23c7d08d80cd04c072199.css">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta property="og:title" content="Probability Distributions r fontawesome::fa(&quot;chart-simple&quot;) – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4720/MSSC 5720 Introduction to Statistics">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="./images/bg.png" class="quarto-title-block center"><h1 class="title">Probability Distributions <svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M160 80c0-26.5 21.5-48 48-48h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V80zM0 272c0-26.5 21.5-48 48-48H80c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V272zM368 96h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H368c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48z"></path></svg>
+</h1>
+  <p class="subtitle">MATH 4720/MSSC 5720 Introduction to Statistics</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University 
+</div>
+</div>
+</div>
+
+</section><section><section id="random-variables" class="title-slide slide level1 center" data-background-image="https://upload.wikimedia.org/wikipedia/commons/1/1c/6sided_dice_%28cropped%29.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1><span class="orange">Random Variables</span></h1>
+
+</section><section id="random-variables-1" class="slide level2"><h2>Random Variables</h2>
+<ul>
+<li>Recap: A <strong>variable</strong> in a data set is a characteristic that varies from one to another.
+<ul>
+<li>A variable can be either categorical or numerical.</li>
+<li>Numerical variables can be either <strong>discrete</strong> or <strong>continuous</strong>.</li>
+</ul>
+</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>A <strong>random variable</strong>, usually written as <span class="math inline">\(X\)</span> <sup>1</sup>, is a variable whose possible values are <strong>numerical</strong> outcomes determined by <strong>chance</strong> or <strong>randomness</strong> of a procedure or experiment.
+<ul>
+<li><span style="color:blue"> Toss a coin 2 times. <span class="math inline">\(X\)</span> = # of heads. </span></li>
+<li><span style="color:blue"> <span class="math inline">\(X\)</span> = # of accidents in W. Wisconsin Ave. per day.</span></li>
+</ul>
+<!-- + $X$ = time (in minutes) until next accident in W. Wisconsin Ave. -->
+</li>
+<li>A random variable has a <strong>probability distribution</strong> associated with it, accounting for its randomness.</li>
+</ul>
+<aside class="notes"><ul>
+<li>Similar to relative frequency table (distribution)</li>
+<li>A probability distribution is the mathematical function that gives the probabilities of occurrence of different possible outcomes for an experiment in terms of values of r.v. X. Yes. The possible values of <span class="math inline">\(X\)</span> are numerical <span class="math inline">\(X = 0, 1, 2\)</span> that are determined by randomness of the tossing-coin experiment.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Usually in statistics, a capital <span class="math inline">\(X\)</span> represents a random variable and a small <span class="math inline">\(x\)</span> represents a realized value of <span class="math inline">\(X\)</span>.</p></li></ol></aside></section><section id="discrete-and-continuous-random-variables" class="slide level2"><h2>Discrete and Continuous Random Variables</h2>
+<ul>
+<li><p>A <strong>discrete</strong> random variable takes on a <strong>finite</strong> or <strong>countable</strong> number of values.</p></li>
+<li><p>A <strong>continuous</strong> random variable has <strong>infinitely</strong> many values, and the collection of values is <strong>uncountable</strong>.</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>
+<span style="color:blue"> The number of relationships you’ve ever had is <strong>discrete</strong> variable because we can count the number and it is finite.</span>
+<ul>
+<li>If we can further determine the probability that the number is 0, 1, 2, or any possible number, it is a <strong>discrete random variable</strong>.</li>
+</ul>
+</li>
+<li>
+<span style="color:blue"> Height is <strong>continuous</strong> because it can be any number within a range. </span>
+<ul>
+<li>If we have a way to quantify the probability that the height is from any value <span class="math inline">\(a\)</span> to any value <span class="math inline">\(b\)</span>, it is a <strong>continuous random variable</strong>.</li>
+</ul>
+</li>
+</ul>
+</div>
+</section></section><section><section id="probability-distributions" class="title-slide slide level1 center"><h1>Probability Distributions</h1>
+<ul>
+<li><h3 id="discrete-distributions">Discrete Distributions</h3></li>
+<li><h3 id="continuous-distributions">Continuous Distributions</h3></li>
+</ul></section><section id="a-statistician-should-know" class="slide level2"><h2>A Statistician Should Know</h2>
+<div class="tiny">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><a href="https://github.com/rasmusab/distribution_diagrams"><img data-src="./images/07-distribution/common_dist.png" class="quarto-figure quarto-figure-center" style="width:45.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes"><ul>
+<li>There are lots of well-known probability distributions out there.</li>
+<li>The distributions shown here are just a small part of probability distributions</li>
+<li>In fact there are infinitely many probability distributions.</li>
+<li>A function that satisfies probability distribution conditions is a probability distribution.</li>
+<li>You can construct our own probability distribution.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section></section><section id="what-we-learn-here" class="title-slide slide level1 center"><h1>What We Learn Here</h1>
+<ul>
+<li><h3 id="binomial-distribution">Binomial Distribution</h3></li>
+<li><h3 id="poisson-distribution">Poisson Distribution</h3></li>
+<li><h3 id="normal-distribution">Normal Distribution</h3></li>
+</ul></section><section><section id="discrete-probability-distributions" class="title-slide slide level1 center" data-background-image="./images/07-distribution/Poisson.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1><span class="orange">Discrete Probability Distributions</span></h1>
+
+</section><section id="discrete-probability-distribution" class="slide level2"><h2>Discrete Probability Distribution</h2>
+<ul>
+<li><p>The <strong>probability (mass) function (pf, pmf)</strong> of a discrete random variable (r.v.) <span class="math inline">\(X\)</span> is a function <span class="math inline">\(P(X = x)\)</span> (or <span class="math inline">\(p(x)\)</span>) that assigns a probability for <strong>every</strong> possible number <span class="math inline">\(x\)</span>.</p></li>
+<li><p>The <strong>probability distribution</strong> for a discrete r.v. <span class="math inline">\(X\)</span> <em>displays</em> its <strong>probability function</strong>.</p></li>
+<li><p>The display can be a <em>table</em>, <em>graph</em>, or <em>mathematical formula</em> of <span class="math inline">\(P(X = x)\)</span>.</p></li>
+</ul>
+<div class="fragment">
+<p><span style="color:blue"> <strong>Example:</strong> 🪙🪙 Toss a fair coin twice <em>independently</em> and <span class="math inline">\(X\)</span> is the number of heads. </span></p>
+<ul>
+<li>The probability distribution of <span class="math inline">\(X\)</span> as a table is</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top"><tbody>
+<tr class="odd">
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">P(X = x)</td>
+<td style="text-align: left;">0.25</td>
+<td style="text-align: left;">0.5</td>
+<td style="text-align: left;">0.25</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="alert">
+<p>👉 <span class="math inline">\(\{X = x\}\)</span> is an event corresponding to an event of some experiment.</p>
+</div>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What is the event that <span class="math inline">\(\{X = 0\}\)</span> corresponds to?</p>
+</div>
+</div>
+<div class="fragment">
+<div class="question">
+<p>How do we get <span class="math inline">\(P(X = 0)\)</span>, <span class="math inline">\(P(X=1)\)</span> and <span class="math inline">\(P(X=2)\)</span> ?</p>
+</div>
+</div>
+</section><section id="discrete-probability-distribution-as-a-graph" class="slide level2"><h2>Discrete Probability Distribution as a Graph</h2>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><ul>
+<li>
+<span class="math inline">\(0 \le P(X = x) \le 1\)</span> for every value <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>.
+<ul>
+<li><span style="color:blue"> <span class="math inline">\(x = 0, 1, 2\)</span> </span></li>
+</ul>
+</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>
+<span class="math inline">\(\sum_{x}P(X=x) = 1\)</span>, where <span class="math inline">\(x\)</span> assumes all possible values.
+<ul>
+<li><span style="color:blue"> <span class="math inline">\(P(X=0) + P(X = 1) + P(X = 2) = 1\)</span> </span></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The probabilities for a discrete r.v. are <strong>additive</strong> because <span class="math inline">\(\{X = a\}\)</span> and <span class="math inline">\(\{X = b\}\)</span> are <em>disjoint</em> for any possible values <span class="math inline">\(a \ne b\)</span>.
+<ul>
+<li><span style="color:blue"> <span class="math inline">\(P(X = 1 \text{ or } 2) = P(\{X = 1\} \cup \{X = 2\}) = P(X = 1) + P(X = 2)\)</span>. </span></li>
+</ul>
+</li>
+</ul>
+</div>
+</section><section id="mean-of-a-discrete-random-variable" class="slide level2"><h2>Mean of a Discrete Random Variable</h2>
+<ul>
+<li><p>Suppose <span class="math inline">\(X\)</span> takes values <span class="math inline">\(x_1, \dots, x_k\)</span> with probabilities <span class="math inline">\(P(X = x_1), \dots, P(X = x_k)\)</span>.</p></li>
+<li><p>The <strong>mean</strong> or <strong>expected value</strong> of <span class="math inline">\(X\)</span> is the sum of each outcome multiplied by its corresponding probability: <span class="math display">\[E(X) := x_1 \times P(X = x_1) + \dots + x_k \times P(X = x_k) = \sum_{i=1}^kx_iP(X=x_i)\]</span></p></li>
+<li><p>The Greek letter <span class="math inline">\(\mu\)</span> may be used in place of the notation <span class="math inline">\(E(X)\)</span>.</p></li>
+</ul>
+<aside class="notes"><ul>
+<li>Give an example</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<div class="alert">
+<p>👉 The mean of a discrete random variable <span class="math inline">\(X\)</span> is the <strong>weighted average</strong> of possible values <span class="math inline">\(x\)</span> <em>weighted by their corresponding probability</em>.</p>
+</div>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What is the mean of <span class="math inline">\(X\)</span> (the number of heads) in the previous example?</p>
+</div>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What about variance of <span class="math inline">\(X\)</span>?</p>
+</div>
+<aside class="notes"><ul>
+<li>On average, we will see one heads comes up when we toss a fair coin twice.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section></section><section><section id="binomial-distribution-1" class="title-slide slide level1 center"><h1>Binomial Distribution</h1>
+
+</section><section id="binomial-experiment-and-random-variable" class="slide level2"><h2>Binomial Experiment and Random Variable</h2>
+<ul>
+<li>A <strong>binomial experiment</strong> is the one having the following properties:
+<ol type="1">
+<li><p>👉 The experiment consists of a <strong>fixed</strong> number of <strong>identical</strong> trials <span class="math inline">\(n\)</span>.</p></li>
+<li><p>👉 Each trial results in one of <strong>exactly two</strong> outcomes (<em>success</em> (S) and <em>failure</em> (F)).</p></li>
+<li><p>👉 Trials are <strong>independent</strong>, meaning that the outcome of any trial does not affect the outcome of any other trial.</p></li>
+<li><p>👉 The probability of success is <strong>constant</strong> for all trials.</p></li>
+</ol>
+</li>
+<li>If <span class="math inline">\(X\)</span> is defined as <span style="color:blue"> the number of successes observed in <span class="math inline">\(n\)</span> trials </span>, <span class="math inline">\(X\)</span> is a binomial random variable.</li>
+</ul>
+<div class="fragment">
+<div class="alert">
+<ul>
+<li>The word <em>success</em> just means one of the two outcomes, and <em>does not necessarily mean something good. </em>
+</li>
+<li>😲 Can define <em>Drug abuse</em> as success and <em>No drug abuse</em> as failure.</li>
+</ul>
+</div>
+<aside class="notes"><p>if <em>smoking</em> and <em>non-smoking</em> are the only two outcomes of some binomial experiment.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="binomial-distribution-2" class="slide level2"><h2>Binomial Distribution</h2>
+<ul>
+<li>
+<p>The probability function <span class="math inline">\(P(X = x)\)</span> of a binomial r.v. <span class="math inline">\(X\)</span> can be <em>fully</em> determined by</p>
+<ul>
+<li>the number of trials <span class="math inline">\(n\)</span>
+</li>
+<li>probability of success <span class="math inline">\(\pi\)</span>
+</li>
+</ul>
+</li>
+<li><p>Different <span class="math inline">\((n, \pi)\)</span> pairs generate different binomial probability distributions.</p></li>
+<li><p><span class="math inline">\(X\)</span> is said to follow a binomial distribution with <strong>parameters</strong> <span class="math inline">\(n\)</span> and <span class="math inline">\(\pi\)</span>, written as <span class="math inline">\(\color{blue}{X \sim binomial(n, \pi)}\)</span>.</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>The binomial probability function is <span class="math display">\[ \color{blue}{P(X = x \mid n, \pi) = \frac{n!}{x!(n-x)!}\pi^x(1-\pi)^{n-x}, \quad x = 0, 1, 2, \dots, n}\]</span> with mean <span class="math inline">\(\mu = E(X) = n\pi\)</span> and variance <span class="math inline">\(\sigma^2 = \mathrm{Var}(X) = n\pi(1-\pi)\)</span>.</li>
+</ul>
+<aside class="notes"><ul>
+<li>Once <span class="math inline">\((n, \pi)\)</span> is fixed, we know exactly what the distribution looks like, and we can form a table, graph, and provide a mathematical formula of the binomial distribution.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<div class="question">
+<p>Tossing a fair coin two times independently. Let <span class="math inline">\(X =\)</span> # of heads. Is <span class="math inline">\(X\)</span> a binomial r.v.?</p>
+</div>
+<aside class="notes"><ul>
+<li>Example: Toss a fair coin two times independently.
+<ul>
+<li>
+<span class="math inline">\(X =\)</span> # of heads</li>
+<li><span class="math inline">\(X \sim binomial(n=2, \pi=1/2)\)</span></li>
+</ul>
+</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><!-- ## [Binomial Distribution Applet](https://math4720-f25.github.io/website/ojs/prob-binomial-ojs.html) --><!-- {{< include prob-binomial-ojs.qmd >}} -->
+</div>
+</section><section id="binomial-distribution-example" class="slide level2"><h2>Binomial Distribution Example</h2>
+<div class="columns">
+<div class="column" style="width:90%;">
+<p>Assume that 20% of all drivers have a blood alcohol level above the legal limit. For a random sample of 15 vehicles, compute the probability that:</p>
+<ol type="1">
+<li><p><strong>Exactly 6</strong> of the 15 drivers will <em>exceed</em> the legal limit.</p></li>
+<li><p>Of the 15 drivers, <strong>6 or more</strong> will <em>exceed</em> the legal limit.</p></li>
+</ol>
+</div><div class="column" style="width:10%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/07-distribution/alcohol.jpeg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<ul>
+<li><p>Suppose it is a binomial experiment with <span class="math inline">\(n = 15\)</span> and <span class="math inline">\(\pi = 0.2\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be the number of drivers exceeding limit.</p></li>
+<li><p><span class="math inline">\(X \sim binomial(15, 0.2)\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[ \color{blue}{P(X = x \mid n=15, \pi=0.2) = \frac{15!}{x!(15-x)!}(0.2)^x(1-0.2)^{15-x}, \quad x = 0, 1, 2, \dots, 15}\]</span></p>
+<aside class="notes"><ul>
+<li>On a particular roadway, assume that 20% of all drivers have a blood alcohol level above the legal limit.
+<ol start="3" type="1">
+<li>All 15 drivers will have a blood alcohol level <em>within</em> the legal limit.</li>
+</ol>
+</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="binomial-distribution-example-x-sim-binomial15-0.2" class="slide level2"><h2>Binomial Distribution Example <span class="math inline">\(X \sim binomial(15, 0.2)\)</span>
+</h2>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="binomial-distribution-example-1" class="slide level2"><h2>Binomial Distribution Example</h2>
+<div class="columns">
+<div class="column" style="width:90%;">
+<p>Assume that 20% of all drivers have a blood alcohol level above the legal limit. For a random sample of 15 vehicles, compute the probability that:</p>
+<ol type="1">
+<li><p>Exactly 6 of the 15 drivers will <em>exceed</em> the legal limit.</p></li>
+<li><p>Of the 15 drivers, 6 or more will <em>exceed</em> the legal limit.</p></li>
+</ol>
+</div><div class="column" style="width:10%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/07-distribution/alcohol.jpeg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<aside class="notes"><ul>
+<li><p>On a particular roadway, assume that 20% of all drivers have a blood alcohol level above the legal limit.</p></li>
+<li><p>Suppose it is a binomial experiment with <span class="math inline">\(n = 15\)</span> and <span class="math inline">\(\pi = 0.2\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(X\)</span> be the number of drivers exceeding limit. Then <span class="math inline">\(X \sim binomial(15, 0.2)\)</span>.</p></li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<ol type="1">
+<li><span class="math inline">\(\small P(X = 6) = \frac{n!}{x!(n-x)!}\pi^x(1-\pi)^{n-x} = \frac{15!}{6!(15-6)!}(0.2)^6(1-0.2)^{15-6} = 0.043\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="math inline">\(\small P(X \ge 6) = p(6) + \dots + p(15) = 1 - P(X \le 5) = 1 - (p(0) + p(1) + \dots + p(5)) = 0.0611\)</span></li>
+</ol>
+<aside class="notes"><ol start="3" type="1">
+<li>All 15 drivers will have a blood alcohol level <em>within</em> the legal limit.</li>
+<li><span class="math inline">\(\small P(X = 0) = \frac{15!}{0!(15-0)!}(0.2)^0(1-0.2)^{15-0} = 0.0352\)</span></li>
+</ol>
+<ul>
+<li>
+<span class="math inline">\(P(X \ge 6) = 1 - P(X \le 5)\)</span> very useful trick</li>
+<li>Calculation is super tedious, even you use a calculator!</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<div class="tip">
+<p>Never do this by hand. We compute them using R!</p>
+</div>
+</div>
+</section><section id="binomial-example-computation-in-r" class="slide level2"><h2>Binomial Example Computation in R</h2>
+<!-- - R Shiny app is at [Binomial Calculator](http://sctc.mscs.mu.edu:3838/sample-apps/Calculator/) -->
+<ul>
+<li>With <code>size</code> the number of trials and <code>prob</code> the probability of success,
+<ul>
+<li>
+<strong><code>dbinom(x, size, prob)</code></strong> to compute <span class="math inline">\(P(X = x)\)</span>
+</li>
+<li>
+<strong><code>pbinom(q, size, prob)</code></strong> to compute <span class="math inline">\(P(X \le q)\)</span>
+</li>
+<li>
+<strong><code>pbinom(q, size, prob, lower.tail = FALSE)</code></strong> to compute <span class="math inline">\(P(X &gt; q)\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## 1. P(X = 6)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">6</span>, size <span class="op">=</span> <span class="fl">15</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.043</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## 2. P(X &gt;= 6) = 1 - P(X &lt;= 5)</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">5</span>, size <span class="op">=</span> <span class="fl">15</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0611</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## 2. P(X &gt;= 6) = P(X &gt; 5)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">5</span>, size <span class="op">=</span> <span class="fl">15</span>, prob <span class="op">=</span> <span class="fl">0.2</span>, </span>
+<span>       lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0611</code></pre>
+</div>
+</div>
+</div></div>
+</section><section id="binomial15-0.2" class="slide level2"><h2>Binomial(15, 0.2)</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">15</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">15</span>, size <span class="op">=</span> <span class="fl">15</span>, prob <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">'h'</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, </span>
+<span>     ylab <span class="op">=</span> <span class="st">"P(X = x)"</span>, lwd <span class="op">=</span> <span class="fl">5</span>, main <span class="op">=</span> <span class="st">"Binomial(15, 0.2)"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes"><ul>
+<li>Since <span class="math inline">\(n = 15\)</span> and <span class="math inline">\(\pi = 0.2\)</span>, mean is 3.</li>
+<li>Most of the probabilities are around <span class="math inline">\(x = 3\)</span>.</li>
+<li>It’s very uncommon to see that more than 10 drivers have alcohol level above the legal limit.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section></section><section><section id="poisson-distribution-1" class="title-slide slide level1 center"><h1>Poisson Distribution</h1>
+
+</section><section id="poisson-random-variables" class="slide level2"><h2>Poisson Random Variables</h2>
+<ul>
+<li>If we’d like to count <strong>the number of occurrences of some event over a unit of time period or space (region)</strong> and calculate its probability, we could consider the <strong>Poisson distribution</strong>.
+<ul>
+<li>Number of COVID patients arriving at ICU in one hour</li>
+<li>Number of Marquette students logging onto D2L in one day</li>
+<li>Number of dandelions per square meter in Marquette campus</li>
+</ul>
+</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Let <span class="math inline">\(X\)</span> be a Poisson r.v. Then <span class="math inline">\(\color{blue}{X \sim Poisson(\lambda)}\)</span>, where <span class="math inline">\(\lambda\)</span> is the parameter representing the <strong>mean</strong> number of occurrences of the event in the interval. <span class="math display">\[\color{blue}{P(X = x \mid \lambda) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad x = 0, 1, 2, \dots}\]</span> with both mean and variance being equal to <span class="math inline">\(\lambda\)</span>.</li>
+</ul>
+<aside class="notes"><ul>
+<li>Let <span class="math inline">\(X\)</span> be a Poisson r.v. representing the number of occurrences of some event over a unit of interval (time, space, volume).</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="assumptions-and-properties-of-poisson-variables" class="slide level2"><h2>Assumptions and Properties of Poisson Variables</h2>
+<ul>
+<li><p>👉 <strong>Events occur one at a time</strong>; two or more events do not occur at the same time or in the same space or spot.</p></li>
+<li><p>👉 The occurrence of an event in a given period of time or region of space is <strong>independent</strong> of the occurrence of the event in a <strong>nonoverlapping</strong> time period or region of space.</p></li>
+<li><p>👉 <span class="math inline">\(\lambda\)</span> is <strong>constant</strong> of any period or region.</p></li>
+</ul>
+<aside class="notes"><ul>
+<li>You cannot say two patients arrived at ICU at the same time.</li>
+<li>You can always know which patient arrives at ICU earlier.</li>
+<li>You can always know which students log in D2L earlier</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<div class="question">
+<p>Can you find the difference between binomial and Poisson distributions?</p>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>The Poisson distribution
+<ul>
+<li>is determined by one single parameter <span class="math inline">\(\lambda\)</span>
+</li>
+<li>has possible values <span class="math inline">\(x = 0, 1, 2, \dots\)</span> with no upper limit (countable), while a binomial variable has possible values <span class="math inline">\(0, 1, 2, \dots, n\)</span> (finite)</li>
+</ul>
+</li>
+</ul>
+<!-- ## [Poisson Distribution Applet](https://math4720-f25.github.io/website/ojs/prob-poisson-ojs.html) --><!-- {{< include prob-poisson-ojs.qmd >}} -->
+</div>
+</section><section id="poisson-distribution-example" class="slide level2"><h2>Poisson Distribution Example</h2>
+<div class="columns">
+<div class="column" style="width:90%;">
+<p>Last year there were 4200 births at the University of Wisconsin Hospital. Assume <span class="math inline">\(X\)</span> be the number of births in a given day at the center, and <span class="math inline">\(X \sim Poisson(\lambda)\)</span>. Find</p>
+<ol type="1">
+<li>
+<span class="math inline">\(\lambda\)</span>, the mean number of births <strong>per day</strong>.</li>
+<li>the probability that on a randomly selected day, there are exactly 10 births.</li>
+<li>
+<span class="math inline">\(P(X &gt; 10)\)</span>?</li>
+</ol>
+</div><div class="column" style="width:10%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/07-distribution/baby.jpeg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<ol type="1">
+<li><span class="math inline">\(\small \lambda = \frac{\text{Number of birth in a year}}{\text{Number of days}} = \frac{4200}{365} = 11.5\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="math inline">\(\small P(X = 10 \mid \lambda = 11.5) = \frac{\lambda^x e^{-\lambda}}{x!} = \frac{11.5^{10} e^{-11.5}}{10!} = 0.113\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>
+<span class="math inline">\(\small P(X &gt; 10) = p(11) + p(12) + \cdots + p(20) + \cdots\)</span> (No end!) <span class="math inline">\(\small P(X &gt; 10) = 1 - P(X \le 10) = 1 - (p(0) + p(1) + p(2) + \dots + p(10))\)</span>.</li>
+</ol>
+<aside class="notes"><p>.tip[ I know you are waiting for R implementation!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="poisson-example-compuatation-in-r" class="slide level2"><h2>Poisson Example Compuatation in R</h2>
+<!-- - R Shiny app is at [Poisson Calculator](http://sctc.mscs.mu.edu:3838/sample-apps/Calculator/) -->
+<!-- P(X <= 10) = 0.392 -->
+<ul>
+<li>With <code>lambda</code> the mean of Poisson distribution,
+<ul>
+<li>
+<strong><code>dpois(x, lambda)</code></strong> to compute <span class="math inline">\(P(X = x)\)</span>
+</li>
+<li>
+<strong><code>ppois(q, lambda)</code></strong> to compute <span class="math inline">\(P(X \le q)\)</span>
+</li>
+<li>
+<strong><code>ppois(q, lambda, lower.tail = FALSE)</code></strong> to compute <span class="math inline">\(P(X &gt; q)\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">lam</span> <span class="op">&lt;-</span> <span class="fl">4200</span> <span class="op">/</span> <span class="fl">365</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## P(X = 10)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">10</span>, lambda <span class="op">=</span> <span class="va">lam</span><span class="op">)</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.113</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## P(X &gt; 10) = 1 - P(X &lt;= 10)</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">10</span>, lambda <span class="op">=</span> <span class="va">lam</span><span class="op">)</span>  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.599</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## P(X &gt; 10)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">ppois</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">10</span>, lambda <span class="op">=</span> <span class="va">lam</span>, </span>
+<span>      lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.599</code></pre>
+</div>
+</div>
+</div></div>
+</section><section id="poisson11.5" class="slide level2"><h2>Poisson(11.5)</h2>
+<ul>
+<li>
+<span class="math inline">\(X\)</span> has no upper limit. The graph is <em>truncated</em> at <span class="math inline">\(x = 24\)</span>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3.8</span>, <span class="fl">3.8</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>, mgp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="fl">0.5</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">24</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">dpois</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">24</span>, lambda <span class="op">=</span> <span class="va">lam</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">'h'</span>, lwd <span class="op">=</span> <span class="fl">5</span>, las <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>     ylab <span class="op">=</span> <span class="st">"P(X = x)"</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, main <span class="op">=</span> <span class="st">"Poisson(11.5)"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section></section><section><section id="continuous-probability-distributions" class="title-slide slide level1 center" data-background-image="./images/07-distribution/Gauss.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1><span class="orange">Continuous Probability Distributions</span></h1>
+
+</section><section id="continuous-probability-distributions-1" class="slide level2"><h2>Continuous Probability Distributions</h2>
+<ul>
+<li><p>A continuous r.v. can take on <strong>any</strong> values from <em>an interval of the real line</em>.</p></li>
+<li><p>Instead of probability functions, a continuous r.v. <span class="math inline">\(X\)</span> has the <strong>probability density function (pdf)</strong> <span class="math inline">\(f(x)\)</span> such that for any real value <span class="math inline">\(a &lt; b\)</span>, <span class="math display">\[P(a &lt; X &lt; b) = \int_{a}^b f(x) dx\]</span></p></li>
+</ul>
+<!-- - The **cumulative distribution function (cdf)** of $X$ is defined as --><!-- $$F(x) := P(X \le x) = \int_{-\infty}^x f(t)dt$$ --><div class="fragment">
+<ul>
+<li>Every pdf must satisfy <span style="color:blue"> (1) <span class="math inline">\(f(x) \ge 0\)</span> for all <span class="math inline">\(x\)</span>; (2) <span class="math inline">\(\int_{-\infty}^{\infty} f(x) dx = 1\)</span> </span>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<p>😎 Luckily we don’t deal with integrals in this course.</p>
+</div>
+</section><section id="density-curve" class="slide level2"><h2>Density Curve</h2>
+<ul>
+<li><p>A pdf generates a graph called the <strong>density curve</strong> that shows the <em>likelihood</em> of a random variable at all possible values.</p></li>
+<li><p><span class="math inline">\(P(a &lt; X &lt; b) = \int_{a}^b f(x) dx\)</span>: <strong>The area under the density curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</strong></p></li>
+<li><p><span class="math inline">\(\int_{-\infty}^{\infty} f(x) dx = 1\)</span>: <strong>The total area under any density curve is equal to 1.</strong></p></li>
+</ul>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes"><ul>
+<li>** <span class="math inline">\(P(a &lt; X &lt; b)\)</span> is the area under the density curve between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.**</li>
+<li><strong>The total area under any density curve is equal to 1.</strong></li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="commonly-used-continuous-distributions" class="slide level2"><h2>Commonly Used Continuous Distributions</h2>
+<ul>
+<li><p><a href="https://homepage.divms.uiowa.edu/~mbognar/">Distribution Applet</a></p></li>
+<li><p>In this course, we will touch <strong>normal (Gaussian)</strong>, <strong>Student’s t</strong>, <strong>chi-squared</strong>, <strong>F</strong></p></li>
+<li><p>Some other common distributions include <strong>uniform</strong>, <strong>exponential</strong>, <strong>gamma</strong>, <strong>beta</strong>, <strong>inverse gamma</strong>, <strong>Cauchy</strong>, etc. (MATH 4700)</p></li>
+</ul></section><section id="normal-gaussian-distribution" class="slide level2"><h2>Normal (Gaussian) Distribution</h2>
+<ul>
+<li>The normal distribution, <span class="math inline">\(N(\mu, \sigma^2\)</span>), has the pdf given by <span class="math display">\[\small f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{\frac{-(x-\mu)^2}{2\sigma^2}}, \quad -\infty &lt; x &lt; \infty\]</span>
+<ul>
+<li>Two parameters mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span> (standard deviation <span class="math inline">\(\sigma\)</span>)</li>
+<li>Always bell shaped, and symmetric about the mean <span class="math inline">\(\mu\)</span>
+</li>
+<li>When <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>, <span class="math inline">\(N(0, 1)\)</span> is called <strong>standard normal</strong>.</li>
+</ul>
+</li>
+</ul>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="normal-density-curves" class="slide level2"><h2>Normal Density Curves</h2>
+
+<!-- ## [Normal Distribution Applet](https://math4720-f25.github.io/website/ojs/prob-normal-ojs.html) -->
+<!-- {{< include prob-normal-ojs.qmd >}} -->
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="standardization-and-z-scores" class="slide level2"><h2>Standardization and Z-Scores</h2>
+<ul>
+<li><p><strong>Standardization</strong>: Convert <span class="math inline">\(N(\mu, \sigma^2)\)</span> to <span class="math inline">\(N(0, 1)\)</span>.</p></li>
+<li><p><strong>Why standardization</strong>: Put data onto a <em>standardized scale</em>, making comparisons easier!</p></li>
+</ul>
+<div class="fragment">
+<div class="question">
+<table class="caption-top">
+<thead><tr class="header">
+<th style="text-align: center;">Measure</th>
+<th style="text-align: center;">SAT</th>
+<th style="text-align: center;">ACT</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Mean</td>
+<td style="text-align: center;">1100</td>
+<td style="text-align: center;">21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">SD</td>
+<td style="text-align: center;">200</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>The distribution of SAT and ACT scores are both nearly normal.</p></li>
+<li><p>Suppose Anna scored 1300 on her SAT and Tommy scored 24 on his ACT. Who performed better?</p></li>
+</ul>
+</div>
+<div class="midi">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/07-distribution/sat_act.jpeg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<aside class="notes"><ul>
+<li>For normal distribution, we usually do the so-called Standardization.</li>
+<li>The idea is to Make a normal distribution standard normal, i.e., convert <span class="math inline">\(N(\mu, \sigma^2)\)</span> to <span class="math inline">\(N(0, 1)\)</span>.</li>
+<li>But why do we want to do that?</li>
+<li>Well, by doing so, we can put any data onto a <em>standardized scale</em>, making comparisons easier and reasonable.</li>
+<li>The distribution of SAT and ACT scores are both nearly normal.</li>
+<li>Suppose Anna scored 1300 on her SAT and Tommy scored 24 on his ACT. Who performed better?</li>
+<li>It’s hard to compare the two scores, right? because they are on the different scales.</li>
+<li>And standardization helps us compare Anna and Tommy’s performance because we are gonna put their scores on the same scale. Let’s see how.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="standardization-and-z-scores-1" class="slide level2"><h2>Standardization and Z-Scores</h2>
+<ul>
+<li>If <span class="math inline">\(x\)</span> is an observation from a distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, the standardized value of <span class="math inline">\(x\)</span> is so-called <strong><span class="math inline">\(z\)</span>-score</strong>: <span class="math display">\[z = \frac{x - \mu}{\sigma}\]</span>
+</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>A <span class="math inline">\(z\)</span>-score tells us how many standard deviations <span class="math inline">\(x\)</span> falls away from the mean, and in which direction.
+<ul>
+<li>Observations <strong>larger (smaller)</strong> than the mean have <strong>positive (negative)</strong> <span class="math inline">\(z\)</span>-scores.</li>
+<li>A <span class="math inline">\(z\)</span>-score -1.2 means that <span class="math inline">\(x\)</span> is 1.2 standard deviations to the <strong>left</strong> of (<strong>below</strong>) the mean.</li>
+<li>A <span class="math inline">\(z\)</span>-score 1.8 means that <span class="math inline">\(x\)</span> is 1.8 standard deviations to the <strong>right</strong> of (<strong>above</strong>) the mean.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span style="color:blue"> If <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, <span class="math inline">\(Z = \frac{X - \mu}{\sigma}\)</span> follows the standard normal distribution, i.e., <span class="math inline">\(Z \sim N(0, 1)\)</span>. </span></li>
+</ul>
+<aside class="notes"><ul>
+<li>If z-score is positive, it means that the original x is greater the mean.</li>
+<li>Since we divided by sigma, the standardized value is measured using SD as the unit.</li>
+<li>A <span class="math inline">\(z\)</span>-score tells us how many standard deviations the original observation <span class="math inline">\(x\)</span> falls away from the mean, and in which direction.
+<ul>
+<li>Observations <strong>larger (smaller)</strong> than the mean have <strong>positive (negative)</strong> <span class="math inline">\(z\)</span>-scores.</li>
+<li>A <span class="math inline">\(z\)</span>-score -1.2 means that <span class="math inline">\(x\)</span> is 1.2 standard deviations to the <strong>left</strong> of (<strong>below</strong>) the mean.</li>
+<li>A <span class="math inline">\(z\)</span>-score 1.8 means that the original observation <span class="math inline">\(x\)</span> is 1.8 standard deviations to the <strong>right</strong> of (<strong>above</strong>) the mean.</li>
+</ul>
+</li>
+<li><span style="color:blue"> If <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, <span class="math inline">\(Z = \frac{X - \mu}{\sigma}\)</span> follows the standard normal distribution, i.e., <span class="math inline">\(Z \sim N(0, 1)\)</span>. </span></li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="standardization-illustration" class="slide level2"><h2>Standardization Illustration</h2>
+<ul>
+<li>
+<span class="math inline">\(X - \mu\)</span> shifts the mean from <span class="math inline">\(\mu\)</span> to 0</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span class="math inline">\(\frac{X - \mu}{\sigma}\)</span> scales the variation from 4 to 1</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" style="width:56.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section><section id="standardization-illustration-1" class="slide level2"><h2>Standardization Illustration</h2>
+<ul>
+<li><p>A value of <span class="math inline">\(x\)</span> that is 2 standard deviation below <span class="math inline">\(\mu\)</span> corresponds to <span class="math inline">\(z = -2\)</span>.</p></li>
+<li><p><span class="math inline">\(z = \frac{x  -\mu}{\sigma} \iff x = \mu + z\sigma\)</span>. If <span class="math inline">\(z = -2\)</span>, <span class="math inline">\(x = \mu - 2\sigma\)</span>.</p></li>
+</ul>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="sat-and-act-example" class="slide level2"><h2>SAT and ACT Example</h2>
+<ul>
+<li>
+<span class="math inline">\(z_{A} = \frac{x_{A} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1300-1100}{200} = 1\)</span>; <span class="math inline">\(z_{T} = \frac{x_{T} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24-21}{6} = 0.5\)</span>.</li>
+</ul>
+
+<img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes"><ul>
+<li>After standardizing SAT and ACT distributions, we can compare SAT and ACT scores together.</li>
+<li>The z-score for Anna is 1, so her SAT score is 1 SD above the mean of SAT.</li>
+<li>The z-score for Tommy is 0.5, so his ACT score is 0.5 SD above the mean of ACT.</li>
+<li>Originally, SAT and ACT are two different distributions with different scales.</li>
+<li>But now we convert both distributions to standard normal distributions, so that they can be compared.</li>
+<li>Because Anna’s score is 1 sd higher than the mean, and Tommy’s socre is 0.5 sd higher than the mean, we conclude that Anna performed better on the test.</li>
+</ul>
+<p>An observation x1 is said to be more unusual than another observation x2 if the absolute value of its Zscore is larger than the absolute value of the other observation’s Z-score.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="finding-tail-areas-px-x" class="slide level2"><h2>Finding Tail Areas <span class="math inline">\(P(X &lt; x)\)</span>
+</h2>
+<div class="question">
+<p>What fraction of students have an SAT score below Anna’s score of 1300?</p>
+</div>
+<ul>
+<li><p>This is the same as the percentile Anna is at, which is the percentage of cases that have lower scores than Anna.</p></li>
+<li><p>Need <span class="math inline">\(P(X &lt; 1300 \mid \mu = 1100, \sigma = 200)\)</span> or <span class="math inline">\(P(Z &lt; 1 \mid \mu = 0, \sigma = 1)\)</span>.</p></li>
+</ul>
+
+<img data-src="07-distribution_files/figure-revealjs/tail-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><aside class="notes"><ul>
+<li>If there are 100 test takers, how many students score are lower than Anna’s score? It’s very useful in statistics to be able to identify tail areas of distributions. For instance, what fraction of people have an SAT score below Anna’s score of 1300? This is the same as the percentile Anna is at, which is the percentage of cases that have lower scores than Anna. We can visualize such a tail area like the curve and shading shown in Figure 4.6.</li>
+<li>The area to the left of Z represents the fraction of people who scored lower than Anna.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="finding-tail-areas-px-x-in-r" class="slide level2"><h2>Finding Tail Areas <span class="math inline">\(P(X &lt; x)\)</span> in R</h2>
+<ul>
+<li>With <strong><code>mean</code></strong> and <strong><code>sd</code></strong> representing the mean and standard deviation of a normal distribution
+<ul>
+<li>
+<strong><code>pnorm(q, mean, sd)</code></strong> to compute <span class="math inline">\(P(X \le q)\)</span>
+</li>
+<li>
+<strong><code>pnorm(q, mean, sd, lower.tail = FALSE)</code></strong> to compute <span class="math inline">\(P(X &gt; q)\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.841</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1300</span>, mean <span class="op">=</span> <span class="fl">1100</span>, sd <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.841</code></pre>
+</div>
+</div>
+<ul>
+<li>The shaded area represents the proportion 84.1% of SAT test takers who had z-score below 1.</li>
+</ul>
+</div></div>
+<aside class="notes"><ul>
+<li>Don’t forget R Shiny app is at <a href="http://sctc.mscs.mu.edu:3838/sample-apps/Calculator/">Normal Calculator</a>
+</li>
+<li>The default values of <code>mean</code> and <code>sd</code> are 0 and 1 respectively, i.e., <span class="math inline">\(N(0, 1)\)</span>.</li>
+<li>It is rarely used in practice, but you can find tail areas using the normal table (Table 1 in the textbook.)</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="sat-example-contd-1" class="slide level2"><h2>SAT Example Cont’d</h2>
+<ul>
+<li>SAT score follows <span class="math inline">\(N(1100, 200^2)\)</span>. Shannon is a SAT taker, and nothing is known about Shannon’s SAT aptitude. What is the probability Shannon SAT scores <strong>at least</strong> 1190?</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>
+<span style="color:red"> Step 1: State the problem </span>
+<ul>
+<li><span style="color:blue"> We like to compute <span class="math inline">\(P(X \ge 1190)\)</span>. </span></li>
+</ul>
+</li>
+<li><span style="color:red"> Step 2: Draw a picture</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><span style="color:red"> Step 3: Find the area</span></li>
+</ul>
+<p>We want the <strong>upper tail</strong> area, so <code>lower.tail = FALSE</code>!</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">1190</span>, mean <span class="op">=</span> <span class="fl">1100</span>, sd <span class="op">=</span> <span class="fl">200</span>, </span>
+<span>      lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.326</code></pre>
+</div>
+</div>
+</div></div>
+</section><section id="normal-percentiles-in-r" class="slide level2"><h2>Normal Percentiles in R</h2>
+<ul>
+<li>To get the <span class="math inline">\(100p\)</span>-th percentile (or the <span class="math inline">\(p\)</span>-quantile <span class="math inline">\(q\)</span>), given probability <span class="math inline">\(p\)</span>, we use
+<ul>
+<li>
+<strong><code>qnorm(p, mean, sd)</code></strong> to get a value of <span class="math inline">\(X\)</span>, <span class="math inline">\(q\)</span>, such that <span class="math inline">\(P(X \le q) = p\)</span>
+</li>
+<li>
+<strong><code>qnorm(p, mean, sd, lower.tail = FALSE)</code></strong> to get <span class="math inline">\(q\)</span> such that <span class="math inline">\(P(X \ge q) = p\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<aside class="notes"><ul>
+<li><p>We may be also interested in the value of <span class="math inline">\(X\)</span> given a probability or percentage.</p></li>
+<li>
+<p>In other words, we’d like to find the <span class="math inline">\(100p\)</span>-th percentile given the probability <span class="math inline">\(p\)</span>.</p>
+<!-- <footnote> The formal definition of the quantile function is $Q(p) := \inf\{x \in \mathbf{R}: P(X \le x) \ge p\}$. </footnote> -->
+</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="sat-example" class="slide level2"><h2>SAT Example</h2>
+<p>What is the 95th percentile for SAT scores?</p>
+<div class="alert">
+<p><strong>Find a value <span class="math inline">\(q\)</span> of the normal random variable, not an area (probability), which is 0.95.</strong></p>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li>
+<span style="color:red"> Step 1: State the problem </span>
+<ul>
+<li><span style="color:blue"> Find a variable’s value <span class="math inline">\(q\)</span> s.t <span class="math inline">\(P(X &lt; q) = 0.95\)</span>. </span></li>
+</ul>
+</li>
+<li><span style="color:red"> Step 2: Draw a picture</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="07-distribution_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li><span style="color:red"> Step 3: Find the quantile</span></li>
+</ul>
+<p>We want the <strong>q</strong>uantile, so use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>!</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">0.95</span>, mean <span class="op">=</span> <span class="fl">1100</span>, sd <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1429</code></pre>
+</div>
+</div>
+</div></div>
+</section></section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://math4720-f26.github.io/website/">🔗 math4720-f26.github.io/website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1800,
+
+        height: 1000,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script><script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
+
+</body></html>
