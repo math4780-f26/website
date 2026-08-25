@@ -1,0 +1,29 @@
+---
+title: "Worksheet 9"
+subtitle: "ANOVA"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) You have 4 groups and a total sample size 40. Find $df_T$, $df_B$ and $df_W$.
+
+```{r}
+#| include: false
+# 39, 3, 36.
+```
+
+
+
+(@) We run an one-way ANOVA, and the result shows $p$-value $< \alpha$. What can we conclude, and what can we not conclude?
+
+```{r}
+#| include: false
+# You can conclude there is strong evidence that at least one population mean differs.
+# You cannot conclude which groups differ or how many differ without follow up comparisons (post hoc tests or planned contrasts).
+```

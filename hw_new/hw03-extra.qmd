@@ -1,0 +1,22 @@
+---
+title: "Extra credit opportunity I"
+subtitle: "Happy Valentine's Day!🩷💖"
+categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: false
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, Feb 13, 11:59 PM**]{.red}
+:::
+
+- Please include this work in your **Homework 3** submission. Submissions as a separate file or standalone document will NOT be accepted for extra credit.
+
+# Extra Credit Questions
+
+(@) Run the code in [heart.R](../code/heart.R), and generate your heart! Include the image in your Homework 3. Feel free to share it with your loved ones.

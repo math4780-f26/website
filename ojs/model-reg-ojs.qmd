@@ -1,0 +1,146 @@
+---
+title: "Linear regression Model Fitting"
+execute:
+  echo: false
+---
+
+<!-- ```{ojs} -->
+<!-- md_colour = Inputs.color({label: "Highlight color cells", value: "#F0F0F0"}) -->
+<!-- ``` -->
+
+:::: columns
+
+::: tiny
+
+::: {.column width="48%"}
+
+```{ojs}
+viewof n = Inputs.range([10, 1000], {value: 10, step: 1, label: tex`\text{sample size, }n`});
+viewof beta0 = Inputs.range([-2, 2], {value: -1, step: 0.1, label: tex`\text{intercept, }\beta_0`})
+viewof beta1 = Inputs.range([-2, 2], {value: 1, step: 0.1, label: tex`\text{slope, }\beta_1`})
+viewof sigmaepsilon = Inputs.range([0, 1], {value: 0.5, step: 0.1, label: tex`\text{sd of error, }\sigma`})
+```
+
+
+```{ojs}
+viewof sampleno = Scrubber(d3.ticks(1, 1000, 1000), {
+  autoplay: false,
+  loop: false,
+  delay: 900,
+  initial: 0,
+  format: x => `dataset no: ${x.toFixed(0)}`
+})
+```
+
+
+```{ojs}
+estimates = tex`\text{Estimated intercept: } b_0 = ${data_estimates[1][sampleno-1].intercept.toPrecision(4)} \\
+\\
+\text{Estimated slope: } b_1 =${data_estimates[1][sampleno-1].lutning.toPrecision(4)}`
+```
+
+:::
+
+::: {.column width="1%"}
+
+:::
+
+
+
+::: {.column width="49%"}
+
+```{ojs}
+//| echo: false
+//| out-width: 100%
+//| fig-cap: "<https://observablehq.com/@mattiasvillani/samplingfordelningen-linear-regression>"
+plt = Plot.plot({
+  width: 800, // or a dynamic value based on `width` variable
+  height: 600,
+  style: {fontSize: "16px"},
+  caption: html`<span style="color:orange">Population Model</span> <br> <span style="color:steelblue">Estimated regression line</span>`,
+  color: {legend: true},
+  x: {domain: [-1, 1]},
+  //y: {domain: [-3,3]},
+  y: {domain: [beta0 + (-1)*beta1 - 3*sigmaepsilon, beta0 + 1*beta1 + 3*sigmaepsilon]},
+  marks: [
+    Plot.ruleY([beta0 + (-1)*beta1 - 3*sigmaepsilon]),
+    Plot.ruleX([-1]),
+    Plot.line(
+      [{x: -1, y: beta0 + (-1)*beta1}, {x:  1, y: beta0 + (1)*beta1}], 
+      {x: "x", y: "y", stroke: "orange", strokeWidth: 5}
+    ),
+    Plot.dot(data_estimates[0][sampleno-1], {x: "x", y: "y", strokeOpacity: 0.5, r: 10, fill: colors[0]}),
+    Plot.line(
+      [{x: -1, y: data_estimates[1][sampleno-1].intercept + (-1)*data_estimates[1][sampleno-1].lutning}, 
+       {x:  1, y: data_estimates[1][sampleno-1].intercept + (1)*data_estimates[1][sampleno-1].lutning}
+      ], 
+      {x: "x", y: "y", stroke: "steelblue", strokeWidth: 5}
+    ),
+  ],
+})
+```
+
+
+```{ojs}
+import {lm} from "@chrispahm/linear-models-in-observable-notebooks"
+import {summary} from "@chrispahm/linear-models-in-observable-notebooks"
+import {Histogram} from "@d3/histogram"
+import {Scrubber} from "@mbostock/scrubber"
+```
+
+
+```{ojs}
+jstat = require('jstat')
+```
+
+
+```{ojs}
+math = require('mathjs')
+```
+
+
+```{ojs}
+function simulate_and_estimate(n, beta0, beta1, sigmaepsilon, nrep){
+  const x = d3.range(-1, 1, 2/n);
+  const xbar = d3.mean(x)
+  const SSx = d3.sum(math.dotPow(math.subtract(x, xbar), 2))
+  var data = [];
+  var coef = [];
+  for (let j = 1; j <= nrep; j++){
+    var dataset = x.map(x => ({sample_id: j, x: x, y: beta0 + beta1*x + jstat.normal.sample(0,sigmaepsilon)}))
+    data.push(dataset);
+    let y = dataset.map(d => d.y)
+    let ybar = d3.mean(y)
+    let SSxy = d3.sum(math.dotMultiply(math.subtract(x, xbar), math.subtract(y, ybar))  )
+    let b1 = SSxy/SSx
+    let b0 = ybar - b1*xbar
+    //let linear_model = lm('y ~ x', dataset);
+    coef.push(
+      {
+        sample_id: j, 
+        //intercept: linear_model.coefficients[0],
+        //lutning: linear_model.coefficients[1],
+        intercept: b0,
+        lutning: b1
+      }
+    )
+  }
+  return [data, coef]
+}
+```
+  
+
+```{ojs}
+data_estimates = simulate_and_estimate(n, beta0, beta1, sigmaepsilon, 1000)
+```
+
+```{ojs}
+colors = d3.schemePaired
+```
+
+:::
+
+:::
+
+::::
+

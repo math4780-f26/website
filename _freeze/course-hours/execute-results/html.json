@@ -1,0 +1,15 @@
+{
+  "hash": "e3437afc320ec2921b02ef47b06aa9d5",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Help Desk Hours\"\n---\n\n<!-- To be announced. -->\n\n\n::: {.cell}\n\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

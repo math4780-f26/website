@@ -1,0 +1,279 @@
+---
+title: "Syllabus"
+---
+
+Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4720-104-f26.pdf)
+
+<!-- [**Syllabus for Section 102 3:30 - 4:45 PM**](/documents/syllabus-4720-102-f25.pdf). -->
+
+## Time and location
+
+|          | Day     | Time           | Location       |
+|----------|---------|----------------|----------------|
+| Sec 104  | Tu & Th | 3:30 AM - 4:45 PM | Cudahy Hall 118 |
+
+## Office Hours
+
+-   My in-person office hours are TuTh 4:50 – 5:50 PM and We 12 - 1 PM in Cudahy Hall room 353.
+
+-   We can schedule an online meeting via Microsoft Teams if you need/prefer.
+
+
+## Prerequisites
+
+
+- MATH 1400, 1410, or 1450. 
+
+- Basic computer and internet use expected. The course will also assume facility with using the internet and a personal computer. 
+
+- A portion of the course involves programming in [\textsf{R}](https://www.r-project.org/about.html) using [RStudio](https://rstudio.com/) or [Posit Cloud](https://posit.cloud/), but prior programming experience is not required.
+
+
+
+## E-mail Policy
+
+-   I will attempt to reply your email quickly, at least **within 24 hours**.
+
+-   **Expect a reply on Monday if you send a question during weekends**. If you do not receive a response from me within two days, re-send your question/comment in case there was a "mix-up" with email communication (Hope this won't happen!).
+
+-   Please start your e-mail subject line with **[math4720]** or **[mssc5720]** followed by a clear description of your question. See an example below.
+
+```{r}
+#| echo: false
+#| fig-cap: Email Subject Line Example
+#| out-width: 100%
+knitr::include_graphics("./images/email.png")
+```
+
+- Email etiquette is important. Please read this [article](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) to learn more about email etiquette.
+
+- I am more than happy to answer your questions about this course or statistics in general. However, due to time constraint, I may choose **NOT** to respond to students' e-mail if
+
+    1. The student could answer his/her own inquiry by reading the syllabus or information on the course website or D2L.
+    
+    2. The student is asking for an extra credit opportunity. The answer is "no".
+    
+    3. The student is requesting an extension on homework. The answer is "no".
+    
+    4. The student is asking for a grade to be raised for no legitimate reason. The answer is "no".
+    
+    5. The student is sending an email with no etiquette.
+
+
+## Textbooks
+
+- **[IS] (optional)** [*Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/), by Dr. Cheng-Han Yu. (My online book)
+
+- **[IMS] (optional)** [*Introduction to Modern Statistics, 2nd edition*](https://openintro-ims.netlify.app/), by Mine Çetinkaya-Rundel and Johanna Hardin. Publisher: OpenIntro. (computation and data-oriented)
+
+
+## Grading Policy
+
+| Category                | Weight |
+| ----------------------- | -----: |
+| 8 Homework sets         |    10% |
+| 4 Quizzes               |    20% |
+| 2 Exams                 |    50% |
+| some Worksheets         |    10% |
+| some Group Activities   |    10% |
+
+
+- You will **NOT** be allowed any extra credit projects/homework/exam to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exam will **NOT** be curved.
+<!-- however, I may use class participation to make grade adjustments at the end of the semester. -->
+
+- The final grade is based on your earned percentage and the grade-percentage conversion Table. $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.1 is in $[94, 100]$ and the grade is A and 92.8 is in $[90, 94)$ and the grade is A-.
+
+```{r}
+#| echo: false
+letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
+                       "D+", "D", "F")
+percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[83, 87)", "[80, 83)",
+                "[77, 80)", "[73, 77)", "[70, 73)", 
+                "[65, 70)", "[60, 65)", "[0, 60)")
+grade_dist <- data.frame(Grade = letter, Percentage = percentage)
+knitr::kable(grade_dist, longtable = TRUE, 
+             caption = "Grade-Percentage Conversion")
+```
+
+- This is not a course that gives most of students grade A. If you want to obtain a good grade, study hard. No pain, no gain.
+
+
+
+### Homework
+
+- Homework will be assigned through the course website.
+
+- To submit your homework, please go to **D2L > Assessments > Dropbox** and upload your homework in **PDF** format.
+
+- There will be 8 homework sets.
+
+- Every homework is due by **Friday 11:59 PM ** (**Don't miss it. This is a hard deadline. No late submission**).
+
+- MSSC 5720 students may have more or different homework questions.
+
+<!-- - The lowest score of the homework sets will be dropped when your final grade is calculated. -->
+
+- Homework is graded as *complete* or *incomplete*. Each incomplete set results in a 2% deduction from your overall grade.
+
+- Generative AI (GenAI) is allowed, but you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
+
+<!-- - You will get a better understanding of the material if you discuss it with others. However, you must submit YOUR OWN work.  -->
+
+<!-- - **NO LATE HOMEWORK WILL BE ACCEPTED NOR WILL YOU BE ALLOWED TO MAKE UP MISSED HOMEWORK** for any reason.  -->
+
+
+### Quizzes
+
+- There will be 4 in-class 15-min quizzes on Thursdays.
+
+- Quiz questions are similar to the questions in the homework assignments.
+
+- Quizzes are individual and in **closed-book** and **no-tech** format, except a calculator.
+
+- `r emo::ji("x")` No cheat sheet or GenAI is allowed.
+
+- **No make-up quizzes** unless you got an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
+
+- Each quiz is worth 5% of your overall grade.
+
+- Option: If you miss a quiz due to an excused absence as defined in [Attendance in Academic Regulations](https://bulletin.marquette.edu/policies/attendance/undergraduate/), the 5% allocated to that quiz will be transferred to either the midterm exam or the final exam, whichever is closest in time and has not yet been graded. For example, if you miss Quiz 2 and the midterm exam has not yet taken place, then the midterm exam will be worth 30% instead of 25%.
+
+- If you miss more than one quiz, only one missed quiz can be replaced by transferring its weight to an exam. Any additional missed quizzes will receive a score of 0%.
+
+### Exams
+
+- There will be two exams: the midterm exam and the final exam.
+
+- Each exam has an in-class part and a take-home part. The in-class part tests your understanding of mathematical and statistical intuitions. The take-home part tests your ability to conduct statistical data analysis using statistical software such as R.
+
+- For the in-class part, one **letter-size** cheat sheet is allowed. It must be turned in with your exam.
+
+- For the take-home part, you are allowed to use GenAI tools. However, you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
+
+- Please go to **Assessments > Dropbox** to submit your take-home exam in **PDF** format. 
+
+- The midterm exam covers **Weeks 1 to 7**. The final exam covers **all course material**.
+
+- **No make-up exams** will be given for any reason unless you have an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
+
+- Option: If you miss the midterm exam due to an excused absence defined in [Attendance in Academic Regulations](https://bulletin.marquette.edu/policies/attendance/undergraduate/), its 25% weight will be added to your final exam, i.e., 25% + 25% = 50%.
+
+### In-Class Worksheets
+
+- Several worksheets will be distributed and completed during class sessions.
+
+- The worksheets are graded as *complete* or *incomplete*.
+
+- Each incomplete sheet results in a 1% deduction from your overall grade.
+
+
+### In-Class Group Activities
+
+- There are several in-class group activities.
+
+- The group activities are graded as *complete* or *incomplete*.
+
+- Each incomplete activity results in a 2% deduction from your overall grade.
+
+
+<!-- ### Final Project -->
+
+<!-- - There will be one (or two?) project released around Week 13. -->
+
+<!-- - You are required to use GenAI to explore a topic not addressed in class, and apply both your self-learning and course knowledge to create a data analysis report. -->
+
+<!-- - The project topic will also be tested in the final exam. -->
+
+<!-- - You **must carefully cite your GenAI tool or reveal your use of AI.** See @sec-genai for more details. -->
+
+<!-- - No late submission is allowed. -->
+
+
+<!-- ### Class Participation -->
+
+<!-- - I will randomly take attendance throughout the semester.  -->
+
+<!-- - If you are absent on a day when attendance is taken once (twice), 15 (25) points will be deducted from your grade unless you have [excused absences](https://bulletin.marquette.edu/policies/attendance/undergraduate/). -->
+
+
+
+
+## Generative Artificial Intelligence (GenAI) Policy {#sec-genai}
+
+
+- *You are responsible for the content of all work submitted for this course.* 
+
+- For your homework, take-home exams, or any take-home work, you are allowed to use generative AI tools such as ChatGPT to generate a draft of text of your work.
+
+- To avoid any academic integrity issue, you **must cite your AI usage, or screenshot your entire AI usage history**. Check the followings on how to cite it.
+
+  + [How to cite ChatGPT](https://apastyle.apa.org/blog/how-to-cite-chatgpt)
+  + [How to Cite AI-Generated Content](https://guides.lib.purdue.edu/c.php?g=1371380&p=10135074)
+  
+- If you use GenAI, please include the followings in your submitted work:
+
+  + **Why/How I used AI (prompts or questions)**
+  + **Generated output (screenshot or copy-paste excerpt)**
+  + **How I used the output**
+
+
+Here is an example.
+
+- **Why/How I used AI (prompts and questions)**
+  + *I asked ChatGPT to generate a histogram using R.*
+ 
+- **Generated output (screenshot or copy-paste excerpt)**
+
+```{r}
+#| fig-align: center
+#| echo: false
+knitr::include_graphics("images/genai_screenshot.png")
+```
+
+
+- **How I used the output**
+  + *I reviewed the suggestions, but I did not use the exact code. Instead, I change the code format and breaks value to 50.*
+
+
+## Academic Integrity
+
+- Watch the video below to learn the importance of using GenAI properly.
+
+```{=html}
+<!-- Replace host and id with yours -->
+<div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+  <iframe
+    src="https://marquette.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=36be65f1-ba4f-457d-bad3-b1b8013b9448&start=0.5"
+    title="GenAI and Academic Integrity"
+    style="position:absolute; top:0; left:0; width:100%; height:90%; border:0;"
+    allow="encrypted-media; fullscreen; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>
+```
+
+
+- This course expects all students to follow University and College statements on [academic integrity](https://bulletin.marquette.edu/policies/academic-integrity/).
+
+- **Honor Pledge and Honor Code**: *I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor, and responsibility, by which I earn the respect of others. I support the development of good character, and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code*.
+
+
+## Accommodation
+
+If you need to request accommodations, or modify existing accommodations that address disability-related needs, please contact [Disability Service](https://www.marquette.edu/disability-services/).
+
+
+## Important dates
+
+-   **Sep 7:** Labor Day
+-   **Sep 8:** Last day to add/swap/drop
+-   **Oct 20:** In-class Midterm Exam
+-   **Oct 22-23:** Midterm break
+-   **Oct 27:** Midterm grade submission
+-   **Nov 20:** Withdrawal deadline
+-   **Nov 25-29:** Thanksgiving holiday
+-   **Dec 12**: Last day of class
+-   **Dec 17**: In-class Final Exam
+-   **Dec 22**: Final grade submission
+
+Click [here](https://www.marquette.edu/central/registrar/2026-fall-academic-calendar.php) for the full Marquette academic calendar.

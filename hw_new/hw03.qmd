@@ -1,0 +1,126 @@
+---
+title: "Homework 3"
+subtitle: "Probability Fundamentals"
+categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: true
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, Feb 13, 11:59 PM**]{.red}
+:::
+
+-   Homework 3 covers Week 4.
+
+-   Please submit your work in *one* **PDF** file to **D2L \> Assessments \> Dropbox**. Multiple files or a file that is not in pdf format is not allowed.
+
+<!-- - In your homework, please number questions **in order**.  -->
+
+<!-- - Your homework could be handwritten or typewritten. If it is handwritten, make sure you scan your work well, and put everything in one single pdf. -->
+
+<!-- - If you type your answers, make sure there are no typos. We grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+<!-- - **Handwritten tables and figures receive no credits**. -->
+
+<!-- - You do not need to attach your code in the homework. However, if you fail to complete your calculations or produce your table or figure, you receive partial credits if your code is attached.  -->
+
+-   Questions started with **(MSSC)** are required for MSSC 5720 students, and optional for MATH 4720 students.
+
+# Homework Questions
+
+(@) **Probability Rules.** A Pew Research survey asked 2,373 randomly sampled registered voters their political affiliation (Republican, Democrat, or Independent) and whether or not they identify as swing voters. 35% of respondents identified as Independent, 23% identified as swing voters, and 11% identified as both.
+
+```{r, echo=FALSE}
+## OpenIntro 3.7
+# (a) No.
+```
+
+(a) What percent of voters are Independent but not swing voters?
+(b) What percent of voters are Independent or swing voters?
+(c) What percent of voters are neither Independent nor swing voters?
+(d) Is the event that someone is a swing voter independent of the event that someone is a political Independent?
+
+
+
+```{r}
+# (a) 24%
+# (b) 47%
+# (c) 53%
+# (d) No. P(Ind)*P(Swing) is not equal to P(Ind and Swing)
+```
+
+<br>
+
+(@) **Conditional Probability and Independence.** A Pew Research poll asked 1,306 Americans \`\`From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?". The table below shows the distribution of responses by party and ideology, where the counts have been replaced with relative frequencies.
+
+: Table 1. Party ideology and responses
+
+|                     |                         |                    |  **_Response_**   |                |       |
+|:------------------- |:------------------------|:------------------:|:---------------:|:--------------:|:-----:|
+|                     |                         | Earth warming  | Not warming | Don't Know | **Total**  |
+|                     | Conservative Republican |        0.11        |     0.20        |     0.02       |  **0.33** |
+| **_Party and Ideology_**| Mod/Lib Republican      |        0.06        |     0.06        |     0.01       |  **0.13** |
+|                     | Mod/Cons Democrat       |        0.25        |     0.07        |     0.02       |  **0.34** |
+|                     | Liberal Democrat        |        0.18        |     0.01        |     0.01       |  **0.20** |
+|                     | **Total**               |      **0.60**     |   **0.34**      |   **0.06**     | **1.00**|
+
+
+```{r, echo=FALSE}
+## OpenIntro 3.15
+```
+
+<!-- (a) Are believing that the earth is warming and being a liberal Democrat mutually exclusive? -->
+<!-- (b) What is the probability that a randomly chosen respondent believes the earth is warming or is a liberal Democrat? -->
+<!-- (c) What is the probability that a randomly chosen respondent believes the earth is warming given that he is a liberal Democrat? -->
+(a) What is the probability that a randomly chosen respondent believes the earth is warming given that he is a conservative Republican?
+(b) Does it appear that whether or not a respondent believes the earth is warming is independent of their party and ideology? Explain your reasoning. 
+(c) What is the probability that a randomly chosen respondent is a moderate/liberal Republican given that he does not believe that the earth is warming?
+
+
+<!-- # (a) No. -->
+<!-- # (b) 62% -->
+<!-- # (c) 0.9 -->
+
+```{r}
+# (a) 0.33
+# (b) The two appear to be dependent. The percentages of conservative Republicans and liberal Democrats who believe that there is solid evidence that the average temperature on earth has been getting warmer over the past few decades are very different.
+# (c) 0.06/0.34 = 0.18
+```
+
+
+
+<br>
+
+(@) **Bayes Formula.** After an MATH 4720/MSSC 5720 course, 80% of students can successfully construct box plots using R. Of those who can construct box plots, 86% passed, while only 65% of those students who could not construct box plots passed. Calculate the probability that a student is able to construct a box plot if it is known that she passed.
+
+
+```{r}
+# (0.86)(0.8) / ((0.86)(0.8) + (0.65)(0.2)) = 84%
+```
+
+
+<br>
+
+
+
+
+(@) **(MSSC)** Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies, leading to a high risk of blood clotting. It is believed that 2% of the population suffer from this disease. The test is 98% accurate if a person actually has the disease. The test is 74% accurate if a person does not have the disease. There is a line from the Fox television show *House* that is often used after a patient tests positive for lupus: "It's never lupus." Do you think there is truth to this statement? Use appropriate probabilities to support your answer.
+
+
+```{r}
+# Even when a patient tests positive for
+# lupus, there is only a 7.14% chance that he actually
+# has lupus. House may be right.
+```
+
+<br>
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

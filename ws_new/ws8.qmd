@@ -1,0 +1,28 @@
+---
+title: "Worksheet 8"
+subtitle: "Inference About Variances"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) What condition is especially important for chi square and F procedures for variances?
+
+```{r}
+#| include: false
+# A key condition is that each population distribution is approximately normal. Variance based procedures are sensitive to non normality, especially skewness and outliers, because variance squares deviations and outliers can dominate the result.
+```
+
+
+
+(@) A random sample has $n=10$ and $s^2 = 16$. Find a 95 percent confidence interval for $\sigma^2$. Use $df = 9$ and $\chi^2_{0.975,9} = 2.7$ and $\chi^2_{0.025,9} = 19.02$
+
+```{r}
+#| include: false
+# (7.6, 53.3)
+```

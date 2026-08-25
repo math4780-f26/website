@@ -1,0 +1,15 @@
+{
+  "hash": "433f1383aa391d5dc8dd681d6478063b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Activity: Simple Linear Regression\"\nsubtitle: \"Height vs. Shoe Size\"\n---\n\n\n## **Objective**\n\nYou will:\n\n- Identify predictor (height) and response (shoe size).\n- Explain what the slope means in context.\n- Recognize variability and limitations of small-sample regressions.\n- Experience how combining data strengthens inference.\n\n\n## Instructions\n\n(1) Form a group of 4 or 5. (This is your sample size!)\n\n(2) Collect your data. Each person will share their **height** and **shoe size**! \n    - Height ($X$): **inches** (Use [feet-to-inch conversion](https://www.rapidtables.com/convert/length/feet-inch-to-inch.html) to help you get your height in inches.)\n    - Shoe Size ($Y$): **US**\n  \n(3) Make a R data frame. (Replace my numbers with your data!)\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf <- data.frame(height = c(69, 74, 77, 60, 62), \n                 size = c(11, 10.5, 12, 9.5, 9))\ndf\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n  height size\n1     69 11.0\n2     74 10.5\n3     77 12.0\n4     60  9.5\n5     62  9.0\n```\n\n\n:::\n:::\n\n\n\n(4) Analyze within your group.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# (a) Plot your data. Height on the x-axis, Shoe Size on the y-axis.\nplot(x = df$height, y = df$size)\n```\n:::\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# (b) Fit the simple linear regression model\nmodel <- lm(df$size ~ df$height)\n\n# (c) Draw the fitted regression line.\nabline(model)\n```\n:::\n\n\n\n\n::: {.cell}\n\n:::\n\n\n\n\n(5) Go to <https://forms.cloud.microsoft/r/b6cb3DxBbD> to fill out your result!\n\n\n::: {.cell .column-body}\n::: {.cell-output-display}\n![](../images/QRCode_reg.png){width=30%}\n:::\n:::\n\n\n## Discussion\n\n- Which variable is the predictor and which is the response?\n- Does your scatterplot show a positive, negative, or no clear linear relationship?\n- What is the estimated slope, and what does it mean in context?\n- What does the intercept mean here? Is it meaningful?\n- Why do points vary around the regression line instead of falling exactly on it?\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

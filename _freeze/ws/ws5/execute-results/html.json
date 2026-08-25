@@ -1,0 +1,15 @@
+{
+  "hash": "b884235511716c30caafe73a9964a860",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 5\"\nsubtitle: \"Confidence Intervals\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) A student says, “My confidence interval for $\\mu$ is $\\overline{x} \\pm 2s$.” What is the main problem with this, conceptually?\n\n\n\n\n\n\n\n(@) A sample mean is $\\overline{x} = 50$. The standard error of $\\overline{x}$ is $SE = 2$. Give an approximate 95 percent confidence interval for $\\mu$. Let's assume the critical value is 2.\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

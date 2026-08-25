@@ -1,0 +1,16 @@
+---
+title: "Worksheet"
+listing:
+  contents: ws
+  sort: title
+  sort-ui: false
+  filter-ui: false
+  type: table
+  fields: [title, subtitle]
+  field-display-names:
+    title: "No."
+    subtitle: "Title"
+    # description: "Due date"
+---
+
+More worksheets to be added as the semester progresses.

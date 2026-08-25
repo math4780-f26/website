@@ -1,0 +1,15 @@
+{
+  "hash": "cf40d5684332933d789deecec01643f2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 10\"\nsubtitle: \"Linear Regression\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) A researcher studies how weekly study hours predict exam score. What is the explanatory variable? What is the response variable?\n\n\n\n\n\n(@) A fitted regression line is $\\hat{y} = 50 + 3x$, where $x$ is study hours per week and $y$ is exam score.\n(a) Interpret the slope 3 in context.\n(b) Interpret the intercept 50 in context.\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

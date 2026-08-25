@@ -1,0 +1,22 @@
+---
+title: "Key Topics of Multiple Linear Regression"
+subtitle: "Multiple Linear Regression for Final Exam"
+categories: "Exercise"
+format:
+  html:
+    mathjax: true
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+-	The meaning of multiple linear regression and fitted regression “line”
+
+-	Interpretation of coefficients
+
+-	Confidence interval and hypothesis testing for individual coefficients
+
+-	ANOVA table and overall significance testing
+
+-	Regression diagnostics and model assumption checking

@@ -1,0 +1,15 @@
+{
+  "hash": "9c71af38557279bedb1c02e0353bfc37",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 4\"\nsubtitle: \"Sampling Distributions and Central Limit Theorem\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) **Sampling distribution.** A population distribution has $σ=10$. What sample size $n$ is needed so that the standard deviation of the sample mean is one, $SD(\\overline{X}) = 1$?\n\n\n\n\n\n(@) **Central limit theorem** True or False?\n(a) If the population is normal, then $\\overline{X}$ is normal for any sample size $n$.\n(b) If the population is not normal, then the distribution of $\\overline{X}$ does not look like normal for any sample size $n$.\n(c) If the sample is large, the population becomes normal.\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "hash": "53dc9f92b9e5e75fc49e721deacb0f05",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Midterm Project II Proposal and Presentation\"\n---\n\n## Presentation Order\n\nThe presentation order is determined by the time you sent me your member info (`c(\"John\", \"Jeremy\", \"Praful\")` is the first to let me know, followed by `c(\"Sajjad\", \"Tanjina\", \"Dewan\")`, etc) and random sampling as follows.\n\n::: {.cell}\n\n```{.r .cell-code}\nteam_lst <- list(c(\"John\", \"Jeremy\", \"Praful\"), \n                 c(\"Sajjad\", \"Tanjina\", \"Dewan\"),\n                 c(\"Ethan\", \"Navid\", \"Sylvester\"), \n                 c(\"Violet\", \"Vanessa\", \"Michele\"), \n                 c(\"Rakesh\", \"Daniel\", \"Jeremy\"), \n                 c(\"Sai\", \"Rohith\", \"Shristi\"))\nset.seed(2025)\nteam_lst[sample(1:6, 6)]\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[[1]]\n[1] \"Rakesh\" \"Daniel\" \"Jeremy\"\n\n[[2]]\n[1] \"Violet\"  \"Vanessa\" \"Michele\"\n\n[[3]]\n[1] \"Sai\"     \"Rohith\"  \"Shristi\"\n\n[[4]]\n[1] \"Sajjad\"  \"Tanjina\" \"Dewan\"  \n\n[[5]]\n[1] \"John\"   \"Jeremy\" \"Praful\"\n\n[[6]]\n[1] \"Ethan\"     \"Navid\"     \"Sylvester\"\n```\n\n\n:::\n:::\n\n## Project Materials\n\n-   [**Group 1 (Rakesh, Daniel, Jeremy)**]{.blue}: [proposal](./documents/project_proposal/project2/proposal2_rakesh_danial_jeremy.pdf)\n\n-   [**Group 2 (Violet, Vanessa, Michele)**]{.blue}: [proposal](./documents/project_proposal/project2/proposal2_violet_venessa_michele.pdf)\n\n-   [**Group 3 (Sai, Rohith, Shristi)**]{.blue} : [proposal](./documents/project_proposal/project2/proposal2_sai_rohith_shristi.pdf)\n\n-   [**Group 4 (Sajjad, Tanjina, Dewan)**]{.blue}: [proposal](./documents/project_proposal/project2/proposal2_tanjina_sajjad_dewan.pdf)\n\n-   [**Group 5 (John, Jeremy, Praful)**]{.blue}: [proposal](./documents/project_proposal/project2/proposal2_john_jeremy_praful.pdf)\n\n-   [**Group 6 (Ethan, Navid, Sylvester)**]{.blue}: [proposal](./documents/project_proposal/project2/proposal2_ethan_navid_sylvester.pdf)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

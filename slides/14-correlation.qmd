@@ -1,0 +1,290 @@
+---
+title: 'Correlation `r fontawesome::fa("people-arrows")`'
+title-slide-attributes:
+  data-background-image: ../images/bg.png
+  # data-background-size: stretch
+  # data-slide-number: none
+format: 
+  live-revealjs: 
+    output-file: 14-correlation-slides.html
+    # theme: slides.scss
+    code-line-numbers: false
+webr:
+  cell-options:
+    autorun: false
+  packages:
+    - tidyverse
+knitr:
+  opts_chunk:
+    out-width: 100%
+    echo: false
+---
+
+
+# {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: pkg
+#| include: false
+#| eval: true
+library(openintro)
+library(knitr)
+options(digits = 2)
+set.seed(1234)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_knit$set(global.par = TRUE)
+# options(reindent.spaces = 4)
+```
+
+<!-- begin: webr fodder -->
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+<!-- end: webr fodder -->
+
+
+<!-- # [Hypothesis Testing]{.orange}{background-image="https://upload.wikimedia.org/wikipedia/commons/4/42/William_Sealy_Gosset.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"} -->
+
+
+# [Correlation]{.orange}{background-image="./images/14-correlation/corr_ex.svg" background-size="cover" background-position="50% 50%" background-color="#447099"}
+
+
+## Relationship Between 2 Numerical Variables
+
+- Depending on the situation, one of the variables is the *explanatory* variable and the other is the *response* variable. (Discussed in **Regression**)
+
+- There is not always an explanatory-response relationship.
+
+- Examples:
+  + <span style="color:blue"> height and weight </span> 
+  
+  + <span style="color:blue"> income and age </span> 
+  
+  + <span style="color:blue"> SAT/ACT math score and verbal score </span> 
+  
+  + <span style="color:blue"> amount of time spent studying for an exam and exam grade </span>
+  
+::: question
+Can you provide an example that 2 variables are associated?
+:::
+
+## Scatterplots
+
+```{r}
+#| fig-asp: 0.4
+par(mar=c(2.8,2.8,1,0))
+par(mgp=c(1.9, 0.5, 0))
+par(mfrow = c(1, 2))
+plot(mtcars$wt, mtcars$mpg, main = "Linear pattern", xlab = "Car Weight", ylab = "Miles Per Gallon ", pch = 16, col = 4, las = 1)
+abline(lm( mtcars$mpg~mtcars$wt), col = "red")
+plot(faithful$eruptions, faithful$waiting, main = "Clusters", xlab = "Eruption duration", 
+     ylab = "Time waited", pch = 16, col = 4, las = 1)
+```
+
+- Describe the overall pattern
+  + Form: linear or clusters
+  + Direction: positively associated or negatively associated
+  + Strength: how close the points lie to a line/curve
+  
+  
+
+## Linear Correlation Coefficient
+
+- The *sample* **correlation coefficient**, denoted by $r$, measures the *direction* and *strength* of the **linear** relationship between two numerical variables:
+$$\small r :=\frac{1}{n-1}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s_x}\right)\left(\frac{y_i-\overline{y}}{s_y}\right) = \frac{1}{(n-1) (s_xs_y)}\sum_{i=1}^n\left(x_i-\overline{x}\right)\left(y_i-\overline{y}\right)$$
+
+:::: columns
+
+::: {.column width="50%"}
+
++ $-1 \le r\le 1$
++ $r > 0$: The **larger** value of $X$ is, the **larger** value of $Y$ tends toward.
++ $r = 1$: Perfect positive linear relationship.
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+cor_n08 <- mvtnorm::rmvnorm(n = 200, mean = c(0, 0), 
+                          sigma = matrix(c(1, -0.8, -0.8, 1), 2, 2))
+cor_p08 <- mvtnorm::rmvnorm(n = 200, mean = c(0, 0), 
+                          sigma = matrix(c(1, 0.8, 0.8, 1), 2, 2))
+cor_0 <- mvtnorm::rmvnorm(n = 200, mean = c(0, 0), 
+                          sigma = matrix(c(1, 0, 0, 1), 2, 2))
+par(mfrow = c(1, 1))
+plot(cor_p08, xlab= "X", ylab = "Y", main = "Positively correlated: r > 0", col = 4, 
+     pch = 16, las = 1, cex.main = 2)
+abline(v = 0, col = 2, lty = 2)
+abline(h = 0, col = 2, lty = 2)
+text(1.2, 2.5, expression((x[i] - bar(x))(y[i] - bar(y)) > 0), cex = 1.5, col = "red")
+text(1.2, 2, expression((x[i] - bar(x)) > 0), cex = 1.5, col = "red")
+text(1.2, 1.5, expression((y[i] - bar(y)) > 0), cex = 1.5, col = "red")
+
+text(1.2, -2.5, expression((x[i] - bar(x))(y[i] - bar(y)) < 0), cex = 1.5, col = "blue")
+text(1.2, -2, expression((x[i] - bar(x)) > 0), cex = 1.5, col = "blue")
+text(1.2, -1.5, expression((y[i] - bar(y)) < 0), cex = 1.5, col = "blue")
+
+text(-1.5, -2.5, expression((x[i] - bar(x))(y[i] - bar(y)) > 0), cex = 1.5, col = "red")
+text(-1.5, -2, expression((x[i] - bar(x)) < 0), cex = 1.5, col = "red")
+text(-1.5, -1.5, expression((y[i] - bar(y)) < 0), cex = 1.5, col = "red")
+
+text(-1.5, 2.5, expression((x[i] - bar(x))(y[i] - bar(y)) < 0), cex = 1.5, col = "blue")
+text(-1.5, 2, expression((x[i] - bar(x)) < 0), cex = 1.5, col = "blue")
+text(-1.5, 1.5, expression((y[i] - bar(y)) > 0), cex = 1.5, col = "blue")
+
+text(0, 0, expression(paste( "(", bar(x), ",", bar(y), ")")), cex = 2.5, col = "black")
+```
+
+:::
+
+::::
+
+
+## Linear Correlation Coefficient
+
+- The *sample* **correlation coefficient**, denoted by $r$, measures the *direction* and *strength* of the **linear** relationship between two numerical variables:
+$$\small r :=\frac{1}{n-1}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s_x}\right)\left(\frac{y_i-\overline{y}}{s_y}\right)$$
+
+:::: columns
+
+::: {.column width="50%"}
+
++ $-1 \le r\le 1$
++ $r < 0$: The **larger** value of $X$ is, the **smaller** value of $Y$ tends toward.
++ $r = -1$: Perfect negative linear relationship.
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+par(mfrow = c(1, 1))
+plot(cor_n08, xlab= "X", ylab = "Y", main = "Negatively correlated: r < 0", col = 4, 
+     pch = 16, las = 1, cex.main = 2)
+abline(v = 0, col = 2, lty = 2)
+abline(h = 0, col = 2, lty = 2)
+text(1.2, 2.5, expression((x[i] - bar(x))(y[i] - bar(y)) > 0), cex = 1.5, col = "red")
+text(1.2, -2.5, expression((x[i] - bar(x))(y[i] - bar(y)) < 0), cex = 1.5, col = "blue")
+text(-1.5, -2.5, expression((x[i] - bar(x))(y[i] - bar(y)) > 0), cex = 1.5, col = "red")
+text(-1.5, 2.5, expression((x[i] - bar(x))(y[i] - bar(y)) < 0), cex = 1.5, col = "blue")
+```
+
+:::
+
+::::
+
+
+## Linear Correlation Coefficient
+
+- The *sample* **correlation coefficient**, denoted by $r$, measures the *direction* and *strength* of the **linear** relationship between two numerical variables:
+$$\small r :=\frac{1}{n-1}\sum_{i=1}^n\left(\frac{x_i-\overline{x}}{s_x}\right)\left(\frac{y_i-\overline{y}}{s_y}\right)$$
+
+:::: columns
+
+::: {.column width="50%"}
+
++ $r = 0$: No **linear** relationship.
++ If explanatory and response are switched, $r$ remains the same.
++ $r$ has no units of measurement, so scale changes do not affect $r$.
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+par(mfrow = c(1, 1))
+plot(cor_0, xlab= "X", ylab = "Y", main = "No correlation: r = 0", col = 4, 
+     pch = 16, las = 1)
+abline(v = 0, col = 2, lty = 2)
+abline(h = 0, col = 2, lty = 2)
+```
+
+:::
+
+::::
+
+
+::: notes
+
+- Properties
+  + $-1 \le r\le 1$.
+  + If $r$ is negative, variables $X$ and $Y$ are negatively related. That is, the larger value of $X$ is, the smaller value of $Y$ tends toward.
+  + If $r = -1$, there is a perfect negative linear relationship.
+  + If $r$ is positive, variables $X$ and $Y$ are positively related. That is, the larger value of $X$ is, the larger value of $Y$ tends toward.
+  + If $r = 1$, there is a perfect positive linear relationship.
+  + If $r = 0$, there is no **linear** relationship.
+  + If explanatory and response are switched, $r$ remains the same.
+  + $r$ has no units of measurement associated with it.
+  + Scale changes do not affect $r$.
+  
+:::
+
+
+
+## Correlation Example
+
+- It is possible that there is a strong relationship between two variables but still $r = 0$.
+
+::: tiny
+```{r}
+#| fig-cap: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Correlation_examples2.svg"
+knitr::include_graphics("./images/14-correlation/corr_ex.svg")
+```
+:::
+
+
+
+## Example in R
+
+:::: columns
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+plot(x = mtcars$wt, y = mtcars$mpg, 
+     main = "MPG vs. Weight", 
+     xlab = "Car Weight", 
+     ylab = "Miles Per Gallon", 
+     pch = 16, col = 4, las = 1)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+cor(x = mtcars$wt,
+    y = mtcars$mpg)
+```
+```{r}
+knitr::include_graphics("./images/14-correlation/car.jpeg")
+```
+
+:::
+
+::::

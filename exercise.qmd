@@ -1,0 +1,16 @@
+---
+title: "Exercise"
+listing:
+  contents: exercise
+  sort: title
+  sort-ui: false
+  filter-ui: false
+  type: table
+  fields: [title, subtitle]
+  field-display-names:
+    title: "No."
+    subtitle: "Title"
+    # description: "Due date"
+---
+
+More extra exercises to be added as the semester progresses.

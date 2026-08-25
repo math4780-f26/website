@@ -1,0 +1,88 @@
+/*-- scss:defaults --*/
+
+@import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
+
+$font-family: "Atkinson Hyperlegible", sans-serif;
+
+/*-- scss:rules --*/
+
+.render-commit-push {
+  padding: 0.5em 0.5em 0em 3em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: #f8f8f8 5px center/3em no-repeat;
+  border-top: 1px solid #5B888C;
+  border-bottom: 1px solid #5B888C;
+  background-image: url("images/render-commit-push.png");
+  background-size: 2em;
+  background-position: 0.5em 0.5em;
+}
+
+.pull {
+  padding: 0.5em 0.5em 0em 3em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: #f8f8f8 5px center/3em no-repeat;
+  border-top: 1px solid #E0A890;
+  border-bottom: 1px solid #E0A890;
+  background-image: url("images/pull.png");
+  background-size: 1em;
+  background-position: 1em 0.5em;
+}
+
+/* colors */
+:root {
+  --dark-blue: #002b36;
+  --light-blue: #A7D5E8;
+  --green: #007500;
+  --gray: #A7A7A7;
+  --pink: #E9AFA3;
+  --yellow: #e9d968;
+  --beige: #fdf6e3;
+  --green-faint: #8fada750;
+  --light-blue-faint: #A7D5E850;
+  --pink-faint: #E9AFA350;
+  --blue:#0000FF;
+  --purple:#A020F0;
+  --red:#A00;
+}
+
+/* Font colors */
+.dark-blue {
+  color: var(--dark-blue);
+}
+.light-blue {
+  color: var(--light-blue);
+}
+.green {
+  color: var(--green);
+}
+.gray {
+  color: var(--gray);
+}
+.pink {
+  color: var(--pink);
+}
+.yellow {
+  color: var(--yellow);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.purple {
+  color: var(--purple);
+}
+
+.red {
+  color: var(--red);
+}
+
+
+.pink {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 100%;
+ font-weight: bold;
+ color: #F26BAA;
+}

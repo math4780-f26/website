@@ -1,0 +1,31 @@
+---
+title: "Worksheet 7"
+subtitle: "Two Poluation Means"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) For each scenario, decide whether a paired t procedure or an independent two sample t procedure is appropriate.
+(a) Blood pressure before and after medication on the same 20 patients.
+(b) Mean GPA of students in two different sections taught by different instructors.
+(c) Comparing left and right hand grip strength for each person.
+
+```{r}
+#| include: false
+# (a) Paired (b) Independent two sample (c) Paired
+```
+
+
+
+(@) A 95 percent confidence interval for $\mu_1 - \mu_2$ is $(-1, 5)$. At α = 0.05, would you reject $H_0: \mu_1 -\mu_2 = 0$ in a two sided test?
+
+```{r}
+#| include: false
+# No
+```

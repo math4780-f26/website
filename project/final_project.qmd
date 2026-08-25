@@ -1,0 +1,463 @@
+---
+title: "Final Project: Learning Multiple Linear Regression with Generative AI"
+categories: "Project"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+---
+
+::: callout-important
+This is an **individual project**. Plan to work on it over **7 to 10 days** rather than in one sitting.
+
+Please check **D2L** for the final due date and submission link. The downloadable CSV files for all data sets are linked below and included in the project package.
+:::
+
+This project asks you to do two things at the same time:
+
+1. demonstrate your understanding of **multiple linear regression**, and  
+2. show that you can use **generative AI as a learning tool** in a thoughtful, critical, and responsible way.
+
+The goal is **not** to let AI complete the assignment for you. The goal is to use AI to help you learn something new, verify ideas, identify weaknesses in your understanding, and communicate your own conclusions clearly.
+
+By completing this project, you will practice how to:
+
+- explore relationships among variables using graphs
+- choose and justify a multiple linear regression model
+- interpret coefficients and model fit in context
+- check assumptions and discuss limitations
+- use AI as a tutor, coach, critic, and study partner
+- verify AI output instead of accepting it automatically
+
+# Submission Instructions
+
+
+<!-- # Download the Data Sets -->
+
+<!-- Choose **one** of the following CSV files. -->
+
+<!-- - [Download `medical_insurance_charges.csv`](medical_insurance_charges.csv) -->
+<!-- - [Download `car_fuel_efficiency.csv`](car_fuel_efficiency.csv) -->
+<!-- - [Download `diamond_prices.csv`](diamond_prices.csv) -->
+<!-- - [Download `house_sale_prices.csv`](house_sale_prices.csv) -->
+<!-- - [Download `student_achievement.csv`](student_achievement.csv) -->
+
+<!-- These are **cleaned course copies** prepared for this project so that the variable names in the files match the variable names used in this handout. -->
+
+<!-- Before choosing a data set, read the [Data Dictionary and Variable Guide](dataset_variable_guide.html). -->
+
+
+Submit **one PDF file** to **D2L > Assessments > Dropbox**.
+
+Your PDF must include the following parts, in this order:
+
+1. **Data Analysis Report**
+2. **AI Use Record and Conversation Evidence**
+3. **Verification and Reflection Memo**
+
+With your submission, you commit to academic integrity through the following honor pledge:
+
+> I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor and responsibility, by which I earn the respect of others. I support the development of good character and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code.
+
+# AI Use Policy
+
+You may use **one general purpose text based generative AI tool** as a learning support tool for this project. Examples include ChatGPT, Gemini, Copilot, Claude, or another instructor approved tool. You remain responsible for all statistical reasoning, all final written explanations, and all final conclusions.
+
+<!-- AI is allowed for this project because part of the assignment is learning **how** to learn with AI. However, you remain responsible for all statistical reasoning, all final written explanations, and all final conclusions. -->
+
+## Allowed uses
+
+You may use AI to:
+
+- ask for plain language explanations of statistical ideas
+- ask AI to quiz you or question you step by step
+- ask for examples that are **not** based on your dataset
+- ask what assumptions, limitations, or diagnostic checks might matter
+- ask AI to critique your draft reasoning
+- ask AI to help you notice unclear wording or possible mistakes
+- ask AI to suggest what you should verify on your own
+
+## Not allowed uses
+
+You may **not** use AI to:
+
+- write your final report for you
+- produce final report ready paragraphs that you submit as your own writing
+- interpret your exact regression output and then copy that interpretation
+- decide your final conclusion for this dataset
+- replace your own reasoning with unverified AI claims
+
+A good rule is this:
+
+> AI may support your learning process, but it may not replace your thinking.
+
+# Data Set Choices
+
+Choose **one** of the following data sets. All students will do the same project, but with different data choices.
+
+See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables.
+
+::: {.callout-note collapse="true"}
+
+## Option 1. Medical Insurance Charges
+
+[Download `medical_insurance_charges.csv`](medical_insurance_charges.csv)
+
+**Suggested response variable:** `charges`  
+**Suggested predictors:** `age`, `bmi`, `children`, `smoker`
+
+**Context:** The data record individual medical insurance charges along with personal characteristics and smoking status.
+
+**Variables included in the CSV:** `age`, `sex`, `bmi`, `children`, `smoker`, `region`, `charges`.
+
+<!-- **Why this is a good multiple regression data set:** -->
+
+<!-- - the response variable is quantitative -->
+<!-- - there are both numerical and categorical predictors -->
+<!-- - the relationships are more realistic than the original sleep data -->
+<!-- - interpretation in context is meaningful -->
+<!-- - the response may be right skewed, so diagnostics matter -->
+:::
+
+::: {.callout-note collapse="true"}
+
+## Option 2. Car Fuel Efficiency
+
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+
+[Download `car_fuel_efficiency.csv`](car_fuel_efficiency.csv)
+
+**Suggested response variable:** `mpg`  
+**Suggested predictors:** `horsepower`, `weight`, `acceleration`, `origin`
+
+**Context:** The data describe automobiles and their fuel efficiency.
+
+**Variables included in the CSV:** `mpg`, `horsepower`, `weight`, `acceleration`, `origin`, `cylinders`, `displacement`, `model_year`.
+
+<!-- **Why this is a good multiple regression data set:** -->
+
+<!-- - the response variable is quantitative and easy to understand -->
+<!-- - the predictors have clear physical meaning -->
+<!-- - students can compare the effects of several predictors while holding others fixed -->
+<!-- - at least one categorical predictor can be included -->
+:::
+
+
+::: {.callout-note collapse="true"}
+
+## Option 3. Diamond Prices
+
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+
+[Download `diamond_prices.csv`](diamond_prices.csv)
+
+**Suggested response variable:** `price`  
+**Suggested predictors:** `carat`, `depth`, `table`, `cut`
+
+**Context:** The data describe physical characteristics of diamonds and their market prices.
+
+**Variables included in the CSV:** `price`, `carat`, `depth`, `table`, `cut`, `color`, `clarity`, `x`, `y`, `z`.
+
+<!-- **Why this is a good multiple regression data set:** -->
+
+<!-- - the response variable is quantitative -->
+<!-- - the predictors have different roles and scales -->
+<!-- - one predictor can be categorical -->
+<!-- - the response may be skewed, so model checking is important -->
+:::
+
+
+::: {.callout-note collapse="true"}
+
+## Option 4. House Sale Prices
+
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+
+[Download `house_sale_prices.csv`](house_sale_prices.csv)
+
+**Suggested response variable:** `sale_price`  
+**Suggested predictors:** `living_area`, `bedrooms`, `house_age`, `overall_quality`
+
+**Context:** The data describe residential homes and their sale prices.
+
+**Variables included in the CSV:** `sale_price`, `living_area`, `bedrooms`, `house_age`, `overall_quality`, `overall_condition`, `lot_area`, `full_bath`, `neighborhood`, `year_built`, `year_sold`.
+
+<!-- **Why this is a good multiple regression data set:** -->
+
+<!-- - the response variable is quantitative and highly interpretable -->
+<!-- - students must think about what predictors belong in the model -->
+<!-- - the context makes coefficient interpretation interesting -->
+<!-- - the response may be skewed, so diagnostics matter -->
+:::
+
+
+::: {.callout-note collapse="true"}
+
+## Option 5. Student Achievement
+
+<!-- See the [Data Dictionary and Variable Guide](dataset_variable_guide.html) if you want plain language definitions of the variables. -->
+
+[Download `student_achievement.csv`](student_achievement.csv)
+
+**Suggested response variable:** `final_score`  
+**Suggested predictors:** `study_time`, `absences`, `prior_score`, `internet_access`
+
+**Context:** The data describe student performance and study related variables.
+
+**Variables included in the CSV:** `final_score`, `prior_score`, `first_period_score`, `study_time`, `absences`, `internet_access`, `failures`, `age`, `sex`, `go_out`, `health`.
+
+<!-- **Why this is a good multiple regression data set:** -->
+
+<!-- - the response variable is quantitative -->
+<!-- - the predictors are familiar and easy to explain -->
+<!-- - students can interpret adjusted relationships in an education setting -->
+<!-- - there may be interesting limitations and confounding issues to discuss -->
+:::
+
+
+## Important rule about model complexity
+
+To keep the projects comparable, your final model must:
+
+- use **one quantitative response variable** listed above
+- include **at least three predictors**
+- include **at least two quantitative predictors**
+- keep the model at a level appropriate for introductory statistics
+
+You may use **one categorical predictor** if it is relevant.
+
+You do **not** need interaction terms unless you want to explore one and can justify it clearly.
+
+You may use a simple transformation such as $\log(\text{response})$ **only if** your graphs and diagnostics suggest it is reasonable. A transformation is optional, not required.
+
+# Project Components
+
+Your project has three parts.
+
+## Part 1. Data Analysis Report
+
+### Format
+
+- Length: **3 to 5 pages**
+- Spacing: **single space**
+- Font: **Times New Roman, 12 pt**
+- Margins: **one inch on all sides**
+- Do **not** show code in the report
+
+
+[Download report template](./template_part1_data_analysis_report.docx)
+
+
+### Required sections
+
+**1. Introduction**
+
+Briefly introduce the context of your chosen data set. Define the response variable and the predictors in your final model. State the goal of the analysis and explain why those predictors are reasonable choices.
+
+**2. Exploratory Data Analysis**
+
+Create and discuss graphs that help you understand the relationships in your data.
+
+At minimum, include:
+
+- one graph of the response variable
+- scatterplots of the response versus each quantitative predictor in your final model
+- if you use a categorical predictor, a suitable graph such as a side by side boxplot
+
+Describe patterns you notice. For example, discuss direction, strength, unusual points, possible nonlinearity, and whether the relationships appear roughly linear.
+
+**3. Model Building**
+
+Fit a multiple linear regression model using your chosen response and predictors.
+
+Include:
+
+- the fitted regression equation
+- the main model output
+- a brief explanation of why this model is a reasonable choice
+
+If you decide to use a transformed response, briefly explain why.
+
+**4. Interpretation of Results**
+
+Interpret the following in context:
+
+- the intercept
+- at least **two slope coefficients** for quantitative predictors
+- if applicable, **one categorical predictor coefficient**
+
+Your interpretations should make clear that each coefficient is interpreted **while holding the other predictors constant**.
+
+**5. Model Fit, Assumptions, and Limitations**
+
+Discuss:
+
+- what $R^2$ tells you in this setting
+- whether the model appears useful for explanation or prediction
+- at least **two** assumptions or diagnostic concerns
+- at least **one** limitation of the analysis
+
+If you compared an untransformed and transformed response model, briefly explain which one you chose and why.
+
+**6. Conclusion**
+
+Write a short conclusion for a general audience. Summarize what the analysis suggests and what it does **not** prove.
+
+## Part 2. AI Use Record and Conversation Evidence
+
+[Download AI usage template](./template_part2_ai_use_record_and_conversation_evidence.docx)
+
+
+It should be about **1 to 2 pages**, not counting optional screenshots.
+
+Your goal is to show **how** you used AI, not to paste an unnecessarily long transcript.
+
+For your most important AI interactions, briefly record:
+
+- what you were trying to learn
+- what you asked AI
+- what AI told you
+- what you accepted, revised, or rejected
+- how you checked or verified the idea
+
+Then include enough conversation evidence for me to understand your actual AI use. You may include:
+
+- short transcript excerpts,
+- screenshots,
+- copied chat text,
+- or a share link plus a few selected excerpts.
+
+Start this section with the starter prompt you chose.
+
+A long transcript by itself is **not** enough. This section should highlight the most meaningful parts of your AI use.
+
+## Part 3. Verification and Reflection Memo
+
+[Download Reflection template](./template_part3_verification_and_reflection_memo.docx)
+
+This section should be **about 1 page total**.
+
+### A. Verification and Critique
+
+Briefly describe:
+
+- **one example** where AI was incomplete, vague, misleading, or wrong, and
+- **one example** where AI genuinely helped you learn something useful.
+
+For the weak AI example, explain in a few sentences:
+
+- what AI said
+- why it was not fully satisfactory
+- how you checked it
+- what you concluded instead
+
+### B. Reflection
+
+Write a short reflection of about **150 to 250 words** addressing questions such as:
+
+- Which AI tool did you use?
+- How did AI help you learn multiple linear regression?
+- What did AI do well?
+- What did AI do poorly?
+- What would you do differently next time?
+
+# Starter Prompt Menu
+
+You do **not** have to use one exact prompt. Instead, choose **one** of the following starting prompts and then continue the conversation in your own way.
+
+::: {.callout-tip collapse="true"}
+
+## Prompt A. Concept Coach
+
+I am learning multiple linear regression for a class project using a real data set. Act as a concept coach. Do not write my report. Do not give me final interpretations for my dataset. Instead, teach me step by step in plain language. After each explanation, ask me one question so I have to think before moving on.
+
+:::
+
+
+::: {.callout-tip collapse="true"}
+
+## Prompt B. Socratic Tutor
+
+I am working on a multiple linear regression project. Act as a Socratic tutor. Ask me one question at a time about model setup, predictor choice, coefficient interpretation, model fit, assumptions, and limitations. Only explain more after I answer. Do not write final report text for me.
+
+:::
+
+
+::: {.callout-tip collapse="true"}
+
+## Prompt C. Critic and Checker
+
+I am going to explain my reasoning about a multiple linear regression project. Your job is to critique my reasoning, point out what is unclear or incomplete, and suggest what I should verify. Do not give me final report ready paragraphs, and do not decide my final conclusion for me.
+
+:::
+
+You may revise the prompt after you begin. What matters is that your interaction supports learning rather than outsourcing.
+
+<!-- # Suggested Workflow for 7 to 10 Days -->
+
+<!-- You do not need to follow this exactly, but it is a good pacing guide. -->
+
+<!-- ## Days 1 to 2 -->
+<!-- - Review the assignment -->
+<!-- - Choose one data set from D2L -->
+<!-- - Read the variable descriptions -->
+<!-- - Start your AI conversation -->
+<!-- - Learn or review the basic ideas of multiple linear regression -->
+
+<!-- ## Days 3 to 4 -->
+<!-- - Make the graphs -->
+<!-- - Decide on your predictors -->
+<!-- - Fit the model -->
+<!-- - Identify questions you still do not understand -->
+<!-- - Use AI to help clarify concepts, not to finish the writing -->
+
+<!-- ## Days 5 to 6 -->
+<!-- - Draft your interpretations -->
+<!-- - Ask AI to critique your reasoning -->
+<!-- - Verify key ideas yourself -->
+<!-- - Build your AI use record with a few strong excerpts -->
+
+<!-- ## Days 7 to 10 -->
+<!-- - Write and revise the final report -->
+<!-- - Finish the verification and reflection memo -->
+<!-- - Proofread and submit one PDF -->
+
+# Project Evaluation
+
+Your project will be evaluated using the following categories.
+
+| Category | Points |
+|---|---:|
+| Statistical understanding and correctness | 30 |
+| Quality of graphs, model setup, and interpretation | 20 |
+| AI use record and transparency of process | 20 |
+| Verification, critique, and reflection | 25 |
+| Writing quality, organization, and professionalism | 5 |
+
+**Total: 100 points**
+
+# Final Advice
+
+A weak project uses AI to generate language.
+
+A strong project uses AI to improve understanding.
+
+The strongest projects show that you:
+
+- asked meaningful questions,
+- made sensible modeling choices,
+- verified important ideas,
+- noticed when AI was not reliable,
+- and wrote the final analysis in your own words.
+
+
+
+# Data Source Note
+
+The downloadable CSV files are cleaned course copies prepared from public data sources so that the headers are easier to use in an introductory statistics project.
+
+- Medical insurance charges: course copy based on the commonly used insurance charges dataset.
+- Car fuel efficiency: Auto MPG data.
+- Diamond prices: `diamonds` data.
+- House sale prices: Ames housing data.
+- Student achievement: student mathematics performance data.

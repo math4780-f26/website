@@ -1,0 +1,131 @@
+---
+title: "Data Dictionary for Final Project Data Sets"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+editor: source
+---
+
+This guide explains the variables in the five data sets used for the final project.
+
+Use this guide when you are deciding:
+
+- which data set to choose
+- which variable should be the response variable
+- which variables could be good predictors
+- how to interpret coefficients in context
+
+::: callout-note
+These are **cleaned course copies** of the original data. Variable names in this guide match the CSV files provided with the project.
+:::
+
+::: {.callout-tip collapse="true"}
+# Medical Insurance Charges
+
+| Variable | Type | What it means | Values or notes |
+|---|---|---|---|
+| `age` | Quantitative | Age of the individual | Measured in years |
+| `sex` | Categorical | Recorded sex of the individual | `female`, `male` |
+| `bmi` | Quantitative | Body mass index | Higher values usually indicate higher body mass relative to height |
+| `children` | Quantitative | Number of children or dependents covered by the insurance plan | Whole numbers |
+| `smoker` | Categorical | Whether the individual is a smoker | `yes`, `no` |
+| `region` | Categorical | Region of the United States where the individual lives | `northeast`, `northwest`, `southeast`, `southwest` |
+| `charges` | Quantitative | Individual medical insurance charges | Measured in US dollars |
+
+**Common project idea:** Use `charges` as the response variable and study how age, BMI, smoking, and number of children relate to medical costs.
+:::
+
+::: {.callout-tip collapse="true"}
+# Car Fuel Efficiency
+
+| Variable | Type | What it means | Values or notes |
+|---|---|---|---|
+| `mpg` | Quantitative | Fuel efficiency of the car | Miles per gallon |
+| `horsepower` | Quantitative | Engine power | Horsepower |
+| `weight` | Quantitative | Weight of the car | Pounds |
+| `acceleration` | Quantitative | Acceleration performance measure | Measured in seconds. Lower values usually mean faster acceleration. |
+| `origin` | Categorical | Where the car was made | `Usa`, `Europe`, `Japan` |
+| `cylinders` | Quantitative | Number of engine cylinders | Common values include 4, 6, and 8 |
+| `displacement` | Quantitative | Engine displacement | Cubic inches |
+| `model_year` | Quantitative | Model year of the car | Recorded here as two digit years from `70` to `82` |
+
+**Common project idea:** Use `mpg` as the response variable and study how horsepower, weight, acceleration, and origin relate to fuel efficiency.
+:::
+
+
+::: {.callout-tip collapse="true"}
+# Diamond Prices
+
+| Variable | Type | What it means | Values or notes |
+|---|---|---|---|
+| `price` | Quantitative | Price of the diamond | Measured in US dollars |
+| `carat` | Quantitative | Weight of the diamond | Carats |
+| `depth` | Quantitative | Total depth percentage | A common diamond proportion measure |
+| `table` | Quantitative | Table width percentage | A common diamond proportion measure |
+| `cut` | Categorical | Overall cut quality grade | `Fair`, `Good`, `Very Good`, `Premium`, `Ideal` |
+| `color` | Categorical | Diamond color grade | `D` is closer to colorless; letters farther down the scale indicate more color |
+| `clarity` | Categorical | Diamond clarity grade | Higher clarity means fewer visible internal flaws |
+| `x` | Quantitative | Length of the diamond | Millimeters |
+| `y` | Quantitative | Width of the diamond | Millimeters |
+| `z` | Quantitative | Depth of the diamond | Millimeters |
+
+**Common project idea:** Use `price` as the response variable and study how carat, cut, and physical dimensions relate to price.
+:::
+
+
+::: {.callout-tip collapse="true"}
+# House Sale Prices
+
+| Variable | Type | What it means | Values or notes |
+|---|---|---|---|
+| `sale_price` | Quantitative | Sale price of the house | Measured in US dollars |
+| `living_area` | Quantitative | Above ground living area | Square feet |
+| `bedrooms` | Quantitative | Number of bedrooms above ground level | Whole numbers |
+| `house_age` | Quantitative | Age of the house at the time of sale | Computed from year built and year sold. A value of `-1` can occur for very new construction. |
+| `overall_quality` | Quantitative | Overall material and finish quality | Higher values indicate better quality |
+| `overall_condition` | Quantitative | Overall condition of the house | Higher values indicate better condition |
+| `lot_area` | Quantitative | Lot size | Square feet |
+| `full_bath` | Quantitative | Number of full bathrooms | Whole numbers |
+| `neighborhood` | Categorical | Neighborhood code in Ames, Iowa | 28 neighborhood categories |
+| `year_built` | Quantitative | Year the house was built | Calendar year |
+| `year_sold` | Quantitative | Year the house was sold | Calendar year |
+
+**Common project idea:** Use `sale_price` as the response variable and study how living area, house age, quality, and other house features relate to sale price.
+:::
+
+
+::: {.callout-tip collapse="true"}
+# Student Achievement
+
+| Variable | Type | What it means | Values or notes |
+|---|---|---|---|
+| `final_score` | Quantitative | Final course grade | Scale from 0 to 20 |
+| `prior_score` | Quantitative | Later prior grade before the final grade | Scale from 0 to 20 |
+| `first_period_score` | Quantitative | Earlier grade from the first grading period | Scale from 0 to 20 |
+| `study_time` | Quantitative | Weekly study time category | `1` = less than 2 hours, `2` = 2 to 5 hours, `3` = 5 to 10 hours, `4` = more than 10 hours |
+| `absences` | Quantitative | Number of school absences | Whole numbers |
+| `internet_access` | Categorical | Whether the student has internet access at home | `Yes`, `No` |
+| `failures` | Quantitative | Number of past class failures | Values from 0 to 3 |
+| `age` | Quantitative | Age of the student | Years |
+| `sex` | Categorical | Recorded sex of the student | `Female`, `Male` |
+| `go_out` | Quantitative | How often the student goes out with friends | Scale from 1 to 5, where larger values mean going out more often |
+| `health` | Quantitative | Self reported current health status | Scale from 1 to 5, where larger values mean better health |
+
+**Common project idea:** Use `final_score` as the response variable and study how prior performance, study time, absences, and other student characteristics relate to final achievement.
+:::
+
+
+# Tips for choosing variables
+
+When you build your final model, try to choose predictors that make sense **in context**. A good project does not only fit a model. It also explains why the predictors belong in the model.
+
+A few examples:
+
+- In the insurance data, `smoker` is likely an important predictor of `charges`.
+- In the car data, `weight` and `horsepower` are natural predictors of `mpg`.
+- In the diamond data, `carat` is likely strongly related to `price`.
+- In the housing data, `living_area` and `overall_quality` are natural predictors of `sale_price`.
+- In the student data, `prior_score` and `study_time` are natural predictors of `final_score`.
+
+You should still examine graphs and think about whether your final model is reasonable.

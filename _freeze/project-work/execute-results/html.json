@@ -1,0 +1,15 @@
+{
+  "hash": "9fb9108d9cfcfc52a6a595c1fbcbaba4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Midterm Project I Proposal and Presentation\"\n---\n\n## Presentation Order\n\nThe presentation order is determined by the time you sent me your team list (`c(\"John\", \"Jeremy\", \"Praful\")` is the first to let me know, followed by `c(\"Sajjad\", \"Tanjina\", \"Dewan\")`, etc) and random sampling as follows.\n\n::: {.cell}\n\n```{.r .cell-code}\nteam_lst <- list(c(\"John\", \"Jeremy\", \"Praful\"),\n                 c(\"Sajjad\", \"Tanjina\", \"Dewan\"),\n                 c(\"Ethan\", \"Navid\", \"Sylvester\"),\n                 c(\"Violet\", \"Vanessa\", \"Michele\"),\n                 c(\"Rakesh\", \"Daniel\", \"Jeremy\"),\n                 c(\"Sai\", \"Rohith\", \"Shristi\"))\nset.seed(2025)\nidx <- sample(1:6, 6)\nteam_lst[idx]\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[[1]]\n[1] \"Rakesh\" \"Daniel\" \"Jeremy\"\n\n[[2]]\n[1] \"Violet\"  \"Vanessa\" \"Michele\"\n\n[[3]]\n[1] \"Sai\"     \"Rohith\"  \"Shristi\"\n\n[[4]]\n[1] \"Sajjad\"  \"Tanjina\" \"Dewan\"  \n\n[[5]]\n[1] \"John\"   \"Jeremy\" \"Praful\"\n\n[[6]]\n[1] \"Ethan\"     \"Navid\"     \"Sylvester\"\n```\n\n\n:::\n:::\n\n## Proposal\n\nHere shows group project's proposal.\n\n-   Group 1:\n\n-   Group 2:\n\n-   Group 3:\n\n-   Group 4:\n\n-   Group 5 (John, Jeremy, Praful): [Poisson Regression](/documents/project_proposal/project1/proposal_poisson_reg.pdf \"Poisson Regression\")\n\n-   Group 5:\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

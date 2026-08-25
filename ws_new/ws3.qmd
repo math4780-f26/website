@@ -1,0 +1,32 @@
+---
+title: "Worksheet 3"
+subtitle: "Probability Distributions"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) **Pick the correct model.** Choose binomial, Poisson, or normal. Give one reason.
+(a) Number of heads in 20 coin flips.
+(b) Number of typos on a page of a long book.
+(c) Heights of adult women.
+
+
+```{r}
+#| include: false
+# 11a Binomial. 11b Poisson. 11c Normal.
+```
+
+(@) **Normal symmetry facts.** If $X \sim N(\mu, \sigma^2)$, decide without calculating:
+(a) $P(X>\mu)$ is 0.5, less than 0.5, or greater than 0.5?
+(b) Which is larger: $P(X>μ+σ)$ or $P(X<μ−σ)$? Why?
+
+```{r}
+#| include: false
+# 15a 0.5. 15b equal by symmetry.
+```

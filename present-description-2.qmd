@@ -1,0 +1,179 @@
+---
+title: "Midterm Presentation II - Classification"
+subtitle: "MSSC 6250 Machine Learning, Spring 2025"
+author: 'Dr. Cheng-Han Yu'
+date-modified: today
+---
+
+# Timeline and Things to Do
+
+-   **Proposal**. Please send me a [**one-page PDF**]{.blue} describing what you are going to do for your project (no word limit) with your **project title** by [**Tuesday, 4/8 11:59 PM**]{.red}.
+
+-   **Presentation**. You will be presenting your project on [**Tuesday, 4/15 in class**]{.red}.
+
+-   **Materials**. Please share your [**entire work**]{.blue} (slides, code, data, etc) by [**Friday, 4/18 11:59 PM**]{.red}.
+
+
+
+# Policy
+
+## **Proposal**
+
+-   *Each one of you loses 5 points of your project grade if you don't meet the requirement or miss the deadline.*
+
+-   Your proposal (in PDF) should include three parts:
+
+    -   **Project title**
+    -   **The goal of your project**. For example, what is the research question you'd like to answer? What machine learning method/model/algorithm you'd like to introduce? What data you'd like to use for analysis or demonstration? etc.
+
+-   Although it is risky, you can change your project topic after you submit your proposal if you decide to do something else.
+
+## **Presentation**
+
+-   Each group presentation should be between **10 and 11 minute** long, followed by **1 to 2 minute** Q&A. If your presentation is too short or too long, *every one of you loses 5 points* of your project grade.
+
+-   Every group member has to present some part of the group work. **The one who does not present receives no point**.
+
+-   [Questions are REQUIRED during Q&A. Each group is required to ask as least one question. More questions are welcome. If you, as a group, don’t ask a question when you should, every one of you loses 5 points of your project grade.]{.green}
+
+::: {.green}
+| Team Presenting |  Team Asking Questions |
+|-----------------|------------------------|
+| Team 1          |  Team 6                |
+| Team 2          |  Team 1                |
+| Team 3          |  Team 2                |
+| Team 4          |  Team 3                |
+| Team 5          |  Team 4                |
+| Team 6          |  Team 5                |
+:::
+
+
+
+<!-- After the 1st group presentation, the 2nd group should ask at least one question in Q&A. After the 2nd group presentation, the 3rd group should at least ask one question in Q&A, and so on and so forth. The 1st group will ask the last group questions about their project. If you, as a group, don’t ask a question when you should, every one of you loses 10 points of your project grade. -->
+
+
+## **Materials**
+
+-   *Each one of you loses 5 points of your project grade if you don't meet the requirement or miss the deadline.*
+
+-   You need to share your entire work, including slides, code, and data if applicable.
+
+-   Your code should be able to **reproduce all the numerical results, outputs, tables, and figures shown in the slides**, including the source of the raw data (where you find and load the data) if the project is about data analysis.
+
+
+
+# Project Content
+
+Your project can be in either of the following categories:
+
+1.  **(DA)** Data analytics using one or more **CLASSIFICATION** methods.
+
+2.  **(MA)** Introduce a new **CLASSIFICATION** model/method/algorithm not lectured in class.
+
+## Data Analytics
+
+For your DA project, you need to
+
+-   Describe the selected data set.
+
+-   Explain and show why the chosen model(s) is appropriate for answering your research questions and better than others.
+
+-   Interpret your analysis result.
+
+Below are some data repositories you can start with, but you are encouraged to explore more and find your favorite one.
+
+-   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+-   [Kaggle](https://www.kaggle.com/datasets)
+-   [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
+-   [Harvard Dataverse](https://dataverse.harvard.edu/)
+-   [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+-   [FiveThirtyEight](https://data.fivethirtyeight.com/)
+
+## Model/Algorithm
+
+For your MA project, you need to
+
+-   Describe the intuition and idea of the method. What are the pros and cons of the method?
+
+-   Provide the mathematical expression of the model/algorithm. Explain the model and its properties, and how we do supervised learning with the model/algorithm.
+
+-   Compare the chosen method with other methods learned in class. Determine which method performs better under what conditions.
+
+-   Demo how to implement the method using a programming language for supervised learning.
+
+# Project Evaluation and Grading {#sec-grading}
+
+-   Your project performance grade is *determined by **your classmates and Dr. Yu***.
+
+-   Table 1 shows your possible performance grade. For example, if your group finish in second place (Silver) you get 145 points.
+
+-   Your project grade will be
+
+> project grade = performance grade - points lost due to violation of policy
+
+```{r, echo=FALSE}
+# library(tidyverse)
+first_ind <- c(150, 145, 140, 135)
+# other_ind <- c(97, 94, 91, 87)
+# grade <- tibble(first_ind, other_ind)
+# grade <- as.data.frame(grade)
+grade <- data.frame(first_ind)
+rownames(grade) <- c("Gold 🥇 1st", "Silver 🥈 2nd", "Bronze 🥉 3rd", "Other teams")
+colnames(grade) <- c("Performace Grade 🎖")
+knitr::kable(grade, align = "c", caption = "Performance Grade Sheet", label = "tbl:grade")
+```
+
+## Group Performance Evaluation
+
+-   You will need to **evaluate all group projects except the one you work on**.
+
+-   You evaluate group performance based on the rubric attached. Four evaluation criteria are considered:
+
+    -   **Project Content and Organization (8 pts)**
+    -   **Presentation Material (Slides) Quality (4 pts)**
+    -   **Oral Presentation Skill and Delivery (4 pts)**
+    -   **Interactions and Q&A (4 pts)**
+
+-   The total points of a project presentation is **20** points.
+
+-   Evaluation sheets will be provided on the presentation day.
+
+How do you get the full points for each category? Check the rubric below. <!-- Note that for Content and Organization, data analysis and package projects have different requirements. -->
+
+-   **Content and Organization (DA)**
+
+    -   Beautiful visualization helps find out relationship of variables and specification of models
+    -   All questions are answered accurately by the models
+    -   Discuss how and why the models are chosen
+    -   Apply sophisticated models and detailed analysis
+    -   All ideas are presented in logical order
+
+-   **Content and Organization (MA)**
+
+    -   Explain the method clearly and accuratly
+    -   Show the pros and cons of the method, and compare with the methods learned in class.
+    -   Show how the method can be implemednted for supervised learning.
+    -   All ideas are presented in logical order
+
+-   **Presentation Material Quality**
+
+    -   Presentation material show code and output beautifully
+    -   Presentation material clearly aid the speaker in telling a coherent story
+    -   All tables and graphics are informative and related to the topic and make it easier to understand
+    -   Attractive design, layout, and neatness.
+
+-   **Oral Presentation Skill**
+
+    -   Good volume and energy
+    -   Proper pace and diction
+    -   Avoidance of distracting gestures
+
+-   **Interactions and Q&A**
+
+    -   Good eye contact with audience
+    -   Excellent listening skills
+    -   Answers audience questions with authority and accuracy
+
+-   After you evaluate all group project presentations, you rank them from 1st to last based on their earned points.
+
+-   **No two groups receive the same ranking**. If you give two or more groups some points, you still need to give them a different ranking, deciding which team deserves a higher ranking according to your preference.

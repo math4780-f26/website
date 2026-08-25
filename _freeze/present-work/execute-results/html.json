@@ -1,0 +1,15 @@
+{
+  "hash": "ac5927abba9aba4b94f9865a5ac9feb6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Midterm Project I Proposal and Presentation\"\n---\n\n## Presentation Order\n\nThe presentation order is determined by the time you sent me your member info (`c(\"John\", \"Jeremy\", \"Praful\")` is the first to let me know, followed by `c(\"Sajjad\", \"Tanjina\", \"Dewan\")`, etc) and random sampling as follows.\n\n::: {.cell}\n\n```{.r .cell-code}\nteam_lst <- list(c(\"John\", \"Jeremy\", \"Praful\"), \n                 c(\"Sajjad\", \"Tanjina\", \"Dewan\"),\n                 c(\"Ethan\", \"Navid\", \"Sylvester\"), \n                 c(\"Violet\", \"Vanessa\", \"Michele\"), \n                 c(\"Rakesh\", \"Daniel\", \"Jeremy\"), \n                 c(\"Sai\", \"Rohith\", \"Shristi\"))\nset.seed(6250)\nteam_lst[sample(1:6, 6)]\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[[1]]\n[1] \"Sajjad\"  \"Tanjina\" \"Dewan\"  \n\n[[2]]\n[1] \"John\"   \"Jeremy\" \"Praful\"\n\n[[3]]\n[1] \"Violet\"  \"Vanessa\" \"Michele\"\n\n[[4]]\n[1] \"Rakesh\" \"Daniel\" \"Jeremy\"\n\n[[5]]\n[1] \"Sai\"     \"Rohith\"  \"Shristi\"\n\n[[6]]\n[1] \"Ethan\"     \"Navid\"     \"Sylvester\"\n```\n\n\n:::\n:::\n\n## Project Materials\n\n-   **[Group 1 (Sajjad, Tanjina, Dewan)]{.blue} Predicting Life Expectancy**: [proposal](/documents/project_proposal/project1/proposal_tanjina_sajjad_dewan.pdf)\n\n-   **[Group 2 (John, Jeremy, Praful)]{.blue} Poisson Regression**: [proposal](/documents/project_proposal/project1/proposal_john_jeremy_praful.pdf)\n\n-   **[Group 3 (Violet, Vanessa, Michele)]{.blue} Is Ridge Regression or LASSO a better model to predict the price of houses in Ames, Iowa**: [proposal](/documents/project_proposal/project1/proposal_violet_venessa_michele.pdf)\n\n-   **[Group 4 (Rakesh, Daniel, Jeremy)]{.blue} Predicting Abalone Age Using Regression Models**: [proposal](/documents/project_proposal/project1/proposal_rakesh_daniel_jeremy.pdf)\n\n-   **[Group 5 (Sai, Rohith, Shristi)]{.blue} Analyzing the Impact of Housing Features on Sale Prices: A Regression-Based Study on the Ames Housing Dataset** : [proposal](/documents/project_proposal/project1/proposal_sai_rohith_shristi.pdf)\n\n-   **[Group 6 (Ethan, Navid, Sylvester)]{.blue} Predicting Car Sticker Price Regression**: [proposal](/documents/project_proposal/project1/proposal_ethan_navid_sylvester.pdf)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,160 @@
+---
+title: "Homework 7"
+subtitle: "Inference about Variances"
+categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: false
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, Apr 17, 11:59 PM**]{.red}
+:::
+
+<!-- - Homework 6 covers Week 9 and 10. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not allowed. 
+
+- In your homework, please number questions **in order**. 
+
+<!-- - Your homework could be handwritten or typewritten. If it is handwritten, make sure you scan your work well, and put everything in one single pdf. -->
+
+<!-- - If you type your answers, make sure there are no typos. We grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- **Handwritten tables and figures receive no credits**.
+
+- You do not need to attach your code of any language you use in the homework. However, if you fail to complete your calculations or produce your table or figure, you receive partial credits if your code is attached. 
+
+<!-- - Questions started with **(MSSC)** are required for MSSC 5720 students, and optional for MATH 4720 students. -->
+
+# Homework Questions
+
+(@) The data about male and female pulse rates are summarized below.
+    (a) Construct a 95\% CI for $\sigma_{male}$ of pulse rates for males.
+    (b) Construct a 95\% CI for $\sigma_{male}/\sigma_{female}$.
+    (c) Does it appear that the population standard deviations for males and females are different? Why or why not?
+```{r}
+#| echo: false
+#| eval: true
+library(gt)
+data <- data.frame(
+Statistic = c("Mean (x̄)", "Standard deviation (s)", "Sample size (n)"),
+Male = c(70, 10, 16),
+Female = c(76, 13, 11)
+)
+gt(data) |>
+tab_header(title = "Pulse Rate by Gender") |>
+cols_label(
+Statistic = "",
+Male = "Male",
+Female = "Female"
+)
+```
+
+```{r}
+#| echo: false
+#| eval: false
+## Fall 2021 4740 Exam 2
+
+n1 <- 16; n2 <- 11
+s1 <- 10; s2 <- 13
+alpha <- 0.05
+
+## 95% CI for sigma_1
+chi2_upper <- qchisq(alpha/2, 15, lower.tail = FALSE)
+chi2_lower <- qchisq(alpha/2, 15, lower.tail = TRUE)
+sqrt((n1 - 1) * s1^2 / chi2_upper)
+sqrt((n1 - 1) * s1^2 / chi2_lower)
+
+## 95% CI for sigma_1^2 / sigma_2^2
+f_small <- qf(p = alpha / 2,
+              df1 = n1 - 1, df2 = n2 - 1,
+              lower.tail = TRUE)
+f_big <- qf(p = alpha / 2,
+            df1 = n1 - 1, df2 = n2 - 1,
+            lower.tail = FALSE)
+
+## lower bound
+sqrt((s1 ^ 2 / s2 ^ 2) / f_big)
+
+## upper bound
+sqrt((s1 ^ 2 / s2 ^ 2) / f_small)
+
+```
+
+<br>
+
+
+(@) A production process for filling orange juice containers labeled as 64 ounces is monitored for the actual amount of juice in the container. The process is designed such that the amount of juice in the containers has a normal distribution with a mean of 64.3 ounces and a standard deviation of .15 ounces. The process is monitored by randomly selecting 24 containers every hour and measuring the actual amount of juice in the containers. An increase in the standard deviation beyond .15 ounces with the mean remaining at 64.3 ounces will result in a production run with too many underfilled and overfilled containers. The following data are the actual amounts of juice in a random sample of 24 containers.
+    (a) If the amount of juice in the containers has a normal distribution with a mean of 64.3 ounces and a standard deviation of .15 ounces, what proportion of containers filled on the production line will be underfilled (contain less than 64 ounces)?
+    (b) Construct a 95\% confidence interval on the process standard deviation.
+    (c) Do the test on the claim that the process standard deviation is *greater than* .15 ounces. Use $\alpha = 0.05$.
+    (d) What is the p-value of your test in (c)? (We can use `pchisq()`)
+    (e) If you do (b) and (c) correctly, you should find that (b) and (c) lead to a different conclusion about the claim that $\sigma > 0.15$. Can you provide the reasoning?
+```{r}
+#| echo: false
+#| eval: true
+library(knitr)
+
+data <- matrix(c(
+64.37, 64.26, 64.22, 64.42, 64.13, 64.44, 64.64, 64.19, 63.85, 64.17, 64.21, 64.23,
+64.64, 64.12, 63.98, 64.34, 64.20, 64.31, 64.15, 64.09, 64.33, 64.19, 64.57, 64.19
+), nrow = 2, byrow = TRUE)
+
+kable(data, align = "c")
+```
+
+```{r}
+data <- c(64.37, 64.26, 64.22, 64.42, 64.13, 64.44, 64.64, 64.19, 63.85, 64.17,
+          64.21, 64.23, 64.64, 64.12, 63.98, 64.34, 64.20, 64.31, 64.15, 64.09,
+          64.33, 64.19, 64.57, 64.19)
+## (a)
+pnorm(q = 64, mean = 64.3, sd = 0.15)
+
+## (b)
+n <- 24; s2 <- var(data)
+chi2_right <- qchisq(p = 0.025, df = n - 1, lower.tail = FALSE)
+chi2_left <- qchisq(p = 0.025, df = n - 1, lower.tail = TRUE)
+## two bounds of CI for sigma2
+ci_sig2_lower <- (n - 1) * s2 / chi2_right
+ci_sig2_upper <- (n - 1) * s2 / chi2_left
+
+## two bounds of CI for sigma
+(ci_sig_lower <- sqrt(ci_sig2_lower))
+(ci_sig_upper <- sqrt(ci_sig2_upper))
+
+## (c)
+chi2_test <- (n-1)*s2/(0.15^2)
+chi2_cri <- qchisq(p = 0.05, df = n - 1, lower.tail = FALSE)
+
+## (d)
+pchisq(q = chi2_test, df = n - 1, lower.tail = FALSE)
+
+## (e)
+# The test is one-sided test, but the CI is 2-sided.
+```
+
+
+<br>
+
+<!-- (@) **(MSSC)** We have been doing a variety of hypothesis tests, two-sample pooled $t$ tests, $F$-test for comparing two variances for example. However, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic and often misused in data analysis. In fact, in his research, Dr. Yu never does NHST or uses p-value taught in MATH 4720. Please read the articles  -->
+
+<!--     - [Ronald L. Wasserstein and Nicole A. Lazar (2016), "The ASA Statement on p-Values: Context, Process, and Purpose (page 131 -- 132)" ](https://www.tandfonline.com/doi/epdf/10.1080/00031305.2016.1154108?needAccess=true) -->
+
+<!--     - [V. Amrhein, S. Greenland and B. McShane (2019), "Retire statistical significance", *Nature*, 567, 305-307. ](https://www.nature.com/articles/d41586-019-00857-9) -->
+
+<!--     - [R. Nuzzo (2014), "Scientific method: Statistical errors", *Nature*, 506, 150–152.](https://www.nature.com/articles/506150a) -->
+
+<!--     Write a one-page summary discussing the problems of NHST paradigm and p-value. Welcome to share what does not make sense to you about the hypothesis testing (or confidence interval) that was proposed about 100 years ago. -->
+
+<!-- &nbsp; -->
+<!-- &nbsp; -->
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

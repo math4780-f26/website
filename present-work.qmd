@@ -1,0 +1,32 @@
+---
+title: "Midterm Project I Proposal and Presentation"
+---
+
+## Presentation Order
+
+The presentation order is determined by the time you sent me your member info (`c("John", "Jeremy", "Praful")` is the first to let me know, followed by `c("Sajjad", "Tanjina", "Dewan")`, etc) and random sampling as follows.
+
+```{r}
+team_lst <- list(c("John", "Jeremy", "Praful"), 
+                 c("Sajjad", "Tanjina", "Dewan"),
+                 c("Ethan", "Navid", "Sylvester"), 
+                 c("Violet", "Vanessa", "Michele"), 
+                 c("Rakesh", "Daniel", "Jeremy"), 
+                 c("Sai", "Rohith", "Shristi"))
+set.seed(6250)
+team_lst[sample(1:6, 6)]
+```
+
+## Project Materials
+
+-   **[Group 1 (Sajjad, Tanjina, Dewan)]{.blue} Predicting Life Expectancy**: [proposal](/documents/project_proposal/project1/proposal_tanjina_sajjad_dewan.pdf)
+
+-   **[Group 2 (John, Jeremy, Praful)]{.blue} Poisson Regression**: [proposal](/documents/project_proposal/project1/proposal_john_jeremy_praful.pdf)
+
+-   **[Group 3 (Violet, Vanessa, Michele)]{.blue} Is Ridge Regression or LASSO a better model to predict the price of houses in Ames, Iowa**: [proposal](/documents/project_proposal/project1/proposal_violet_venessa_michele.pdf)
+
+-   **[Group 4 (Rakesh, Daniel, Jeremy)]{.blue} Predicting Abalone Age Using Regression Models**: [proposal](/documents/project_proposal/project1/proposal_rakesh_daniel_jeremy.pdf)
+
+-   **[Group 5 (Sai, Rohith, Shristi)]{.blue} Analyzing the Impact of Housing Features on Sale Prices: A Regression-Based Study on the Ames Housing Dataset** : [proposal](/documents/project_proposal/project1/proposal_sai_rohith_shristi.pdf)
+
+-   **[Group 6 (Ethan, Navid, Sylvester)]{.blue} Predicting Car Sticker Price Regression**: [proposal](/documents/project_proposal/project1/proposal_ethan_navid_sylvester.pdf)

@@ -1,0 +1,214 @@
+---
+title: "Homework 6"
+subtitle: "Comparing Two Population Means"
+categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: false
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, Apr 10, 11:59 PM**]{.red}
+:::
+
+- Homework 6 covers Week 9 and 10.
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not allowed. 
+
+- In your homework, please number questions **in order**. 
+
+<!-- - Your homework could be handwritten or typewritten. If it is handwritten, make sure you scan your work well, and put everything in one single pdf. -->
+
+<!-- - If you type your answers, make sure there are no typos. We grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- **Handwritten tables and figures receive no credits**.
+
+- You do not need to attach your code of any language you use in the homework. However, if you fail to complete your calculations or produce your table or figure, you receive partial credits if your code is attached. 
+
+<!-- - Questions started with **(MSSC)** are required for MSSC 5720 students, and optional for MATH 4720 students. -->
+
+# Homework Questions
+
+(@) You are given the following hypotheses:
+\begin{align*}
+H_0&: \mu = 60 \\
+H_A&: \mu \neq 60
+\end{align*}
+We know that the sample standard deviation is 8 and the sample size is 20. For what sample mean would the p-value be equal to 0.05? Assume that all conditions necessary for inference are satisfied.
+```{r}
+## OI 7.9
+s <- 8
+n <- 20
+t_test <- qt(0.025, df = n - 1, lower.tail = FALSE)
+60 + t_test * s/sqrt(n)
+60 - t_test * s/sqrt(n)
+```
+
+<br>  
+
+(@) Here are summary statistics for randomly selected weights of newborn girls: $n =205$, $\bar{x} = 30.4$hg (1hg = 100 grams), $s = 7.1$hg.
+    (a) With significance level 0.01, use the critical value method to test the claim that the population mean of birth weights of females is greater than 30hg.
+    (b) Do the same test in (a), but use the p-value method. Are the conclusions in (a) and (b) the same?
+```{r}
+## BIO 7.2 9/8.3 14
+x_bar <- 30.4
+s <- 7.1
+n <- 205
+## (a)(b)
+al <- 0.01
+(t_test <- (x_bar - 30) / (s / sqrt(n)))
+(t_cv <- qt(al, df = n - 1, lower.tail = FALSE))
+(p_val <- pt(t_test, df = n - 1, lower.tail = FALSE))
+
+```
+<br>  
+
+(@) Here are summary statistics for randomly selected weights of newborn girls: $n =205$, $\bar{x} = 30.4$hg (1hg = 100 grams), $s = 7.1$hg.
+    (a) Compute a 95% confidence interval for $\mu$, the mean weight of newborn girls.
+    (b) Are the result in (a) very different from the 95% confidence interval if $\sigma = 7.1$? Why?
+```{r}
+## BIO 7.2 9/8.3 14
+## (a)
+x_bar <- 30.4
+s <- 7.1
+n <- 205
+al <- 0.05
+t_cv <- qt(al/2, df = n - 1, lower.tail = FALSE)
+x_bar + c(-1, 1) * t_cv * s / sqrt(n)
+## (b)
+## No, the results do not differ by much
+## (c)
+al <- 0.01
+(t_test <- (x_bar - 30) / (s / sqrt(n)))
+(t_cv <- qt(al, df = n - 1, lower.tail = FALSE))
+(p_val <- pt(t_test, df = n - 1, lower.tail = FALSE))
+```
+
+<br>  
+
+(@) A study was conducted to assess the effects that occur when children are expected to cocaine before birth.  Children were tested at age 4 for object assembly skill, which was described as "a task requiring visual-spatial skills related to mathematical competence."  The 190 children born to cocaine users had a mean of 7.3 and a standard deviation of 3.0. The 186 children not exposed to cocaine had a mean score of 8.2 and a standard deviation of 3.0.
+    (a) With $\alpha = 0.05$, use the critical-value method and p-value method to perform a 2-sample t-test on the claim that prenatal cocaine exposure is associated with lower scores of 4-year-old children on the test of object assembly.
+    (b) Test the claim in part (a) by using a confidence interval.
+```{r}
+## BIO 9.2 7
+n1 = 190; x1_bar = 7.3; s1 = 3
+n2 = 186; x2_bar = 8.2; s2 = 3
+A <- s1^2 / n1; B <- s2^2 / n2
+df <- (A + B)^2 / (A^2/(n1-1) + B^2/(n2-1))
+(df <- floor(df))
+## t_test
+(t_test <- (x1_bar - x2_bar) / sqrt(s1^2/n1 + s2^2/n2))
+## t_cv
+qt(p = 0.05, df = df)
+## p_value
+pt(q = t_test, df = df)
+(x1_bar - x2_bar) + c(1, -1) * qt(p = 0.025, df = df) * sqrt(s1^2/n1 + s2^2/n2)
+
+# ===== Basically equivalent
+sp <- sqrt(((n1 - 1) * s1 ^ 2 + (n2 - 1) * s2 ^ 2) / (n1 + n2 - 2))
+sp
+df <- n1 + n2 - 2
+(t_test <- (x1_bar - x2_bar) / (sp * sqrt(1 / n1 + 1 / n2)))
+(x1_bar - x2_bar) + c(1, -1) * qt(p = 0.025, df = df) * sp * sqrt(1/n1 + 1/n2)
+```
+
+<br>  
+
+(@) Listed below are heights (in.) of mothers and their first daughters. 
+    (a) Use $\alpha = 0.05$ to test the claim that there is no difference in heights between mothers and their first daughters.
+    (b) Test the claim in part (a) by using a confidence interval.
+
+```{r}
+#| echo: false
+#| eval: true
+library(gt)
+data <- data.frame(
+Mother = c(68, 60, 61, 63.5, 69, 64, 69, 64, 63.5, 66),
+Daughter = c(68.5, 60, 63.5, 67.5, 68, 65.5, 69, 68, 64.5, 63)
+)
+gt(data) |>
+tab_header(title = "Height of Mother and Daughter (inches)") |>
+cols_label(
+Mother = "Height of Mother",
+Daughter = "Height of Daughter"
+)
+```
+
+```{r}
+## BIO 9.3 9
+mom <- c(68, 60, 61, 63.5, 69, 64, 69, 64, 63.5, 66)
+dau <- c(68.5, 60, 63.5, 67.5, 68, 65.5, 69, 68, 64.5, 63)
+t.test(x = mom, y = dau, alternative = c("two.sided"), 
+       paired = TRUE, conf.level = 0.95)
+qt(0.025, df = length(mom) - 1)
+mean(mom - dau) + c(1, -1) * qt(0.025, df = length(mom) - 1) * sd(mom - dau) / sqrt(length(mom))
+```
+
+<br> 
+
+
+
+<!-- (@) The data about male and female pulse rates are summarized below. -->
+<!--     (a) Construct a 95\% CI for $\sigma_{male}$ of pulse rates for males.  -->
+<!--     (b) Construct a 95\% CI for $\sigma_{male}/\sigma_{female}$. -->
+<!--     (c) Does it appear that the population standard deviations for males and females are different? Why or why not? -->
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- #| eval: true -->
+<!-- library(gt) -->
+<!-- data <- data.frame( -->
+<!-- Statistic = c("Mean (x̄)", "Standard deviation (s)", "Sample size (n)"), -->
+<!-- Male = c(70, 10, 16), -->
+<!-- Female = c(76, 13, 11) -->
+<!-- ) -->
+<!-- gt(data) |> -->
+<!-- tab_header(title = "Pulse Rate by Gender") |> -->
+<!-- cols_label( -->
+<!-- Statistic = "", -->
+<!-- Male = "Male", -->
+<!-- Female = "Female" -->
+<!-- ) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- #| eval: false -->
+<!-- ## Fall 2021 4740 Exam 2 -->
+
+<!-- n1 <- 16; n2 <- 11 -->
+<!-- s1 <- 10; s2 <- 13 -->
+<!-- alpha <- 0.05 -->
+
+<!-- ## 95% CI for sigma_1 -->
+<!-- chi2_upper <- qchisq(alpha/2, 15, lower.tail = FALSE) -->
+<!-- chi2_lower <- qchisq(alpha/2, 15, lower.tail = TRUE) -->
+<!-- sqrt((n1 - 1) * s1^2 / chi2_upper) -->
+<!-- sqrt((n1 - 1) * s1^2 / chi2_lower) -->
+
+<!-- ## 95% CI for sigma_1^2 / sigma_2^2 -->
+<!-- f_small <- qf(p = alpha / 2,  -->
+<!--               df1 = n1 - 1, df2 = n2 - 1,  -->
+<!--               lower.tail = TRUE) -->
+<!-- f_big <- qf(p = alpha / 2,  -->
+<!--             df1 = n1 - 1, df2 = n2 - 1,  -->
+<!--             lower.tail = FALSE) -->
+
+<!-- ## lower bound -->
+<!-- sqrt((s1 ^ 2 / s2 ^ 2) / f_big) -->
+
+<!-- ## upper bound -->
+<!-- sqrt((s1 ^ 2 / s2 ^ 2) / f_small) -->
+
+<!-- ``` -->
+
+<!-- <br> -->
+
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

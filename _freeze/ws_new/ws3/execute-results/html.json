@@ -1,0 +1,15 @@
+{
+  "hash": "f11a6ff45f5db2a93ec7894b73505b17",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 3\"\nsubtitle: \"Probability Distributions\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) **Pick the correct model.** Choose binomial, Poisson, or normal. Give one reason.\n(a) Number of heads in 20 coin flips.\n(b) Number of typos on a page of a long book.\n(c) Heights of adult women.\n\n\n\n\n(@) **Normal symmetry facts.** If $X \\sim N(\\mu, \\sigma^2)$, decide without calculating:\n(a) $P(X>\\mu)$ is 0.5, less than 0.5, or greater than 0.5?\n(b) Which is larger: $P(X>μ+σ)$ or $P(X<μ−σ)$? Why?\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

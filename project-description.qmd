@@ -1,0 +1,100 @@
+---
+title: "Final Project Report Guidelines"
+subtitle: "MSSC 6250 Machine Learning, Spring 2025"
+author: 'Dr. Cheng-Han Yu'
+date-modified: today
+---
+
+## Deadline
+
+- Please send me your **entire work** (written report, code, data, etc) by [**May 8, 2025 10 AM**]{.red}.
+
+- *You receive 0 point if you miss the deadline.*
+
+
+## Project Writing
+
+Your project can be in either of the following categories:
+
+1. **Data Analysis (DA)** using one or more machine learning methods learned in class.
+
+2. **Introduce a new machine learning model/method/algorithm (ML)** and compare it with the model/method/algorithms learned in class.
+
+
+
+### Structure
+
+If you choose to do **DA**, your paper should include the following sections:
+
+- **Introduction**: State why you think the questions you would like to answer are important or interesting, and why you think the method(s) you consider is an appropriate one to answer your questions.
+
+- **Data**: Describe the selected data set. Perform a thorough exploratory data analysis.
+
+- **Analysis**:
+  + Explain the chosen model/method.
+  + Show why the chosen model(s) is appropriate and better than others.
+  + Answer your research questions by the analysis result.
+
+- **Conclusion**: Restate your research question, and summarize how you learn from data to answer your questions. What is the contribution of this project? Discuss any limitation of your model/method, and how it could be improved for better inference or prediction results.
+  
+- **References/Bibliography**: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.
+
+
+If you choose to do **ML**, your paper should include the following sections:
+
+- **Introduction**: State why you choose to learn this new method. Provide an overview and little history of the method. Describe the intuition and idea of the method. What are the pros and cons of the method?
+
+- **Model/Method**: Provide the mathematical expression of the model. Explain the model and its properties, and how we do the supervised or unsupervised learning with the model.
+
+- **Simulation**: Do a simulation study, and compare the chosen method with other methods learned in class. Determine which method performs better under what conditions.
+
+- **Discussion**: Based on the simulation results, discuss the advantages and disadvantages of the chosen method. Discuss any variants of the chosen method.
+
+- **References/Bibliography**: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.
+
+
+### Format and Layout
+
+-  Your project paper is saved as [**one PDF**]{.red}.
+
+- Your paper should have your **project title** and **your name** on the first page. Date, Abstract, Keywords are optional.
+
+- Except the first title page, the margins should be no larger than **one inch.**
+
+- Except the project title and section title, the font size is **12 pt**.
+
+- Please use **1.5** or **double** line spacing.
+
+- Your report, including *everything*, should be **at least 12 pages** long, but **no more than 15 pages**.
+
+- Your code should *NOT* be printed in the paper.
+
+
+
+### Code
+
+- Your code should be able to **reproduce all the numerical results, outputs, tables, and figures shown in the report**, including the source of the raw data (where you find and load the data) if the project is about data analysis.
+
+
+
+## Project Evaluation
+
+Your project will be evaluated [**soley by Dr. Yu**]{.red} based on
+
+- **Content**: 
+  + The quality of research question and relevancy of data to those questions? For example, the relationship between human height and weight is a BAD question. An elementary-school height and weight data set is a BAD data set.
+  + The quality of the chosen model. For example, one-way ANOVA is a BAD model.
+
+- **Correctness, Completeness and Complexity**: 
+  + Are machine learning methods carried out and explained correctly? 
+  + Does project include rigorous analysis and models? Simple linear regression model lacks complexity.
+
+- **Writing**: What is the quality of the machine learning model/method presentation, visualization, writing, and explanations.
+
+- **Format**: Does the report follow the required format?
+
+- **Creativity and Critical Thought**: Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?
+
+- **Reproducibility**: Can your code reproduce what you show in the paper?
+
+- **Reference**: Do you cite others work properly?

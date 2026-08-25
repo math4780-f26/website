@@ -1,0 +1,131 @@
+---
+# title: "Observable JS Normal distribution"
+execute:
+  echo: false
+---
+
+::::: columns
+
+
+::: {.column width="30%"}
+
+::: small
+
+```{ojs}
+//| echo: false
+jstat = require('jstat')
+```
+
+```{ojs}
+//| echo: false
+viewof params = Inputs.form([
+      Inputs.range([-3, 3], {value: 0, step: 0.1, label: tex`\mu:`}),
+      Inputs.range([0.1, 3], {value: 1, step: 0.1, label: tex`\sigma:`}),
+      Inputs.range([-10, 10], {value: -1.96, step: 0.01, label: "quantile:"})
+    ])
+```
+
+
+```{ojs}
+dist_quantile = tex`\text{If } X \sim N(${params[0]},${params[1]}) \text{ then } \\[1em]` 
+```
+
+
+```{ojs}
+moments = tex`
+\begin{aligned}
+&E( X) = \mu = ${params[0].toPrecision(3)} \\[0.5em]
+&Var( X) =\sigma^2 = ${(params[1]**2).toPrecision(3)} \\[0.5em]
+&P( X\leq ${params[2]}) =${normcdf.toPrecision(4)}
+\end{aligned}
+`
+```
+
+<!-- ```{ojs} -->
+<!-- //| fig-cap: "Source: <https://observablehq.com/@mattiasvillani/normal-gaussian-distribution>" -->
+<!-- sidebysideplot = html`<html> -->
+<!--  <head> -->
+<!--  </head> -->
+<!--  <body> -->
+<!--     <div class="container" style="display: flex; height: 250px;"> -->
+<!--         <div style="width: 50%;"> -->
+<!--             ${plt_pdf} -->
+<!--         </div> -->
+<!--         <div style="width: 50%;"> -->
+<!--             ${plt_pdf_interval} -->
+<!--         </div> -->
+<!--     </div> -->
+<!--  </body> -->
+<!-- </html> -->
+<!-- <br><br><br> -->
+<!-- ` -->
+<!-- ``` -->
+
+```{ojs}
+import {interval} from '@mootari/range-slider@1781'
+```
+
+:::
+
+:::
+
+::: {.column width="70%"}
+
+::: tiny
+```{ojs}
+//| echo: false
+//| out-width: 100%
+plt_pdf = Plot.plot({
+    width: 700, // or a dynamic value based on `width` variable
+    height: 400,
+    color: {
+      legend: true
+    },
+    x: {
+      label: "x",
+      axis: true
+    },
+    y: {
+      axis: true,
+      label: "Normal density value f(x)",
+      domain: [0,jstat.normal.pdf(params[0], params[0], params[1])]
+    },
+    style: {
+    fontSize: 15,         // overall font size (tick labels + titles)
+    fontFamily: "sans-serif"
+    },
+    marks: [
+      Plot.ruleY([0]),
+      Plot.line(normpdf, {x: "x", y: "pdf", stroke : "steelblue", strokeWidth: 2}),
+      Plot.areaY(normpdf, {filter: d => d.x <= params[2], x: "x", y: "pdf", fill: "steelblue", opacity: 0.2})
+    ]
+  })
+```
+
+```{ojs}
+normpdf = {
+  const x = d3.range(-10, 10, 0.01);
+  const normpdf = x.map(x => ({x: x, pdf: jstat.normal.pdf(x, params[0], params[1])}));
+  return normpdf
+}
+```
+
+```{ojs}
+normcdf = jstat.normal.cdf(params[2], params[0], params[1]);
+```
+
+```{ojs}
+maxpdf = jstat.normal.pdf(params[0], params[0], params[1])
+```
+
+```{ojs}
+textdata = [{x: params[0], y: 0.12*maxpdf, text: "68%"},{x: params[0] - 1.5*params[1], y: 0.12*maxpdf, text: "95%"},{x: params[0] - 2.5*params[1], y: 0.12*maxpdf, text: "99.7%"}]
+```
+
+<!-- ```{ojs} -->
+<!-- jstat = require('jstat') -->
+<!-- ``` -->
+:::
+:::
+
+:::::

@@ -1,0 +1,68 @@
+---
+title: "Worksheet 2"
+subtitle: "Probability Fundamentals"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+**Global warming.** A Pew Research poll asked 1,306 Americans "From what you've read and heard, is there solid evidence that the average temperature on earth has been getting warmer over the past few decades, or not?". The table below shows the distribution of responses by party and ideology, where the
+counts have been replaced with relative frequencies.
+
+
+<!-- \begin{center} -->
+<!-- \begin{tabular}{ll  ccc c}  -->
+<!--                     &                           & \multicolumn{3}{c}{\textit{Response}} \\ -->
+<!-- \cline{3-5} -->
+<!--                     &                           & Earth is  & Not       & Don't Know    &   \\ -->
+<!--                     &                           & warming   & warming   & Refuse        & Total\\ -->
+<!-- \cline{2-6} -->
+<!--                     & Conservative Republican   & 0.11      & 0.20      & 0.02      & 0.33  \\ -->
+<!-- \textit{Party and}  & Mod/Lib Republican        & 0.06      & 0.06      & 0.01      & 0.13 \\ -->
+<!-- \textit{Ideology}   & Mod/Cons Democrat         & 0.25      & 0.07      & 0.02      & 0.34 \\ -->
+<!--                     & Liberal Democrat          & 0.18      & 0.01      & 0.01      & 0.20\\ -->
+<!-- \cline{2-6} -->
+<!--                     &Total                      & 0.60      & 0.34      & 0.06      & 1.00 -->
+<!-- \end{tabular} -->
+<!-- \end{center} -->
+
+<!-- |                     |                         |                    |  **_Response_**   |                |       | -->
+<!-- |:------------------- |:------------------------|:------------------:|:---------------:|:--------------:|:-----:| -->
+<!-- |                     |                         | Earth warming  | Not warming | Don't Know | **Total**  | -->
+<!-- |                     | Conservative Republican |        0.11        |     0.20        |     0.02       |  **0.33** | -->
+<!-- | **_Party and Ideology_**| Mod/Lib Republican      |        0.06        |     0.06        |     0.01       |  **0.13** | -->
+<!-- |                     | Mod/Cons Democrat       |        0.25        |     0.07        |     0.02       |  **0.34** | -->
+<!-- |                     | Liberal Democrat        |        0.18        |     0.01        |     0.01       |  **0.20** | -->
+<!-- |                     | **Total**               |      **0.60**     |   **0.34**      |   **0.06**     | **1.00**| -->
+
+
+|                    |            | *Response* |            | Total |
+|:-------------------|:-----------|:--------:|:----------:|------:|
+|                    |            | Earth is warming | Not warming |      |
+|**_Party and Ideology_**                    | Republican | 0.20 | 0.26 | 0.46 |
+|                    | Democrat   | 0.45 | 0.09 | 0.54 |
+|                    | **Total**  | **0.65** | **0.35** | **1.00** |
+
+
+
+(a) Are believing that the earth is warming and being a Democrat mutually exclusive?
+(b) What is the probability that a randomly chosen respondent believes the earth is warming or is a Democrat?
+(c) What is the probability that a randomly chosen respondent believes the earth is warming given that he is a Republican?
+
+<!-- <br> -->
+
+<!-- **Answer:** -->
+
+```{r}
+#| include: false
+# (a) No, 0.45 of respondents fall into this combination.
+# (b) P(earth is warming or liberal Democrat) =
+# = P(earth is warming) + P(liberal Democrat) - P(earth is warming and liberal Democrat)
+# = 0.65 + 0.54 - 0.45 = 0.74
+# (c) P(earth is warming | Republican) = 20/46 = 43.5%
+```
+

@@ -1,0 +1,31 @@
+---
+title: "Worksheet 10"
+subtitle: "Linear Regression"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) A researcher studies how weekly study hours predict exam score. What is the explanatory variable? What is the response variable?
+
+```{r}
+#| include: false
+# (a) Explanatory: weekly study hours. (b) Response: exam score.
+```
+
+
+
+(@) A fitted regression line is $\hat{y} = 50 + 3x$, where $x$ is study hours per week and $y$ is exam score.
+(a) Interpret the slope 3 in context.
+(b) Interpret the intercept 50 in context.
+
+```{r}
+#| include: false
+# (a) For each additional 1 hour of study per week, the predicted exam score increases by 3 points, on average.
+# (b) When study hours are 0, the predicted exam score is 50 points. It is a model based extrapolation and may or may not be meaningful if 0 hours is outside the data range.
+```

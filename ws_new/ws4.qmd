@@ -1,0 +1,33 @@
+---
+title: "Worksheet 4"
+subtitle: "Sampling Distributions and Central Limit Theorem"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+
+(@) **Sampling distribution.** A population distribution has $σ=10$. What sample size $n$ is needed so that the standard deviation of the sample mean is one, $SD(\overline{X}) = 1$?
+
+
+```{r}
+#| include: false
+# n = 100
+```
+
+
+(@) **Central limit theorem** True or False?
+(a) If the population is normal, then $\overline{X}$ is normal for any sample size $n$.
+(b) If the population is not normal, then the distribution of $\overline{X}$ does not look like normal for any sample size $n$.
+(c) If the sample is large, the population becomes normal.
+
+```{r}
+#| include: false
+# (a) T
+# (b) F CLT
+# (c) F increasing sample size does not change the population distribution itself.
+```

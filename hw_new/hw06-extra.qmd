@@ -1,0 +1,24 @@
+---
+title: "Extra credit opportunity II"
+subtitle: "Happy Easter!🐣🐰🥚"
+# categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: false
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, Apr 3, 11:59 PM**]{.red}
+:::
+
+- Please include this work in your **Homework Easter** submission on D2L.
+
+# Extra Credit Questions
+
+(@) Download the R script [bunny.R](../code/bunny.R), and run the code to generate your statistics bunny! Include the resulting image in your Homework Easter.
+
+(@) Look through the code and identify any probability distributions used to create the plot.

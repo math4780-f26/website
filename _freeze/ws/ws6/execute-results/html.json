@@ -1,0 +1,15 @@
+{
+  "hash": "c78860e4dd9d3495652c793c4185ce08",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 6\"\nsubtitle: \"Hypothesis Testing\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) For each alternative, say whether it is right-tailed, left-tailed or two-sided.\n(a) $H_1: \\mu \\ne 50$\n(b) $H_1: \\mu > 50$\n(c) $H_1: \\mu < 50$\n\n\n\n\n\n(@) We are testing $H_0: \\mu = 100$. A sample gives $\\bar{x} = 106$ with standard error $SE = 2$.\n(a) Compute the test statistic $z$.\n(b) The rejection rule is $|z| > 2$. Do you reject $H_0$?\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

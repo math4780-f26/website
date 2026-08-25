@@ -1,0 +1,16 @@
+---
+title: "Take-home Exams"
+listing:
+  contents: exam
+  sort: title
+  sort-ui: false
+  filter-ui: false
+  type: table
+  fields: [title, subtitle, description]
+  field-display-names:
+    title: "No."
+    subtitle: "Title"
+    description: "Due date"
+---
+
+More exams to be added as the semester progresses.

@@ -1,0 +1,159 @@
+---
+title: "Exercise 3"
+subtitle: "Exercises for Final Exam"
+categories: "Exercise"
+format:
+  html:
+    mathjax: true
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+(@) About 30% of human twins are identical, and the rest are fraternal. Identical twins are necessarily the same sex: half are males and the other half are females. One-quarter of fraternal twins are both male, one-quarter both female, and one-half are mixes: one male, one female. You have just become a parent of twins and are told they are both girls. Given this information, what is the probability that they are identical?
+
+```{r, include=TRUE, echo=-1}
+## OI 3.42 P(iden|females) =
+## [(0.5)(0.3)]/[(0.5)(0.3)+(1/4)(0.7)]
+```
+
+<br>  
+
+
+
+(@) A patient named Diana was diagnosed with Fibromyalgia, a long-term
+syndrome of body pain, and was prescribed anti-depressants. Being the skeptic that she is, Diana didn't initially believe that anti-depressants would help her symptoms. However after a couple months of being on the medication she decides that the anti-depressants are working, because she feels like her symptoms are in fact getting better.
+    (a) Write the hypotheses in words for Diana's skeptical position when she started taking the anti-depressants.
+    (b) What is a Type 1 Error in this context?
+    (c) What is a Type 2 Error in this context?
+```{r, include=TRUE, echo=-1}
+## OI 5.25
+## (a)
+## H0: Anti-depressants do not affect the symptoms of Fibromyalgia. 
+## HA: Anti-depressants do affect the symptoms of Fibromyalgia (either helping or harming).
+## (b)
+## Concluding that anti-depressants either help or worsen Fibromyalgia symptoms 
+## when they actually do neither.
+## (c)
+## Concluding that anti-depressants do not affect Fibromyalgia symptoms when they actually do.
+```
+
+<br>  
+
+
+
+(@) A Rasmussen Reports survey of 1,000 US adults found that 42% believe raising the minimum wage will help the economy. Construct a 99% confidence interval for the true proportion of US adults who believe this.
+```{r, include=TRUE, echo=-1}
+## OI 5.28  (0.379, 0.461)
+# 0.42 -+ 2.58 (0.016)
+```
+
+
+<br>  
+
+
+(@) **True or false**.
+    (a) The chi-square distribution, just like the normal distribution, has two parameters, mean and standard deviation.
+    (b) Consider two sets of data that are paired with each other. Each observation in one data set has a natural correspondence with exactly one observation from the other data set.
+    (c) As the degrees of freedom increases, the $t$-distribution approaches normality.
+    (d) A correlation coefficient of -0.90 indicates a stronger linear relationship than a correlation of 0.5.
+
+```{r, include=TRUE, echo=TRUE}
+## F
+## T
+## T
+## T
+```
+
+<br>  
+
+
+(@) Consider a regression predicting weight (kg) from height (cm) for a sample of adult males. What are the units of the correlation coefficient, the intercept, and the slope?
+
+```{r, include=TRUE, echo=-1}
+## OI 8.17
+# Correlation: no units. Intercept: kg. Slope: kg/cm.
+```
+
+
+<br>  
+
+
+(@) Determine if I or II is higher or if they are equal. Explain your reasoning. For a regression line, the uncertainty associated with the slope estimate, $b_1$, is higher when
+- [I] there is a lot of scatter around the regression line
+- [II] there is very little scatter around the regression line
+
+```{r, include=TRUE, echo=-1}
+## OI 8.18
+# I is higher, the more the scatter the lower the correlation coefficient, and hence the higher the uncertainty around the regression line.
+```
+
+<br>  
+
+
+(@) Is the gestational age (time between conception and birth) of a low birth-weight baby useful in predicting head circumference at birth? Twenty-five low birth-weight babies were studied at a Harvard teaching hospital; the investigators calculated the regression of head circumference (measured in centimeters) against gestational age (measured in weeks). The estimated regression line is $$\widehat{\text{head circumference}} = 3.91 + 0.78 \times \text{gestational age}$$
+    (a) What is the predicted head circumference for a baby whose gestational age is 28 weeks?
+    (b) The standard error for the coefficient of gestational age is 0. 35, which is associated with $df = 23$. Does the model provide strong evidence that gestational age is significantly associated with head circumference?
+
+```{r, include=TRUE, echo=-1}
+## OI 8.36
+# 3.91 + 0.78 * 28 = 25.75
+# t_test = 2.23 p-value = 0.02
+```
+
+<br>
+
+
+(@) Lipitor (atorvastatin) is a drug used to control cholesterol. In clinical trials of Lipitor, 98 subjects were treated with Lipitor and 245 subjects were given a placebo. Among those treated with Lipitor, 6 developed infections. Among those given a placebo, 24 developed infections. Use a 0.05 significance level to test the claim that the rate of inflections was the same for those treated with Lipitor and those given a placebo.
+    (a) Test the claim using the critical-value and p-value methods.
+    (b) Test the claim by constructing a confidence interval.
+
+```{r}
+(prop_test <- prop.test(x = c(6, 24), n = c(98, 245), 
+          alternative = "two.sided", correct = FALSE))
+## test statistic = -1.09
+## critical value = -1.96
+## p-value = 0.2766
+## CI = (-0.097, 0.0234)
+```
+
+<br>
+
+
+(@) A researcher has developed a model for predicting eye color. After examining a random sample of parents, she predicts the eye color of the first child. The table below lists the eye colors of offspring. On the basis of her theory, she predicted that 87% of the offspring would have brown eyes, 8% would have blue eyes, and 5% would have green eyes. Use 0.05 significance level to test the claim that the actual frequencies correspond to her predicted distribution.
+                             
+
+|           |        |      |       |
+|-----------|--------|------|-------|
+| Eye Color | Brown  | Blue | Green |
+| Frequency | 127    | 21   | 5     |
+
+
+```{r}
+obs <- c(127, 21, 5)
+pi_0 <- c(0.87, 0.08, 0.05)
+chisq.test(x = obs, p = pi_0)
+
+## critical value = 5.99
+```
+
+
+
+<br>
+
+(@) In a study of high school students at least 16 years of age, researchers obtained survey results summarized in the accompanying table. Use a 0.05 significance level to test the claim of independence between texting while driving and driving when drinking alcohol. Are these two risky behaviors independent of one another? 
+
+|                            | Drove after drinking alcohol? |
+|----------------------------|-------------------------------|----|
+|                            | Yes                           | No |
+| Texted while driving       |              720              |  3027 |
+| Did not text while driving |               145             |  4472  |
+
+
+```{r}
+(contingency_table <- matrix(c(720, 145, 3027, 4472), nrow = 2, ncol = 2))
+(ind_test <- chisq.test(x = contingency_table))
+ind_test$expected
+qchisq(0.05, df = (2 - 1) * (2 - 1), lower.tail = FALSE)  
+```

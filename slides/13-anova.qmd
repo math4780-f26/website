@@ -1,0 +1,684 @@
+---
+title: 'Analysis of Variance (ANOVA) `r fontawesome::fa("people-arrows")`'
+title-slide-attributes:
+  data-background-image: ../images/bg.png
+  # data-background-size: stretch
+  # data-slide-number: none
+format: 
+  live-revealjs: 
+    output-file: 13-anova-slides.html
+    # theme: slides.scss
+    code-line-numbers: true
+webr:
+  cell-options:
+    autorun: false
+  packages:
+    - tidyverse
+knitr:
+  opts_chunk:
+    out-width: 100%
+    echo: false
+---
+
+
+# {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+
+```{r}
+#| label: pkg
+#| include: false
+#| eval: true
+library(openintro)
+library(knitr)
+options(digits = 2)
+```
+
+<!-- begin: webr fodder -->
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+<!-- end: webr fodder -->
+
+
+<!-- # [Hypothesis Testing]{.orange}{background-image="https://upload.wikimedia.org/wikipedia/commons/4/42/William_Sealy_Gosset.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"} -->
+
+# One-Way Analysis of Variance (ANOVA)
+
+- ### Rationale
+- ### Procedure
+- ### Examples
+
+
+
+
+# [ANOVA Rationale]{.orange}{background-image="./images/13-anova/fisher_anova_quote.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"}
+
+
+
+## Comparing More Than Two Population Means
+
+In many research settings, we'd like to compare **3 or more** population means.
+
+:::: columns
+
+::: {.column width="50%"}
+
+- <span style="color:blue"> 4 types of devices used to determine the pH of soil samples. </span>
+
+- <span style="color:blue"> Determine whether there are differences in the mean readings of those 4 devices. </span>
+
+```{r}
+knitr::include_graphics("./images/13-anova/soil.jpeg")
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: fragment
+
+- <span style="color:blue"> Do different treatments (None, Fertilizer, Irrigation, Fertilizer and Irrigation) affect the mean weights of poplar trees?  </span>
+
+```{r}
+knitr::include_graphics("./images/13-anova/poplar.jpeg")
+```
+
+:::
+
+:::
+
+::::
+
+
+::: notes
+
+- In Chapter 6 we learned methods for comparing 2 population means.
+
+:::
+
+
+
+## One-Way Analysis of Variance
+
+- A **factor** is a property or characteristic (categorical variable) that allows us to *distinguish the different populations from one another*.
+
+- **Type of devices** and **treatment of trees** are factors.
+
+- One-way ANOVA examines the effect of a *categorical variable* on the *mean of a numerical variable* (response).
+
+- We use analysis of <span style="color:red"> variance </span> to test the equality of 3 or more population  <span style="color:red"> means</span>. `r emo::ji('thinking')`
+
+- The method is **one-way** because we use one single property (categorical variable) for categorizing the populations.
+
+
+::: notes
+
+- A **treatment** (or **factor**) can be a category or level of a categorical variable.
+
+:::
+
+
+## Requirements of One-Way ANOVA
+
+- The populations of each category are **normally** distributed.
+
+- The populations have the **same variance** $\sigma^2$ (two-sample pooled $t$-test). 
+
+- The samples are **random samples**.
+
+- The samples are **independent** of each other. (not matched or paired in any way)
+
+
+::: notes
+- The method can still work fairly well when the variances are not equal, unless they are differ by large amounts.
+:::
+
+
+## Rationale for ANOVA
+
+Data 1 and Data 2 have the same group sample means $\bar{y}_1$, $\bar{y}_2$ and $\bar{y}_3$ denoted as red dots.
+
+```{r}
+set.seed(123)
+par(mfrow = c(2, 1), mar = c(2.5, 2.5, 1.5, 0), mgp = c(1.1, 0.5, 0), las = 1)
+
+# Colors for three groups
+group_cols <- c(rgb(0.2, 0.4, 0.8, 0.5),  # blue
+                rgb(0.1, 0.7, 0.3, 0.5),  # green
+                rgb(0.9, 0.4, 0.1, 0.5))  # orange
+
+# --- Small variance data ---
+y1 <- rnorm(50, 6, 0.08)
+y2 <- rnorm(50, 5.6, 0.08)
+y3 <- rnorm(50, 5.2, 0.08)
+small_var_data <- data.frame(y = c(y1, y2, y3), sample = rep(c(1, 2, 3), each = 50))
+
+boxplot(y ~ sample, data = small_var_data, ylim = c(2, 9),
+        main = "Data 1: Small Variance Within Samples", cex.main = 0.89,
+        col = "lightblue", horizontal = TRUE)
+
+# Add jittered data points manually to avoid warnings
+for (i in 1:3) {
+  vals <- small_var_data$y[small_var_data$sample == i]
+  y_jitter <- jitter(rep(i, length(vals)), amount = 0.15)
+  points(vals, y_jitter, pch = 16, col = group_cols[i])
+}
+
+points(x = c(6, 5.6, 5.2), y = c(1, 2, 3), col = "red", pch = 16, cex = 1.3)
+
+# --- Large variance data ---
+y1_l <- rnorm(50, sd = 1.0) + 6
+y2_l <- rnorm(50, sd = 1.0) + 5.6
+y3_l <- rnorm(50, sd = 1.0) + 5.2
+large_var_data <- data.frame(y = c(y1_l, y2_l, y3_l), sample = rep(c(1, 2, 3), each = 50))
+
+boxplot(y ~ sample, data = large_var_data, ylim = c(2, 9),
+        main = "Data 2: Large Variance Within Samples", cex.main = 0.89,
+        col = "lightblue", horizontal = TRUE)
+
+for (i in 1:3) {
+  vals <- large_var_data$y[large_var_data$sample == i]
+  y_jitter <- jitter(rep(i, length(vals)), amount = 0.15)
+  points(vals, y_jitter, pch = 16, col = group_cols[i])
+}
+
+points(x = c(6, 5.6, 5.2), y = c(1, 2, 3), col = "red", pch = 16, cex = 1.3)
+
+```
+
+::: question
+
+Which data you are more confident to say the population means $\mu_1$, $\mu_2$ and $\mu_3$ are not all the same?
+
+:::
+
+
+::: notes
+
+- The boxplots clearly show this difference.
+- The 2 data sets have the same group means, but the variance within groups for data 2 is much greater than the variance within groups for data 1.
+- The difference in sample means in Data 1 is more likely due to the true difference in population means.
+- variation between samples is measured by the pairwise distance among the sample means.
+- variation within samples is measured by the how far away the data points away from each other in each sample group.
+
+:::
+
+
+## Variation **Between** Samples & Variation **Within** Samples
+
+- Data 1: Variability between samples is **large** *in comparison to* the variation within samples.
+
+- Data 2: Variation between samples is **small** relatively to the variation within samples.
+
+::: alert
+
+More confident to conclude there is a difference in population means when variation **between** samples is relatively *larger* than variation **within** samples.
+
+:::
+
+```{r}
+knitr::include_graphics("./images/13-anova/figure8-1.png")
+```
+
+
+::: notes
+
+=> population means are different.
+
+=> less likely and confident to conclude there is a difference in population means.
+
+- When variation within samples relatively larger than the variation between samples, it's more difficult to distinguish or disentangle one sample from another. 
+
+:::
+
+
+
+# [ANOVA Procedures]{.orange}{background-image="./images/13-anova/fisher_anova_quote.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"}
+
+
+## ANOVA Table
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+## ANOVA Data
+
+- There are 5 populations.
+
+- Within each population, 4 data points are collected.
+
+- Data $y_{ij}$ is the the $j$-th data point in the $i$-th group.
+
+
+| **Population** | **Data**                                               | **Sample Mean**          | **Population Mean**          |
+|:--------------:|:----------------------------------------------------:|:------------------:|:-----------------------:|
+| 1              | $y_{11}$ $\quad$ $y_{12}$ $\quad$ $y_{13}$ $\quad$ $y_{14}$            | $\bar{y}_{1}$  |$\mu_{1}$  |
+| 2              | $y_{21}$ $\quad$ $y_{22}$ $\quad$ $y_{23}$ $\quad$ $y_{24}$            | $\bar{y}_{2}$  |$\mu_{2}$  |
+| 3              | $y_{31}$ $\quad$ $y_{32}$ $\quad$ $y_{33}$ $\quad$ $y_{34}$            | $\bar{y}_{3}$  |$\mu_{3}$  |
+| 4              | $y_{41}$ $\quad$ $y_{42}$ $\quad$ $y_{43}$ $\quad$ $y_{44}$            | $\bar{y}_{4}$  |$\mu_{4}$  |
+| 5              | $y_{51}$ $\quad$ $y_{52}$ $\quad$ $y_{53}$ $\quad$ $y_{54}$            | $\bar{y}_{5}$  |$\mu_{5}$  |
+
+. . .
+
+::: alert
+
+This is NOT a tidy data matrix. We may need to save the data in another format before we do ANOVA.
+
+:::
+
+## Procedure of ANOVA
+
+- <span style="color:blue"> $\begin{align} &H_0: \mu_1 = \mu_2 = \cdots = \mu_k\\  &H_1: \text{Population means are not all equal} \end{align}$ </span>
+
+<!-- - We use $F$-test.  -->
+
+- Statistician [Ronald Fisher](https://en.wikipedia.org/wiki/Ronald_Fisher) found a way to define a variable that follows the $F$ distribution:
+
+$$\frac{\text{variance between samples}}{\text{variance within samples}} \sim F_{df_B,\, df_W}$$
+
+- If variance *between* samples is larger than variance *within* samples, i.e., $F_{test}$ is much greater than 1, as Data 1, we reject $H_0$.
+
+::: alert
+
+Key: Define variance between samples and variance within samples so that the ratio is $F$ distributed.
+
+:::
+
+
+::: notes
+
+How do we convert the rationale into a formal testing procedure for the test 
+
+:::
+
+
+
+## Variance **Within** Samples
+
+- Back to two-sample pooled $t$-test with equal variance $\sigma^2$:
+
+$$s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}$$
+
+::: question
+
+What if general $k$ samples?
+
+:::
+
+. . .
+
+- ANOVA assumes the populations have the **same variance** $\sigma_1^2 = \sigma_2^2 = \cdots = \sigma_k^2 = \sigma^2$.
+
+$$\boxed{s_W^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2 + \cdots + (n_k-1)s_k^2}{n_1 + n_2 + \cdots + n_k - k}}$$
+where $s_i^2$, $i = 1, \dots ,k$, is the sample variance of group $i$.
+
+- $s_W^2$ represents a *combined* estimate of the common variance $\sigma^2$. It measures variability of the observations within the $k$ populations.
+
+
+
+::: notes
+
+$s_i^2 = \frac{\sum_{j=1}^{n_i}\left(y_{ij} - \bar{y}_{i\cdot}\right)^2}{n_i-1}$
+
+:::
+
+## Variance **Between** Samples
+
+$$\boxed{s^2_{B} = \frac{\sum_{i=1}^k n_i (\bar{y}_{i} - \bar{y}_{})^2}{k-1}}$$ 
+
+- $\bar{y}_{i}$ is the $i$-th sample mean.
+
+- $\bar{y}_{}$ is the *grand* sample mean with **all** data points in **all** groups combined.
+
+. . .
+
+- $s^2_{B}$ is also an estimate of $\sigma^2$ and measures variability *among* sample means for the $k$ groups.
+
+- If $H_0$ is true $(\mu_1 = \cdots = \mu_k = \mu)$, any variation in the sample means is due to chance and randomness, and shouldn't be too large.
+  + $\bar{y}_{1}, \cdots, \bar{y}_{k}$ should be close each other, and they are close to $\bar{y}_{}$.
+
+
+::: notes
+
+```{r, out.width="100%"}
+knitr::include_graphics("./images/13-anova/var_between_group.jpg")
+```
+
+:::
+
+## $s_B^2$ and $s_W^2$ as Sum of Squares/Degrees of Freedom
+
+- Variance is defined as $\frac{\text{Sum of Squares}}{\text{Degrees of Freedom}}$, which is also called $\text{Mean Square (MS)}$
+
+- $s_B^2 = \frac{\sum_{i=1}^k n_i (\bar{y}_{i} - \bar{y}_{})^2}{k-1} = \frac{\text{Sum of Squares Between Samples (SSB)}}{df_B} = MSB$
+
+- $s_W^2 = \frac{\sum_{i=1}^{k} (n_i - 1)s_i^2}{n_1 + n_2 + \cdots + n_k - k} = \frac{\text{Sum of Squares Within Samples (SSW)}}{df_W} = MSW$ $(N = n_1 + \cdots + n_k)$
+
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+<!-- ## ANOVA Table: Sum of Squares -->
+
+
+## Sum of Squares Identity
+
+$$\text{Total Sum of Squares (SST)} = \sum_{j=1}^{n_i}\sum_{i=1}^{k} \left(y_{ij} - \bar{y}_{}\right)^2 = SSB + SSW$$
+
+$$df_{T} = df_{B} + df_{W} \implies N - 1 = (k-1) + (N - k)$$
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+## {visibility="hidden"}
+
+<!-- ::: midi -->
+
+- **Total Sum of Squares (SST)** measures total variation around $\bar{y}_{}$ in all of the sample data combined (ignoring the groups):
+
+$$\scriptsize{\color{blue}{SST = \sum_{j=1}^{n_i}\sum_{i=1}^{k} \left(y_{ij} - \bar{y}_{}\right)^2}}$$
+
+<!-- ::: -->
+
+
+
+<!-- ::: midi -->
+
+- **Sum of Squares Between Samples (SSB)** measures the variation **between** sample means:
+
+$$\scriptsize{ \color{blue}{SSB = \sum_{i=1}^{k}n_i \left(\bar{y}_{i} - \bar{y}_{}\right)^2}}$$
+<!-- ::: -->
+
+
+<!-- ::: midi -->
+
+- **Sum of Squares Within Samples (SSW)** measures the variation of an value $y_{ij}$ about its sample mean $\bar{y}_{i}$:
+
+$$\scriptsize{ \color{blue}{SSW = \sum_{i=1}^{k} \sum_{j=1}^{n_i} \left(y_{ij} - \bar{y}_{i}\right)^2 = \sum_{i=1}^{k} (n_i - 1)s_i^2}}$$
+
+<!-- ::: -->
+
+
+
+::: notes
+
+- SST: sum of squared deviation from each observation to the overall grand mean
+- SSB: sum of squared deviation from each group mean to the overall grand mean
+- What happens when all group means are equal?
+- SSW: sum of squared deviation from each group value to its group mean
+
+:::
+
+
+
+
+## Sum of Squares Identity {visibility="hidden"}
+
+<!-- - $\left(y_{ij} - \bar{y}_{\cdot\cdot}\right) =  \left(y_{ij} - \bar{y}_{i\cdot}\right) + \left(\bar{y}_{i\cdot} - \bar{y}_{\cdot\cdot}\right)$ -->
+
+<!-- - $\sum_{j=1}^{n_i}\sum_{i=1}^{t} \left(y_{ij} - \bar{y}_{\cdot\cdot}\right)^2 = \sum_{i=1}^{t}n_i \left(\bar{y}_{i\cdot} - \bar{y}_{\cdot\cdot}\right)^2 + \sum_{i=1}^{t} \sum_{j=1}^{n_i}\left(y_{ij} - \bar{y}_{i\cdot}\right)^2$ -->
+
+- $SST = SSB + SSW$ 
+
+- $df_{T} = df_{B} + df_{W} \implies N - 1 = (k-1) + (N - k)$ $(N = n_1 + \cdots + n_k)$
+<!-- $\begin{align} &df_{T} = df_{B} + df_{W} \\&n - 1 = (k-1) + (n - k) \end{align}$ -->
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+
+## Sum of Squares Identity {visibility="hidden"}
+
+- $\text{Mean Square (MS)} = \frac{\text{sum of squares}}{\text{degrees of freedom}}$
+
+- $MSB = \frac{SSB}{k-1} = s^2_{B}$
+
+- $MSW = \frac{SSW}{N-k} = s^2_{W}$
+
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+## Sum of Squares Identity
+
+- $F_{test} = \frac{MSB}{MSW}$
+
+- Under $H_0$, $\frac{S^2_{B}}{S_W^2} \sim F_{k-1, \, N-k}$
+
+- Reject $H_0$ if 
+  + $F_{test} > F_{\alpha, \, k - 1,\, N-k}$
+  + $p$-value $P(F_{k - 1,\, N-k} > F_{test}) < \alpha$
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+
+
+
+# [ANOVA Examples]{.orange}{background-image="./images/13-anova/fisher_anova_quote.jpg" background-size="cover" background-position="50% 50%" background-color="#447099"}
+
+
+
+## Example
+
+- A hypothesis is that a nutrient "Isoflavones" varies among three types of food: (1) cereals and snacks, (2) energy bars, and (3) veggie burgers. 
+
+::::{.columns}
+:::{.column width="32%"}
+```{r}
+knitr::include_graphics("./images/13-anova/cereal.jpeg")
+```
+:::
+
+:::{.column width="2%"}
+:::
+
+:::{.column width="32%"}
+```{r}
+knitr::include_graphics("./images/13-anova/energy_bar.png")
+```
+:::
+
+:::{.column width="2%"}
+:::
+
+:::{.column width="32%"}
+```{r}
+knitr::include_graphics("./images/13-anova/veggie_burger.jpeg")
+```
+:::
+::::
+
+- A sample of 5 each is taken and the amount of isoflavones is measured.
+
+- Is there a sufficient evidence to conclude that the mean isoflavone levels vary among these food items? $\alpha = 0.05$.
+
+::: notes
+
+Ask for $H_0$
+
+:::
+
+
+## Example - Data
+<!-- - Cereal and snacks: $n_1 = 5$,  $\bar{y}_1 = 9.2$, $s_1^2 = 33.7$. -->
+<!-- - Energy bars: $n_2 = 5$, $\bar{y}_2 = 10.00$, $s_2^2 = 29.0$. -->
+<!-- - Veggie burger: $n_3 = 5$, $\bar{y}_3 = 13.8$, $s_3^2 = 46.7$. -->
+  
+```{r}
+load("./data/table08-7.rdata")
+data <- `table08-7`
+data_anova <- data.frame("y"=c(data[, 1], data[, 2], data[, 3]),
+                      "food"=rep(c("cereals", "energy", "veggie"), each = 5))
+data_anova[1, 1] <- 3
+data[1, 1] <- 3
+```
+
+::::{.columns}
+
+:::{.column width="50%"}
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+data
+```
+
+Here columns represent food items and rows are samples.
+
+
+::: question
+So tell me what is the value of $y_{23}$!
+:::
+
+:::
+
+
+:::{.column width="50%"}
+
+::: fragment
+
+We prefer data format like
+
+```{r}
+#| echo: true
+#| class-output: my_class800
+#| code-line-numbers: false
+data_anova
+```
+
+:::
+
+:::
+
+::::
+
+
+::: notes
+
+```{r}
+library(tidyverse)
+names(data) <- c("cereals", "energy", "veggie")
+data %>% 
+    pivot_longer(cols = 1:3, 
+                 names_to = "food", 
+                 values_to = "y") %>% 
+    arrange(food)
+```
+
+:::
+
+## Example - Boxplot
+
+```{r}
+par(mfrow = c(1, 1), mar = c(3, 3, 1, 0), mgp = c(2, 1, 0))
+boxplot(data, axes = FALSE, ylab = "",
+        main = "Boxplot of Isoflavones", horizontal = FALSE)
+axis(2)
+axis(1, las = 1, at = 1:3, 
+     labels = c("Cereals", "Energy Bars", "Veggie Burger"))
+```
+
+
+## Example - Test Assumptions
+
+- Assumptions:
+  + $\sigma_1 = \sigma_2 = \sigma_3$ (I tested it)
+  + Data are generated from a normal distribution for each type of food.
+
+<!-- - Test for variance equality $\sigma_1 = \sigma_2 = \sigma_3$ using the Levene test. I did it, and we do not reject equality of variances. -->
+
+<!-- - Test of normality using the Anderson-Darling test. I did it, and we do not reject normality assumption. -->
+
+```{r}
+#| fig-asp: 0.35
+#| message: false
+library(car)
+library(nortest)
+par(mgp = c(2, 1, 0))
+par(mar = c(3.5, 3.5, 1.5, 0))
+qqPlot(y ~ food, data = data_anova, layout=c(1, 3))
+# ad.test(data_ex78[data_ex78$additive == 1, 1])
+# ad.test(data_ex78[data_ex78$additive == 2, 1])
+# ad.test(data_ex78[data_ex78$additive == 3, 1])
+```
+
+
+
+## Example - ANOVA Testing
+
+<!-- - **Step 4-c**: The critical value is $F_{\alpha, \, df_B, \, df_W} = F_{0.05, \, 3 - 1, \, 15 - 3} = F_{0.05, \, 2, \, 12} = 3.89$ -->
+
+<!-- - **Step 5-c**: Since $F_{test} < F_{cri}$, we do not reject $H_0$.  -->
+
+<!-- - **Step 6**: There is insufficient evidence to support the claim that the mean isoflavone levels vary among these food items. -->
+
+<!-- -- -->
+
+
+- <span style="color:blue"> $\begin{align}&H_0: \mu_1 = \mu_2 = \mu_3\\&H_1: \mu_is \text{ not all equal} \end{align}$ </span>
+
+. . .
+
+::: center
+`r emo::ji('sunglasses')` Do all calculations and generate an ANOVA table using just one line of code! `r emo::ji('love_you_gesture')` `r emo::ji('v')`
+:::
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+<!-- - More often, we like to create an ANOVA table (using R) -->
+
+<!-- - To compute the critical value, we can use R command `qf(0.05, df1 = 2, df2 = 12, lower.tail = FALSE)=` `r round(qf(0.05, df1 = 2, df2 = 12, lower.tail = FALSE), 3)`. -->
+
+
+## Example - ANOVA Table
+
+
+
+```{r}
+#| echo: !expr c(3)
+#| code-line-numbers: false
+options(digits = 6)
+# summary(aov(y ~ source, data = df_ex81)) ## method 1
+anova(lm(y ~ food, data = data_anova))
+```
+
+```{r}
+knitr::include_graphics("./images/13-anova/anova_table_k.png")
+```
+
+
+
+::: notes
+```{r}
+oneway.test(y ~ food, data = data_anova, var.equal = TRUE) ## method 3 Test results only
+```
+:::
+

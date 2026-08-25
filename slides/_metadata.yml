@@ -1,0 +1,49 @@
+subtitle: "MATH 4720/MSSC 5720 Introduction to Statistics"
+author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
+date-format: long
+filters:
+  - webr
+format:
+  live-revealjs:
+    footer: "[🔗 math4720-f26.github.io/website](https://math4720-f26.github.io/website/)"
+    theme: slides.scss
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    # highlight-style: arrow-dark
+    code-block-bg: true
+    self-contained: false
+    slide-number: c/t
+    incremental: false
+    width: 1800
+    height: 1000
+    margin: 0.05
+    code-link: true
+    fig-cap-location: bottom
+    chalkboard: true
+    fig-align: center
+    transition: none ## fade slide convex concave zoom
+    code-line-numbers: false
+    title-slide-attributes:
+      data-background-color: "#c0cfb2"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg"
+    toc: false
+    webr:
+      cell-options:
+        autorun: false
+  live-html:
+    code-link: true
+    webr:
+      cell-options:
+        autorun: true
+engine: knitr
+execute:
+  echo: false
+  warning: true
+knitr:
+  opts_chunk:
+    fig-align: center
+    fig-retina: 10
+    fig-asp: 0.618
+    R.options:
+      width: 80

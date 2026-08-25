@@ -1,0 +1,15 @@
+{
+  "hash": "07d54c0134ab33e7a6dc7dcae5d8359a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 8\"\nsubtitle: \"Inference About Variances\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) What condition is especially important for chi square and F procedures for variances?\n\n\n\n\n\n(@) A random sample has $n=10$ and $s^2 = 16$. Find a 95 percent confidence interval for $\\sigma^2$. Use $df = 9$ and $\\chi^2_{0.975,9} = 2.7$ and $\\chi^2_{0.025,9} = 19.02$\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

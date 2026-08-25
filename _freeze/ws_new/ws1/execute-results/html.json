@@ -1,0 +1,17 @@
+{
+  "hash": "ebabdab17c8141733df6da17873c806e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet-01\"\nsubtitle: \"Summarizing data\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n**Marathon winners.** The histogram and box plots below show the distribution of finishing times for male and female winners of the New York Marathon between 1970 and 1999\n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](./ws1-hist.png){fig-align='center' width=60%}\n:::\n:::\n\n\n(a) What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?\n(b) What may be the reason for the bimodal distribution? Explain.\n(c) Compare the distribution of marathon times for men and women based on the box plot shown below. \n\n\n::: {.cell layout-align=\"center\"}\n::: {.cell-output-display}\n![](./ws1-boxplot.png){fig-align='center' width=60%}\n:::\n:::\n\n\n<!-- <br> -->\n\n<!-- **Answer:** -->\n\n\n",
+    "supporting": [
+      "ws1_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

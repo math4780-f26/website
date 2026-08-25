@@ -1,0 +1,15 @@
+{
+  "hash": "85bd3adc525aa13f69239e57f5ab0957",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Activity: Sampling Distribution and Central Limit Theorem\"\n---\n\n\n## **Objective**\n\nYou will experience \n\n - how sample means vary, \n - how a sampling distribution of sample mean is created\n - how they approximate a normal distribution as sample size increases.\n\n\n## Instructions\n\n(1) Go to Dr. Yu's app <https://cheyu.shinyapps.io/rolling-die/>\n\n\n::: {.cell}\n::: {.cell-output-display}\n[![](../images/rolling-die.png){width=870}](https://cheyu.shinyapps.io/rolling-die/)\n:::\n:::\n\n\n(2) Roll your die **5** times, records your outcomes in **Enter your die rolls separated by commas or spaces:**, then hit **Submit Rolls**.\n\n(3) Check the histogram of sample means. Does it look like a normal distribution?\n\n(4) Change 5 to **30** in **Select number of rolls:**\n\n(5) Roll your die **30** times, records your outcomes in **Enter your die rolls separated by commas or spaces:**, then hit **Submit Rolls**.\n\n(6) How does the histogram look compared to the 5-roll sample means?\n\n\n\n## Discussion\n\n- What happened to the variability of the sample means as sample size increased?\n\n- How did the shape of the distribution change?\n\n- How does this illustrate the Central Limit Theorem?\n\n\n<!-- Key Takeaways -->\n\n<!-- Sample means vary from sample to sample. -->\n\n<!-- As sample size increases, the distribution of sample means: -->\n\n<!-- Becomes approximately normal, regardless of the population distribution (here, uniform die rolls). -->\n\n<!-- Has smaller spread (standard error decreases). -->\n\n<!-- This is the essence of the Central Limit Theorem. -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

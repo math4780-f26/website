@@ -1,0 +1,116 @@
+---
+title: "Take-home Exam 2"
+subtitle: "Take-home Exam for Week 7 to 11"
+categories: "Exam"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+---
+
+::: callout-important
+[Due **Friday, Apr 24, 11:59 PM**]{.red}
+:::
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not allowed. 
+
+- With your submission, you commit to academic integrity through the following honor pledge:
+
+> I recognize the importance of personal integrity in all aspects of life and work. I commit myself to truthfulness, honor and responsibility, by which I earn the respect of others. I support the development of good character and commit myself to uphold the highest standards of academic integrity as an important aspect of personal integrity. My commitment obliges me to conduct myself according to the Marquette University Honor Code.
+
+- [**_This exam is to be entirely your own efforts._**]{.red} You may use any resources, including Generative AI tools, while working on this exam. However, **you are NOT allowed to discuss the exam with anyone except Dr. Yu, nor may you post any of the exam questions on any platform to solicit answers.** Any violation of this policy will be treated as academic misconduct. If you are caught cheating, your case will be reported immediately to the Academic Integrity Council.
+
+- In your exam, please number problems/questions in order.
+
+- Even if you use R to compute your final answer, you must show your calculation steps and/or explain your reasoning in order to receive full credit.
+
+- **Handwritten tables and figures receive no credits**.
+
+<!-- - You do not need to attach your code of any language you use in the homework. However, if you fail to complete your calculations or produce your table or figure, you receive partial credits if your code is attached. -->
+
+<!-- - Questions started with **(MSSC)** are required for MSSC 5720 students, and optional for MATH 4720 students. -->
+
+# Exam Problems (20 points)
+
+(@) A corporation in Chicago makes insulation shields for electrical wires using three types of machines. The company wants to evaluate the variation in the inside diameter dimensions of the shields produced by the machine A, B and C. A quality control engineer randomly selects shields produced by each of the machines and records the inside diameter of each shield (in millimeters), as shown in @tbl-anova. The data can be downloaded at [shield_machine.csv](./shield_machine.csv). She wants to determine whether the mean diameter produced by the three machines differ.
+    (a) Check normality and homogeneity of variance using [QQ-plot](https://library.virginia.edu/data/articles/understanding-q-q-plots) and boxplot. Comment on your plots.
+    (b) Based on your findings in (a), would it be appropriate to proceed with an analysis of variance (ANOVA)? Please explain.
+    (c) If your answer is YES in (b), conduct ANOVA on the original data. If NOT, do the natural log (log with base $e = 2.71828...$) transformation on the data and show the transformed data satisfy ANOVA assumptions. Then conduct ANOVA on the transformed data. Show the ANOVA table and determine whether the mean diameters differ.
+```{r}
+#| label: tbl-anova
+#| tbl-cap: "Sampled data of the inside diameter of shields produced by machine A, B and C."
+#| echo: false
+#| eval: true
+library(knitr)
+
+tbl <- data.frame(
+Shield    = 1:15,
+`Machine A` = c(31.0, 7.0, 8.2, 9.1, 14.4, 10.5, 10.5, 5.1, 18.2, 25.2, 6.5, 13.4, 23.7, 17.0, 8.6),
+`Machine B` = c(34.2, 39.8, 15.8, 29.8, 61.1, 31.1, 18.3, 10.6, 11.2, 20.0, 26.9, 52.6, 65.2, 37.3, 19.0),
+`Machine C` = c(39.3, 36.2, 47.8, 58.7, 82.3, 30.8, 11.0, 15.0, 46.3, 36.4, 54.5, 25.3, 24.6, 90.5, 64.0),
+check.names = FALSE
+)
+kable(tbl, align = c("r","r","r","r"))
+```
+
+
+```{r}
+#| echo: false
+#| eval: false
+#| include: false
+# ------------
+## (a)
+# ------------
+shield_machine <- read.csv("./shield_machine.csv")
+shield_machine_new <- matrix(shield_machine[, 1], 15, 3)
+
+car::qqPlot(shield_machine_new[, 1])
+car::qqPlot(shield_machine_new[, 2])
+car::qqPlot(shield_machine_new[, 3])
+# not very normal but OK
+
+boxplot(shield_machine_new)
+## variances are not homogeneous
+
+# ------------
+## (b)
+# ------------
+## Not appropriate because ANONA requires normality of data and homogeneous variances.
+
+# ------------
+## (d)
+# ------------
+apply(shield_machine_new, 2, var)
+apply(shield_machine_new, 2, mean)
+apply(shield_machine_new, 2, var)/ (apply(shield_machine_new, 2, mean)^2)
+## log-transformation
+shield_machine_log <- shield_machine
+shield_machine_log[, 1] <- log(shield_machine_log[, 1])
+lm_res_log <- lm(diameter ~ machine, data = shield_machine_log)
+anova(lm_res_log)
+
+
+shield_machine_log_new <- apply(shield_machine_new, 2, log)
+apply(shield_machine_log_new, 2, var)
+boxplot(shield_machine_log_new)
+
+
+# fitted_val_log <- matrix(lm_res_log$fitted.values, 15, 3)
+# colnames(fitted_val_log) <- c("A", "B", "C")
+# qqPlot(lm_res_log$residuals, pch = 19, id = FALSE, ylab = "residuals", 
+#        main = "Normal Probability Plot for Residuals")
+# plot(lm_res_log$fitted.values, lm_res_log$residuals, xlab = "Fitted Value",
+#      ylab = "Residual", main = "Versus Fits", pch = 19, col = "red")
+# abline(h = 0)
+
+## another way
+# aov_res <- aov(diameter ~ machine, data = data_sim_log)
+# summary(aov_res)
+```
+
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your exam, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?
+

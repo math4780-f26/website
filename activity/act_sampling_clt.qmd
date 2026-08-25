@@ -1,0 +1,56 @@
+---
+title: "Activity: Sampling Distribution and Central Limit Theorem"
+---
+
+
+## **Objective**
+
+You will experience 
+
+ - how sample means vary, 
+ - how a sampling distribution of sample mean is created
+ - how they approximate a normal distribution as sample size increases.
+
+
+## Instructions
+
+(1) Go to Dr. Yu's app <https://cheyu.shinyapps.io/rolling-die/>
+
+```{r}
+#| echo: false
+#| fig-link: https://cheyu.shinyapps.io/rolling-die/
+knitr::include_graphics("../images/rolling-die.png")
+```
+
+(2) Roll your die **5** times, records your outcomes in **Enter your die rolls separated by commas or spaces:**, then hit **Submit Rolls**.
+
+(3) Check the histogram of sample means. Does it look like a normal distribution?
+
+(4) Change 5 to **30** in **Select number of rolls:**
+
+(5) Roll your die **30** times, records your outcomes in **Enter your die rolls separated by commas or spaces:**, then hit **Submit Rolls**.
+
+(6) How does the histogram look compared to the 5-roll sample means?
+
+
+
+## Discussion
+
+- What happened to the variability of the sample means as sample size increased?
+
+- How did the shape of the distribution change?
+
+- How does this illustrate the Central Limit Theorem?
+
+
+<!-- Key Takeaways -->
+
+<!-- Sample means vary from sample to sample. -->
+
+<!-- As sample size increases, the distribution of sample means: -->
+
+<!-- Becomes approximately normal, regardless of the population distribution (here, uniform die rolls). -->
+
+<!-- Has smaller spread (standard error decreases). -->
+
+<!-- This is the essence of the Central Limit Theorem. -->

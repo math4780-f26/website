@@ -1,0 +1,139 @@
+---
+title: "Homework 8"
+subtitle: "Correlation and Linear Regression"
+categories: "Homework"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  echo: false
+  eval: false
+---
+
+::: callout-important
+[Due **Friday, May 1, 11:59 PM**]{.red}
+:::
+
+<!-- - Homework 8 covers Week 11-14. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not allowed. 
+
+- In your homework, please number questions **in order**. 
+
+<!-- - Your homework could be handwritten or typewritten. If it is handwritten, make sure you scan your work well, and put everything in one single pdf. -->
+
+<!-- - If you type your answers, make sure there are no typos. We grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- **Handwritten tables and figures receive no credits**.
+
+- You do not need to attach your code of any language you use in the homework. However, if you fail to complete your calculations or produce your table or figure, you receive partial credits if your code is attached. 
+
+
+- Questions started with **(MSSC)** are required for MSSC 5720 students, and optional for MATH 4720 students.
+
+
+# Homework Questions
+
+(@) Maru and Lulu are both collecting data on number of rainy days in a year and the total rainfall for the year. Maru records rainfall in inches and Lulu in centimeters. How will their correlation coefficients compare?
+```{r}
+#| include: false
+## OI 8.10
+# Their correlation coeffcients will be the same, since the correlation coeffcient is unitless.
+```
+
+<br>
+
+(@) Suppose we fit a regression line to predict the shelf life of an apple based on its weight. For a particular apple, we predict the shelf life to be 4.6 days. The apple's residual is -0.6 days. Did we over or under estimate the shelf-life of the apple? Explain your reasoning.
+```{r}
+#| include: false
+## OI 8.19
+# Over-estimate. Since the residual is calculated as observed - predicted, a negative residual
+# means that the predicted value is higher than the observed value.
+```
+
+
+<br>
+
+```{r}
+#| echo: false
+#| eval: true
+library(knitr)
+tbl <- data.frame(
+Variable = c("Tar", "Nicotine"),
+X1 = c(25, 1.5),
+X2 = c(27, 1.7),
+X3 = c(20, 1.1),
+X4 = c(24, 1.6),
+X5 = c(20, 1.1),
+X6 = c(20, 1.0),
+X7 = c(21, 1.2),
+X8 = c(24, 1.4)
+)
+kable(tbl, align = c("l", rep("r", 8)), col.names = c("", 1:8))
+```
+
+(@)
+    (a) Construct a scatterplot using tar for the $x$ axis and nicotine for the $y$ axis. Does the scatterplot suggest a linear relationship between the two variables? Are they positively or negatively related?
+    (b) Let $y$ be the amount of nicotine and let $x$ be the amount of tar. Fit a simple linear regression to the data and identify the sample regression equation.
+    (c) What percentage of the variation in nicotine can be explained by the linear correlation between nicotine and tar?
+    (d) The Raleigh brand king size cigarette is not included in the table, and it has 23 mg of tar. What is the best predicted amount of nicotine? How does the predicted amount compare to the actual amount of 1.3 mg of nicotine? What is the value of residual?
+    (e) Perform the test $H_0: \beta_1 = 0$ vs. $H_1: \beta_1 \ne 0$.
+    (f) Provide 95\% confidence interval for $\beta_1$.
+    (g) Generate the ANOVA table for the linear regression.
+
+```{r}
+#| echo: false
+#| eval: false
+
+## BIO Ch10 Review Exercise
+tar <- c(25, 27, 20, 24, 20, 20, 21, 24)
+nico <- c(1.5, 1.7, 1.1, 1.6, 1.1, 1.0, 1.2, 1.4)
+## 1.
+plot(tar, nico)
+
+## 2.
+reg <- lm(nico ~ tar)
+reg
+
+## 3.
+reg_summ <- summary(reg)
+reg_summ$r.squared
+
+## 4.
+sum(reg$coefficients * c(1, 23))
+1.3 - sum(reg$coefficients * c(1, 23))
+
+
+## 5.
+reg_summ
+
+## 6.
+confint(reg)
+
+## 7.
+anova(reg)
+```
+
+
+<br>
+
+(@) **(MSSC)** We have been doing a variety of hypothesis tests, two-sample pooled $t$ tests, $F$-test for comparing two variances for example. However, the null hypothesis significance testing (NHST) paradigm and the p-value usage have been much criticized and shown to be problematic and often misused in data analysis. In fact, in his research, Dr. Yu never does NHST or uses p-value taught in MATH 4720. Please read the articles
+
+    - [Ronald L. Wasserstein and Nicole A. Lazar (2016), "The ASA Statement on p-Values: Context, Process, and Purpose (page 131 -- 132)" ](https://www.tandfonline.com/doi/epdf/10.1080/00031305.2016.1154108?needAccess=true)
+
+    - [V. Amrhein, S. Greenland and B. McShane (2019), "Retire statistical significance", *Nature*, 567, 305-307. ](https://www.nature.com/articles/d41586-019-00857-9)
+
+    - [R. Nuzzo (2014), "Scientific method: Statistical errors", *Nature*, 506, 150–152.](https://www.nature.com/articles/506150a)
+
+    Write a one-page summary discussing the problems of NHST paradigm and p-value. Welcome to share what does not make sense to you about the hypothesis testing (or confidence interval) that was proposed about 100 years ago.
+
+<!-- &nbsp; -->
+<!-- &nbsp; -->
+
+<br>
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

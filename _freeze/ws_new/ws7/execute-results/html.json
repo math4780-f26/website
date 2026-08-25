@@ -1,0 +1,17 @@
+{
+  "hash": "750785344d0435d03de94ae97cbd0500",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Worksheet 7\"\nsubtitle: \"Two Poluation Means\"\ncategories: \"Worksheet\"\nformat:\n  html:\n    html-math-method: mathjax\neditor: source\nexecute: \n  include: true\n---\n\n\n(@) For each scenario, decide whether a paired t procedure or an independent two sample t procedure is appropriate.\n(a) Blood pressure before and after medication on the same 20 patients.\n(b) Mean GPA of students in two different sections taught by different instructors.\n(c) Comparing left and right hand grip strength for each person.\n\n\n\n\n\n(@) A 95 percent confidence interval for $\\mu_1 - \\mu_2$ is $(-1, 5)$. At α = 0.05, would you reject $H_0: \\mu_1 -\\mu_2 = 0$ in a two sided test?\n\n\n",
+    "supporting": [
+      "ws7_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
