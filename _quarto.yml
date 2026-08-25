@@ -19,10 +19,10 @@ website:
   page-footer:
     right: 'This page is built with ❤️ and [Quarto](https://quarto.org/).'
     left: "&copy; Copyright 2026, Cheng-Han Yu"
-    background: "#c0cfb2"
+    background: "#b5e2ff"
 
   sidebar:
-    background: "#c0cfb2"
+    background: "#b5e2ff"
     logo: "/images/logo.png"
     pinned: true
     align: center
@@ -51,8 +51,8 @@ website:
             text: Schedule
           - href: course-syllabus.qmd
             text: Syllabus
-          - href: course-hours.qmd
-            text: Help Desk Hours
+          # - href: course-hours.qmd
+          #   text: Help Desk Hours
 
           # - href: course-support.qmd
           #   text: Support
@@ -91,56 +91,40 @@ website:
       #     - href: project-work.qmd
       #       text: Topics and Works
       - hw.qmd
-      - ws.qmd
+      # - ws.qmd
       # - exercise.qmd
       # - exam.qmd
       # - project/project.qmd
+      - section: "Class Activities"
+        contents:
+          - href: activity-description_new.qmd
+            text: Description
+          - href: activity-work_new.qmd
+            text: Activity work
 
-
-      # - section: "Project"
-      #   contents:
-      #     # - href: course-news.qmd
-      #     #   text: News/Annoucements
-      #     - href: project/project.qmd
-      #       text: AI Project
+      - section: "Project"
+        contents:
+          - href: project-description-4780_new.qmd
+            text: Guideline for MATH 4780
+          - href: project-description-5780_new.qmd
+            text: Guideline for MATH 5780
+          - href: project-work_new.qmd
+            text: Project Group and Proposal
       # - project/projet.qmd
       # - ae.qmd
       # - exam-review.qmd
-
-      # - section: "Weekly Materials"
-      #   contents:
-      #     - href: weeks/week-1.qmd
-      #       text: "Week 1"
-      #     - href: weeks/week-2.qmd
-      #       text: "Week 2"
-      #     - href: weeks/week-3.qmd
-      #       text: "Week 3"
-      #     - href: weeks/week-4.qmd
-      #       text: "Week 4"
-      #     - href: weeks/week-5.qmd
-      #       text: "Week 5"
-      #     - href: weeks/week-6.qmd
-      #       text: "Week 6"
-      #     - href: weeks/week-7.qmd
-      #       text: "Week 7"
-      #     - href: weeks/week-8.qmd
-      #       text: "Week 8"
-      #     - href: weeks/week-9.qmd
-      #       text: "Week 9"
-      #     - href: weeks/week-10.qmd
-      #       text: "Week 10"
-      #     - href: weeks/week-11.qmd
-      #       text: "Week 11"
-      #     - href: weeks/week-12.qmd
-      #       text: "Week 12"
-      #     - href: weeks/week-13.qmd
-      #       text: "Week 13"
-      #     - href: weeks/week-14.qmd
-      #       text: "Week 14"
-      #     - href: weeks/week-15.qmd
-      #       text: "Week 15"
-      #     - href: weeks/week-16.qmd
-      #       text: "Week 16"
+      - section: "Supplementary material for MSSC 5780"
+        contents:
+          # - href: supplemental/slr-derivations.qmd
+          #   text: SLR derivations
+          - href: supplemental/model-diagnostics-matrix.qmd
+            text: Model diagnostics
+          - href: supplemental/mlr-matrix.qmd
+            text: MLR matrix notation
+          - href: supplemental/log-transformations.qmd
+            text: Log transformations
+          - href: supplemental/model-selection-criteria.qmd
+            text: Model selection criteria
 
 format:
   html:

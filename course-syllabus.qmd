@@ -2,7 +2,7 @@
 title: "Syllabus"
 ---
 
-Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4720-104-f26.pdf)
+Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4780-102-f26.pdf)
 
 <!-- [**Syllabus for Section 102 3:30 - 4:45 PM**](/documents/syllabus-4720-102-f25.pdf). -->
 
@@ -10,7 +10,7 @@ Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4720-
 
 |          | Day     | Time           | Location       |
 |----------|---------|----------------|----------------|
-| Sec 104  | Tu & Th | 3:30 AM - 4:45 PM | Cudahy Hall 118 |
+| Sec 104  | Tu & Th | 2 - 3:15 PM | Cudahy Hall 118 |
 
 ## Office Hours
 
@@ -18,25 +18,27 @@ Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4720-
 
 -   We can schedule an online meeting via Microsoft Teams if you need/prefer.
 
-
 ## Prerequisites
 
+- MATH 2780, MATH 4720, or an equivalent introductory statistics course.
 
-- MATH 1400, 1410, or 1450. 
+- Programming experience is helpful because the course involves doing regression analysis using [\textsf{R}](https://www.r-project.org/about.html)/[\textsf{Python}](https://https://www.python.org/) programming language.
 
-- Basic computer and internet use expected. The course will also assume facility with using the internet and a personal computer. 
+- Some exposure to linear algebra at the level of MATH 3100 is helpful because some matrix operations are used for modeling and computation.
 
-- A portion of the course involves programming in [\textsf{R}](https://www.r-project.org/about.html) using [RStudio](https://rstudio.com/) or [Posit Cloud](https://posit.cloud/), but prior programming experience is not required.
+- Prior coursework in MATH 4700 and MATH 4710 would also be helpful, but it is not required.
 
+- Talk to me if you are not sure whether this is the right course for you.
 
 
 ## E-mail Policy
 
--   I will attempt to reply your email quickly, at least **within 24 hours**.
+- I will attempt to reply to your email quickly, usually **within 24 hours**.
 
--   **Expect a reply on Monday if you send a question during weekends**. If you do not receive a response from me within two days, re-send your question/comment in case there was a "mix-up" with email communication (Hope this won't happen!).
+- **Expect a reply on Monday if you send a question over the weekend**. If you do not receive a response from me within two days, resend your question or comment in case there was a "mix-up" with email communication. I hope this will not happen.
 
--   Please start your e-mail subject line with **[math4720]** or **[mssc5720]** followed by a clear description of your question. See an example below.
+- Please start your email subject line with **[math4780]** or **[mssc5780]** followed by a clear description of your question. See an example in Figure 1.
+
 
 ```{r}
 #| echo: false
@@ -47,46 +49,82 @@ knitr::include_graphics("./images/email.png")
 
 - Email etiquette is important. Please read this [article](https://www.insidehighered.com/views/2015/04/16/advice-students-so-they-dont-sound-silly-emails-essay) to learn more about email etiquette.
 
-- I am more than happy to answer your questions about this course or statistics in general. However, due to time constraint, I may choose **NOT** to respond to students' e-mail if
+- I am more than happy to answer your questions about this course or statistics in general. However, due to time constraints, I may choose **NOT** to respond to students' emails if
 
-    1. The student could answer his/her own inquiry by reading the syllabus or information on the course website or D2L.
+    1. The student could answer their own inquiry by reading the syllabus or information on the course website or D2L.
     
-    2. The student is asking for an extra credit opportunity. The answer is "no".
+    2. The student is asking for an extra-credit opportunity. The answer is "no".
     
     3. The student is requesting an extension on homework. The answer is "no".
     
     4. The student is asking for a grade to be raised for no legitimate reason. The answer is "no".
     
-    5. The student is sending an email with no etiquette.
+    5. The student is sending an email without proper etiquette.
 
 
-## Textbooks
+## Textbooks and References
 
-- **[IS] (optional)** [*Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/), by Dr. Cheng-Han Yu. (My online book)
+- **[IS] (optional)** [*Introduction to Statistics*](https://chenghanyu-introstatsbook.netlify.app/), by Dr. Cheng-Han Yu. This is a useful resource for reviewing basic probability, statistics, and simple linear regression.
 
-- **[IMS] (optional)** [*Introduction to Modern Statistics, 2nd edition*](https://openintro-ims.netlify.app/), by Mine Çetinkaya-Rundel and Johanna Hardin. Publisher: OpenIntro. (computation and data-oriented)
+- **[LRA] (optional)** [*Introduction to Linear Regression Analysis, 6th edition*](https://www.wiley.com/en-us/Introduction+to+Linear+Regression+Analysis%2C+6th+Edition-p-9781119578727), by D. C. Montgomery, E. A. Peck, and G. G. Vining. Publisher: Wiley. This is a graduate-level book that requires some knowledge of matrix algebra.
+
+- **[CAR] (optional)** [*An R Companion to Applied Regression*](https://socialsciences.mcmaster.ca/jfox/Books/Companion/), by John Fox and Sanford Weisberg. Publisher: SAGE. This book makes regression analysis in R easier, especially through the `car` and `effects` packages.
+
+- **[RD] (optional)** [*Regression Diagnostics*](https://socialsciences.mcmaster.ca/jfox/Books/RegressionDiagnostics/index.html), by John Fox. Publisher: SAGE. This is a concise book for learning regression diagnostics.
+
+- **[CMR] (optional)** [*Classical and Modern Regression with Applications*](https://www.amazon.com/Classical-Regression-Applications-Duxbury-Classic/dp/0534380166), by Raymond H. Myers. Publisher: Duxbury Press. This was one of the textbooks I used when I was a master's student.
+
+- **[AR] (optional)** [*All of Regression*](https://www.amazon.com/dp/1009702815?lv=shuf&channelId=500&plpRedirect=mhFallback), by Isabella Verdinelli and Larry Wasserman. Publisher: Cambridge University Press. This is a clear and concise graduate-level book that covers many modern regression topics.
+
+## Course Management
+
+- All course materials are posted on our course website <https://math4780-f26.github.io/website/>.
+
+- Course grades are saved and managed in **[D2L](https://d2l.mu.edu/d2l/home/656221) > Assessments > Grades**.
+
+- Coursework is submitted to **[D2L](https://d2l.mu.edu/d2l/home/656221) > Assessments > Dropbox**.
+
+- Check **[D2L](https://d2l.mu.edu/d2l/home/656221) > News** for new announcements.
+
+
+## Programming Languages
+
+- You may use any programming language to do you work.
 
 
 ## Grading Policy
 
-| Category                | Weight |
-| ----------------------- | -----: |
-| 8 Homework sets         |    10% |
-| 4 Quizzes               |    20% |
-| 2 Exams                 |    50% |
-| some Worksheets         |    10% |
-| some Group Activities   |    10% |
+Students in this class may range from undergraduate students to graduate students, so it makes sense to evaluate student performance using different point scales for MATH 4780 and MSSC 5780.
 
+For students in **MATH 4780**, the final grade is earned out of **1000 total points** distributed as follows:
 
-- You will **NOT** be allowed any extra credit projects/homework/exam to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exam will **NOT** be curved.
-<!-- however, I may use class participation to make grade adjustments at the end of the semester. -->
+| Category | Points |
+| --- | ---: |
+| Homework 1 to 6 | 150 |
+| In-class exam | 250 |
+| Final project | 400 |
+| Class participation | 200 |
+| **Total** | **1000** |
 
-- The final grade is based on your earned percentage and the grade-percentage conversion Table. $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.1 is in $[94, 100]$ and the grade is A and 92.8 is in $[90, 94)$ and the grade is A-.
+For students in **MSSC 5780**, the final grade is earned out of **1200 total points** distributed as follows:
+
+| Category | Points |
+| --- | ---: |
+| Homework 1 to 6 | 150 |
+| In-class exam | 250 |
+| Final project | 400 |
+| Class participation | 200 |
+| MSSC work | 200 |
+| **Total** | **1200** |
+
+- You will **NOT** be allowed to complete any extra-credit projects, homework, or exams to compensate for a poor average. Everyone must be given the same opportunity to do well in this class. Individual exams will **NOT** be curved.
+
+- The final grade is based on your percentage of points earned out of 1000 or 1200 points and the grade-percentage conversion table. $[x, y)$ means greater than or equal to $x$ and less than $y$. For example, 94.1 is in $[94, 100]$, so the grade is A, and 92.8 is in $[90, 94)$, so the grade is A-.
 
 ```{r}
 #| echo: false
 letter <- c("A", "A-", "B+", "B", "B-", "C+", "C", "C-",
-                       "D+", "D", "F")
+            "D+", "D", "F")
 percentage <- c("[94, 100]", "[90, 94)", "[87, 90)", "[83, 87)", "[80, 83)",
                 "[77, 80)", "[73, 77)", "[70, 73)", 
                 "[65, 70)", "[60, 65)", "[0, 60)")
@@ -95,9 +133,7 @@ knitr::kable(grade_dist, longtable = TRUE,
              caption = "Grade-Percentage Conversion")
 ```
 
-- This is not a course that gives most of students grade A. If you want to obtain a good grade, study hard. No pain, no gain.
-
-
+- This is not a course in which most students receive a grade of A. If you want to earn a good grade, study hard. No pain, no gain.
 
 ### Homework
 
@@ -105,97 +141,45 @@ knitr::kable(grade_dist, longtable = TRUE,
 
 - To submit your homework, please go to **D2L > Assessments > Dropbox** and upload your homework in **PDF** format.
 
-- There will be 8 homework sets.
+- There will be 6 graded homework sets: Homework 1 to Homework 6.
 
-- Every homework is due by **Friday 11:59 PM ** (**Don't miss it. This is a hard deadline. No late submission**).
+- Some questions are required for MSSC 5780 students.
 
-- MSSC 5720 students may have more or different homework questions.
+- You will get a better understanding of the material if you discuss it with others. However, you must submit **your own work**.
 
-<!-- - The lowest score of the homework sets will be dropped when your final grade is calculated. -->
+- **No late homework will be accepted, and you will not be allowed to make up missed homework.**
 
-- Homework is graded as *complete* or *incomplete*. Each incomplete set results in a 2% deduction from your overall grade.
+- **Handwriting is not allowed for the data analysis parts.**
 
-- Generative AI (GenAI) is allowed, but you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
+- Generative AI (GenAI) is allowed for homework, but you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
 
-<!-- - You will get a better understanding of the material if you discuss it with others. However, you must submit YOUR OWN work.  -->
+### In-Class Exam
 
-<!-- - **NO LATE HOMEWORK WILL BE ACCEPTED NOR WILL YOU BE ALLOWED TO MAKE UP MISSED HOMEWORK** for any reason.  -->
+- The in-class exam covers materials from **Weeks 1 to 10** on simple and multiple linear regression.
 
+- Some questions are required for MSSC 5780 students.
 
-### Quizzes
+- No cheat sheets or GenAI are allowed unless explicitly stated otherwise.
 
-- There will be 4 in-class 15-min quizzes on Thursdays.
+- **No make-up exam** will be given unless you have an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
 
-- Quiz questions are similar to the questions in the homework assignments.
+### Class Participation
 
-- Quizzes are individual and in **closed-book** and **no-tech** format, except a calculator.
+- You will be presenting exercise problems or mini projects.
 
-- `r emo::ji("x")` No cheat sheet or GenAI is allowed.
+- More details will be released later.
 
-- **No make-up quizzes** unless you got an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
+### Final Project
 
-- Each quiz is worth 5% of your overall grade.
+- A detailed final project guideline will be released later.
 
-- Option: If you miss a quiz due to an excused absence as defined in [Attendance in Academic Regulations](https://bulletin.marquette.edu/policies/attendance/undergraduate/), the 5% allocated to that quiz will be transferred to either the midterm exam or the final exam, whichever is closest in time and has not yet been graded. For example, if you miss Quiz 2 and the midterm exam has not yet taken place, then the midterm exam will be worth 30% instead of 25%.
+- Generative AI (GenAI) is allowed for the final project, but you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
 
-- If you miss more than one quiz, only one missed quiz can be replaced by transferring its weight to an exam. Any additional missed quizzes will receive a score of 0%.
+### MSSC Work
 
-### Exams
+- MSSC 5780 students will complete additional work worth 200 points.
 
-- There will be two exams: the midterm exam and the final exam.
-
-- Each exam has an in-class part and a take-home part. The in-class part tests your understanding of mathematical and statistical intuitions. The take-home part tests your ability to conduct statistical data analysis using statistical software such as R.
-
-- For the in-class part, one **letter-size** cheat sheet is allowed. It must be turned in with your exam.
-
-- For the take-home part, you are allowed to use GenAI tools. However, you **must carefully cite it or reveal your use of AI.** See @sec-genai for more details.
-
-- Please go to **Assessments > Dropbox** to submit your take-home exam in **PDF** format. 
-
-- The midterm exam covers **Weeks 1 to 7**. The final exam covers **all course material**.
-
-- **No make-up exams** will be given for any reason unless you have an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
-
-- Option: If you miss the midterm exam due to an excused absence defined in [Attendance in Academic Regulations](https://bulletin.marquette.edu/policies/attendance/undergraduate/), its 25% weight will be added to your final exam, i.e., 25% + 25% = 50%.
-
-### In-Class Worksheets
-
-- Several worksheets will be distributed and completed during class sessions.
-
-- The worksheets are graded as *complete* or *incomplete*.
-
-- Each incomplete sheet results in a 1% deduction from your overall grade.
-
-
-### In-Class Group Activities
-
-- There are several in-class group activities.
-
-- The group activities are graded as *complete* or *incomplete*.
-
-- Each incomplete activity results in a 2% deduction from your overall grade.
-
-
-<!-- ### Final Project -->
-
-<!-- - There will be one (or two?) project released around Week 13. -->
-
-<!-- - You are required to use GenAI to explore a topic not addressed in class, and apply both your self-learning and course knowledge to create a data analysis report. -->
-
-<!-- - The project topic will also be tested in the final exam. -->
-
-<!-- - You **must carefully cite your GenAI tool or reveal your use of AI.** See @sec-genai for more details. -->
-
-<!-- - No late submission is allowed. -->
-
-
-<!-- ### Class Participation -->
-
-<!-- - I will randomly take attendance throughout the semester.  -->
-
-<!-- - If you are absent on a day when attendance is taken once (twice), 15 (25) points will be deducted from your grade unless you have [excused absences](https://bulletin.marquette.edu/policies/attendance/undergraduate/). -->
-
-
+- Details will be released later.
 
 
 ## Generative Artificial Intelligence (GenAI) Policy {#sec-genai}

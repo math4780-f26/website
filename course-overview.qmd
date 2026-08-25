@@ -1,37 +1,19 @@
 ---
-title: "MATH 4720/5720 <br>Fall 2026"
+title: "MATH 4780/5780 <br>Fall 2026"
 image: images/logo.png
 image-alt: Hex logo for course with
 about:
   template: trestles
   links:
     - icon: laptop
-      href: https://math4720-f26.github.io/website/
+      href: https://math4780-f26.github.io/website/
       aria-label: Link to course website
     - icon: github
-      href: https://github.com/math4720-f26/website
+      href: https://github.com/math4780-f26/website
       aria-label: Link to course GitHub organization
 ---
 
-This course introduces the ideas of data summary and visualization, probability, and statistics with applications to natural and social sciences and daily life. Topics include but not limited to: random variables, discrete and continuous probability distributions, sampling distributions, confidence intervals, hypothesis testing, analysis of variance, and linear regression. This course builds a foundation for statistical inference, machine learning, and data modeling.
-
-The course will assume facility with using the internet and a personal computer. A portion of the course involves [\textsf{R}](https://www.r-project.org/about.html) programming using [RStudio or Posit Cloud](https://posit.cloud/), but prior coding experience is not required.
-
-### Learning outcomes
-
-By the end of the course, students will be able to:
-
-- **Statistical reasoning and communication**
-Students will be able to interpret data and statistical results in context, clearly communicating conclusions, uncertainty, and practical significance.
-
-- **Core probability and sampling foundations**
-Students will be able to use basic probability concepts and sampling distribution ideas (including the central limit theorem) to justify and explain common statistical methods.
-
-- **Statistical inference for common parameters**
-Students will be able to construct and interpret confidence intervals and hypothesis tests for key parameters (including means, proportions, and comparisons across groups), stating assumptions and limitations.
-
-- **Modeling and analysis using R**
-Students will be able to use R to perform reproducible statistical analyses, including visualization, regression modeling, and model assessment, and to document work appropriately (including responsible AI support when permitted).
+Starting from simple linear regression, this course provides a brief, yet complete foundation for the understanding of basic regression theory and applications that is a core of supervised learning in statistical machine learning. Topics include multiple linear regression, diagnostic analysis, collinearity, nonparametric regression, variable selection, generalized linear models and other selected topics. This course focus on data analysis rather than mathematical derivation. For advanced regression topics, consider MSSC 6250 Statistical Machine Learning.
 
 
 ![](images/background-bikeshare.png){fig-alt="A series of six, generic data visualizations: a scatterplot, a density plot, a contour plot, a line plot, a box plot, and another scatterplot." width="700"}
