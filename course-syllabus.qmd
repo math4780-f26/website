@@ -145,7 +145,7 @@ knitr::kable(grade_dist, longtable = TRUE,
 
 - Some questions are required for MSSC 5780 students.
 
-- You will get a better understanding of the material if you discuss it with others. However, you must submit **your own work**.
+<!-- - You will get a better understanding of the material if you discuss it with others. However, you must submit **your own work**. -->
 
 - **No late homework will be accepted, and you will not be allowed to make up missed homework.**
 
@@ -159,7 +159,7 @@ knitr::kable(grade_dist, longtable = TRUE,
 
 - Some questions are required for MSSC 5780 students.
 
-- No cheat sheets or GenAI are allowed unless explicitly stated otherwise.
+<!-- - No cheat sheets or GenAI are allowed unless explicitly stated otherwise. -->
 
 - **No make-up exam** will be given unless you have an [excused absence](https://bulletin.marquette.edu/policies/attendance/undergraduate/).
 
@@ -224,15 +224,14 @@ knitr::include_graphics("images/genai_screenshot.png")
 - Watch the video below to learn the importance of using GenAI properly.
 
 ```{=html}
-<!-- Replace host and id with yours -->
 <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
   <iframe
-    src="https://marquette.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=36be65f1-ba4f-457d-bad3-b1b8013b9448&start=0.5"
+    src="https://marquette.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=36be65f1-ba4f-457d-bad3-b1b8013b9448&autoplay=false"
     title="GenAI and Academic Integrity"
     style="position:absolute; top:0; left:0; width:100%; height:90%; border:0;"
     allow="encrypted-media; fullscreen; picture-in-picture"
-    allowfullscreen
-  ></iframe>
+    allowfullscreen>
+  </iframe>
 </div>
 ```
 

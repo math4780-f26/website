@@ -1,11 +1,11 @@
-subtitle: "MATH 4720/MSSC 5720 Introduction to Statistics"
+subtitle: "MATH 4780/MSSC 5780 Regression Analysis"
 author: "Dr. Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University"
 date-format: long
 filters:
   - webr
 format:
   live-revealjs:
-    footer: "[🔗 math4720-f26.github.io/website](https://math4720-f26.github.io/website/)"
+    footer: "[🔗 math4780-f26.github.io/website](https://math4780-f26.github.io/website/)"
     theme: slides.scss
     html-math-method:
       method: mathjax
