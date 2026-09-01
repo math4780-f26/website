@@ -6,25 +6,29 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46eeb4c476de49ef7df495821a6125d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
-<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/countdown-0.5.0/countdown.js"></script>
-<link href="../site_libs/quarto-contrib/countdown-0.5.0/countdown.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.19">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
-<title>MATH 4780 (MSSC 5780) - Fall 2026 – Overview of Statistics and Data 📖</title>
+<title>MATH 4780 (MSSC 5780) - Fall 2026 – Overview of Regression 📖</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
 <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
 <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -33,7 +37,7 @@
       vertical-align: middle;
     }
   </style>
-<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-54281ac7c2b23c7d08d80cd04c072199.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-8de3b5972c77face5b4caa2a3f642b52.css">
 <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
 <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -128,30 +132,30 @@
     }
   </style>
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<meta property="og:title" content="Overview of Statistics and Data r emo::ji('book') – MATH 4780 (MSSC 5780) - Fall 2026">
-<meta property="og:description" content="MATH 4720/MSSC 5720 Introduction to Statistics">
+<meta property="og:title" content="Overview of Regression r emo::ji('book') – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
 <meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../images/bg.png" class="quarto-title-block center"><h1 class="title">Overview of Statistics and Data 📖</h1>
-  <p class="subtitle">MATH 4720/MSSC 5720 Introduction to Statistics</p>
+<section id="title-slide" data-background-image=", ../images/bg.png" data-background-position="bottom 20px left 300px, center" data-background-repeat="no-repeat, no-repeat" data-background-size="50px, cover" class="quarto-title-block center"><h1 class="title">Overview of Regression 📖</h1>
+  <p class="subtitle">MATH 4780/MSSC 5780 Regression Analysis</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University 
+Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University
 </div>
 </div>
 </div>
 
-</section><section><section id="what-is-statisitcs" class="title-slide slide level1 center" data-background-image="./images/02-overview/what_stats.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>What is Statisitcs</h1>
+</section><section id="what-is-regression" class="title-slide slide level1 center" data-background-image="images/02-overview/correlation_diagram_1875.jpg" data-background-size="cover" data-background-position="50% 50%"><h1>What is Regression</h1>
 <aside class="notes"><ul>
-<li>Let’s take a short break, and we can start talking about statistics.</li>
-<li>The first and big question we usually ask is What is statistics.</li>
+<li>All right. Let’s start talking a little about regression.</li>
+<li>Today I want to give you a brief overview of regression before we go into the details of it.</li>
+<li>I guess the first question one could ask is what is regression.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -162,1066 +166,12 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="statistics-as-numeric-records" class="slide level2"><h2>Statistics as Numeric Records</h2>
-<ul>
-<li>In ordinary conversations, the word <strong>statistics</strong> is used as a term to indicate a set or collection of <strong>numeric records</strong>.</li>
-</ul>
-
-<img data-src="./images/02-overview/mj_stats.png" class="quarto-figure quarto-figure-center r-stretch" width="111"><aside class="notes"><ul>
-<li>For example, some NBA star’s career statistics are right here.</li>
-<li>Anyone know who he is? Wanna guess?</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="statistics-as-numeric-records-1" class="slide level2"><h2>Statistics as Numeric Records</h2>
-<ul>
-<li>In ordinary conversations, the word <strong>statistics</strong> is used as a term to indicate a set or collection of <strong>numeric records</strong>.</li>
-</ul>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/mj.jpeg" style="width:32.0%"></p>
-<figcaption>https://slamgoods.com/products/jordan-collectors-issue</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
+      }</style></aside></section><section><section id="section-1" class="title-slide slide level1 center" data-background-image="images/02-overview/reg_google.png" data-background-size="contain" data-background-position="50% 50%"><h1></h1>
 <aside class="notes"><ul>
-<li>Yes, Michael Jordan! My favorite NBA player.</li>
-<li>You know I was born in 80’s.</li>
-<li>You guys didn’t watch MJ playing, but I did. in TV. OK.</li>
-<li>Your idol may be Kobe, or LBJ or Stephen Curry, but for people born in 80’s, or your parents, most of them would agree MJ is the greatest of all time.</li>
-<li>OK I am gone too far.</li>
-<li>Again, in ordinary conversations, the word <strong>statistics</strong> represents <strong>numeric records</strong>.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="section-1" class="slide level2"><h2></h2>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/statistics.jpg" style="width:72.0%"></p>
-<figcaption>https://www.amazon.com/Funny-Statistics-Shirt-Definition/dp/B07JKMCDR2?customId=B07537PB8C&amp;customizationToken=MC_Assembly_1%23B07537PB8C&amp;th=1&amp;psc=1</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>And somebody defines statistics as the only field where two experts, using identical data, may come to completely opposite conclusions, which is true in some sense.</li>
-<li>And well see why later in this course.</li>
-<li>With the same data, different statistical methods may produce different results and lead to difference conclusions.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="statistics-as-a-discipline" class="slide level2"><h2>Statistics as a Discipline</h2>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><div class="quarto-figure quarto-figure-center">
-<figure><p><a href="https://en.wikipedia.org/wiki/Statistics"><img data-src="./images/02-overview/stats_wiki.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></a></p>
-</figure>
-</div>
-<figcaption>https://en.wikipedia.org/wiki/Statistics</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>Forget about that useless definition.</li>
-<li>From Wiki, Statistics is formally defined as the discipline that concerns the collection, organization, analysis, interpretation and presentation of data.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside><div class="fragment">
-<p>My ChatGPT says</p>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/stats_chatgpt.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="science-of-data" class="slide level2"><h2>Science of Data</h2>
-<ul>
-<li>
-<strong>Statistics</strong> is a subject dealing with data, or <strong>Science of Data</strong>.</li>
-</ul>
-<aside class="notes"><ul>
-<li>So, <strong>Statistics</strong> is a <strong>Science of Data</strong>.</li>
-<li>There might be another science of data. I’m not saying statistics is THE science of data.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside><div class="fragment">
-<ul>
-<li>A <strong><em>science of data</em></strong> using <strong>statistical thinking, methods and models</strong>.</li>
-</ul>
-</div>
-<div class="fragment">
-<div class="xlarge">
-<p>🤔 But wait, then what is <strong>DATA SCIENCE</strong> ❓</p>
-</div>
-</div>
-</section><section id="difference-between-statistics-and-data-science" class="slide level2"><h2>Difference between Statistics and Data Science</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/data_science_stats.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/data_science_sf.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/data_science_mac.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>When the term Data science just came out around 10 years ago, there is no formal definition of data science.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside><div class="fragment">
-<p>My ChatGPT says:</p>
-<blockquote>
-<p>Statistics is <strong>foundational</strong> to Data Science, but Data Science also includes <em>programming, data engineering, machine learning, and business communication</em>.</p>
-</blockquote>
-</div>
-</section><section id="data-science-life-cycle" class="slide level2"><h2>Data Science Life Cycle</h2>
-<!-- ![](images/02-overview/data-science-cycle.001.png){fig-alt="Data science life cycle" width=1800px} -->
-
-<img data-src="./images/02-overview/data-science-cycle.001.png" class="quarto-figure quarto-figure-center r-stretch" style="width:120.0%"><aside class="notes"><ul>
-<li><p>Data science is an discipline that helps us <em>turn raw data into understanding, insight, and knowledge</em> that includes multiple steps associated with data.</p></li>
-<li><p>This pipeline is the entrie workflow of data science.</p></li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="uc-santa-cruz-department-of-statistics-courses" class="slide level2"><h2>UC Santa Cruz Department of Statistics Courses</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="small">
-<p>STAT 5 – Statistics</p>
-<p>STAT 7 – Statistical Methods for the Biological, Environmental, and Health Sciences</p>
-<p>STAT 17 – Statistical Methods for Business and Economics</p>
-<p>STAT 80A – Gambling and Gaming</p>
-<p><span class="green">STAT 80B – The Art of Data Visualization</span></p>
-<p>STAT 108 – Linear Regression</p>
-<p>STAT 131 – Introduction to Probability Theory</p>
-<p>STAT 132 – Classical and Bayesian Inference</p>
-<p>STAT 202 – Linear Models in SAS</p>
-<p>STAT 203 – Introduction to Probability Theory</p>
-<p>STAT 204 – Introduction to Statistical Data Analysis</p>
-<p>STAT 205 – Introduction to Classical Statistical Learning</p>
-<p>STAT 205B – Intermediate Classical Inference</p>
-<p>STAT 206 – Applied Bayesian Statistics</p>
-<p>STAT 206B – Intermediate Bayesian Inference</p>
-<p>STAT 207 – Intermediate Bayesian Statistical Modeling</p>
-<p>STAT 208 – Linear Statistical Models</p>
-<p>STAT 209 – Generalized Linear Models</p>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="small">
-<p>STAT 221 – Statistical Machine Learning</p>
-<p>STAT 222 – Bayesian Nonparametric Methods</p>
-<p>STAT 223 – Time Series Analysis</p>
-<p>STAT 224 – Bayesian Survival Analysis and Clinical Design</p>
-<p>STAT 225 – Multivariate Statistical Methods</p>
-<p>STAT 226 – Spatial Statistics</p>
-<p>STAT 227 – Statistical Learning and High-Dimensional Data Analysis</p>
-<p>STAT 229 – Advanced Bayesian Computation</p>
-<p>STAT 243 – Stochastic Processes</p>
-<p>STAT 244 – Bayesian Decision Theory</p>
-<p>STAT 246 – Probability Theory with Markov Chains</p>
-<p><span class="green">STAT 266A – Data Visualization and Statistical Programming in R</span></p>
-<p>STAT 266B – Advanced Statistical Programming in R</p>
-<p><span class="green">STAT 266C – Introduction to Data Wrangling</span></p>
-</div>
-<ul>
-<li>️⬛ Methods and models</li>
-<li>🟩 Other data science related topics</li>
-</ul>
-</div></div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="data-science-may-now-be-a-broader-view-of-statistics" class="slide level2"><h2>Data Science May Now Be a Broader View of Statistics</h2>
-<p>Collection, organization, analysis, interpretation and presentation of data.</p>
-
-<img data-src="./images/02-overview/data-science-cycle.005.png" class="quarto-figure quarto-figure-center r-stretch" style="width:120.0%"><aside class="notes"><ul>
-<li><p>Although statistics deals with Collection, organization, analysis, interpretation and presentation of data, statistics focus much more on data analysis, methods and models.</p></li>
-<li><p>And now data science is more like a broader view of statistics.</p></li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="what-we-learn-in-this-course" class="slide level2"><h2>What We Learn In this Course</h2>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/book_content.png" style="width:100.0%"></p>
-<figcaption>OpenIntro Statistics Contents</figcaption></figure>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>In particular, we will spend most of the time talking about probability and statistical inference methods OK.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="we-focus-on-statistical-inference" class="slide level2"><h2>We Focus On Statistical Inference</h2>
-<ul>
-<li><p>We spend most of time on various <em>statistical methods for analyzing data</em>.</p></li>
-<li>
-<p>Learn useful information</p>
-<ul>
-<li><p>about the <strong>population</strong> we are interested (e.g.&nbsp;All Marquette students)</p></li>
-<li><p>from our <strong>sample data</strong> (e.g.&nbsp;Students in MATH 4720)</p></li>
-<li><p>through <strong>statistical inferential</strong> methods, including <strong>estimation</strong> and <strong>testing</strong> (e.g.&nbsp;Confidence intervals)</p></li>
-</ul>
-</li>
-</ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><ul>
-<li>Don’t worry if you have no idea of these terms.</li>
-<li>These are what we will discuss throughout the course, and I’ll explain each term in detail later in class. OK.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="statistics-is-a-science-of-data-so-what-is-data" class="slide level2"><h2>Statistics is a Science of Data, so What is Data?</h2>
-<ul>
-<li><p><strong>Data</strong>: A set of <strong>objects</strong> on which we observe or measure one or more <strong>characteristics</strong>.</p></li>
-<li><p>Objects are individuals, observations, subjects or cases in statistical studies.</p></li>
-<li><p>A characteristic or attribute is called a <strong>variable</strong> because it <em>varies</em> from one to another.</p></li>
-</ul>
-<aside class="notes"><ul>
-<li>All right. Statistics is a Science of Data, so What is Data?</li>
-<li>Let’s define Data.</li>
-<li>A data set is a set of <strong>objects</strong> on which we observe or measure one or more <strong>characteristics</strong>.</li>
-<li>Objects are individuals, observations, subjects or cases in statistical studies.</li>
-<li>A characteristic or attribute is called a <strong>variable</strong> because it <em>varies</em> from one to another.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside><div class="fragment">
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 17%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 19%">
-<col style="width: 23%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: center;">Number</th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: center;">Class</th>
-<th style="text-align: center;">Pos</th>
-<th style="text-align: center;">Ht</th>
-<th style="text-align: center;">Wt</th>
-<th style="text-align: center;">Hometown</th>
-<th style="text-align: center;">High_School</th>
-<th style="text-align: center;">PPG</th>
-<th style="text-align: center;">RPG</th>
-<th style="text-align: center;">APG</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Nigel James Jr.</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’0”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Huntington, NY</td>
-<td style="text-align: center;">Long island Lutheran School</td>
-<td style="text-align: center;">16.4</td>
-<td style="text-align: center;">3.4</td>
-<td style="text-align: center;">4.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Nash Walker</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Smithton, Tasmania</td>
-<td style="text-align: center;">NBA Global Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">Nolan Minessale</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’5”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Brookfield, WI</td>
-<td style="text-align: center;">Marquette HS</td>
-<td style="text-align: center;">19.8</td>
-<td style="text-align: center;">4.6</td>
-<td style="text-align: center;">4.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Colton Crowdis</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">Toronto, Ontario</td>
-<td style="text-align: center;">Bridgton Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">Ian Miletic</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Arlington Heights, IL</td>
-<td style="text-align: center;">Rolling Meadows HS</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">Joshua Clark</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">7’1”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Virginia Beach, VA</td>
-<td style="text-align: center;">Clements HS</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">1.9</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">Damarius Owens</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rochester, NY</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">4.8</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">Adrien Stevens</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Potomac, MD</td>
-<td style="text-align: center;">Bullis School</td>
-<td style="text-align: center;">7.9</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">1.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">Sananda Fru</td>
-<td style="text-align: center;">Sr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’11”</td>
-<td style="text-align: center;">250</td>
-<td style="text-align: center;">Berlin, Germany</td>
-<td style="text-align: center;">Loewen Braunschweig</td>
-<td style="text-align: center;">9.0</td>
-<td style="text-align: center;">6.1</td>
-<td style="text-align: center;">1.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">Royce Parham</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">230</td>
-<td style="text-align: center;">Pittsburgh, PA</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">12.5</td>
-<td style="text-align: center;">4.9</td>
-<td style="text-align: center;">0.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">Caedin Hamilton</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Santa Maria, CA</td>
-<td style="text-align: center;">St.&nbsp;Joseph</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">0.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">Alex Egbuonu</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">235</td>
-<td style="text-align: center;">Nashua, NH</td>
-<td style="text-align: center;">Lawrence Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">33</td>
-<td style="text-align: center;">Ethan Johnston</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">210</td>
-<td style="text-align: center;">Queens, NY</td>
-<td style="text-align: center;">The Hill School</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">35</td>
-<td style="text-align: center;">Michael Phillips II</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rolesville, NC</td>
-<td style="text-align: center;">GRACE Christian School</td>
-<td style="text-align: center;">2.1</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">0.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">42</td>
-<td style="text-align: center;">Braeden Brenn</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’8”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Appleton, WI</td>
-<td style="text-align: center;">St.&nbsp;Mary Catholic HS</td>
-<td style="text-align: center;">0.7</td>
-<td style="text-align: center;">0.0</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>For example, the data set right here is a set of Marquette mens basketball players.</li>
-<li>So objects are individuals or players in the data.</li>
-<li>And each player has several characteristics or attributes shown in columns associated with him.</li>
-<li>For example, his #, class, position, height, weight, hometown, and high school.</li>
-<li>These characteristics are called variables because they vary form one to another. Clear?</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section><section id="data-matrix" class="slide level2"><h2>Data Matrix</h2>
-<ul>
-<li><p>Each row corresponds to a unique case or observational unit.</p></li>
-<li><p>Each column represents a characteristic or variable.</p></li>
-<li><p>This structure allows new cases to be added as rows or new variables as new columns.</p></li>
-</ul>
-<div class="tiny">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 17%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 19%">
-<col style="width: 23%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: center;">Number</th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: center;">Class</th>
-<th style="text-align: center;">Pos</th>
-<th style="text-align: center;">Ht</th>
-<th style="text-align: center;">Wt</th>
-<th style="text-align: center;">Hometown</th>
-<th style="text-align: center;">High_School</th>
-<th style="text-align: center;">PPG</th>
-<th style="text-align: center;">RPG</th>
-<th style="text-align: center;">APG</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Nigel James Jr.</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’0”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Huntington, NY</td>
-<td style="text-align: center;">Long island Lutheran School</td>
-<td style="text-align: center;">16.4</td>
-<td style="text-align: center;">3.4</td>
-<td style="text-align: center;">4.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Nash Walker</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Smithton, Tasmania</td>
-<td style="text-align: center;">NBA Global Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">Nolan Minessale</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’5”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Brookfield, WI</td>
-<td style="text-align: center;">Marquette HS</td>
-<td style="text-align: center;">19.8</td>
-<td style="text-align: center;">4.6</td>
-<td style="text-align: center;">4.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Colton Crowdis</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">Toronto, Ontario</td>
-<td style="text-align: center;">Bridgton Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">Ian Miletic</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Arlington Heights, IL</td>
-<td style="text-align: center;">Rolling Meadows HS</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">Joshua Clark</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">7’1”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Virginia Beach, VA</td>
-<td style="text-align: center;">Clements HS</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">1.9</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">Damarius Owens</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rochester, NY</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">4.8</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">Adrien Stevens</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Potomac, MD</td>
-<td style="text-align: center;">Bullis School</td>
-<td style="text-align: center;">7.9</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">1.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">Sananda Fru</td>
-<td style="text-align: center;">Sr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’11”</td>
-<td style="text-align: center;">250</td>
-<td style="text-align: center;">Berlin, Germany</td>
-<td style="text-align: center;">Loewen Braunschweig</td>
-<td style="text-align: center;">9.0</td>
-<td style="text-align: center;">6.1</td>
-<td style="text-align: center;">1.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">Royce Parham</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">230</td>
-<td style="text-align: center;">Pittsburgh, PA</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">12.5</td>
-<td style="text-align: center;">4.9</td>
-<td style="text-align: center;">0.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">Caedin Hamilton</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Santa Maria, CA</td>
-<td style="text-align: center;">St.&nbsp;Joseph</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">0.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">Alex Egbuonu</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">235</td>
-<td style="text-align: center;">Nashua, NH</td>
-<td style="text-align: center;">Lawrence Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">33</td>
-<td style="text-align: center;">Ethan Johnston</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">210</td>
-<td style="text-align: center;">Queens, NY</td>
-<td style="text-align: center;">The Hill School</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">35</td>
-<td style="text-align: center;">Michael Phillips II</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rolesville, NC</td>
-<td style="text-align: center;">GRACE Christian School</td>
-<td style="text-align: center;">2.1</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">0.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">42</td>
-<td style="text-align: center;">Braeden Brenn</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’8”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Appleton, WI</td>
-<td style="text-align: center;">St.&nbsp;Mary Catholic HS</td>
-<td style="text-align: center;">0.7</td>
-<td style="text-align: center;">0.0</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>And we usually store a data set in a matrix form that has rows and columns.</li>
-<li>Each row corresponds to a unique case or observational unit, or the object.</li>
-<li>Each column represents a characteristic or variable.</li>
-<li>This structure allows new cases to be added as rows or new variables as new columns.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section></section><section><section id="population-and-sample" class="title-slide slide level1 center" data-background-image="./images/02-overview/data_collect.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>Population and Sample</h1>
-<aside class="notes"><ul>
-<li>All right. Let’s begin to see what population and sample are.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="target-population" class="slide level2"><h2>Target Population</h2>
-<ul>
-<li><p>The first step in conducting a study is to <em>identify questions</em> to be investigated.</p></li>
-<li>
-<p>A clear research question is helpful in identifying</p>
-<ul>
-<li>what <em>cases</em> should be studied (row)</li>
-<li>what <em>variables</em> are important (column)</li>
-</ul>
-</li>
-<li><p>Target <strong>Population</strong>: the collection of <strong>all</strong> objects which we are interested in studying from.</p></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><em>What is the average GPA of currently enrolled Marquette students?</em></li>
-</ul>
-<div class="small">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/study.jpeg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>Target <strong>Population</strong>: The <strong>complete</strong> collection of data we’d like to make inference about.</li>
-<li>So the population is a set of <strong>all</strong> objects which we are interested in studying from.</li>
-<li>Because All Marquette undergrads that are currently enrolled is the <strong>complete</strong> collection of data we’d like to make inference about.</li>
-<li>Each currently enrolled Marquette undergrad is an object.</li>
-<li>Note that students who are not currently enrolled or students that are already graduated are not our interest, and they shouldn’t be a part of target population.</li>
-<li>Can anybody tell me what variable associated with Marquette undergrads is our interest?</li>
-<li>So average GPA is the variable or population property we like to make inference about.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><span class="blue">All Marquette students that are currently enrolled.</span></p>
-</div>
-</div></div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="target-population-1" class="slide level2"><h2>Target Population</h2>
-<ul>
-<li><p>The first step in conducting a study is to <em>identify questions</em> to be investigated.</p></li>
-<li>
-<p>A clear research question is helpful in identifying</p>
-<ul>
-<li>what <em>cases</em> should be studied (row)</li>
-<li>what <em>variables</em> are important (column)</li>
-</ul>
-</li>
-<li><p>Target <strong>Population</strong>: the collection of <strong>all</strong> objects which we are interested in studying from.</p></li>
-</ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><em>Does a new drug reduce mortality in patients with severe heart disease?</em></li>
-</ul>
-<div class="small">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/heart_disease.jpeg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<aside class="notes"><ul>
-<li>OK. Another example. If our research question is <em>Does a new drug reduce mortality in patients with severe heart disease?</em> What is our target population?</li>
-<li>A person with severe heart disease represents a case.</li>
-<li>The population includes all patients with severe heart disease.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<p><span class="blue">All people with severe heart disease.</span></p>
-</div>
-</div></div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="sample-data" class="slide level2"><h2>Sample Data</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><p>Sometimes, it’s possible to collect data of all cases we are interested.</p></li>
-<li><p>Most of the time, it is too expensive to collect data for every case in a population.</p></li>
-<li><p>What about the average GPA of all students in Illinois? the U.S.? the world? 😱 😱 😱</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="02-overview_files/figure-revealjs/sample-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-<div class="fragment">
-<ul>
-<li><p><strong>Sample</strong>: A <strong>subset</strong> of cases selected from a population.</p></li>
-<li><p>Compute the average GPA of the sample data</p></li>
-<li><p>Hope sample avg GPA <span class="math inline">\(\approx\)</span> population avg GPA. 🙏</p></li>
-</ul>
-<aside class="notes"><ul>
-<li>So sampling is our solution to it.</li>
-<li>A <strong>Sample</strong> is A <strong>subset</strong> of cases selected from a population.</li>
-<li>And the idea is that OK, we are not able to compute the average GPA of a population, but we collect a sample from that population which has way less objects than the population.</li>
-<li>And then we compute the average GPA of the sample data.</li>
-<li>And we hope the sample average GPA can be close to the population average GPA because the population GPA is our main interest, not the sample GPA.</li>
-<li>To have sample average GPA close to population GPA, we want the sample to look like the population so that the sample and the population share similar attribute including GPA.</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section><section id="good-sample-vs.-bad-sample" class="slide level2"><h2>Good Sample vs.&nbsp;Bad Sample</h2>
-<div class="question">
-<p>Is <strong>this 4720/5720 class</strong> a sample data of the target population Marquette students?</p>
-</div>
-<div class="fragment">
-<div class="question">
-<p>Is <strong>this 4720/5720 class</strong> a <em>“good”</em> sample of the target population?</p>
-</div>
-</div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="02-overview_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section><section id="good-sample-vs.-bad-sample-1" class="slide level2"><h2>Good Sample vs.&nbsp;Bad Sample</h2>
-<div class="question">
-<p>Is <strong>this 4720/5720 class</strong> a <em>“good”</em> sample of the target population?</p>
-</div>
-<ul>
-<li><p>The sample is convenient to be collected, but it may NOT be <strong>representative</strong> of the population.</p></li>
-<li><p><strong>Biased</strong> sample: The average GPA of the class may be far from that of all Marquette undergrads.</p></li>
-</ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><ul>
-<li>The sample is convenient to be collected, but it is NOT well <strong>representative</strong> of the population.</li>
-<li>You are mostly STEM majors, and so with a high chance, your avg GPA is not the same as the GPA of humanities or business students,right.</li>
-<li>
-<strong>Biased</strong> sample: The average GPA of you guys may not be close to the average GPA of all Marquette undergrads.</li>
-<li>Sample data must be collected in an appropriate way. If not GIGO.</li>
+<li>And it’s not that hard to answer this question.</li>
+<li>Nowadays, if we don’t know something, we google it.</li>
+<li>This is just the google page.</li>
+<li>Here shows the explanation of regression analysis in wikepedia.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1233,27 +183,20 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           overflow: hidden!important;
           display:block!important;
       }</style></aside></section><section id="section-2" class="slide level2"><h2></h2>
+<p>This is what my ChatGPT says…</p>
 
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="how-and-why-a-representative-sample" class="slide level2"><h2>How and Why a Representative Sample?</h2>
-<ul>
-<li><p>We always seek to <strong>randomly</strong> select a sample from a population.</p></li>
-<li><p>Lots of statistical methods are based on <em>randomness assumption</em>.</p></li>
-</ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><ul>
-<li>We always seek to <strong>randomly</strong> select a sample from a population because random sampling usually give us a Representative Sample, as long as the sample size, or the number of objects in the sample is not too small.</li>
-<li>So in the example, the proportion of major in our sample should look pretty similar to the proportion of our target population, which is all marquette students.</li>
-<li>If data are not collected in a random framework, these statistical methods – the estimates and errors associated with the estimates – are not reliable.</li>
+<img data-src="images/02-overview/reg_gpt.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section></section><section><section id="section-3" class="title-slide slide level1 center"><h1></h1>
+<div class="center">
+<div class="xlarge">
+<p>Regression is a statistical technique for investigating and modeling the <strong>relationships between variables</strong>.</p>
+</div>
+</div>
+<aside class="notes"><ul>
+<li>So in one sentence, Regression analysis is a statistical technique for investigating and modeling the relationships between variables.</li>
+<li>Regression is a tool for exploring the relationships between variables.</li>
+<li>If you just analyze one particular variable in a data set, you won’t need regression.</li>
+<li>If you analyze two or more variables separately, one at a time, you won’t need regression too.</li>
+<li>If you care about the relationships between variables, how one variable affects the other, then you need regression analysis.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1264,8 +207,29 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section></section><section><section id="data-collection" class="title-slide slide level1 center" data-background-image="./images/02-overview/data_collect.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>Data Collection</h1>
-<aside class="notes"><style type="text/css">
+      }</style></aside></section><section id="relationship-as-functions" class="slide level2"><h2>Relationship as Functions</h2>
+<ul>
+<li>Represent relationships between variables using <strong>functions</strong> <span class="math inline">\(y = f(x)\)</span>.
+<ul>
+<li>Plug in the inputs and receive the output.</li>
+<li>
+<span class="math inline">\(y = f(x) = 3x + 7\)</span> is a function with input <span class="math inline">\(x\)</span> and output <span class="math inline">\(y\)</span>.</li>
+<li>If <span class="math inline">\(x = 5\)</span>, <span class="math inline">\(y = 3 \times 5 + 7 = 22\)</span>.</li>
+</ul>
+</li>
+</ul>
+
+<img data-src="images/02-overview/linear-fcn-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><aside class="notes"><ul>
+<li>In mathematics, how do we describe a Relationship Between Variables? We use a function. Right.</li>
+<li>The function <span class="math inline">\(y = f(x)\)</span> gives us the relationship between an output <span class="math inline">\(Y\)</span> and one or more inputs <span class="math inline">\(x\)</span>.
+<ul>
+<li>You plug in the values of inputs and receive back the output value.</li>
+<li>For example, the formula <span class="math inline">\(y = f(x) = 3x + 7\)</span> is a function with input <span class="math inline">\(x\)</span> and output <span class="math inline">\(y\)</span>. If <span class="math inline">\(x = 5\)</span>, <span class="math inline">\(y = 3 \times 5 + 7 = 22\)</span>.</li>
+</ul>
+</li>
+<li>Because this is a linear function, we know that x and y are linearly related.</li>
+<li>With a value of <span class="math inline">\(x\)</span>, I can give you 100% correct value of <span class="math inline">\(y\)</span>, which is right on this straight line. right. In other words, their relationship is 100% deterministic.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1275,43 +239,72 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="two-types-of-studies-to-collect-sample-data" class="slide level2"><h2>Two Types of Studies to Collect Sample Data</h2>
+      }</style></aside></section><section id="different-relationships" class="slide level2"><h2>Different Relationships</h2>
+
+<img data-src="images/02-overview/diff-fcns-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="fragment">
+<div class="question">
+<p>Can you come up with any real-world examples describing relationships between variables deterministically?</p>
+</div>
+<aside class="notes"><ul>
+<li>The relationship between x and y can be more than linear.</li>
+<li>The relationship can be also quadratic, cubic or any other possible relationship.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="different-relationships-1" class="slide level2"><h2>Different Relationships</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/study_obs.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<figure><p><img data-src="images/02-overview/temp-fcn-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/02-overview/temparature.jpeg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/study_exp.png" class="quarto-figure quarto-figure-center" style="width:82.0%"></p>
+<figure><p><img data-src="images/02-overview/disp-fcn-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="https://evantoh23.files.wordpress.com/2011/02/21330268-media_httpevantohfile_cicvi.jpg" class="quarto-figure quarto-figure-center" style="width:30.0%"></p>
+</figure>
+</div>
+</div>
 </div>
 </div></div>
-<!-- - **Observational Study**: Observe and measure characteristics/variables, and do **NOT** attempt to modify or intervene with the subjects being studied. -->
-<!--   + <span style="color:blue"> Sample from 1️⃣ the heart disease and 2️⃣ heart disease-free populations. Then record the fat content of the diets for the two groups.</span> </span>  -->
-<!-- . . . -->
-<!-- - **Experimental Study**: Apply some **treatment(s)** and then proceed to observe its responses or effects on the individuals (experimental units). -->
-<!--   + <span style="color:blue">Assign volunteers to one of several diets with different levels of dietary fat (treatments). Then compare the treatments with respect to the incidence of heart disease after a period of time. </span>  -->
-</section><section id="two-types-of-studies-to-collect-sample-data-1" class="slide level2"><h2>Two Types of Studies to Collect Sample Data</h2>
-<div class="question">
-<p>Observational or Experimental?</p>
-<ul>
-<li><p><span style="color:blue">Randomly select 40 males and 40 females to see the difference in blood pressure levels between male and female. </span></p></li>
-<li><p><span style="color:blue"> Test the effects of a new drug by randomly dividing patients into 3 groups (high dosage, low dosage, placebo). </span></p></li>
-</ul>
-</div>
-<aside class="notes"><style type="text/css">
+<aside class="notes"><ul>
+<li>Here I give your two examples. The first example is the conversion of F and C degrees. Their relationship is linear and F = 32 + 1.8 C.</li>
+<li>So you give me a C degree, I can tell you its corresponding F degree fro sure. Right.</li>
+<li>The second example comes from physics. the displacement of an object is a quadratic function of time.</li>
+<li>So here s(t) = v0 * t + 0.5 * a * t^2. v0 is the initial velocity, and a is acceleration, and t is time.</li>
+<li>Again the relationship between displacement and time is 100% deterministic.</li>
+<li>A value of time corresponds to an unique value of displacement given v0 and a.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1321,18 +314,227 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="limitation-of-observational-studies-confounding" class="slide level2"><h2>Limitation of Observational Studies: Confounding</h2>
+      }</style></aside></section><section id="relationship-between-variables-is-not-perfect" class="slide level2"><h2>Relationship between Variables is Not Perfect</h2>
+
+<img data-src="images/02-overview/not-perfect-rel-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="fragment">
+<div class="question">
+<p>Can you provide some real examples that the variables are related each other, but not perfectly related?</p>
+</div>
+<aside class="notes"><ul>
+<li>But unfortunately, in reality, most relationships between variables we are interested are not Perfect.</li>
+<li>In fact, there is almost no perfect relationship between two variables because everything in the world is connected each other. And so any two variables are affected by any other variables.</li>
+<li>For example, the displacement of an object is also affected by airflow and humidity, which is not considered in the formula.</li>
+<li>Even we the two variables are perfectly related, there are always some measurement errors or noises when we are recording and collecting their data. right. For example, there may be some measurement errors when we measure the displacement of an object for any given time, right? So their quadratic relationship is there, but the data we collect are not exactly on the quadratic curve.</li>
+<li>So that’s why the Relationship between variables always involves some uncertainty.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="relationship-between-variables-is-not-perfect-1" class="slide level2"><h2>Relationship between Variables is Not Perfect</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>💵 In general, one with more years of education earns more.<br>
+💵 Any two with the same years of education may have different annual income.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/02-overview/graduation.jpeg" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/02-overview/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<aside class="notes"><ul>
+<li>Here I give you a simple example: the relationship between income and years of education.</li>
+<li>💵 In general, one with more years of education earns more.</li>
+<li>💵 Any two with the same years of education may have different annual income.</li>
+<li>Because your income level depends on so many other factors, not just years of education.</li>
+<li>So when you plot the scatter plot of the two variables, you will find that there is some trend, but the data are sort of scattered or jittered or variated around some function that describes the relationship between income the years of education.</li>
+<li>
+<strong><span style="color:red">Red</span></strong> dots are observed values or the years of education and income pairs.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="variation-around-the-functionmodel" class="slide level2"><h2>Variation around the Function/Model</h2>
+<!-- *Statistics is the explanation of variation in the context of what remains unexplained.*   -->
+<div class="question">
+<p>What are the unexplained variation coming from?</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:70%;">
 <ul>
 <li>
-<strong>Confounder</strong>: A variable NOT included in a study but affects the variables in the study.</li>
-<li>Observe past data show that increases in ice cream sales are associated with increases in drownings, and we conclude that <strong>eating ice cream causes drownings</strong>. 😱 😕 ⁉️</li>
+<strong>Other factors</strong> accounting for parts of variability of income.
+<ul>
+<li>Adding more explanatory variables to a model can reduce the variation size around the model.</li>
+</ul>
+</li>
+<li>Pure <strong>measurement error</strong>.</li>
+<li>Just that <strong>randomness</strong> plays a big role. 🤔</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="images/02-overview/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="question">
+<p>What other factors (variables) may affect a person’s income?</p>
+</div>
+</div>
+<div class="fragment">
+<p><code>your income = f(years of education, major, GPA, college, parent's income, ...)</code></p>
+<aside class="notes"><ul>
+<li>And the data Variation around the Function, or in general the regression model is just as important as the model, if not more!<br>
+</li>
+<li>Basically, what statistics does is explain variation in the context of what remains unexplained.</li>
+<li>The scatter plot suggests that there might be <strong>other factors</strong> that account for large parts of variability.</li>
+<li>If that is the case, adding more explanatory variables ( <span class="math inline">\(X\)</span>s ) to a model can sometimes usefully reduce the size of the scatter around the model.</li>
+<li>Perhaps just that randomness plays a big role.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="regression-model" class="slide level2"><h2>Regression Model</h2>
+<ul>
+<li>
+<span class="math inline">\(Y\)</span>: <strong>response, outcome, label, dependent</strong> variable, e.g., <em><code>income</code></em>
+</li>
+<li>
+<span class="math inline">\(X\)</span>: <strong>predictor, covariate, feature, regressor, explanatory/ independent</strong> variable, e.g., <em><code>years of education</code></em>, which is <strong>known and fixed</strong>.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Explain the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and make predictions through a model <span class="math display">\[Y = f(X) + \epsilon\]</span>
+</li>
+<li>
+<span class="math inline">\(\epsilon\)</span>: <strong>irreducible</strong> random error
+<ul>
+<li>independent of <span class="math inline">\(X\)</span>
+</li>
+<li>
+<strong>mean zero</strong> with some variance.</li>
+</ul>
+</li>
+<li>
+<span class="math inline">\(f(\cdot)\)</span>: <strong>fixed</strong> but <strong>unknown</strong> function describing the relationship between <span class="math inline">\(X\)</span> and the <strong>mean of <span class="math inline">\(Y\)</span></strong>. <!-- - $f$ represents the systematic information that X provides about Y. -->
+</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="question">
+<p>In Intro Stats, what is the form of <span class="math inline">\(f\)</span> and what assumptions you made on the random error <span class="math inline">\(\epsilon\)</span> ?</p>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span class="math inline">\(f(X) = \beta_0 + \beta_1X\)</span> with unknown parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
+<li>
+<span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>.</li>
+</ul>
+<aside class="notes"><ul>
+<li>OK. Now after collecting the data of the variables we are interested, we know their relationship, most of the time, is not perfect, and stochastic in some way and in some sense.</li>
+<li>And how do we model such stochastic relationship? Well the answer is a regression model.</li>
+<li>Suppose we are interested in the relationship between two variables, call <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. In particular, we like to know how changes of <span class="math inline">\(X\)</span> affect value of <span class="math inline">\(Y\)</span>, or we want to use <span class="math inline">\(X\)</span> to predict <span class="math inline">\(Y\)</span>.</li>
+<li>In this sense, <span class="math inline">\(Y\)</span> is called <strong>response, outcome, label, dependent</strong> variable, e.g., <em><code>income</code></em>
+</li>
+<li>
+<span class="math inline">\(X\)</span> is called <strong>predictor, covariate, feature, regressor, explanatory or independent</strong> variable, e.g., <em><code>years of education</code></em>, which is <strong>known and fixed</strong>.</li>
+<li>Explain the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and make predictions through a model <span class="math inline">\(Y = f(X) + \epsilon\)</span>. This is a very general regression model we can built to learn the relationship b/w x and y.</li>
+<li>
+<span class="math inline">\(f(\cdot)\)</span> is <strong>fixed</strong> but <strong>unknown</strong> and describes the <strong>true</strong> relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. <!-- - $f$ represents the systematic information that X provides about Y. -->
+</li>
+<li>
+<span class="math inline">\(\epsilon\)</span> is a <strong>irreducible</strong> random error which is assumed to be independent of <span class="math inline">\(X\)</span> and has mean zero with some variance.</li>
+<li>
+<span class="math inline">\(\epsilon\)</span> is used to represent those measurement errors or the variation that cannot be explained or captured by the predictor X.</li>
+<li>Intro Stats:
+<ul>
+<li>
+<span class="math inline">\(f(X) = \beta_0 + \beta_1X\)</span> with unknown parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
+<li>
+<span class="math inline">\(\epsilon \sim N(0, \sigma^2)\)</span>.</li>
+</ul>
+</li>
+<li>
+<span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are assumed to be <strong>linearly</strong> related, which may not be correct.</li>
+<li>Next week, we will learn simple linear regression from the scratch and in much more detail. Here I just give you an overview.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><!-- ## --><!-- ```{r} --><!-- knitr::include_graphics("./images/02-overview/regression_line_data.png") --><!-- ``` -->
+</div>
+</section><section id="section-4" class="slide level2"><h2></h2>
+<p><span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \qquad \epsilon_i \sim N(0, \sigma^2)\)</span></p>
+
+<img data-src="images/02-overview/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="section-5" class="slide level2"><h2></h2>
+<p><span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \qquad \epsilon_i \sim N(0, \sigma^2)\)</span></p>
+
+<img data-src="images/02-overview/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="section-6" class="slide level2"><h2></h2>
+<p><span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + \epsilon_i, \qquad \epsilon_i \sim N(0, \sigma^2)\)</span></p>
+
+<img data-src="images/02-overview/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="true-unknown-function-f-of-the-model-y-fx-epsilon" class="slide level2"><h2>True Unknown Function <span class="math inline">\(f\)</span> of the Model <span class="math inline">\(Y = f(X) + \epsilon\)</span>
+</h2>
+<!-- - **<span style="color:red">Red</span>** dots: observed values -->
+<ul>
+<li>
+<strong><span style="color:blue">Blue</span></strong> curve: true underlying relationship between (the mean) <code>income</code> and <code>years of education</code>.</li>
+<li>
+<strong>Black</strong> lines: error associated with each observation</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/icecream.jpeg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+<figure><p><img data-src="images/02-overview/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -1341,32 +543,163 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/drowning.jpeg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+<figure><p><img data-src="images/02-overview/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<div class="fragment">
+<aside class="notes"><ul>
+<li>Let’s go back to the income-education example. <strong><span style="color:red">Red</span></strong> dots are observed values or the years of education and income pairs. Suppose we like to use a regression model <span class="math inline">\(y = f(x) + \epsilon\)</span> to describe the relationship between income and education.</li>
+<li>And the *<span style="color:navy">Blue</span>** curve on the right shows the true underlying relationship between income and years of education, which is the function <span class="math inline">\(f\)</span> in our regression model.</li>
+<li>And each <strong>Black</strong> vertical line indicates an error associated with each observation.</li>
+<li>So again, each red dot or observation is the value of the function <span class="math inline">\(f(x)\)</span> plus some random error with its magnitude shown in a black vertical line.</li>
+<li>Again, in regression, we assume years of education is fixed. It is income level that varies around the function <span class="math inline">\(f\)</span>.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<div class="alert">
+<p><strong>Big problem</strong>: <em><span class="math inline">\(f(x)\)</span> is unknown and needs to be estimated.</em></p>
+</div>
+<aside class="notes"><ul>
+<li>And a big problem is, in reality, we don’t know this true function <span class="math inline">\(f\)</span>. And we need to estimate it.</li>
+<li>estimating this unknown <span class="math inline">\(f\)</span> is a main job of regression analysis. We are trying to uncover the underlying true process or function <span class="math inline">\(f\)</span>, given the data that are noisy or with some unknown random errors.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="why-estimate-f-prediction-for-y" class="slide level2"><h2>Why Estimate <span class="math inline">\(f\)</span>? Prediction for <span class="math inline">\(Y\)</span>
+</h2>
+<ul>
+<li>
+<strong>Prediction</strong>: Inputs <span class="math inline">\(X\)</span> are available, but the output <span class="math inline">\(Y\)</span> cannot be easily obtained. We predict <span class="math inline">\(Y\)</span> using <span class="math display">\[ \hat{Y} = \hat{f}(X), \]</span> where <span class="math inline">\(\hat{f}\)</span> is our estimate of <span class="math inline">\(f\)</span>, and <span class="math inline">\(\hat{Y}\)</span> represents the resulting prediction for <span class="math inline">\(Y\)</span>.</li>
+</ul>
+<aside class="notes"><ul>
+<li>Now we know our goal is to estimate the unknown regression function <span class="math inline">\(f\)</span>. But why do we need that? Any benefits we can have after estimating <span class="math inline">\(f\)</span>?</li>
+<li>Well, the two main benefits of doing regression are
+<ul>
+<li>first, we are able to predict y given a value of x</li>
+<li>the second benefit is, we learn how x affects y, which may be our research interest.</li>
+</ul>
+</li>
+<li>Let’s discuss prediction first.</li>
+<li>Regression can be a great tool for prediction, especially when inputs <span class="math inline">\(X\)</span> are available, but the output <span class="math inline">\(Y\)</span> cannot be easily obtained.</li>
+<li>For example, we usually know people’s years of education, but we rarely know their income level, right? because income is a private and personal information.</li>
+<li>After we estimate <span class="math inline">\(f\)</span>, we can use the estimate of <span class="math inline">\(f\)</span> to predict <span class="math inline">\(y\)</span>,</li>
+<li>So we predict <span class="math inline">\(Y\)</span> using the relationship between X and Y that we learn from our data that</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
 <div class="question">
-<p>What is the confounder that is not in the data, but affects ice cream sales and the number of drownings?</p>
+<p>In Intro Stats, what is our estimated regression function <span class="math inline">\(\hat{f}\)</span>?</p>
 </div>
 </div>
 <div class="fragment">
-<div class="columns">
-<div class="column" style="width:80%;">
-<p><strong><em>Temperature</em></strong>: as temperature increases, ice cream sales increase and the number of drownings goes up because more people swim.</p>
-</div><div class="column" style="width:20%;">
+<ul>
+<li>
+<span class="math inline">\(\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X\)</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span class="math inline">\(\hat{f}\)</span> is often treated as a <em>black box</em>.</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/beach.jpeg" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+<figure><p><img data-src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Blackbox.svg" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-</div></div>
-<aside class="notes"><p>As temperature increases (season), ice cream sales increase and the number of drownings goes up because more people swim.</p>
+<aside class="notes"><ul>
+<li>When the goal is prediction, <span class="math inline">\(\hat{f}\)</span> is often treated as a <em>black box</em>. Basically we don’t care much about how <span class="math inline">\(f\)</span> looks like, or whether the shape <span class="math inline">\(f\)</span> is meaningful. All we want is that predicted values are as close as the true response values.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="why-estimate-f-inference-for-f" class="slide level2"><h2>Why Estimate <span class="math inline">\(f\)</span>? Inference for <span class="math inline">\(f\)</span>
+</h2>
+<ul>
+<li>
+<strong>Inference</strong>: Understand how <span class="math inline">\(Y\)</span> is affected by <span class="math inline">\(X\)</span>.</li>
+<li>
+<span class="math inline">\(\hat{f}\)</span> <em>cannot</em> be treated as a <em>black box</em>. We want to know the exact form of <span class="math inline">\(f\)</span>.</li>
+</ul>
+<div class="fragment">
+<p>We are interested in</p>
+<ul>
+<li>
+<span style="color:blue"> <em>Which covariates are associated with the response?</em> </span><br>
+👉 Do <code>age</code>, <code>education level</code>, <code>gender</code>, etc affect <code>salary</code>?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span style="color:blue"> <em>What is the relationship between the response and each covariate?</em> </span><br>
+👉 How much <code>salary</code> increases/decreases as <code>age</code> increases one unit?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<span style="color:blue"> <em>Can the relationship be adequately summarized using any equation?</em> </span><br>
+👉 The relationship between <code>salary</code> and <code>age</code> is linear, quadratic or more complicated?</li>
+</ul>
+<aside class="notes"><ul>
+<li>Another benefit of estimating y is that we can do inference for the regression function <span class="math inline">\(f\)</span>.</li>
+<li>We estimate <span class="math inline">\(f\)</span> so that we understand how <span class="math inline">\(Y\)</span> is affected as <span class="math inline">\(X\)</span> changes.</li>
+<li>When the goal is inference, <span class="math inline">\(\hat{f}\)</span> <em>cannot</em> be treated as a <em>black box</em>.</li>
+<li>We want to know its exact form of <span class="math inline">\(f\)</span>.</li>
+<li>When doing inference, we are interested in:
+<ul>
+<li>
+<em>Which covariates are associated with the response?</em> e.g.&nbsp;<span style="color:blue">Do <code>age</code>, <code>education level</code>, <code>gender</code>, etc affect <code>salary</code>?</span>
+</li>
+<li>
+<em>What is the relationship between the response and each covariate?</em> e.g.&nbsp;<span style="color:blue">How much <code>salary</code> increases/decreases as <code>age</code> increases one unit?</span>
+</li>
+<li>
+<em>Can the relationship between <span class="math inline">\(Y\)</span> and each covariate be adequately summarized using a linear equation, or is the relationship more complicated?</em> e.g.&nbsp;<span style="color:blue">The relationship between <code>salary</code> and <code>age</code> is linear, quadratic or more complicated?</span>
+</li>
+</ul>
+</li>
+</ul>
+<p>All those questions may be your research questions, and these can be answered by regression analysis.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1379,13 +712,20 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside>
 </div>
-</section><section id="causal-relationship" class="slide level2"><h2>Causal Relationship</h2>
+</section><section id="how-to-estimate-f" class="slide level2"><h2>How to Estimate <span class="math inline">\(f\)</span>?</h2>
 <ul>
-<li><p>Making causal conclusions based on <em>experiments</em> is often more reasonable than making the same causal conclusions based on observational data.</p></li>
-<li><p>Observational studies are generally only sufficient to show <strong>associations, not causality</strong>.</p></li>
+<li>Observations <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), \dots, (x_n,y_n)\}\)</span>: <strong>training data</strong> to <em>train</em> or teach our model to learn <span class="math inline">\(f\)</span>.</li>
+<li>Use <strong>test data</strong> to <em>test</em> or evaluate how well the model makes inference or prediction.</li>
 </ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><style type="text/css">
+<div class="fragment">
+<ul>
+<li>Models are characterized as either <strong>parametric</strong> or <strong>nonparametric</strong>.</li>
+</ul>
+<aside class="notes"><ul>
+<li>We learn why we estimate <span class="math inline">\(f\)</span>. But How do we Estimate <span class="math inline">\(f\)</span>?</li>
+<li>Well, that’s is why we have this course. we will learn how to estimate f starting next week.</li>
+<li>The basic idea is that We have observed values <span class="math inline">\(\{(x_1, y_1), (x_2, y_2), \dots, (x_n,y_n)\}\)</span> called <strong>training data</strong> in machine learning that is used to <em>train</em> or teach our model to learn <span class="math inline">\(f\)</span>.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1395,8 +735,31 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section></section><section><section id="sampling-methods" class="title-slide slide level1 center" data-background-image="./images/02-overview/data_collect.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>Sampling Methods</h1>
-<aside class="notes"><style type="text/css">
+      }</style></aside>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Parametric</strong> methods involve a two-step model-based approach:
+<ul>
+<li>1️⃣ Make an assumption about the functional form, or shape of <span class="math inline">\(f\)</span>, e.g.&nbsp;linear regression <span class="math display">\[ f(X) = \beta_0 + \beta_1X_1 \]</span>
+</li>
+<li>2️⃣ Use the training data to fit or train the model, e.g., estimate the parameters <span class="math inline">\(\beta_0, \beta_1\)</span> using (ordinary) least squares.</li>
+</ul>
+</li>
+</ul>
+<aside class="notes"><ul>
+<li>Generally, regression models can be characterized as either <strong>parametric</strong> or <strong>non-parametric</strong>.</li>
+<li>And parametric methods involve a two-step model-based approach:
+<ul>
+<li>[1] First we make an assumption about the functional form, or shape of <span class="math inline">\(f\)</span>. For example, we can assume the function form or the relationship between y and predictors is linear, so the function <span class="math inline">\(f(X)\)</span> is a linear function $f(X) = _0 + _1X_1 + _2X_2 + , _pX_p $.</li>
+<li>[2] And then we use the training data to fit or train the model. For example, estimate the parameters <span class="math inline">\(\beta_0, \beta_1, \beta_2 \dots, \beta_p\)</span> using (ordinary) least squares.<br>
+</li>
+</ul>
+</li>
+<li>Nonparametric methods, on the other hand, do not make assumptions about the functional form of <span class="math inline">\(f\)</span>.</li>
+<li>They basically seek an estimate of <span class="math inline">\(f\)</span> that gets as close to the data points as possible without being too rough or wiggly. So the idea is, we try to make the function looks like data scatter pattern, and the function is a smoothed version of the data.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1406,116 +769,47 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="simple-random-sample" class="slide level2"><h2>Simple Random Sample</h2>
+      }</style></aside>
+</div>
+<div class="fragment">
 <ul>
-<li><p><strong>Random Sample</strong>: Each member of a population is <strong>equally likely</strong> to be selected.</p></li>
-<li><p><strong>Simple Random Sample (SRS)</strong>: Every possible sample of sample size <span class="math inline">\(n\)</span> has the same chance to be chosen.</p></li>
-<li><p><strong>Example</strong>: If sample 100 students from all, say 10,000 Marquette students, I would <em>randomly</em> assign each student a number (from 1 to 10,000), then <em>randomly</em> select 100 numbers.</p></li>
+<li>
+<strong>Nonparametric</strong> methods <em>do not</em> make assumptions about the shape of <span class="math inline">\(f\)</span>.
+<ul>
+<li>Seek an estimate of <span class="math inline">\(f\)</span> that gets close to the data points without being too rough or wiggly.</li>
 </ul>
+</li>
+</ul>
+</div>
+</section><section id="parametric-vs.-nonparametric-models" class="slide level2"><h2>Parametric vs.&nbsp;Nonparametric Models</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<p><strong>Parametric</strong> (Linear regression) <br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="02-overview_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<figure><p><img data-src="images/02-overview/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="tiny">
+<p><strong>Nonparametric</strong> (LOESS) <br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure><p><img data-src="./images/02-overview/srs.png" style="width:80.0%"></p>
-<figcaption>https://research-methodology.net/sampling-in-primary-data-collection/random-sampling/</figcaption></figure>
-</div>
+<figure><p><img data-src="images/02-overview/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
 </div>
 </div>
 </div>
 </div></div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="stratified-random-sample" class="slide level2"><h2>Stratified Random Sample</h2>
-<ul>
-<li><p><strong>Stratified Sampling</strong>: Subdivide the population into different subgroups (strata) that share the <strong>same</strong> characteristics, then draw a simple random sample from each subgroup.</p></li>
-<li><p><strong>Homogeneous within strata; Non-homogeneous between strata</strong></p></li>
-</ul>
-
-<img data-src="./images/02-overview/stratified_sampling_new.png" class="quarto-figure quarto-figure-center r-stretch" width="145"><aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="stratified-random-sample-example" class="slide level2"><h2>Stratified Random Sample Example</h2>
-<ul>
-<li>
-<strong>Example</strong>: Divide Marquette students into groups by colleges, then SRS for each group.</li>
-</ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="cluster-sampling" class="slide level2"><h2>Cluster Sampling</h2>
-<ul>
-<li><p><strong>Cluster Sampling</strong>: Divide the population into clusters, then randomly select some of those clusters, and then choose <strong>all</strong> the members from those selected clusters.</p></li>
-<li><p><strong>Homogeneous between clusters; Non-homogeneous within clusters</strong></p></li>
-</ul>
-
-<img data-src="./images/02-overview/cluster_sampling.png" class="quarto-figure quarto-figure-center r-stretch" width="66"><aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="cluster-sampling-example" class="slide level2"><h2>Cluster Sampling Example</h2>
-<ul>
-<li>
-<strong>Example</strong>: Study 4720 student drinking habit by dividing the students into 9 groups, then randomly selecting 3 and interviewing all of the students in each of those clusters.</li>
-</ul>
-
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:62.0%"><aside class="notes"><ul>
-<li>clusters look similar each other, but members in a cluster are not very alike. They have different characteristics.</li>
-<li>Homogeneous between clusters because all classes are STEM classes.</li>
-<li>Non-homogeneous within clusters because students in the same class may have different majors or from different colleges</li>
-</ul><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section></section><section><section id="data-type" class="title-slide slide level1 center" data-background-image="./images/02-overview/data_collect.jpg" data-background-size="cover" data-background-position="50% 50%" data-background-color="#447099"><h1>Data Type</h1>
 <aside class="notes"><ul>
-<li>OK. We learn data collection and sampling methods.</li>
-<li>Now’s let’s learn some data types.</li>
+<li>So here see the difference between parametric and nonparameteric models.</li>
+<li>For the parameteric model, we actually use linear regression, assuming the relationship between Income and Years of Education is linear.</li>
+<li>For the nonparameteric model, we learning the regression function <span class="math inline">\(f\)</span> from the data without putting strict constraints on the shape of <span class="math inline">\(f\)</span>.</li>
+<li>Remember that the fitted function here is an estimated one, not the true one.</li>
+<li>Which one is better than the other? We’ll learn how to compare different models later.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1526,11 +820,20 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="section-3" class="slide level2"><h2></h2>
+      }</style></aside></section><section id="parametric-vs.-nonparametric-models-1" class="slide level2"><h2>Parametric vs.&nbsp;Nonparametric Models</h2>
+<ul>
+<li>
+<strong>Parametric</strong>: Assumptions on <span class="math inline">\(f\)</span> with unknown parameters.</li>
+<li>
+<strong>Nonparametric</strong>: No assumptions on <span class="math inline">\(f\)</span> (may have no closed form).</li>
+</ul>
 
-<img data-src="02-overview_files/figure-revealjs/data-type-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><ul>
-<li>This diagram tell us everything.</li>
-<li>We are going to learn each data type.</li>
+<img data-src="images/02-overview/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><aside class="notes"><ul>
+<li>In sum, regression can be either parametric or non-parametric.</li>
+<li>
+<strong>Parametric</strong> models put some assumptions on <span class="math inline">\(f\)</span> with unknown parameters.</li>
+<li>
+<strong>NonParametric</strong> models have no assumptions on the shape of <span class="math inline">\(f\)</span>.</li>
 </ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1541,29 +844,50 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="categorical-vs.-numerical-variables" class="slide level2"><h2>Categorical vs.&nbsp;Numerical Variables</h2>
+      }</style></aside></section><section id="linear-vs.-nonlinear-models" class="slide level2"><h2>Linear vs.&nbsp;Nonlinear Models</h2>
 <ul>
 <li>
-<p>A <strong>categorical</strong> variable provides <em>non-numerical</em> information which can be placed in <strong>one (and only one)</strong> category from two or more categories.</p>
+<strong>Linear Regression</strong>: <span class="math inline">\(Y\)</span> is linear in unknown parameters, NOT predictors.
 <ul>
-<li><span style="color:blue">Gender (Male 👨, Female 👩, Trans 🏳️‍🌈) </span></li>
-<li><span style="color:blue">Class (Freshman, Sophomore, Junior, Senior, Graduate) </span></li>
-<li><span style="color:blue">Country (USA 🇺🇸, Canada 🇨🇦, UK 🇬🇧, Germany 🇩🇪, Japan 🇯🇵, Korea 🇰🇷) </span></li>
+<li><span class="math inline">\(Y = \beta_0 + \beta_1X + \epsilon\)</span></li>
+<li><span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2X^2 + \epsilon\)</span></li>
+<li><span class="math inline">\(Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3\sqrt{X} + \epsilon\)</span></li>
 </ul>
 </li>
 </ul>
+<aside class="notes"><ul>
+<li>In fact, Parametric models can be either a linear model or a nonlinear model</li>
+<li>When we say linear regression, it means <span class="math inline">\(Y\)</span> is linear in unknown parameters, NOT predictors.</li>
+<li>Note that for all three cases here, y is linear in <span class="math inline">\(\beta\)</span>, and so they all belong to linear regression.</li>
+<li>A nonlinear relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be modeled as a linear regression.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><div class="fragment">
+<ul>
+<li>A nonlinear relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be modeled using a linear regression.</li>
+</ul>
+</div>
 <div class="fragment">
 <ul>
 <li>
-<p>A <strong>numerical</strong> variable is recorded in a <em>numerical</em> value representing counts or measurements.</p>
+<strong>Nonlinear Regression</strong>: <span class="math inline">\(Y\)</span> is NOT linear in unknown parameters.
 <ul>
-<li><span style="color:blue"> GPA </span></li>
-<li><span style="color:blue"> The number of relationships you’ve had </span></li>
-<li><span style="color:blue"> Height </span></li>
+<li><span class="math inline">\(Y = \frac{\beta_0}{1 + e ^{-\beta_1X}} + \epsilon\)</span></li>
+<li><span class="math inline">\(Y = \beta_0e ^{-\beta_1X}\cdot\epsilon\)</span></li>
 </ul>
 </li>
 </ul>
-<aside class="notes"><style type="text/css">
+<aside class="notes"><ul>
+<li>When we say Nonlinear Regression, it means that <span class="math inline">\(Y\)</span> is NOT linear in unknown parameters.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1575,47 +899,15 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside>
 </div>
-</section><section id="numerical-variables-can-be-discrete-or-continuous" class="slide level2"><h2>Numerical Variables can be Discrete or Continuous</h2>
-<ul>
-<li><p>A <strong>discrete</strong> variable takes on values of a <strong>finite</strong> or <strong>countable</strong> number.</p></li>
-<li>
-<p>A <strong>continuous</strong> variable takes on values <strong>anywhere</strong> over a particular range <em>without gaps or jumps</em>.</p>
-<ul>
-<li><span style="color:blue"> GPA is <strong>continuous</strong> because it can be any value between 0 and 4. </span></li>
-<li><span style="color:blue"> The number of relationships you’ve had is <strong>discrete</strong> because you can count the number and it is finite.</span></li>
-<li><span style="color:blue"> Height is <strong>continuous</strong> because it can be any number within a range. </span></li>
-</ul>
-</li>
-</ul>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside></section><section id="categorical-variables-are-usually-recorded-as-numbers" class="slide level2"><h2>Categorical Variables are Usually Recorded as Numbers</h2>
-<ul>
-<li><span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span></li>
-<li><span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span></li>
-<li><span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span></li>
-<li><span style="color:blue">United Airlines boarding groups</span></li>
-</ul>
 <div class="fragment">
-<ul>
-<li>
-<strong>The numbers represent categories only; differences between them are meaningless.</strong>
-<ul>
-<li>Canada - USA = 101 - 100 = 1?</li>
-<li>Graduate - Sophomore = 5 - 2 = 3 = Junior?</li>
-</ul>
-</li>
-<li>We need to learn the <strong>level of measurements</strong> to know whether or which arithmetic operations are meaningful.</li>
-</ul>
-<aside class="notes"><style type="text/css">
+<p>👉 Some nonlinear models can be transformed to an equivalent linear model.</p>
+<aside class="notes"><ul>
+<li>Actually Some nonlinear models can be transformed to an equivalent linear model.</li>
+<li>So we know linear models can describe nonlinear relationships between variables, and some nonlinear models can be transformed into linear models, and linear regression is much easier to deal with.</li>
+<li>That’s why linear regression or linear model in general plays an important role in statistical modeling.</li>
+<li>We love to start with a linear model when doing data analysis.</li>
+<li>If we can get our job done using a simple model, why use a complex one.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1627,139 +919,16 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           display:block!important;
       }</style></aside>
 </div>
-</section><section id="levels-of-measurements-nominal-and-ordinal-for-categorical-variables" class="slide level2"><h2>Levels of Measurements: Nominal and Ordinal for Categorical Variables</h2>
-<ul>
-<li>
-<strong>Nominal</strong>: The data can <em>NOT be ordered</em> in a meaningful or natural way.
-<ul>
-<li>
-<span style="color:blue">Gender (Male = 0, Female = 1, Trans = 2) </span> is <strong>nominal</strong> because Male, Female and Trans cannot be ordered.</li>
-<li>
-<span style="color:blue">Country (USA = 100, Canada = 101, UK = 200, Germany = 201, Japan = 300, Korea = 301) </span> is <strong>nominal</strong>.</li>
-</ul>
-</li>
-</ul>
 <div class="fragment">
-<p><br></p>
-<ul>
-<li>
-<strong>Ordinal</strong>: The data can be arranged in some meaningful order, but differences between data values can NOT be determined or are meaningless.
-<ul>
-<li>
-<span style="color:blue">Class (Freshman = 1, Sophomore = 2, Junior = 3, Senior = 4, Graduate = 5) </span> is <strong>ordinal</strong> because Sophomore is one class higher than Freshman.</li>
-</ul>
-</li>
-</ul>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section><section id="levels-of-measurements-interval-and-ratio-for-numerical-variables" class="slide level2"><h2>Levels of Measurements: Interval and Ratio for Numerical Variables</h2>
-<ul>
-<li>
-<strong>Interval</strong>: The data have meaningful difference between any two values. But the data do NOT have a <strong>natural zero or starting point</strong>. The data can do <span class="math inline">\(\color{red} +\)</span> and <span class="math inline">\(\color{red} -\)</span>, but can’t reasonably do <span class="math inline">\(\color{red} \times\)</span> and <span class="math inline">\(\color{red} \div\)</span>.
-<ul>
-<li>
-<span style="color:blue">Temperature</span> is <strong>interval</strong> because <span class="math inline">\(80^{\circ}\)</span>F is 40 degrees higher than <span class="math inline">\(40^{\circ}\)</span>F <span class="math inline">\((80-40=40)\)</span>, but <span class="math inline">\(0^{\circ}\)</span> does not mean NO heat and <span class="math inline">\(80^{\circ}\)</span>F is NOT twice as hot as <span class="math inline">\(40^{\circ}\)</span>F.</li>
-</ul>
-</li>
-</ul>
-<div class="fragment">
-<p><br></p>
-<ul>
-<li>
-<strong>Ratio</strong>: The data have both meaningful differences and ratios, and there is a natural zero starting point that indicates none of the quantity. The data can do <span class="math inline">\(\color{red} +\)</span>, <span class="math inline">\(\color{red} -\)</span>, <span class="math inline">\(\color{red} \times\)</span> and <span class="math inline">\(\color{red} \div\)</span>.
-<ul>
-<li>
-<span style="color:blue">Distance</span> is <strong>ratio</strong> because <span class="math inline">\(80\)</span> miles is twice as far as <span class="math inline">\(40\)</span> miles <span class="math inline">\((80/40 = 2)\)</span>, and <span class="math inline">\(0\)</span> mile means no distance.</li>
-</ul>
-</li>
-</ul>
-</div>
-</section><section id="converting-numerical-to-categorical" class="slide level2"><h2>Converting Numerical to Categorical</h2>
-<ul>
-<li>You’ve already seen an example.</li>
-</ul>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table caption-top" style="font-size: 35px; margin-left: auto; margin-right: auto;">
-<thead><tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Grade</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Percentage</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">A</td>
-<td style="text-align: left;">[94, 100]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A-</td>
-<td style="text-align: left;">[90, 94)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">B+</td>
-<td style="text-align: left;">[87, 90)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">B</td>
-<td style="text-align: left;">[83, 87)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">B-</td>
-<td style="text-align: left;">[80, 83)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">C+</td>
-<td style="text-align: left;">[77, 80)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">C</td>
-<td style="text-align: left;">[73, 77)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">C-</td>
-<td style="text-align: left;">[70, 73)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">D+</td>
-<td style="text-align: left;">[65, 70)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">D</td>
-<td style="text-align: left;">[60, 65)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">F</td>
-<td style="text-align: left;">[0, 60)</td>
-</tr>
-</tbody>
-</table>
+<div class="question">
+<p>Which nonlinear model above can be transformed into a linear model?</p>
 </div>
 </div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section><section id="section-4" class="slide level2"><h2></h2>
+</section><section id="linear-vs.-nonlinear-models-1" class="slide level2"><h2>Linear vs.&nbsp;Nonlinear Models</h2>
 
-<img data-src="02-overview_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><aside class="notes"><style type="text/css">
+<img data-src="images/02-overview/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:65.0%"><aside class="notes"><ul>
+<li>OK. So Regression can be divided into Linear and Nonlinear Regression.</li>
+</ul><style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
           clip: rect(1px, 1px, 1px, 1px);
@@ -1769,261 +938,12 @@ Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside></section><section id="section-5" class="slide level2"><h2></h2>
-<div class="your-turn">
-<p>Identify data type of each variable in the 2026-27 Marquette men’s basketball player data</p>
-</div>
-<div class="xsmall">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 17%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 4%">
-<col style="width: 19%">
-<col style="width: 23%">
-<col style="width: 4%">
-<col style="width: 4%">
-<col style="width: 4%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: center;">Number</th>
-<th style="text-align: center;">Name</th>
-<th style="text-align: center;">Class</th>
-<th style="text-align: center;">Pos</th>
-<th style="text-align: center;">Ht</th>
-<th style="text-align: center;">Wt</th>
-<th style="text-align: center;">Hometown</th>
-<th style="text-align: center;">High_School</th>
-<th style="text-align: center;">PPG</th>
-<th style="text-align: center;">RPG</th>
-<th style="text-align: center;">APG</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">Nigel James Jr.</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’0”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Huntington, NY</td>
-<td style="text-align: center;">Long island Lutheran School</td>
-<td style="text-align: center;">16.4</td>
-<td style="text-align: center;">3.4</td>
-<td style="text-align: center;">4.9</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">Nash Walker</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Smithton, Tasmania</td>
-<td style="text-align: center;">NBA Global Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">Nolan Minessale</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’5”</td>
-<td style="text-align: center;">195</td>
-<td style="text-align: center;">Brookfield, WI</td>
-<td style="text-align: center;">Marquette HS</td>
-<td style="text-align: center;">19.8</td>
-<td style="text-align: center;">4.6</td>
-<td style="text-align: center;">4.3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">Colton Crowdis</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">180</td>
-<td style="text-align: center;">Toronto, Ontario</td>
-<td style="text-align: center;">Bridgton Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">Ian Miletic</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Arlington Heights, IL</td>
-<td style="text-align: center;">Rolling Meadows HS</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">Joshua Clark</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">7’1”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Virginia Beach, VA</td>
-<td style="text-align: center;">Clements HS</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">1.9</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td style="text-align: center;">Damarius Owens</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rochester, NY</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">4.8</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">Adrien Stevens</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’4”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Potomac, MD</td>
-<td style="text-align: center;">Bullis School</td>
-<td style="text-align: center;">7.9</td>
-<td style="text-align: center;">2.6</td>
-<td style="text-align: center;">1.6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td style="text-align: center;">Sananda Fru</td>
-<td style="text-align: center;">Sr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’11”</td>
-<td style="text-align: center;">250</td>
-<td style="text-align: center;">Berlin, Germany</td>
-<td style="text-align: center;">Loewen Braunschweig</td>
-<td style="text-align: center;">9.0</td>
-<td style="text-align: center;">6.1</td>
-<td style="text-align: center;">1.2</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">Royce Parham</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">230</td>
-<td style="text-align: center;">Pittsburgh, PA</td>
-<td style="text-align: center;">Western Reserve Academy</td>
-<td style="text-align: center;">12.5</td>
-<td style="text-align: center;">4.9</td>
-<td style="text-align: center;">0.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">Caedin Hamilton</td>
-<td style="text-align: center;">Jr</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’9”</td>
-<td style="text-align: center;">245</td>
-<td style="text-align: center;">Santa Maria, CA</td>
-<td style="text-align: center;">St.&nbsp;Joseph</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">2.9</td>
-<td style="text-align: center;">0.6</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">Alex Egbuonu</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">235</td>
-<td style="text-align: center;">Nashua, NH</td>
-<td style="text-align: center;">Lawrence Academy</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">33</td>
-<td style="text-align: center;">Ethan Johnston</td>
-<td style="text-align: center;">Fr</td>
-<td style="text-align: center;">G</td>
-<td style="text-align: center;">6’7”</td>
-<td style="text-align: center;">210</td>
-<td style="text-align: center;">Queens, NY</td>
-<td style="text-align: center;">The Hill School</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">35</td>
-<td style="text-align: center;">Michael Phillips II</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">SF</td>
-<td style="text-align: center;">6’6”</td>
-<td style="text-align: center;">205</td>
-<td style="text-align: center;">Rolesville, NC</td>
-<td style="text-align: center;">GRACE Christian School</td>
-<td style="text-align: center;">2.1</td>
-<td style="text-align: center;">1.3</td>
-<td style="text-align: center;">0.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">42</td>
-<td style="text-align: center;">Braeden Brenn</td>
-<td style="text-align: center;">So</td>
-<td style="text-align: center;">F</td>
-<td style="text-align: center;">6’8”</td>
-<td style="text-align: center;">215</td>
-<td style="text-align: center;">Appleton, WI</td>
-<td style="text-align: center;">St.&nbsp;Mary Catholic HS</td>
-<td style="text-align: center;">0.7</td>
-<td style="text-align: center;">0.0</td>
-<td style="text-align: center;">0.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="timer_7aa9050e997fe3b981d242a60709de2c5c7b7580" class="countdown" data-warn-when="0" data-update-every="1" data-play-sound="false" data-blink-colon="false" data-start-immediately="false" tabindex="0" style="right: 0;bottom: 0;">
-  <div class="countdown-controls">
-    <button class="countdown-bump-down">−</button>
-    <button class="countdown-bump-up">+</button>
- </div>
- <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
- </div>
-<aside class="notes"><style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+      }</style></aside></section><section id="section-7" class="slide level2"><h2></h2>
+<p><strong>Linear (Gaussian)</strong> Model vs.&nbsp;<strong>Generalized (non-Gaussian)</strong> Linear Model</p>
 
-<script type="ojs-module-contents">
+
+
+<img data-src="images/02-overview/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -2040,7 +960,7 @@ W10=
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://math4720-f26.github.io/website/">🔗 math4720-f26.github.io/website</a></p>
+<p><a href="https://math4780-f26.github.io/website/">🔗 math4780-f26.github.io/website</a></p>
 </div>
 </div></div>
 
@@ -2328,13 +1248,14 @@ W10=
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
