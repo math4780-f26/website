@@ -472,7 +472,7 @@ In Intro Stats, what is the form of $f$ and what assumptions you made on the ran
 
 
 ```{r}
-source("../scripts/plot_slr.R")
+source("../scripts/plot_reg_normal.R")
 ```
 
  
