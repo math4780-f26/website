@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS Chisq distribution"
+title: "Chi-squared distribution"
 execute:
   echo: false
 ---
@@ -45,7 +45,11 @@ moments = tex`
 :::
 
 
-::: {.column width="70%"}
+::: {.column width="2%"}
+
+:::
+
+::: {.column width="66%"}
 
 
 ```{ojs}
@@ -53,8 +57,8 @@ moments = tex`
 //| out-width: 100%
 //| fig-cap: "<https://observablehq.com/@mattiasvillani/chi2-distribution>"
 plt_pdf = Plot.plot({
-    width: 1200, // or a dynamic value based on `width` variable
-    height: 800,
+    width: 800, // or a dynamic value based on `width` variable
+    height: 600,
     style: {fontSize: "15px"},
     color: {
       legend: true

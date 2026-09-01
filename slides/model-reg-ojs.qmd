@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS linear regression"
+title: "Linear regression Model Fitting"
 execute:
   echo: false
 ---
@@ -12,7 +12,7 @@ execute:
 
 ::: tiny
 
-::: {.column width="30%"}
+::: {.column width="48%"}
 
 ```{ojs}
 viewof n = Inputs.range([10, 1000], {value: 10, step: 1, label: tex`\text{sample size, }n`});
@@ -26,9 +26,9 @@ viewof sigmaepsilon = Inputs.range([0, 1], {value: 0.5, step: 0.1, label: tex`\t
 viewof sampleno = Scrubber(d3.ticks(1, 1000, 1000), {
   autoplay: false,
   loop: false,
-  delay: 1000,
-  initial: 199,
-  format: x => `dataset number: ${x.toFixed(0)}`
+  delay: 900,
+  initial: 0,
+  format: x => `dataset no: ${x.toFixed(0)}`
 })
 ```
 
@@ -41,14 +41,21 @@ estimates = tex`\text{Estimated intercept: } b_0 = ${data_estimates[1][sampleno-
 
 :::
 
+::: {.column width="1%"}
 
-::: {.column width="70%"}
+:::
+
+
+
+::: {.column width="49%"}
 
 ```{ojs}
+//| echo: false
+//| out-width: 100%
 //| fig-cap: "<https://observablehq.com/@mattiasvillani/samplingfordelningen-linear-regression>"
 plt = Plot.plot({
-  width: 1200, // or a dynamic value based on `width` variable
-  height: 800,
+  width: 800, // or a dynamic value based on `width` variable
+  height: 600,
   style: {fontSize: "16px"},
   caption: html`<span style="color:orange">Population Model</span> <br> <span style="color:steelblue">Estimated regression line</span>`,
   color: {legend: true},
@@ -62,7 +69,7 @@ plt = Plot.plot({
       [{x: -1, y: beta0 + (-1)*beta1}, {x:  1, y: beta0 + (1)*beta1}], 
       {x: "x", y: "y", stroke: "orange", strokeWidth: 5}
     ),
-    Plot.dot(data_estimates[0][sampleno-1], {x: "x", y: "y", strokeOpacity: 0.5, r: 5, fill: colors[0]}),
+    Plot.dot(data_estimates[0][sampleno-1], {x: "x", y: "y", strokeOpacity: 0.5, r: 10, fill: colors[0]}),
     Plot.line(
       [{x: -1, y: data_estimates[1][sampleno-1].intercept + (-1)*data_estimates[1][sampleno-1].lutning}, 
        {x:  1, y: data_estimates[1][sampleno-1].intercept + (1)*data_estimates[1][sampleno-1].lutning}

@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS: Number of bins of histogram "
+title: "Number of bins of histogram "
 execute:
   echo: false
 ---
@@ -7,19 +7,19 @@ execute:
 ::::: columns
 
 ::: {.column width="30%"}
-::: tiny
+
 ```{ojs}
 //| echo: false
 viewof bin_input = Inputs.form([
   Inputs.select(['manual choice','sturges','scott'], {value: "manuellt val", label: "method for bins:"}),
   Inputs.range([2, 25], {value: 10, step: 1, label: "number of bins"})])
 ```
-:::
+
 :::
 
 
 ::: {.column width="70%"}
-::: tiny
+
 ```{ojs}
 //| echo: false
 //| fig-cap: "<https://observablehq.com/@mattiasvillani/histogram-the-choice-of-bins>"
@@ -60,7 +60,7 @@ plt = {
 
 ```{ojs}
 //| echo: false
-Ch3data = FileAttachment("./data/OnlyTitanic.xlsx").xlsx("Titanic")
+Ch3data = FileAttachment("./OnlyTitanic.xlsx").xlsx("Titanic")
 ```
 
 ```{ojs}
@@ -68,7 +68,6 @@ Ch3data = FileAttachment("./data/OnlyTitanic.xlsx").xlsx("Titanic")
 titanic = Ch3data.sheet(0, { headers: true })
 ```
 
-:::
 
 :::
 

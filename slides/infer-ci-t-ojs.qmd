@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS t-distribution"
+title: "Student-t Distribution"
 execute:
   echo: false
 ---
@@ -7,6 +7,10 @@ execute:
 <!-- ```{ojs} -->
 <!-- md_colour = Inputs.color({label: "Highlight color cells", value: "#F0F0F0"}) -->
 <!-- ``` -->
+
+```{ojs}
+jstat = require('jstat')
+```
 
 ```{ojs}
 normcdf = jstat.normal.cdf(myinputs[1], 0, 1);
@@ -18,7 +22,7 @@ studentcdf = jstat.studentt.cdf(myinputs[1], myinputs[0]);
 
 ::: tiny
 
-::: {.column width="50%"}
+::: {.column width="49%"}
 
 ```{ojs}
 viewof myinputs = Inputs.form([
@@ -73,8 +77,10 @@ plt_t = Plot.plot({
 
 :::
 
+::: {.column width="0.5%"}
+:::
 
-::: {.column width="50%"}
+::: {.column width="49%"}
 
 
 ```{ojs}

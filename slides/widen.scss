@@ -1,0 +1,11 @@
+/* widen main area to use more of the screen */
+
+
+/* optional: shrink sidebar */
+.sidebar {
+  width: 200px !important;
+}
+
+.main-content {
+  max-width: 1400px !important;
+}

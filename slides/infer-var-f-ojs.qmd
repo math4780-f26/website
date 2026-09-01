@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS F-distribution"
+title: "F distribution"
 execute:
   echo: false
 ---
@@ -13,7 +13,7 @@ execute:
 
 ::: tiny
 
-::: {.column width="30%"}
+::: {.column width="38%"}
 
 
 ```{ojs}
@@ -69,8 +69,12 @@ moments_f = {
 
 :::
 
+::: {.column width="1%"}
 
-::: {.column width="70%"}
+:::
+
+
+::: {.column width="59%"}
 
 
 ```{ojs}
@@ -78,8 +82,8 @@ moments_f = {
 //| out-width: 100%
 //| fig-cap: "<https://observablehq.com/@mattiasvillani/f-distribution>"
 plt_pdf_f = Plot.plot({
-    width: 1200, // or a dynamic value based on `width` variable
-    height: 800,
+    width: 800, // or a dynamic value based on `width` variable
+    height: 600,
     style: {fontSize: "15px"},
     color: {
       legend: true
@@ -123,6 +127,10 @@ fpdf = {
 fcdf = jstat.centralF.cdf(quantile, nu1, nu2);
 ```
 
+
+```{ojs}
+jstat = require('jstat')
+```
 
 :::
 

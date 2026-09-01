@@ -10,6 +10,12 @@ execute:
 ::: {.column width="30%"}
 
 ::: small
+
+```{ojs}
+//| echo: false
+jstat = require('jstat')
+```
+
 ```{ojs}
 //| echo: false
 viewof params = Inputs.form([
@@ -67,6 +73,8 @@ import {interval} from '@mootari/range-slider@1781'
 
 ::: tiny
 ```{ojs}
+//| echo: false
+//| out-width: 100%
 plt_pdf = Plot.plot({
     width: 700, // or a dynamic value based on `width` variable
     height: 400,

@@ -1,10 +1,10 @@
 ---
-# title: "Observable JS extreme values"
+title: "Extreme values"
 execute:
   echo: false
 ---
 
-::: tiny
+<!-- ::: tiny -->
 ```{ojs}
 //| echo: false
 viewof N = Inputs.range([2, 100], {value: 10, step: 1, label: "number of data points"})
@@ -59,4 +59,4 @@ Plot.plot({
   ]
 })
 ```
-:::
+<!-- ::: -->

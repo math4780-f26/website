@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS Poisson Distribution"
+title: "Poisson Distribution"
 execute:
   echo: false
 ---
@@ -10,6 +10,13 @@ execute:
 ::: {.column width="40%"}
 
 ::: midi
+
+```{ojs}
+//| echo: false
+jstat = require('jstat')
+```
+
+
 ```{ojs}
 //| echo: false
 viewof params_pois = Inputs.form([

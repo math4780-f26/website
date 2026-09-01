@@ -130,9 +130,9 @@ plot(x = 0:5, y = dbinom(0:5, size = 5, prob = 0.4),
 ```
 
 
-##
+<!-- ## -->
 
-{{< include prob-binomial-ojs.qmd >}}
+<!-- {{< include prob-binomial-ojs.qmd >}} -->
 
 
 
@@ -203,9 +203,9 @@ axis(1, at = c(-3, -z_cri, 0, z_cri, 3), labels = c("", "a", "0", "b", ""),
 
 
 
-##
+<!-- ## -->
 
-{{< include prob-normal-ojs.qmd >}}
+<!-- {{< include prob-normal-ojs.qmd >}} -->
 
 
 

@@ -1,5 +1,5 @@
 ---
-# title: "Observable JS Hopothesis testing"
+title: "Hypothesis Testing for Population Mean"
 execute:
   echo: false
 ---
@@ -8,7 +8,7 @@ execute:
 
 ::: xsmall
 
-::: {.column width="30%"}
+::: {.column width="40%"}
 
 
 ```{ojs}
@@ -236,9 +236,12 @@ bignudge = 1.3
 
 :::
 
+::: {.column width="2%"}
+
+:::
 
 
-::: {.column width="70%"}
+::: {.column width="55%"}
 
 
 ```{ojs}
@@ -246,8 +249,8 @@ bignudge = 1.3
 //| fig-cap: "<https://observablehq.com/@mattiasvillani/hypothesis-test-mean?collection=@mattiasvillani/statistics>"
 //| out-width: 100%
 plt = Plot.plot({
-    width: 1200, // or a dynamic value based on `width` variable
-    height: 700,
+    width: 800, // or a dynamic value based on `width` variable
+    height: 600,
     style: {fontSize: "16px"},
     color: {
       legend: false
