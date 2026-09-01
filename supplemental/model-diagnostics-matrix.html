@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.8.19">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>MATH 4780 (MSSC 5780) Regression Analysis Fall 2026 – MATH 4780 (MSSC 5780) - Fall 2026</title>
+
+
+<title>Model Diagnostics – MATH 4780 (MSSC 5780) - Fall 2026</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -25,28 +22,31 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-syllabus.html" rel="next">
-<link href="./course-overview.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9562b39cbe03d074a12934c1990ff1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-fea01ddba8ca299097b76b7c7a4d0d6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-9562b39cbe03d074a12934c1990ff1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../supplemental/mlr-matrix.html" rel="next">
+<link href="../project-work_new.qmd" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8dda004152c753601ea85dbdafdd9cfd.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-41980054b8e7176871f06ce368ec1ac3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-311c866fdd058187a59d486837a94991.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-41980054b8e7176871f06ce368ec1ac3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -73,10 +73,42 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="MATH 4780 (MSSC 5780) Regression Analysis Fall 2026 – MATH 4780 (MSSC 5780) - Fall 2026">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Model Diagnostics – MATH 4780 (MSSC 5780) - Fall 2026">
 <meta property="og:description" content="Homepage for MATH 4780 (MSSC 5780) - Statistical Methods at Marquette University, Fall 2026.">
 <meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
 </head>
+
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -242,22 +274,30 @@ ul.task-list li input[type="checkbox"] {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course Information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../supplemental/model-diagnostics-matrix.html">Supplementary material for MSSC 5780</a></li><li class="breadcrumb-item"><a href="../supplemental/model-diagnostics-matrix.html">Model diagnostics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
     <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
@@ -271,38 +311,38 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course Information</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hw.html" class="sidebar-item-text sidebar-link">
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework</span></a>
   </div>
 </li>
@@ -314,21 +354,21 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./activity-description_new.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../activity-description_new.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Description</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./activity-work_new.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../activity-work_new.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Activity work</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
@@ -337,72 +377,87 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project-description-4780_new.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../project-description-4780_new.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Guideline for MATH 4780</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project-description-5780_new.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../project-description-5780_new.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Guideline for MATH 5780</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./project-work_new.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../project-work_new.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Group and Proposal</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Supplementary material for MSSC 5780</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Model diagnostics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MLR matrix notation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Log transformations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model selection criteria</span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#matrix-form-for-the-regression-model" id="toc-matrix-form-for-the-regression-model" class="nav-link" data-scroll-target="#matrix-form-for-the-regression-model">Matrix Form for the Regression Model</a></li>
+  <li><a href="#hat-matrix-leverage" id="toc-hat-matrix-leverage" class="nav-link" data-scroll-target="#hat-matrix-leverage">Hat Matrix &amp; Leverage</a></li>
+  <li><a href="#standardized-residuals" id="toc-standardized-residuals" class="nav-link" data-scroll-target="#standardized-residuals">Standardized Residuals</a></li>
+  <li><a href="#cooks-distance" id="toc-cooks-distance" class="nav-link" data-scroll-target="#cooks-distance">Cook’s Distance</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/supplemental/model-diagnostics-matrix.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-overview.html">Course Information</a></li><li class="breadcrumb-item"><a href="./index.html">Schedule</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">MATH 4780 (MSSC 5780) Regression Analysis Fall 2026</h1>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../supplemental/model-diagnostics-matrix.html">Supplementary material for MSSC 5780</a></li><li class="breadcrumb-item"><a href="../supplemental/model-diagnostics-matrix.html">Model diagnostics</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Model Diagnostics</h1>
 </div>
 
 
@@ -416,438 +471,133 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><style>
-/* Make the boundary between weeks more visible while keeping the schedule
-   as a Markdown pipe table. In this schedule, each week has two rows, so
-   the first row of each week is an odd-numbered row in the table body. */
-.weekly-schedule table {
-  border-collapse: collapse;
-}
+</header>
 
-.weekly-schedule table tbody tr:nth-child(odd) > * {
-  border-top: 3px solid #555 !important;
-}
 
-.weekly-schedule table tbody tr:nth-child(odd) td:first-child {
-  font-weight: 700;
-}
-</style>
-<p><em>This schedule will be updated as the semester progresses, with all changes documented here.</em></p>
-<div class="column-screen-inset-right weekly-schedule">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 18%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: center;">Week</th>
-<th>Date</th>
-<th>Topic</th>
-<th style="text-align: center;">Slides</th>
-<th>App</th>
-<th style="text-align: center;">Reading</th>
-<th style="text-align: center;">Homework</th>
-<th>Activity</th>
-<th style="text-align: center;">Exam</th>
-<th style="text-align: center;">Project</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">1</td>
-<td>Tue, Sep 1</td>
-<td>Greetings + Overview of Regression</td>
-<td style="text-align: center;">🖥️ <a href="slides/01-syllabus-slides.html">syllabus</a> <br>🖥️ <a href="slides/02-overview-slides.html">overview</a>
-</td>
-<td></td>
-<td style="text-align: center;">
-<a href="course-syllabus.html">Syllabus</a><br><a href="https://shorturl.at/NEwOR">GenAI Video</a>
-</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Sep 3</td>
-<td>Probability and Statistics Review</td>
-<td style="text-align: center;">🖥️ <a href="slides/03-prob-stat-slides.html">prob-stat</a>
-</td>
-<td>👉 <a href="https://chenghanyustats-distributions.share.connect.posit.cloud/">distributions</a> <br> 👉 <a href="https://chenghanyustats-introstat-mean.share.connect.posit.cloud/">mean</a> <br> 👉 <a href="https://chenghanyustats-introstat-standarddeviation.share.connect.posit.cloud/">sd</a> <br> 👉 <a href="https://chenghanyustats-introstat-clt.share.connect.posit.cloud/">CLT</a>
-</td>
-<td style="text-align: center;">
-<a href="https://chenghanyu-introstatsbook.netlify.app/prob-rv">IS Ch 9-13</a> <br><a href="https://chenghanyu-introstatsbook.netlify.app/infer-ci">IS Ch 14, 16</a> <br><a href="https://chenghanyu-introstatsbook.netlify.app/a-r_prog">IS Appendix</a>
-</td>
-<td style="text-align: center;">✍️ HW 1 (due 9/11)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2</td>
-<td>Tue, Sep 8</td>
-<td>Simple Linear Regression (SLR)</td>
-<td style="text-align: center;">🖥️ slr</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Sep 10</td>
-<td>Simple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">3</td>
-<td>Tue, Sep 15</td>
-<td>Simple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td>👉 regression fitting</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Sep 17</td>
-<td>Simple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td>👉 sampling distribution of coefficients</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✍️ HW 2 (due 9/25)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td>Tue, Sep 22</td>
-<td>Multiple Linear Regression (MLR)</td>
-<td style="text-align: center;">🖥️ mlr</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Sep 24</td>
-<td>Multiple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>Tue, Sep 29</td>
-<td>Multiple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Oct 1</td>
-<td>Multiple Linear Regression</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✍️ HW 3 (due 10/9)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">6</td>
-<td>Tue, Oct 6</td>
-<td>Matrix Algebra Review</td>
-<td style="text-align: center;">🖥️ mat</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Oct 8</td>
-<td>MLR in Matrix Form (MSSC only)</td>
-<td style="text-align: center;">🖥️ mlr-mat</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">7</td>
-<td>Tue, Oct 13</td>
-<td>Diagnostics: Residuals and Unusual Data</td>
-<td style="text-align: center;">🖥️ diag-unusual</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Oct 15</td>
-<td>Diagnostics: Symmetry and Normality</td>
-<td style="text-align: center;">🖥️ diag-normality</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">8</td>
-<td>Tue, Oct 20</td>
-<td>Diagnostics: Constant Variance</td>
-<td style="text-align: center;">🖥️ diag-const-var</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Oct 22</td>
-<td><strong><em>NO CLASS: Midterm break</em></strong></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✍️ HW 4 (due 10/30)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">9</td>
-<td>Tue, Oct 27</td>
-<td>Diagnostics: Linearity</td>
-<td style="text-align: center;">🖥️ diag-linearity</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Oct 29</td>
-<td>Diagnostics: Lack of Fit</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">10</td>
-<td>Tue, Nov 3</td>
-<td>Bootstrapping and Simulation-based Inference</td>
-<td style="text-align: center;">🖥️ bootstrap</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Nov 5</td>
-<td>Polynomial Regression</td>
-<td style="text-align: center;">🖥️ poly-reg</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">11</td>
-<td>Tue, Nov 10</td>
-<td>
-<strong>In-Class Exam</strong> ✅</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Nov 12</td>
-<td>Nonparametric Regression</td>
-<td style="text-align: center;">🖥️ nonpara-reg</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✍️ HW 5 (due 11/20)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">12</td>
-<td>Tue, Nov 17</td>
-<td>Categorical Variables</td>
-<td style="text-align: center;">🖥️ cat-var</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Nov 19</td>
-<td>Categorical Variables</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">13</td>
-<td>Tue, Nov 24</td>
-<td>Collinearity</td>
-<td style="text-align: center;">🖥️ collinearity</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Nov 26</td>
-<td><strong><em>NO CLASS: Thanksgiving</em></strong></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">14</td>
-<td>Tue, Dec 1</td>
-<td>Variable Selection</td>
-<td style="text-align: center;">🖥️ var-select</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Dec 3</td>
-<td>Variable Selection</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✍️ HW 6 (due 12/11)</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">15</td>
-<td>Tue, Dec 8</td>
-<td>Logistic Regression</td>
-<td style="text-align: center;">🖥️ logistic-reg</td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td>Thu, Dec 10</td>
-<td>Logistic Regression</td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">16</td>
-<td><strong>Mon, Dec 14</strong></td>
-<td><strong>Project Presentation (10:30 AM - 12:30 PM)</strong></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Dr.&nbsp;Yu reserves the right to make changes to the schedule.</p>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following supplemental notes were created by <a href="https://www.mariatackett.net/">Dr.&nbsp;Maria Tackett</a> for STA 210. They are provided for students who want to dive deeper into the mathematics behind regression and reflect some of the material covered in STA 211: Mathematics of Regression. Additional supplemental notes will be added throughout the semester.</p>
+</div>
+</div>
+<p>This document discusses some of the mathematical details of the model diagnostics - leverage, standardized residuals, and Cook’s distance. We assume the reader knowledge of the matrix form for multiple linear regression. Please see <a href="../supplemental/mlr-matrix.html">Matrix Form of Linear Regression</a> for a review.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Suppose we have <span class="math inline">\(n\)</span> observations. Let the <span class="math inline">\(i^{th}\)</span> be <span class="math inline">\((x_{i1}, \ldots, x_{ip}, y_i)\)</span>, such that <span class="math inline">\(x_{i1}, \ldots, x_{ip}\)</span> are the explanatory variables (predictors) and <span class="math inline">\(y_i\)</span> is the response variable. We assume the data can be modeled using the least-squares regression model, such that the mean response for a given combination of explanatory variables follows the form in <a href="#eq-basic_model" class="quarto-xref">Equation&nbsp;1</a>.</p>
+<p><span id="eq-basic_model"><span class="math display">\[
+y = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p
+\tag{1}\]</span></span></p>
+<p>We can write the response for the <span class="math inline">\(i^{th}\)</span> observation as shown in <a href="#eq-ind_response" class="quarto-xref">Equation&nbsp;2</a>.</p>
+<p><span id="eq-ind_response"><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_{i1} + \dots + \beta_p x_{ip} + \epsilon_i
+\tag{2}\]</span></span></p>
+<p>such that <span class="math inline">\(\epsilon_i\)</span> is the amount <span class="math inline">\(y_i\)</span> deviates from <span class="math inline">\(\mu\{y|x_{i1}, \ldots, x_{ip}\}\)</span>, the mean response for a given combination of explanatory variables. We assume each <span class="math inline">\(\epsilon_i \sim N(0,\sigma^2)\)</span>, where <span class="math inline">\(\sigma^2\)</span> is a constant variance for the distribution of the response <span class="math inline">\(y\)</span> for any combination of explanatory variables <span class="math inline">\(x_1, \ldots, x_p\)</span>.</p>
+</section>
+<section id="matrix-form-for-the-regression-model" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-form-for-the-regression-model">Matrix Form for the Regression Model</h2>
+<p>We can represent the <a href="#eq-basic_model" class="quarto-xref">Equation&nbsp;1</a> and <a href="#eq-ind_response" class="quarto-xref">Equation&nbsp;2</a> using matrix notation. Let</p>
+<p><span id="eq-matrix-notation"><span class="math display">\[
+\mathbf{Y} = \begin{bmatrix}y_1 \\ y_2 \\ \vdots \\y_n\end{bmatrix}
+\hspace{15mm}
+\mathbf{X} = \begin{bmatrix}x_{11} &amp; x_{12} &amp; \dots &amp; x_{1p} \\
+x_{21} &amp; x_{22} &amp; \dots &amp; x_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+x_{n1} &amp; x_{n2} &amp; \dots &amp; x_{np} \end{bmatrix}
+\hspace{15mm}
+\boldsymbol{\beta}= \begin{bmatrix}\beta_0 \\ \beta_1 \\ \vdots \\ \beta_p \end{bmatrix}
+\hspace{15mm}
+\boldsymbol{\epsilon}= \begin{bmatrix}\epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{bmatrix}
+\tag{3}\]</span></span></p>
+<p>Thus,</p>
+<p><span class="math display">\[\mathbf{Y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{\epsilon}\]</span></p>
+<p>Therefore the estimated response for a given combination of explanatory variables and the associated residuals can be written as</p>
+<p><span id="eq-matrix_mean"><span class="math display">\[
+\hat{\mathbf{Y}} = \mathbf{X}\hat{\boldsymbol{\beta}} \hspace{10mm} \mathbf{e} = \mathbf{Y} - \mathbf{X}\hat{\boldsymbol{\beta}}
+\tag{4}\]</span></span></p>
+</section>
+<section id="hat-matrix-leverage" class="level2">
+<h2 class="anchored" data-anchor-id="hat-matrix-leverage">Hat Matrix &amp; Leverage</h2>
+<p>Recall from the notes <a href="../supplemental/mlr-matrix.html">Matrix Form of Linear Regression</a> that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> can be written as the following:</p>
+<p><span id="eq-beta-hat"><span class="math display">\[
+\hat{\boldsymbol{\beta}} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}
+\tag{5}\]</span></span></p>
+<p>Combining <a href="#eq-matrix_mean" class="quarto-xref">Equation&nbsp;4</a> and <a href="#eq-beta-hat" class="quarto-xref">Equation&nbsp;5</a>, we can write <span class="math inline">\(\hat{\mathbf{Y}}\)</span> as the following:</p>
+<p><span id="eq-y-hat"><span class="math display">\[
+\begin{aligned}
+\hat{\mathbf{Y}} &amp;= \mathbf{X}\hat{\boldsymbol{\beta}} \\[10pt]
+&amp;= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\\
+\end{aligned}
+\tag{6}\]</span></span></p>
+<p>We define the <strong>hat matrix</strong> as an <span class="math inline">\(n \times n\)</span> matrix of the form <span class="math inline">\(\mathbf{H} = \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span>. Thus <a href="#eq-y-hat" class="quarto-xref">Equation&nbsp;6</a> becomes</p>
+<p><span id="eq-y-hat-matrix"><span class="math display">\[
+\hat{\mathbf{Y}} = \mathbf{H}\mathbf{Y}
+\tag{7}\]</span></span></p>
+<p>The diagonal elements of the hat matrix are a measure of how far the predictor variables of each observation are from the means of the predictor variables. For example, <span class="math inline">\(h_{ii}\)</span> is a measure of how far the values of the predictor variables for the <span class="math inline">\(i^{th}\)</span> observation, <span class="math inline">\(x_{i1}, x_{i2}, \ldots, x_{ip}\)</span>, are from the mean values of the predictor variables, <span class="math inline">\(\bar{x}_1, \bar{x}_2, \ldots, \bar{x}_p\)</span>. In the case of simple linear regression, the <span class="math inline">\(i^{th}\)</span> diagonal, <span class="math inline">\(h_{ii}\)</span>, can be written as</p>
+<p><span class="math display">\[
+h_{ii} =  \frac{1}{n} + \frac{(x_i - \bar{x})^2}{\sum_{j=1}^{n}(x_j-\bar{x})^2}
+\]</span></p>
+<p>We call these diagonal elements, the <strong>leverage</strong> of each observation.</p>
+<p>The diagonal elements of the hat matrix have the following properties:</p>
+<ul>
+<li><span class="math inline">\(0 \leq h_ii \leq 1\)</span></li>
+<li><span class="math inline">\(\sum\limits_{i=1}^{n} h_{ii} = p+1\)</span>, where <span class="math inline">\(p\)</span> is the number of predictor variables in the model.</li>
+<li>The mean hat value is <span class="math inline">\(\bar{h} = \frac{\sum\limits_{i=1}^{n} h_{ii}}{n} = \frac{p+1}{n}\)</span>.</li>
+</ul>
+<p>Using these properties, we consider a point to have <strong>high leverage</strong> if it has a leverage value that is more than 2 times the average. In other words, observations with leverage greater than <span class="math inline">\(\frac{2(p+1)}{n}\)</span> are considered to be <strong>high leverage</strong> points, i.e.&nbsp;outliers in the predictor variables. We are interested in flagging high leverage points, because they may have an influence on the regression coefficients.</p>
+<p>When there are high leverage points in the data, the regression line will tend towards those points; therefore, one property of high leverage points is that they tend to have small residuals. We will show this by rewriting the residuals from <a href="#eq-matrix_mean" class="quarto-xref">Equation&nbsp;4</a> using <a href="#eq-y-hat-matrix" class="quarto-xref">Equation&nbsp;7</a>.</p>
+<p><span id="eq-resid-hat"><span class="math display">\[
+\begin{aligned}
+\mathbf{e} &amp;= \mathbf{Y} - \hat{\mathbf{Y}} \\[10pt]
+&amp; = \mathbf{Y} - \mathbf{H}\mathbf{Y} \\[10pt]
+&amp;= (1-\mathbf{H})\mathbf{Y}
+\end{aligned}
+\tag{8}\]</span></span></p>
+<p>Note that the identity matrix and hat matrix are <strong>idempotent</strong>, i.e.&nbsp;<span class="math inline">\(\mathbf{I}\mathbf{I} = \mathbf{I}\)</span>, <span class="math inline">\(\mathbf{H}\mathbf{H} = \mathbf{H}\)</span>. Thus, <span class="math inline">\((\mathbf{I} - \mathbf{H})\)</span> is also idempotent. These matrices are also symmetric. Using these properties and <a href="#eq-resid-hat" class="quarto-xref">Equation&nbsp;8</a>, we have that the variance-covariance matrix of the residuals <span class="math inline">\(\boldsymbol{e}\)</span>, is</p>
+<p><span id="eq-resid-var"><span class="math display">\[
+\begin{aligned}
+Var(\mathbf{e}) &amp;= \mathbf{e}\mathbf{e}^T \\[10pt]
+&amp;=  (1-\mathbf{H})Var(\mathbf{Y})^T(1-\mathbf{H})^T \\[10pt]
+&amp;= (1-\mathbf{H})\hat{\sigma}^2(1-\mathbf{H})^T  \\[10pt]
+&amp;= \hat{\sigma}^2(1-\mathbf{H})(1-\mathbf{H})  \\[10pt]
+&amp;= \hat{\sigma}^2(1-\mathbf{H})
+\end{aligned}
+\tag{9}\]</span></span></p>
+<p>where <span class="math inline">\(\hat{\sigma}^2 = \frac{\sum_{i=1}^{n}e_i^2}{n-p-1}\)</span> is the estimated regression variance. Thus, the variance of the <span class="math inline">\(i^{th}\)</span> residual is <span class="math inline">\(Var(e_i) = \hat{\sigma}^2(1-h_{ii})\)</span>. Therefore, the higher the leverage, the smaller the variance of the residual. Because the expected value of the residuals is 0, we conclude that points with high leverage tend to have smaller residuals than points with lower leverage.</p>
+</section>
+<section id="standardized-residuals" class="level2">
+<h2 class="anchored" data-anchor-id="standardized-residuals">Standardized Residuals</h2>
+<p>In general, we standardize a value by shifting by the expected value and rescaling by the standard deviation (or standard error). Thus, the <span class="math inline">\(i^{th}\)</span> standardized residual takes the form</p>
+<p><span class="math display">\[
+std.res_i = \frac{e_i - E(e_i)}{SE(e_i)}
+\]</span></p>
+<p>The expected value of the residuals is 0, i.e.&nbsp;<span class="math inline">\(E(e_i) = 0\)</span>. From <a href="#eq-resid-var" class="quarto-xref">Equation&nbsp;9</a>), the standard error of the residual is <span class="math inline">\(SE(e_i) = \hat{\sigma}\sqrt{1-h_{ii}}\)</span>. Therefore,</p>
+<p><span id="eq-std-resid"><span class="math display">\[
+std.res_i = \frac{e_i}{\hat{\sigma}\sqrt{1-h_{ii}}}
+\tag{10}\]</span></span></p>
+</section>
+<section id="cooks-distance" class="level2">
+<h2 class="anchored" data-anchor-id="cooks-distance">Cook’s Distance</h2>
+<p>Cook’s distance is a measure of how much each observation influences the model coefficients, and thus the predicted values. The Cook’s distance for the <span class="math inline">\(i^{th}\)</span> observation can be written as</p>
+<p><span id="eq-cooksd"><span class="math display">\[
+D_i = \frac{(\hat{\mathbf{Y}} -\hat{\mathbf{Y}}_{(i)})^T(\hat{\mathbf{Y}} -\hat{\mathbf{Y}}_{(i)})}{(p+1)\hat{\sigma}}
+\tag{11}\]</span></span></p>
+<p>where <span class="math inline">\(\hat{\mathbf{Y}}_{(i)}\)</span> is the vector of predicted values from the model fitted when the <span class="math inline">\(i^{th}\)</span> observation is deleted. Cook’s Distance can be calculated without deleting observations one at a time, since <a href="#eq-cooksd-v2" class="quarto-xref">Equation&nbsp;12</a> below is mathematically equivalent to <a href="#eq-cooksd" class="quarto-xref">Equation&nbsp;11</a>.</p>
+<p><span id="eq-cooksd-v2"><span class="math display">\[
+D_i = \frac{1}{p+1}std.res_i^2\Bigg[\frac{h_{ii}}{(1-h_{ii})}\Bigg] = \frac{e_i^2}{(p+1)\hat{\sigma}^2(1-h_{ii})}\Bigg[\frac{h_{ii}}{(1-h_{ii})}\Bigg]
+\tag{12}\]</span></span></p>
 
 
+</section>
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -911,14 +661,13 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1259,30 +1008,35 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./course-overview.html" class="pagination-link" aria-label="Overview">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../project-work_new.qmd" class="pagination-link" aria-label="Project Group and Proposal">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Project Group and Proposal</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-syllabus.html" class="pagination-link" aria-label="Syllabus">
-        <span class="nav-page-text">Syllabus</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../supplemental/mlr-matrix.html" class="pagination-link" aria-label="MLR matrix notation">
+        <span class="nav-page-text">MLR matrix notation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026, Cheng-Han Yu</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/supplemental/model-diagnostics-matrix.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

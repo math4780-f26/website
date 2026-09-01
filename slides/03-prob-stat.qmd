@@ -149,9 +149,9 @@ plot(0:24, dpois(0:24, lambda = 10), type = 'h', lwd = 10, las = 1,
      ylab = "P(Y = y)", xlab = "y", main = "Poisson(10)")
 ```
 
-##
+<!-- ## -->
 
-{{< include prob-poisson-ojs.qmd >}}
+<!-- {{< include prob-poisson-ojs.qmd >}} -->
 
 
 ## Continuous Random Variables
