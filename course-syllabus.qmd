@@ -2,6 +2,56 @@
 title: "Syllabus"
 ---
 
+## Learning Outcomes
+
+<!-- By the end of this course, students will be able to: -->
+
+<!-- 1. **Formulate regression questions appropriately**, distinguishing among prediction, description, comparison, and causal questions. -->
+
+<!-- 2. **Fit and interpret regression models**, including models with quantitative and categorical predictors, interactions, transformations, and nonlinear effects. -->
+
+<!-- 3. **Quantify and interpret uncertainty** using standard errors, confidence intervals, prediction intervals, hypothesis tests, and model comparisons. -->
+
+<!-- 4. **Evaluate and improve regression models** using residual diagnostics and assessments of influential observations, multicollinearity, extrapolation, and model complexity. -->
+
+<!-- 5. **Conduct and communicate a complete regression analysis** using statistical software, from exploratory data analysis and model fitting to prediction, interpretation, diagnostics, and clear presentation of conclusions and limitations. -->
+
+
+By the end of the course, students will be able to:
+
+- Fit and interpret simple and multiple linear regression models.
+Apply least-squares estimation and use the matrix formulation of linear regression.
+
+- Perform estimation, hypothesis testing, confidence interval construction, and prediction for regression models.
+
+- Interpret regression coefficients and use analysis of variance to assess regression models.
+
+- Evaluate regression assumptions using residual analysis and diagnostic methods.
+
+- Apply appropriate transformations and remedial measures when model assumptions are not satisfied.
+
+- Model polynomial effects, categorical predictors, and interaction effects.
+
+- Identify and assess outliers, leverage points, and influential observations.
+
+- Diagnose multicollinearity and apply appropriate model-selection and validation techniques.
+
+- Use computing tools to conduct regression analyses, visualize results, and communicate statistical findings effectively.
+
+### Additional Learning Outcomes for MSSC 5780
+
+In addition to the learning outcomes above, students enrolled in MSSC 5780 will be expected to:
+
+- Demonstrate a deeper theoretical understanding of regression methods and their assumptions.
+
+- Work with more advanced regression problems requiring greater mathematical and statistical reasoning.
+
+- Critically evaluate alternative modeling strategies and justify model-selection decisions.
+
+- Conduct more extensive independent data analysis and interpretation using computing software.
+
+- Communicate regression methodology and results at a level appropriate for graduate study.
+
 Download syllabus at [`r fontawesome::fa("file-pdf")`](/documents/syllabus-4780-102-f26.pdf)
 
 <!-- [**Syllabus for Section 102 3:30 - 4:45 PM**](/documents/syllabus-4720-102-f25.pdf). -->
