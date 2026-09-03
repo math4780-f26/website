@@ -425,14 +425,14 @@ knitr::include_graphics("./images/03-prob-stat/dist-fcn-r.png")
 
 . . .
 
-- If $X \sim N(\mu_X, \sigma_X^2)$ and $Y \sim N(\mu_Y, \sigma_Y^2)$ and $X$ and $Y$ are [*independent*]{.green}. Then for $a, b \in \mathbf{R}$,
-$$\textcolor{blue}{aX + bY \sim N\left(a\mu_X+b\mu_Y, a^2\sigma_X^2 + b^2\sigma_Y^2\right)}$$
+- If $Y_1 \sim N(\mu_1, \sigma_1^2)$ and $Y_2 \sim N(\mu_2, \sigma_2^2)$ and $Y_1$ and $Y_2$ are [*independent*]{.green}. Then for $a, b \in \mathbf{R}$,
+$$\textcolor{blue}{aY_1 + bY_2 \sim N\left(a\mu_1+b\mu_2, a^2\sigma_1^2 + b^2\sigma_2^2\right)}$$
 
 . . .
 
 
-- Example. $X \sim N(1, 2)$ and $Y \sim N(2, 1)$, and $X \perp Y$. Then 
-$$2X - 3Y \sim N\left(2(1) - 3(2), 2^2(2) + 3^2(1)\right) = N(-4, 17)$$
+- Example. $Y_1 \sim N(1, 2)$ and $Y_2 \sim N(2, 1)$, and $Y_1 \perp Y_2$. Then 
+$$2Y_1 - 3Y_2 \sim N\left(2(1) - 3(2), 2^2(2) + 3^2(1)\right) = N(-4, 17)$$
 
 . . .
 
@@ -466,7 +466,7 @@ source("../scripts/plot_sum_normals.R")
 
 . . .
 
-- If $\mu(X) = 3X$, then when $X = 1$, 
+- If $\mu(X) = 3X$, then when $X = 2$, 
 $$Y \mid X = 2 \sim N\left(\mu(2), 1 \right) = N\left(6, 1 \right)$$
 
 . . .

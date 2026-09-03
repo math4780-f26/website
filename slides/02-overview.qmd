@@ -721,7 +721,7 @@ plot(income_data$Income~income_data$Education,
      col = "red", xlab = "Years of Education", cex.axis = 2,
      ylab = "Income (1000 USD)", pch = 19, cex = 2, las = 1, cex.lab = 2)
 reg <- lm(income_data$Income~income_data$Education)
-abline(reg, col = "blue", lwd = 4)
+abline(reg, col = "black", lwd = 4)
 ```
 :::
 

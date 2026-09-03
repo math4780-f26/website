@@ -47,33 +47,33 @@ plot_df <- bind_rows(
     data.frame(
         x = x_grid,
         density = dnorm(x_grid, mean = mu_X, sd = sd_X),
-        dist = "X"
+        dist = "Y_1"
     ),
     data.frame(
         x = x_grid,
         density = dnorm(x_grid, mean = mu_Y, sd = sd_Y),
-        dist = "Y"
+        dist = "Y_2"
     ),
     data.frame(
         x = x_grid,
         density = dnorm(x_grid, mean = mu_aX, sd = sd_aX),
-        dist = "2X"
+        dist = "2Y_1"
     ),
     data.frame(
         x = x_grid,
         density = dnorm(x_grid, mean = mu_bY, sd = sd_bY),
-        dist = "-3Y"
+        dist = "-3Y_2"
     ),
     data.frame(
         x = x_grid,
         density = dnorm(x_grid, mean = mu_S, sd = sd_S),
-        dist = "2X - 3Y"
+        dist = "2Y_1 - 3Y_2"
     )
 )
 
 mean_df <- data.frame(
     mean = c(mu_X, mu_Y, mu_aX, mu_bY, mu_S),
-    dist = c("X", "Y", "2X", "-3Y", "2X - 3Y")
+    dist = c("Y_1", "Y_2", "2Y_1", "-3Y_2", "2Y_1 - 3Y_2")
 )
 
 # ============================================================
@@ -87,11 +87,11 @@ fig <- ggplot(plot_df, aes(x = x, y = density, color = dist)) +
     #            linetype = 2,
     #            linewidth = 1) +
     scale_color_manual(
-        values = c("X" = lighten("#4C78A8", 0.8),
-                   "Y" = lighten("#F58518", 0.8),
-                   "2X" = "#4C78A8",
-                   "-3Y" = "#F58518",
-                   "2X - 3Y" = "#54A24B")
+        values = c("Y_1" = lighten("#4C78A8", 0.8),
+                   "Y_2" = lighten("#F58518", 0.8),
+                   "2Y_1" = "#4C78A8",
+                   "-3Y_2" = "#F58518",
+                   "2Y_1 - 3Y_2" = "#54A24B")
     ) +
     labs(
         title = "Sum of Normal Distributions",

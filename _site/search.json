@@ -11,6 +11,17 @@
     ]
   },
   {
+    "objectID": "course-syllabus.html#learning-outcomes",
+    "href": "course-syllabus.html#learning-outcomes",
+    "title": "Syllabus",
+    "section": "",
+    "text": "By the end of the course, students will be able to:\n\nFit and interpret simple and multiple linear regression models. Apply least-squares estimation and use the matrix formulation of linear regression.\nPerform estimation, hypothesis testing, confidence interval construction, and prediction for regression models.\nInterpret regression coefficients and use analysis of variance to assess regression models.\nEvaluate regression assumptions using residual analysis and diagnostic methods.\nApply appropriate transformations and remedial measures when model assumptions are not satisfied.\nModel polynomial effects, categorical predictors, and interaction effects.\nIdentify and assess outliers, leverage points, and influential observations.\nDiagnose multicollinearity and apply appropriate model-selection and validation techniques.\nUse computing tools to conduct regression analyses, visualize results, and communicate statistical findings effectively.\n\n\nIn addition to the learning outcomes above, students enrolled in MSSC 5780 will be expected to:\n\nDemonstrate a deeper theoretical understanding of regression methods and their assumptions.\nWork with more advanced regression problems requiring greater mathematical and statistical reasoning.\nCritically evaluate alternative modeling strategies and justify model-selection decisions.\nConduct more extensive independent data analysis and interpretation using computing software.\nCommunicate regression methodology and results at a level appropriate for graduate study.\n\nDownload syllabus at",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
     "objectID": "course-syllabus.html#time-and-location",
     "href": "course-syllabus.html#time-and-location",
     "title": "Syllabus",
@@ -1083,14 +1094,14 @@
     "href": "slides/03-prob-stat-slides.html#sum-of-normals-is-normal",
     "title": "Probability and Statistics 🎲",
     "section": "Sum of Normals is Normal",
-    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n\n\nIf \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) and \\(X\\) and \\(Y\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aX + bY \\sim N\\left(a\\mu_X+b\\mu_Y, a^2\\sigma_X^2 + b^2\\sigma_Y^2\\right)}\\]\n\n\n\n\n\nExample. \\(X \\sim N(1, 2)\\) and \\(Y \\sim N(2, 1)\\), and \\(X \\perp Y\\). Then \\[2X - 3Y \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n\n\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
+    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n\n\nIf \\(Y_1 \\sim N(\\mu_1, \\sigma_1^2)\\) and \\(Y_2 \\sim N(\\mu_2, \\sigma_2^2)\\) and \\(Y_1\\) and \\(Y_2\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aY_1 + bY_2 \\sim N\\left(a\\mu_1+b\\mu_2, a^2\\sigma_1^2 + b^2\\sigma_2^2\\right)}\\]\n\n\n\n\n\nExample. \\(Y_1 \\sim N(1, 2)\\) and \\(Y_2 \\sim N(2, 1)\\), and \\(Y_1 \\perp Y_2\\). Then \\[2Y_1 - 3Y_2 \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n\n\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
   },
   {
     "objectID": "slides/03-prob-stat-slides.html#conditional-distribution",
     "href": "slides/03-prob-stat-slides.html#conditional-distribution",
     "title": "Probability and Statistics 🎲",
     "section": "Conditional Distribution",
-    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 1\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n\n\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
+    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 2\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n\n\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
   },
   {
     "objectID": "slides/03-prob-stat-slides.html#statistics-comes-in",
@@ -1684,16 +1695,5 @@
     "title": "MSSC 5780 Project Description",
     "section": "",
     "text": "To be announced."
-  },
-  {
-    "objectID": "course-syllabus.html#learning-outcomes",
-    "href": "course-syllabus.html#learning-outcomes",
-    "title": "Syllabus",
-    "section": "",
-    "text": "By the end of the course, students will be able to:\n\nFit and interpret simple and multiple linear regression models. Apply least-squares estimation and use the matrix formulation of linear regression.\nPerform estimation, hypothesis testing, confidence interval construction, and prediction for regression models.\nInterpret regression coefficients and use analysis of variance to assess regression models.\nEvaluate regression assumptions using residual analysis and diagnostic methods.\nApply appropriate transformations and remedial measures when model assumptions are not satisfied.\nModel polynomial effects, categorical predictors, and interaction effects.\nIdentify and assess outliers, leverage points, and influential observations.\nDiagnose multicollinearity and apply appropriate model-selection and validation techniques.\nUse computing tools to conduct regression analyses, visualize results, and communicate statistical findings effectively.\n\n\nIn addition to the learning outcomes above, students enrolled in MSSC 5780 will be expected to:\n\nDemonstrate a deeper theoretical understanding of regression methods and their assumptions.\nWork with more advanced regression problems requiring greater mathematical and statistical reasoning.\nCritically evaluate alternative modeling strategies and justify model-selection decisions.\nConduct more extensive independent data analysis and interpretation using computing software.\nCommunicate regression methodology and results at a level appropriate for graduate study.\n\nDownload syllabus at",
-    "crumbs": [
-      "Course Information",
-      "Syllabus"
-    ]
   }
 ]
