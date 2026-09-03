@@ -926,14 +926,14 @@
     "href": "slides/03-prob-stat.html#r-lab-dpqr-functions",
     "title": "Probability and Statistics 🎲",
     "section": "\nR Lab dpqr Functions",
-    "text": "R Lab dpqr Functions\nFor some distribution (dist),\n\n\nddist(x, ...): density value \\(f(x)\\) or probability value \\(P(X = x)\\).\n\npdist(q, ...): cdf \\(F(q) = P(X \\le q)\\).\n\nqdist(p, ...): quantile of probability \\(p\\).\n\nrdist(n, ...): generate \\(n\\) random numbers.\n\n\n\nIn practice, we are not gonna calculate those properties by hand. Instead, we use computing software.\nIn R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.\n\n\n. . .\n\n\n\n## 10 binomial(5, 0.4) values\nrbinom(n = 10, size = 5, prob = 0.4)\n\n [1] 3 0 1 1 2 2 4 0 3 1\n\n## P(Y = 3) of binom(5, 0.4)\ndbinom(x = 3, size = 5, prob = 0.4)\n\n[1] 0.23\n\n\n\n\n## P(Y &lt;= 2) of binom(5, 0.4)\npbinom(q = 2, size = 5, prob = 0.4)\n\n[1] 0.683"
+    "text": "R Lab dpqr Functions\nFor some distribution (dist),\n\n\nddist(x, ...): density value \\(f(x)\\) or probability value \\(P(X = x)\\).\n\npdist(q, ...): cdf \\(F(q) = P(X \\le q)\\).\n\nqdist(p, ...): quantile of probability \\(p\\).\n\nrdist(n, ...): generate \\(n\\) random numbers.\n\n\n\nIn practice, we are not gonna calculate those properties by hand. Instead, we use computing software.\nIn R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.\n\n\n. . .\n\n\n\n## 10 binomial(5, 0.4) values\nrbinom(n = 10, size = 5, prob = 0.4)\n\n [1] 2 3 2 2 3 3 3 0 1 2\n\n## P(Y = 3) of binom(5, 0.4)\ndbinom(x = 3, size = 5, prob = 0.4)\n\n[1] 0.23\n\n\n\n\n## P(Y &lt;= 2) of binom(5, 0.4)\npbinom(q = 2, size = 5, prob = 0.4)\n\n[1] 0.683"
   },
   {
     "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
     "href": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
     "title": "Probability and Statistics 🎲",
     "section": "\nR Lab dpqr Functions",
-    "text": "R Lab dpqr Functions\n\n## the default mean = 0 and sd = 1 (standard normal)\nrnorm(5)\n\n[1] -0.774 -0.563  0.548 -0.450  1.303\n\n\n. . .\n\n\n\\(100\\) random draws from \\(N(0, 1)\\)"
+    "text": "R Lab dpqr Functions\n\n## the default mean = 0 and sd = 1 (standard normal)\nrnorm(5)\n\n[1] -1.920  1.262 -0.194 -0.635 -0.674\n\n\n. . .\n\n\n\\(100\\) random draws from \\(N(0, 1)\\)"
   },
   {
     "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-2",
@@ -961,14 +961,14 @@
     "href": "slides/03-prob-stat.html#sum-of-normals-is-normal",
     "title": "Probability and Statistics 🎲",
     "section": "Sum of Normals is Normal",
-    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n. . .\n\nIf \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) and \\(X\\) and \\(Y\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aX + bY \\sim N\\left(a\\mu_X+b\\mu_Y, a^2\\sigma_X^2 + b^2\\sigma_Y^2\\right)}\\]\n\n\n. . .\n\nExample. \\(X \\sim N(1, 2)\\) and \\(Y \\sim N(2, 1)\\), and \\(X \\perp Y\\). Then \\[2X - 3Y \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n. . .\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
+    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n. . .\n\nIf \\(Y_1 \\sim N(\\mu_1, \\sigma_1^2)\\) and \\(Y_2 \\sim N(\\mu_2, \\sigma_2^2)\\) and \\(Y_1\\) and \\(Y_2\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aY_1 + bY_2 \\sim N\\left(a\\mu_1+b\\mu_2, a^2\\sigma_1^2 + b^2\\sigma_2^2\\right)}\\]\n\n\n. . .\n\nExample. \\(Y_1 \\sim N(1, 2)\\) and \\(Y_2 \\sim N(2, 1)\\), and \\(Y_1 \\perp Y_2\\). Then \\[2Y_1 - 3Y_2 \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n. . .\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
   },
   {
     "objectID": "slides/03-prob-stat.html#conditional-distribution",
     "href": "slides/03-prob-stat.html#conditional-distribution",
     "title": "Probability and Statistics 🎲",
     "section": "Conditional Distribution",
-    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n. . .\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 1\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n. . .\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
+    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n. . .\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 2\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n. . .\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
   },
   {
     "objectID": "slides/03-prob-stat.html#normal-chi-squared-students-t-and-f",
@@ -1094,14 +1094,14 @@
     "href": "slides/03-prob-stat-slides.html#sum-of-normals-is-normal",
     "title": "Probability and Statistics 🎲",
     "section": "Sum of Normals is Normal",
-    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n\n\nIf \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) and \\(X\\) and \\(Y\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aX + bY \\sim N\\left(a\\mu_X+b\\mu_Y, a^2\\sigma_X^2 + b^2\\sigma_Y^2\\right)}\\]\n\n\n\n\n\nExample. \\(X \\sim N(1, 2)\\) and \\(Y \\sim N(2, 1)\\), and \\(X \\perp Y\\). Then \\[2X - 3Y \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n\n\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
+    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n\n\nIf \\(Y_1 \\sim N(\\mu_1, \\sigma_1^2)\\) and \\(Y_2 \\sim N(\\mu_2, \\sigma_2^2)\\) and \\(Y_1\\) and \\(Y_2\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aY_1 + bY_2 \\sim N\\left(a\\mu_1+b\\mu_2, a^2\\sigma_1^2 + b^2\\sigma_2^2\\right)}\\]\n\n\n\n\n\nExample. \\(Y_1 \\sim N(1, 2)\\) and \\(Y_2 \\sim N(2, 1)\\), and \\(Y_1 \\perp Y_2\\). Then \\[2Y_1 - 3Y_2 \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n\n\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
   },
   {
     "objectID": "slides/03-prob-stat-slides.html#conditional-distribution",
     "href": "slides/03-prob-stat-slides.html#conditional-distribution",
     "title": "Probability and Statistics 🎲",
     "section": "Conditional Distribution",
-    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 1\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n\n\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
+    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 2\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n\n\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
   },
   {
     "objectID": "slides/03-prob-stat-slides.html#statistics-comes-in",
