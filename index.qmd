@@ -28,9 +28,9 @@ format:
 
 ::: {.column-screen-inset-right .weekly-schedule}
 | Week | Date | Topic | Slides | App | Reading | Homework | Activity | Exam | Project |
-|:--:|----|----|:--:|----|:--:|:--:|----|:--:|:--:|
+|:------:|--------|--------|:------:|--------|:------:|:------:|--------|:------:|:------:|
 | 1 | Tue, Sep 1 | Greetings + Overview of Regression | 🖥️ [syllabus](slides/01-syllabus-slides.html) <br>🖥️ [overview](slides/02-overview-slides.html) |  | [Syllabus](course-syllabus.html)<br>[GenAI Video](https://shorturl.at/NEwOR) |  |  |  |  |
-|  | Thu, Sep 3 | Probability and Statistics Review | 🖥️ [prob-stat](slides/03-prob-stat-slides.html) | 👉 [distributions](https://chenghanyustats-distributions.share.connect.posit.cloud/) <br> 👉 [mean](https://chenghanyustats-introstat-mean.share.connect.posit.cloud/) <br> 👉 [sd](https://chenghanyustats-introstat-standarddeviation.share.connect.posit.cloud/) <br> 👉 [CLT](https://chenghanyustats-introstat-clt.share.connect.posit.cloud/) | [IS Ch 9-13](https://chenghanyu-introstatsbook.netlify.app/prob-rv) <br> [IS Ch 14, 16](https://chenghanyu-introstatsbook.netlify.app/infer-ci) <br> [IS Appendix](https://chenghanyu-introstatsbook.netlify.app/a-r_prog) | ✍️ HW 1 (due 9/11) |  |  |  |
+|  | Thu, Sep 3 | Probability and Statistics Review | 🖥️ [prob-stat](slides/03-prob-stat-slides.html) | 👉 [distributions](https://chenghanyustats-distributions.share.connect.posit.cloud/) <br> 👉 [mean](https://chenghanyustats-introstat-mean.share.connect.posit.cloud/) <br> 👉 [sd](https://chenghanyustats-introstat-standarddeviation.share.connect.posit.cloud/) <br> 👉 [CLT](https://chenghanyustats-introstat-clt.share.connect.posit.cloud/) | [IS Ch 9-13](https://chenghanyu-introstatsbook.netlify.app/prob-rv) <br> [IS Ch 14, 16](https://chenghanyu-introstatsbook.netlify.app/infer-ci) <br> [IS Appendix](https://chenghanyu-introstatsbook.netlify.app/a-r_prog) | ✍️ [HW 1 (due 9/11)](hw/hw01.html) |  |  |  |
 | 2 | Tue, Sep 8 | Simple Linear Regression (SLR) | 🖥️ slr |  |  |  |  |  |  |
 |  | Thu, Sep 10 | Simple Linear Regression |  |  |  |  |  |  |  |
 | 3 | Tue, Sep 15 | Simple Linear Regression |  | 👉 regression fitting |  |  |  |  |  |
@@ -69,5 +69,5 @@ knitr::knit_exit()
 ```
 
 |   |   |   | Prepare | Slides | AE | Labs | HW | Exam | Project |
-|----|----|----|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
 | Week | Date | Topic | 📖 | 🖥️ | 📋 | [💻](https://sakai.duke.edu/samigo-app/servlet/Login?id=6fa7ebf3-01af-42a6-91ba-3e813d3901221641094171786) | ✍️ | ✅ | 📂 |
