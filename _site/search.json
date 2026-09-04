@@ -158,7 +158,7 @@
     "href": "hw.html",
     "title": "Homework",
     "section": "",
-    "text": "More homework sets to be added as the semester progresses.\n\n\n\n\n\n\n\n\nNo.\nTitle\nDue date\n\n\n\n\n\nNo matching items",
+    "text": "More homework sets to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\n\nNo.\n\n\n\nTitle\n\n\n\nDue date\n\n\n\n\n\n\n\n\nHomework 1\n\n\nProbability and Statistics\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Homework"
     ]
@@ -926,14 +926,14 @@
     "href": "slides/03-prob-stat.html#r-lab-dpqr-functions",
     "title": "Probability and Statistics 🎲",
     "section": "\nR Lab dpqr Functions",
-    "text": "R Lab dpqr Functions\nFor some distribution (dist),\n\n\nddist(x, ...): density value \\(f(x)\\) or probability value \\(P(X = x)\\).\n\npdist(q, ...): cdf \\(F(q) = P(X \\le q)\\).\n\nqdist(p, ...): quantile of probability \\(p\\).\n\nrdist(n, ...): generate \\(n\\) random numbers.\n\n\n\nIn practice, we are not gonna calculate those properties by hand. Instead, we use computing software.\nIn R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.\n\n\n. . .\n\n\n\n## 10 binomial(5, 0.4) values\nrbinom(n = 10, size = 5, prob = 0.4)\n\n [1] 3 0 1 1 2 2 4 0 3 1\n\n## P(Y = 3) of binom(5, 0.4)\ndbinom(x = 3, size = 5, prob = 0.4)\n\n[1] 0.23\n\n\n\n\n## P(Y &lt;= 2) of binom(5, 0.4)\npbinom(q = 2, size = 5, prob = 0.4)\n\n[1] 0.683"
+    "text": "R Lab dpqr Functions\nFor some distribution (dist),\n\n\nddist(x, ...): density value \\(f(x)\\) or probability value \\(P(X = x)\\).\n\npdist(q, ...): cdf \\(F(q) = P(X \\le q)\\).\n\nqdist(p, ...): quantile of probability \\(p\\).\n\nrdist(n, ...): generate \\(n\\) random numbers.\n\n\n\nIn practice, we are not gonna calculate those properties by hand. Instead, we use computing software.\nIn R we can use dpqr Functions to calculate probabilities or generate values from some distribution. Let’s see how.\n\n\n. . .\n\n\n\n## 10 binomial(5, 0.4) values\nrbinom(n = 10, size = 5, prob = 0.4)\n\n [1] 2 3 2 2 3 3 3 0 1 2\n\n## P(Y = 3) of binom(5, 0.4)\ndbinom(x = 3, size = 5, prob = 0.4)\n\n[1] 0.23\n\n\n\n\n## P(Y &lt;= 2) of binom(5, 0.4)\npbinom(q = 2, size = 5, prob = 0.4)\n\n[1] 0.683"
   },
   {
     "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
     "href": "slides/03-prob-stat.html#r-lab-dpqr-functions-1",
     "title": "Probability and Statistics 🎲",
     "section": "\nR Lab dpqr Functions",
-    "text": "R Lab dpqr Functions\n\n## the default mean = 0 and sd = 1 (standard normal)\nrnorm(5)\n\n[1] -0.774 -0.563  0.548 -0.450  1.303\n\n\n. . .\n\n\n\\(100\\) random draws from \\(N(0, 1)\\)"
+    "text": "R Lab dpqr Functions\n\n## the default mean = 0 and sd = 1 (standard normal)\nrnorm(5)\n\n[1] -1.920  1.262 -0.194 -0.635 -0.674\n\n\n. . .\n\n\n\\(100\\) random draws from \\(N(0, 1)\\)"
   },
   {
     "objectID": "slides/03-prob-stat.html#r-lab-dpqr-functions-2",
@@ -961,14 +961,14 @@
     "href": "slides/03-prob-stat.html#sum-of-normals-is-normal",
     "title": "Probability and Statistics 🎲",
     "section": "Sum of Normals is Normal",
-    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n. . .\n\nIf \\(X \\sim N(\\mu_X, \\sigma_X^2)\\) and \\(Y \\sim N(\\mu_Y, \\sigma_Y^2)\\) and \\(X\\) and \\(Y\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aX + bY \\sim N\\left(a\\mu_X+b\\mu_Y, a^2\\sigma_X^2 + b^2\\sigma_Y^2\\right)}\\]\n\n\n. . .\n\nExample. \\(X \\sim N(1, 2)\\) and \\(Y \\sim N(2, 1)\\), and \\(X \\perp Y\\). Then \\[2X - 3Y \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n. . .\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
+    "text": "Sum of Normals is Normal\n\nIf \\(Y \\sim N(\\mu, \\sigma^2)\\), \\(Z = \\frac{Y - \\mu}{\\sigma} \\sim N(0, 1)\\).\n\n. . .\n\nIf \\(Y_1 \\sim N(\\mu_1, \\sigma_1^2)\\) and \\(Y_2 \\sim N(\\mu_2, \\sigma_2^2)\\) and \\(Y_1\\) and \\(Y_2\\) are independent. Then for \\(a, b \\in \\mathbf{R}\\), \\[\\textcolor{blue}{aY_1 + bY_2 \\sim N\\left(a\\mu_1+b\\mu_2, a^2\\sigma_1^2 + b^2\\sigma_2^2\\right)}\\]\n\n\n. . .\n\nExample. \\(Y_1 \\sim N(1, 2)\\) and \\(Y_2 \\sim N(2, 1)\\), and \\(Y_1 \\perp Y_2\\). Then \\[2Y_1 - 3Y_2 \\sim N\\left(2(1) - 3(2), 2^2(2) + 3^2(1)\\right) = N(-4, 17)\\]\n\n\n. . .\n\nWhat is the distribution of \\(a_1Y_1 + a_2Y_2 + \\cdots + a_nY_n\\) if \\(Y_i \\sim N(\\mu_i, \\sigma^2_i)\\) and \\(Y_i\\)s are independent?\n\n\n\nIf \\(Z \\sim N(0, 1)\\), then \\[Z^2 \\sim \\chi^2_1\\]\nIf \\(Z_i \\stackrel{iid}{\\sim} N(0, 1), i = 1, 2, \\dots, k\\), then \\[\\sum_{i=1}^k Z_i^2 \\sim \\chi^2_k\\]\n\\(iid\\) means  * independent identically distributed*.\nLet \\(Y_i \\stackrel{indep}{\\sim} N(\\mu_i, \\sigma_i^2), i = 1, 2, \\dots, n\\). Then the random variable \\(U = \\sum_{i=1}^n a_iY_i\\) has the distribution"
   },
   {
     "objectID": "slides/03-prob-stat.html#conditional-distribution",
     "href": "slides/03-prob-stat.html#conditional-distribution",
     "title": "Probability and Statistics 🎲",
     "section": "Conditional Distribution",
-    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n. . .\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 1\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n. . .\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
+    "text": "Conditional Distribution\n\nThe distribution of \\(Y\\) may depend on another variable \\(X\\)’s value.\n\\(Y \\mid X \\sim N\\left(\\mu(X), 1 \\right)\\)\n\n. . .\n\nIf \\(\\mu(X) = 3X\\), then when \\(X = 2\\), \\[Y \\mid X = 2 \\sim N\\left(\\mu(2), 1 \\right) = N\\left(6, 1 \\right)\\]\n\n\n. . .\n\nThe location of the distribution of \\(Y\\), or the mean of \\(Y\\) changes with the value of \\(X\\). The conditional expectation \\(E(Y\\mid X) = 3X\\)."
   },
   {
     "objectID": "slides/03-prob-stat.html#normal-chi-squared-students-t-and-f",
@@ -1695,5 +1695,12 @@
     "title": "MSSC 5780 Project Description",
     "section": "",
     "text": "To be announced."
+  },
+  {
+    "objectID": "hw/hw-1.html",
+    "href": "hw/hw-1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "Important\n\n\n\nDue Friday, Sep 11, 11:59 PM\n\n\n\n\n\nPlease submit your work in one PDF file to D2L &gt; Assessments &gt; Dropbox. Multiple files or a file that is not in pdf format is not accepted.\nIn your homework, please number questions in order.\n\n\nQuestions started with (MSSC) are required for MSSC 5780 students, and optional for MATH 4780 students.\n\nProgramming and Computing\nPlease sharpen your coding skill using R or any language you prefer. No need to show your work on this part!\nProbability and Statistics Review\n\n\n\n\n\\(Y_1 \\sim N(3, 8)\\) and \\(Y_2 \\sim N(1, 4)\\), and \\(Y_1\\) and \\(Y_2\\) are independent. What is the distribution the variable \\(2Y_1 + 3Y_2\\) follows?\n\n\nPlot normal density curves of \\(Y_1 \\sim N(3, 8)\\), \\(Y_2 \\sim N(1, 4)\\), and \\(2Y_1 + 3Y_2\\) in one single plot.\n\nChoose a continuous variable in the data set boston.\n\nDraw a simple random sample of size 20 from this population. Calculate the sample average.\nRepeat this exercise several times to get a sense of the sampling distribution of the sample mean for this example.\n\n\n\nA test is graded from 0 to 50, with an average score of 35 and a standard deviation of 10. For comparison to other tests, it would be convenient to rescale to a mean of 100 and standard deviation of 15. [Note:] If \\(X \\sim N(\\mu, \\sigma^2)\\), for a real value \\(a\\) and \\(c\\), \\(a + cX \\sim N(a + c\\mu, c^2\\sigma^2)\\).\n\nLabeling the original test scores as x and the desired rescaled test score as y, come up with a linear transformation, that is, values of a and b so that the rescaled scores y = a + bx have a mean of 100 and a standard deviation of 15.\nWhat is the range of possible values of this rescaled score y?\nPlot the line showing y vs. x.\n\n\n\nSuppose \\(Y_i \\stackrel{iid}{\\sim} N(\\mu, \\sigma^2)\\), \\(i = 1, 2, \\dots, n\\), with unknown \\(\\mu\\) and \\(\\sigma\\). The \\(100(1-\\alpha)\\%\\) confidence interval (CI) for the population mean \\(\\mu\\) is \\(\\left( \\overline{y}- t_{\\alpha/2, n-1}\\frac{s}{\\sqrt{n}}, \\overline{y} + t_{\\alpha/2, n-1}\\frac{s}{\\sqrt{n}} \\right)\\).\n\nUse simulation with \\(\\alpha = 0.1\\), \\(n = 20\\), \\(\\mu = 4\\) and \\(\\sigma = 2\\) to verify that such CIs contain \\(\\mu\\) about \\(100(1-\\alpha)\\%\\) of times.\nConstruct the graph as attached.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(MSSC) If \\(U_1\\) and \\(U_2\\) are independent and both are uniform random variables over \\([0, 1]\\) interval https://en.wikipedia.org/wiki/Continuous_uniform_distribution, then \\(X_1\\) and \\(X_2\\) defined by \\[X_1 = \\sqrt{-2\\ln(U_1)}\\cos(2\\pi U_2), \\quad X_2 = \\sqrt{-2\\ln(U_1)}\\sin(2\\pi U_2)\\] are independent \\(N(0, 1)\\) variables. Draw 10,000 samples for \\(U_1\\) and \\(U_2\\), and use the transformation to generate the samples of \\(X_1\\) and \\(X_2\\). Verify\n\nthe standard normality of \\(X_1\\) and \\(X_2\\) by plotting their histogram with a superimposed standard normal density.\nthe independence of \\(X_1\\) and \\(X_2\\) by plotting the scatterplot of \\(X_1\\) and \\(X_2\\) and computing their correlation coefficient.\n\n\n\n\n\nAI Usage Declaration. Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:\n\n\nWhy/How I Used AI Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?\n\nGenerated Output Include a screenshot or excerpt (copy and paste) of the AI’s response.\n\nHow I Used the Output Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?"
   }
 ]

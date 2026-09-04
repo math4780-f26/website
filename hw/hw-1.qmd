@@ -1,0 +1,217 @@
+---
+title: "Homework 1"
+subtitle: "Probability and Statistics"
+categories: "Homework"
+editor: source
+params:
+  show_sol: true
+execute:
+  echo: false
+---
+
+::: callout-important
+[Due **Friday, Sep 11, 11:59 PM**]{.red}
+:::
+
+<!-- # Homework Instruction and Requirement -->
+
+<!-- - Homework 1 covers course materials of Week 1 to 2. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not accepted. 
+
+- In your homework, please number questions **in order**.
+
+<!-- - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- Questions started with **(MSSC)** are *required* for MSSC 5780 students, and optional for MATH 4780 students.
+
+<!-- - **Relevant code should be attached.** -->
+
+
+# Programming and Computing
+
+Please sharpen your coding skill using R or any language you prefer. **No need** to show your work on this part!
+
+
+# Probability and Statistics Review
+
+<!-- We will use some facts or properties discussed in MATH 4700 and 4710. Here we don't learn why (which should be taught in MATH 4700 and 4710), but just know what they are, and apply them for regression analysis. -->
+
+
+<!-- 1. Use the linearity of expected value $E(X+Y) = E(X) + E(Y)$ and $E(aX) = aE(X)$ where $X$ and $Y$ are random variables and $a$ is a constant to show that for a random variable $Y$, $$\mathrm{Var}(Y) = E(Y^2) - [E(Y)]^2$$ -->
+
+(@) $Y_1 \sim N(3, 8)$ and $Y_2 \sim N(1, 4)$, and $Y_1$ and $Y_2$ are independent. What is the distribution the variable $2Y_1 + 3Y_2$ follows?
+
+<!-- 3. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
+
+<!-- 4. Let the sample variance be $S^2 = \frac{\sum_{i=1}^n(Y_i - \overline{Y})^2}{n-1}$. The two facts are -->
+<!--     i. $\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}$ -->
+<!--     ii. $\frac{\overline{Y} - \mu}{\sigma/\sqrt{n}}$ and $\frac{(n-1)S^2}{\sigma^2}$ are independent.   -->
+<!--     Use i. and ii. and the fact that *If $Z \sim N(0, 1)$, $V \sim \chi^2_v$ and $Z$ and $V$ are independent, then $\frac{Z}{\sqrt{V/v}} \sim t_{v}$* to show that $$\frac{\overline{Y} - \mu}{S/\sqrt{n}} \sim t_{n-1}$$ -->
+
+(@) Plot normal density curves of $Y_1 \sim N(3, 8)$, $Y_2 \sim N(1, 4)$, and $2Y_1 + 3Y_2$ in one single plot.
+
+(@) Choose a continuous variable in the data set [`boston`](./data/boston.csv). 
+    (a) Draw a simple random sample of size 20 from this population. Calculate the sample average.
+    (b) Repeat this exercise several times to get a sense of the sampling distribution of the sample mean for this example.
+
+(@) A test is graded from 0 to 50, with an average score of 35 and a standard deviation of 10. For comparison to other tests, it would be convenient to rescale to a mean of 100 and standard deviation of 15. 
+[Note:] If $X \sim N(\mu, \sigma^2)$, for a real value $a$ and $c$, $a + cX \sim N(a + c\mu, c^2\sigma^2)$.
+    (a) Labeling the original test scores as x and the desired rescaled test score as y, come up with a linear transformation, that is, values of a and b so that the rescaled scores y = a + bx have a mean of 100 and a standard deviation of 15. 
+    (b) What is the range of possible values of this rescaled score y? 
+    (c) Plot the line showing y vs. x.
+
+(@) Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$, with unknown $\mu$ and $\sigma$. The $100(1-\alpha)\%$ confidence interval (CI) for the population mean $\mu$ is $\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)$. 
+    (a) Use simulation with $\alpha = 0.1$, $n = 20$, $\mu = 4$ and $\sigma = 2$ to verify that such CIs contain $\mu$ about $100(1-\alpha)\%$ of times.
+    (b) Construct the graph as attached.
+    
+    
+```{r}
+#| echo: false
+#| include: false
+library(ggplot2)
+
+set.seed(4780)
+
+# Simulation settings
+alpha <- 0.10
+mu <- 4
+sigma <- 2
+n <- 20                 # Assumed because n was not specified
+B <- 10000              # Number of simulated samples
+
+t_critical <- qt(
+  1 - alpha / 2,
+  df = n - 1
+)
+
+# Construct one confidence interval
+construct_ci <- function() {
+  
+  y <- rnorm(
+    n,
+    mean = mu,
+    sd = sigma
+  )
+  
+  y_bar <- mean(y)
+  s <- sd(y)
+  
+  margin_error <- t_critical * s / sqrt(n)
+  
+  c(
+    estimate = y_bar,
+    lower = y_bar - margin_error,
+    upper = y_bar + margin_error
+  )
+}
+
+# Repeat the experiment B times
+simulation <- as.data.frame(
+  t(replicate(B, construct_ci()))
+)
+
+simulation$simulation <- seq_len(B)
+
+# Does each confidence interval contain the true mean?
+simulation$covers_mu <- with(
+  simulation,
+  lower <= mu & mu <= upper
+)
+
+# Estimated coverage
+estimated_coverage <- mean(simulation$covers_mu)
+
+estimated_coverage
+```
+
+```{r}
+#| echo: false
+# Select 100 confidence intervals for plotting
+number_to_plot <- 100
+
+plot_data <- simulation[seq_len(number_to_plot), ]
+
+plot_data$status <- ifelse(
+  plot_data$covers_mu,
+  "Contains mu",
+  "Misses mu"
+)
+
+plot_data$status <- factor(
+  plot_data$status,
+  levels = c("Contains mu", "Misses mu")
+)
+
+number_covering <- sum(plot_data$covers_mu)
+
+ggplot(
+  plot_data,
+  aes(
+    x = simulation,
+    y = estimate,
+    color = status
+  )
+) +
+  geom_linerange(
+    aes(
+      ymin = lower,
+      ymax = upper
+    ),
+    linewidth = 0.8
+  ) +
+  geom_point(size = 1.8) +
+  geom_hline(
+    yintercept = mu,
+    color = "#D7301F",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  scale_color_manual(
+    values = c(
+      "Contains mu" = "#2296E6",
+      "Misses mu" = "#E69F00"
+    ),
+    labels = c(
+      "Contains mu" = expression("Contains " * mu),
+      "Misses mu" = expression("Misses " * mu)
+    )
+  ) +
+  labs(
+    # title = "Repeated 90% Confidence Intervals for the Population Mean",
+    # subtitle = paste(
+    #   number_covering,
+    #   "of",
+    #   number_to_plot,
+    #   "intervals contain the true mean"
+    # ),
+    x = "Simulation",
+    y = expression("90% confidence interval for " * mu),
+    color = NULL
+  ) +
+  theme_classic(base_size = 14) +
+  theme(
+    legend.position = "top"
+  )
+```
+
+<!-- Fill the percentage in the following table, and comment on your results. -->
+
+<!-- |Simulation times   | $n=5$        |  $n=30$     | $n=200$ -->
+<!-- |------------------ | -------------|-------------|----------- -->
+<!-- |$20$               | -->
+<!-- |$1000$             | -->
+<!-- |$20000$            | -->
+
+
+(@) **(MSSC)** If $U_1$ and $U_2$ are independent and both are uniform random variables over $[0, 1]$ interval <https://en.wikipedia.org/wiki/Continuous_uniform_distribution>, then $X_1$ and $X_2$ defined by $$X_1 = \sqrt{-2\ln(U_1)}\cos(2\pi U_2), \quad X_2 = \sqrt{-2\ln(U_1)}\sin(2\pi U_2)$$ are independent $N(0, 1)$ variables. Draw 10,000 samples for $U_1$ and $U_2$, and use the transformation to generate the samples of $X_1$ and $X_2$. Verify 
+    - the standard normality of $X_1$ and $X_2$ by plotting their histogram with a superimposed standard normal density.
+    - the independence of $X_1$ and $X_2$ by plotting the scatterplot of $X_1$ and $X_2$ and computing their correlation coefficient.
+
+<!-- 7. **(MSSC)** Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
+
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?
