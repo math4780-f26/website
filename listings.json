@@ -1,6 +1,8 @@
 [
   {
     "listing": "/hw.html",
-    "items": []
+    "items": [
+      "/hw/hw01.html"
+    ]
   }
 ]
