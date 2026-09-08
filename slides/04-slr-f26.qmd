@@ -1,0 +1,3238 @@
+---
+title: 'Simple Linear Regression `r fontawesome::fa("chart-line")`'
+title-slide-attributes:
+  data-background-image: ../images/bg.png
+  # data-background-size: stretch
+  # data-slide-number: none
+format: 
+  live-revealjs: 
+    output-file: 04-slr-f26-slides.html
+    code-line-numbers: true
+webr:
+  cell-options:
+    autorun: false
+  # packages:
+  #   - tidyverse
+---
+
+
+#  {visibility="hidden"}
+
+\def\bx{\mathbf{x}}
+\def\bg{\mathbf{g}}
+\def\bw{\mathbf{w}}
+\def\bbeta{\boldsymbol \beta}
+\def\bX{\mathbf{X}}
+\def\by{\mathbf{y}}
+\def\bH{\mathbf{H}}
+\def\bI{\mathbf{I}}
+\def\bS{\mathbf{S}}
+\def\bW{\mathbf{W}}
+\def\T{\text{T}}
+\def\cov{\mathrm{Cov}}
+\def\cor{\mathrm{Corr}}
+\def\var{\mathrm{Var}}
+\def\E{\mathrm{E}}
+\def\bmu{\boldsymbol \mu}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\def\Trace{\text{Trace}}
+
+```{r}
+#| label: setup
+#| include: false
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(knitr)
+library(tidymodels)
+knitr::opts_chunk$set(
+  fig.asp = 0.56,
+  fig.align = "center",
+  out.width = "100%",
+  fig.retina = 3,
+  fig.path = "./images/04-slr-f26/",
+  warning = FALSE,
+  message = FALSE
+)
+options(width = 80, digits = 3)
+
+theme_set(
+  theme_classic(base_size = 18) +
+    theme(
+      panel.grid.minor = element_blank(),
+      plot.title = element_text(face = "bold"),
+      plot.subtitle = element_text(size = 16),
+      strip.text = element_text(face = "bold"),
+      legend.position = "bottom"
+    )
+)
+
+mpg_data <- ggplot2::mpg |>
+  filter(!is.na(displ), !is.na(hwy)) |>
+  mutate(displ_c = displ - mean(displ))
+
+fit_mpg <- lm(hwy ~ displ, data = mpg_data)
+fit_mpg_c <- lm(hwy ~ displ_c, data = mpg_data)
+
+new_car <- data.frame(displ = 3)
+new_car_ci <- as.data.frame(predict(fit_mpg, newdata = new_car, interval = "confidence"))
+new_car_pi <- as.data.frame(predict(fit_mpg, newdata = new_car, interval = "prediction"))
+
+# set.seed(4780)
+# sim_x <- runif(60, 1, 6)
+# sim_y <- 40 - 3.5 * sim_x + rnorm(60, 0, 3.5)
+# sim_dat <- tibble(x = sim_x, y = sim_y)
+# sim_fit <- lm(y ~ x, data = sim_dat)
+# 
+# make_line_data <- function(fit, xseq) {
+#   pred <- as.data.frame(predict(fit, newdata = data.frame(displ = xseq), interval = "prediction"))
+#   tibble(displ = xseq, fit = pred$fit, lwr = pred$lwr, upr = pred$upr)
+# }
+
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+  lines <- options$output.lines
+  if (is.null(lines)) {
+    return(hook_output(x, options))  # pass to default hook
+  }
+  x <- unlist(strsplit(x, "\n"))
+  more <- "..."
+  if (length(lines)==1) {        # first n lines
+    if (length(x) > lines) {
+      # truncate the output, but add ....
+      x <- c(head(x, lines), more)
+    }
+  } else {
+    x <- c(more, x[lines], more)
+  }
+  # paste these lines together
+  x <- paste(c(x, ""), collapse = "\n")
+  hook_output(x, options)
+})
+```
+
+<!-- #| echo: true -->
+<!-- #| output.lines: !expr c(5:7) -->
+<!-- (wls_fit <- lm(ex5_5$sales ~ ex5_5$expense,  -->
+<!--                weights = wt)) -->
+               
+<!-- # Conditional Thinking -->
+
+## Explore Conditional Relationships
+
+<!-- ::: {.columns} -->
+<!-- ::: {.column width="52%"} -->
+
+Regression is a tool for making **conditional statements**:
+
+> What should we expect for $Y$ when $X = x$?
+
+. . .
+
+::: alert
+
+**Example.** *What highway miles per gallon (MPG) ($Y$) should we expect for a car with an engine displacement ($X$) of 3 liters?*
+
+:::
+
+We wanna learn **how $Y$ varies or changes with values of $X$**, not the other way around.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: midi
+
+| $Y$ | $X$ |
+|:---------:|:---------:|
+| Response variable| Predictor |
+| Outcome variable | Covariate |
+| Dependent variable | Independent variable |
+| Output variable | Input variable |
+| Endogenous variable | Exogenous variable |
+| Target variable | Explanatory variable |
+| Label | Feature |
+| Regressand | Regressor |
+| ...  | ... |
+
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+
+::: midi
+
+| Instead of Asking | Better to Ask |
+|:--------------|:------------|
+| Are $X$ and $Y$ related? | [How does $Y$ vary across values of $X$?]{.red} |
+
+:::
+
+:::
+
+:::
+
+::::
+
+::: notes
+
+Week 1 already introduced regression broadly. This slide narrows the focus: simple linear regression is about conditional thinking, not just drawing a line.
+
+:::
+
+
+<!-- ::: -->
+<!-- ::: {.column width="48%"} -->
+## {visibility="hidden"}
+
+
+| Instead of Asking | Better to Ask |
+|------------|------------|
+| Are $X$ and $Y$ related? | How does $Y$ vary across values of $X$? |
+| Is the slope significant? | Is the estimated change meaningful? |
+| What is the best line? | Is a line useful for this question? |
+
+<!-- ::: -->
+<!-- ::: -->
+
+
+##  (Linear) Regression Workflow
+
+| Step | Question | Main tool |
+|-----|----------|------|
+| 1. Question | Prediction, description, comparison, or causal claim? | Context |
+| 2. Data | What do the variables actually measure? | Scatterplot |
+| 3. Fit | What line summarizes the pattern? | Least squares/Maximum likelihood |
+| 4. Uncertainty | How stable is the fitted line? | Simulation / Intervals |
+| 5. Prediction | Mean response or one new observation? | Prediction bands |
+| 6. Check | What does the line miss? | Residuals / Sensitivity |
+
+
+## What Research Questions Can Regression Answer
+
+| Step | Question | Main tool |
+|-----|----------|------|
+| 1. Question | Prediction, description, comparison, or causal claim? | Context |
+
+. . .
+
+| Goal | MPG Example |
+|-----|---------|
+| Prediction | What highway MPG for a 3-liter engine? |
+| Description | How does MPG vary with engine size? | 
+| Comparison | How do automatic and manual transmissions differ in MPG? |
+| Causal inference | Would changing $X$ change $Y$? |
+
+. . .
+
+::: danger
+Causal inference requires a carefully designed study and additional assumptions.
+:::
+
+. . .
+
+::: {.callout-note style="font-size: 1.2em"}
+
+Description and comparison are **inferential** goals.
+
+:::
+
+ 
+::: notes
+
+| Goal | Example question | Safe wording |
+|-----|---------|--------|
+| Prediction | What highway MPG for a 3-liter engine? | We predict... |
+| Description | How does MPG vary with engine size? | MPG is associated with... |
+| Comparison | How do auto and manual transmission differ in MPG? | The group difference is... |
+| Causal inference | Would changing $X$ change $Y$? | With careful design of experiment and assumptions |
+
+:::
+
+<!-- ##  (Linear) Regression Workflow -->
+
+<!-- | Step | Question | Main tool | -->
+<!-- |-----|----------|------| -->
+<!-- | 1. Question | Prediction, description, comparison, or causal claim? | Context | -->
+<!-- | 1. Question | How can engine displacement help us describe or predict highway MPG? | Scatterplot | -->
+
+
+
+<!-- | Step           | MPG example                                                          | Main conclusion                                                                              | -->
+<!-- | ----------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -->
+<!-- | 1. Question    | How can engine displacement help us describe or predict highway MPG? | The analysis is predictive/descriptive, not automatically causal.                            | -->
+
+
+<!-- ## Practical Regression Workflow -->
+
+<!-- | Step           | MPG example                                                          | Main conclusion                                                                              | -->
+<!-- | ----------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -->
+<!-- | 1. Question    | How can engine displacement help us describe or predict highway MPG? | The analysis is predictive/descriptive, not automatically causal.                            | -->
+<!-- | 2. Data        | Plot `hwy` against `displ` for the 234 configurations in `ggplot2::mpg`.               | Larger engines generally have lower MPG, but the pattern has clusters and curvature. | -->
+<!-- | 3. Fit         | `lm(hwy ~ displ, data = mpg)`.                                   | Each additional liter is associated with about 3.53 fewer highway MPG, on average.           | -->
+<!-- | 4. Uncertainty | Simulate repeated fitted lines and report the slope interval.        | The line would vary across samples; the slope interval is [-3.91,-3.15].     | -->
+<!-- | 5. Prediction  | Predict highway MPG for a 3.0-liter configuration.                   | The mean MPG is estimated precisely, but one new car is much less predictable.         | -->
+<!-- | 6. Check       | Examine residual curvature and influential observations.             | The line is a useful summary, but it misses systematic structure.                            | -->
+
+
+## Make The Question Concrete
+
+Prediction: [What highway MPG for a 3-liter engine?]{.blue}
+
+
+::: {.columns}
+
+::: {.column width="40%"}
+
+::: midi
+
+| Target | Meaning |
+|------|---|
+| Point prediction | One number for MPG |
+| Interval prediction | A range of values for MPG |
+| Mean response | Average MPG among cars like this |
+| New observation | MPG for one future car |
+| Generalization | Cars like those in the dataset? |
+
+:::
+
+:::
+
+::: {.column width="60%"}
+
+```{r}
+#| label: mpg-new-car
+ggplot(mpg_data, aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.35, size = 2.2) +
+  geom_vline(xintercept = 3, linetype = 2, linewidth = 1.1) +
+  annotate("label", x = 3, y = 43, label = "new car:\n3.0 L", size = 5) +
+  labs(x = "Engine displacement", y = "Highway MPG")
+```
+
+:::
+
+:::
+
+
+##  Data
+
+| Step | Question | Main tool |
+|-----|----------|------|
+| 2. Data | What do the variables actually measure? | Scatterplot |
+
+
+```{r}
+#| echo: true
+#| class-output: my_class800
+#| code-line-numbers: false
+library(ggplot2)
+mpg
+```
+
+
+
+::: notes
+
+::: {.callout-note style="font-size: 1.2em"}
+
+In `R`, use `?mpg` to view information about the data set.
+
+:::
+
+:::
+
+
+<!-- # A regression question -->
+
+##
+
+
+| Step | Question | Main tool |
+|-----|----------|------|
+| 2. Data | What do the variables actually measure? | Scatterplot |
+
+| Step           | MPG example                                                          | Main conclusion                                                                              |
+| ----------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------|
+| 2. Data        | Plot `hwy` against `displ` for the 234 configurations in `ggplot2::mpg`. | Larger engines generally have lower MPG, but the pattern has clusters and curvature.|
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: midi
+
+| Element                | Meaning                                       |
+| ---------------------- | --------------------------------------------- |
+| unit               | One vehicle                                   |
+| $X=\texttt{displ}$     | Engine displacement, in liters                |
+| $Y=\texttt{hwy}$      | EPA highway fuel economy, in miles per gallon |
+| Sample                 | 234 configurations from 38 vehicle models     |
+| Model years            | 1999 and 2008                                 |
+
+:::
+
+:::
+
+
+::: {.column width="60%"}
+
+```{r}
+#| label: mpg-scatter-start
+ggplot(mpg_data, aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.6, size = 2.4) +
+  labs(
+    title = "Highway MPG varies with engine displacement",
+    # subtitle = "Each point is one car model",
+    x = "Engine displacement (liters)",
+    y = "Highway MPG"
+  )
+```
+
+:::
+
+::::
+
+
+## Fitting
+
+| Step | Question | Main tool |
+|-----|----------|------|
+| 3. Fit | What line summarizes the pattern? | Least squares/Maximum likelihood |
+
+
+
+```{r}
+#| label: mpg-line
+ggplot(mpg_data, aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.45, size = 2.2) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = 2) +
+  labs(
+    title = "The regression line summarizes the conditional average",
+    subtitle = "It does not claim that all cars with the same displacement have the same MPG",
+    x = "Engine displacement (liters)",
+    y = "Highway MPG"
+  )
+```
+
+
+. . .
+
+<!-- Before finding the pattern that is most consistent with our data, we need a **model the fitting method applies to**. -->
+
+To find the pattern most consistent with our data, we first need to specify the model being fitted.
+
+
+# Simple Linear Regression Model
+
+## Simple Linear Regression
+
+::: {.columns}
+::: {.column width="45%"}
+
+For the $i$-th unit in the target population,
+
+$$
+\begin{align}
+Y_i &= f(X_i) + \epsilon_i\\ &= \beta_0 + \beta_1 X_i + \epsilon_i
+\end{align}
+$$
+
+- $Y_i$: the response (random) variable
+- $X_i$: **known fixed** value of the predictor
+- $\epsilon_i$: random error with $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$
+<!-- - $\beta_0$ and $\beta_1$ are model coefficients. -->
+
+
+
+| Piece | Meaning |
+|---|---|
+| $\beta_0 + \beta_1 X_i$ | systematic part |
+| $\epsilon_i$ | deviation from the pattern |
+| $\sigma$ | typical vertical scatter |
+
+:::
+
+::: {.column width="55%"}
+
+```{r}
+#| label: model-story-plot
+#| out-width: 100%
+set.seed(2)
+story_dat <- tibble(x = seq(1, 6, length.out = 30)) |>
+  mutate(mu = 38 - 3.2 * x,
+         y = mu + rnorm(n(), 0, 3))
+sel <- story_dat[c(8, 20, 26), ]
+ggplot(story_dat, aes(x, y)) +
+  geom_point(alpha = 0.55, size = 3) +
+  geom_line(aes(y = mu), linewidth = 2) +
+  geom_segment(data = sel, aes(xend = x, y = y, yend = mu), linewidth = 2) +
+  geom_point(data = sel, aes(y = mu), size = 3) +
+  labs(
+    title = "True Regression Line and Errors",
+    x = "X",
+    y = "Y"
+  )
+```
+
+<!-- - $\beta_0$, $\beta_1$ and $\sigma^2$ are **fixed unknown parameters** to be estimated from our collected data. -->
+
+- $\beta_0$, $\beta_1$, and $\sigma^2$ are **fixed but unknown parameters** to be estimated from the observed data.
+
+:::
+
+:::
+
+
+
+
+::: notes
+the *measurement error* model is
+:::
+
+
+## Regression Models a Conditional Distribution
+
+Each time we collect a data set, we obtain a different realization because of **random variation**.
+
+<!-- # ```{r} -->
+<!-- # knitr::include_graphics("./images/04-slr/regression_line_data.png") -->
+<!-- # ``` -->
+
+
+```{r}
+source("../scripts/plot_reg_normal.R")
+```
+
+
+```{r}
+draw_panel(
+    line_col = blue_col,
+    show_big_set2 = TRUE
+)
+```
+
+## Regression Models a Conditional Distribution
+
+Each time we collect a data set, we obtain a different realization because of **random variation**.
+
+<!-- # ```{r} -->
+<!-- # knitr::include_graphics("./images/04-slr/regression_line_data.png") -->
+<!-- # ``` -->
+
+
+```{r}
+source("../scripts/plot_reg_normal.R")
+```
+
+
+```{r}
+draw_panel(
+    line_col = blue_col,
+    show_big_set1 = TRUE
+)
+```
+
+
+## Regression Models a Conditional Distribution
+
+<!-- When we collect data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$ $y$ is assumed drawn from a normal distribution **conditional on the value of $x$**. Its value varies around its **conditional mean $\mu_{y \mid x}$**. -->
+
+For data $\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$, each response $Y_i$ is assumed to be drawn from a normal distribution **conditional on $X_i=x_i$**. The response varies around its **conditional mean $\mu_{Y\mid X=x}$**.
+
+
+```{r}
+#| out-width: 100%
+draw_panel(line_col = red_col, show_small = TRUE, show_bands = TRUE)
+```
+
+- The **mean response** of $Y$, $\mu_{Y\mid X}=E(Y\mid X)$, has a **straight-line** relationship with $X$, given by the population regression line $\mu_{Y\mid X}=\beta_0+\beta_1X$.
+
+- The conditional variance of $Y$ does not depend on $X$.
+
+
+
+::: notes
+With the model, our first job is to collect data and estimate the unknown parameters $\beta_0$, $\beta_1$ and $\sigma^2$!
+:::
+
+
+
+## Model Assumptions
+
+| Assumption | Model statement | What to check visually |
+|-----|---------|------|
+| Conditional mean | $E(Y\mid X=x)$ is approximately linear | Curved pattern? |
+| Variability | Spread around the line is similar across $X$ | Fan shape? |
+| Independence | Rows provide distinct information | Clustering in groups, time, or space? |
+| Distribution | Residuals are approximately normal | Strong skewness or heavy tails? |
+
+
+```{r}
+#| out-width: 100%
+draw_panel(line_col = red_col, show_small = TRUE, show_bands = TRUE)
+```
+
+::: notes
+
+Do not present assumptions as a single all-or-nothing checklist. The mean model is usually the first priority for interpretation; dependence is often the first priority for uncertainty.
+
+:::
+
+
+
+# Parameter Estimation and Model Fitting
+
+## Idea of Fitting
+
+- Interested in $\beta_0$ and $\beta_1$ in the *sample* regression model:
+
+\begin{align*}
+y_i &= f(x_i) +  \epsilon_i \\
+    &= \beta_0 + \beta_1~x_{i} + \epsilon_i,
+\end{align*}
+or
+
+$$E(y_i \mid x_i) = \mu_{y|x_i} = \beta_0 + \beta_1~x_{i}$$
+
+. . .
+
+- Use sample statistics $b_0$ and $b_1$, computed from the data, to estimate $\beta_0$ and $\beta_1$.
+
+- $\hat{y}_{i}=b_0+b_1x_i$ is the **fitted value** at $x_i$. It estimates the conditional mean $\mu_{Y\mid X=x_i}$ and also serves as the point prediction for an individual response at $x_i$.
+
+<!-- - $\hat{y}_{i} = b_0 + b_1~x_{i}$ predicted value -->
+
+
+
+
+
+::: notes
+
+- OK. once we collect the data, we have a sample regression model.
+- Here I use small x and y to represent the collected data.
+- Given this model, we're interested in $\beta_0$ (population parameter for the intercept) and $\beta_1$ (population parameter for the slope) because once we know $\beta_0$ and $\beta_1$, we know the exact shape of $f$ and we know the relationship of $y$ and $x$, and given any value of $x$, we can predict its corresponding value of $y$ using the regression line $\hat{y}_{i} = \beta_0 + \beta_1~x_{i}$.
+- But again the population parameters are unknown to us.
+- $\hat{y}_i = E(Y|X_i=x_i)$
+- $b_0$: intercept of the sample regression line
+- $b_1$: slope of  the sample regression line
+
+:::
+
+
+## Fitting a Regression Line $\hat{Y} = b_0 + b_1X$
+
+Given the data $\{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\},$
+
+- Which *sample* regression line is the **best**? 
+- Which estimates $b_0$ and $b_1$ provide the **best-fitting** line?
+
+
+```{r}
+#| out-width: 58%
+load("./data/table11-1.rdata")
+data <- `table11-1`
+data <- data[order(data$x), ]
+par(mar = c(3, 3, 1.5, 0), mgp = c(2, 0.5, 0))
+plot(data$x, data$y, xlab = "x", ylab = "y", pch = 19, col = 4, las = 1, 
+     ylim = c(0, 140), cex = 2, cex.main = 2,
+     main = "Finding the best sample regression line")
+abline(lm(data$y ~ data$x), col = "#003366", lwd = 2, lty = 2)
+abline(a = 30-6, b = 1.5, col = 1, lwd = 2, lty = 2)
+abline(a = 22-6, b = 1.7, col = 2, lwd = 2, lty = 2)
+abline(a = 15-6, b = 1.9, col = 3, lwd = 2, lty = 2)
+abline(a = 8-6, b = 2.1, col = 4, lwd = 2, lty = 2)
+abline(a = 1-6, b = 2.2, col = 5, lwd = 2, lty = 2)
+```
+
+
+::: notes
+- Now suppose we already get our sample, and now we are trying to use the sample to get a sample regression line, and hopefully, the sample regression line and the population regression line are alike. look similarly.
+- So people usually ask
+- Which *sample* regression line is the **best**? 
+- What are the **best** estimators $b_0$ and $b_1$ for $\beta_0$ and $\beta_1$?
+- After all, given the data, we can generate so many different straight lines, and we need a criterion to help us determine which line is the best in some sense. Right!
+:::
+
+
+
+## MPG Data
+
+```{r}
+mpg_data <- mpg
+reg_fit <- lm(hwy ~ displ, data = mpg_data)
+
+p <- ggplot(data = reg_fit, 
+            aes(x = displ, y = hwy)) +
+     geom_point(alpha = 0.85) + 
+     labs(title = "Highway MPG vs. Engine Displacement",
+          x = "Displacement (litres)",
+          y = "Highway miles per gallon")
+p + theme(plot.subtitle = element_text(colour = "red", 
+                                       face = "bold", 
+                                       size = rel(1.5))) +
+    labs(subtitle = "Just the data")
+```
+
+::: notes
+
+That's see the idea of Ordinary Least Squares visually. Here just showed the data.
+- Later we will work on the data set together.
+<!-- - Do you see why some points are darker than some others? -->
+<!-- - A darker point means that there are several identical (x, y) pairs, or replicates in the data set. -->
+
+:::
+
+
+## Fitted Line and Fitted Value
+
+$\hat{y}_i = c_0 + c_1x_i$
+
+```{r}
+p + geom_smooth(method = "lm", color = "blue", se = FALSE, linewidth = 2) +
+    geom_point(mapping = aes(y = .fitted), color = "red", size = 2) +
+    theme(plot.subtitle = element_text(colour = "red", 
+                                       face = "bold", 
+                                       size = rel(1.5))) +
+    labs(subtitle = "Data + fitted line + fitted value")
+```
+
+::: notes
+
+- All right, with the data, this figure also shows the least squares regression line, and the fitted value of $y$ for each $x$ in the training data, which are those red points.
+- The fitted values of y are right on the regression line.
+- Now the question is, how do we find this line?
+- Given a line, we can have predicted values of y, right?
+- Then what is residual on the plot? The residual will be the difference between the true observation y and the fitted value of y given any value of x.
+- So a residual in the plot will be a vertical bar at the value of x with two ends of the bar $y$ and $\hat{y}$, right?
+- (Show on board)
+- (add $y_i = b_0+b_1x_i$ and residual line)
+
+:::
+
+
+## Residuals
+
+- A **residual** is the difference between the observed response and the fitted response value, shown as a vertical bar.
+
+- $e_i = y_i - \hat{y}_i$
+
+```{r}
+p + geom_segment(mapping = aes(xend = displ, yend = .fitted),
+                 color = "red", alpha = 0.4, linewidth = 1.5) +
+  geom_smooth(method = "lm", color = "blue", se = FALSE, linewidth = 2) +
+  theme(plot.subtitle = element_text(colour = "red", 
+                                       face = "bold", 
+                                       size = rel(1.5))) +
+  labs(subtitle = "Data + fitted line + residuals")
+```
+
+::: notes
+
+- Here shows all the residuals in vertical bars.
+- least squares line is the line such that the sum of all the squared residuals is minimized.
+- Why we square the residuals? 
+- It's mathematically more convenient.
+- Squaring emphasizes larger differences
+
+:::
+
+
+## What does "best" mean? Ordinary Least Squares (OLS)
+
+
+Choose $b_0$ and $b_1$—and therefore the sample regression line—to minimize the **sum of squared residuals** $$SS_{res} = e_1^2 + e_2^2 + \dots + e_n^2 = \sum_{i = 1}^n e_i^2.$$
+
+
+<!-- Choose the *best* $b_0$ and $b_1$ or the sample regression line minimizing the **sum of squared residuals** $$SS_{res} = e_1^2 + e_2^2 + \dots + e_n^2 = \sum_{i = 1}^n e_i^2.$$ -->
+
+. . .
+
+- Substituting $e_i=y_i-(b_0+b_1x_i)$ into $SS_{res}$ gives
+
+$$\begin{align} SS_{res}(b_0, b_1) &= (y_1 - b_0 - b_1x_1)^2 + (y_2 - b_0 - b_1x_2)^2 + \dots + (y_n - b_0 - b_1x_n)^2\\ &= \sum_{i=1}^n(y_i - b_0 - b_1x_i)^2 \end{align}$$ 
+
+
+- The resulting value is no larger than $\sum_{i=1}^n(y_i-a_0-a_1x_i)^2$ for any other pair $(a_0,a_1)\ne(b_0,b_1)$.
+
+<!-- that is the smallest comparing to any other $\sum_{i=1}^n(y_i - a_0 - a_1x_i)^2$ that uses another pair of estimators $(a_0, a_1) \ne (b_0, b_1)$. -->
+
+
+
+::: notes
+
+- Now the question is How do we get $b_0$ and $b_1$ that well estimate $\beta_0$ and $\beta_1$? 
+- We choose $b_0$ and $b_1$, or regression line $b_0 + b_1x$ that minimizes the **sum of squared residuals**.
+- If we define residual as $e_i = y_i - \hat{y}_i$, then the sum of squared residuals is $\sum_{i = 1}^n e_i^2$.
+- And this approach that estimates the population parameters $\beta_0$ and $\beta_1$ or the population regression line is called Ordinary Least Squares method.
+
+:::
+
+
+## 
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(broom)
+library(patchwork)
+
+ols_intercept <- coef(reg_fit)[["(Intercept)"]]
+ols_slope <- coef(reg_fit)[["displ"]]
+
+# augment.lm creates .fitted and .resid
+reg_fit_aug <- augment(reg_fit, data = mpg_data) %>%
+  mutate(
+    ols_fitted = .fitted,
+    ols_resid = .resid
+  )
+
+# OLS residual sum of squares
+ols_rss <- sum(reg_fit_aug$ols_resid^2)
+
+
+# ------------------------------------------------------------
+# 2. Construct a deliberately non-optimal line
+# ------------------------------------------------------------
+
+# Use only 60% of the OLS slope
+bad_slope <- 0.10 * ols_slope
+
+# Make the line pass through (mean x, mean y)
+bad_intercept <- mean(mpg_data$hwy) -
+  bad_slope * mean(mpg_data$displ)
+
+reg_fit_aug <- reg_fit_aug %>%
+  mutate(
+    bad_fitted = bad_intercept + bad_slope * displ,
+    bad_resid = hwy - bad_fitted
+  )
+
+# RSS for the non-optimal line
+bad_rss <- sum(reg_fit_aug$bad_resid^2)
+
+# Numerical comparison
+rss_comparison <- tibble(
+  line = c("OLS line", "Non-optimal line"),
+  intercept = c(ols_intercept, bad_intercept),
+  slope = c(ols_slope, bad_slope),
+  RSS = c(ols_rss, bad_rss)
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**The Least-Squares (Best) Line**
+
+```{r}
+#| out-width: 100%
+#| fig-asp: 1
+p_ols <- ggplot(reg_fit_aug, aes(x = displ, y = hwy)) +
+  geom_segment(
+    aes(xend = displ, yend = ols_fitted),
+    color = "red",
+    alpha = 0.4,
+    linewidth = 1
+  ) +
+  geom_point(alpha = 0.85) +
+  geom_abline(
+    intercept = ols_intercept,
+    slope = ols_slope,
+    color = "blue",
+    linewidth = 2
+  ) +
+  labs(
+    title = "Highway MPG vs. Engine Displacement",
+    subtitle = paste0(
+      "Least-squares line: RSS = ",
+      round(ols_rss, 1)
+    ),
+    x = "Displacement (litres)",
+    y = "Highway miles per gallon"
+  ) +
+  theme(
+    plot.subtitle = element_text(
+      colour = "red",
+      face = "bold",
+      size = rel(1.2)
+    )
+  )
+
+p_ols
+```
+
+:::
+
+::: {.column width="50%"}
+
+**A Non-optimal Line**
+
+```{r}
+#| out-width: 100%
+#| fig-asp: 1
+p_bad <- ggplot(reg_fit_aug, aes(x = displ, y = hwy)) +
+  geom_segment(
+    aes(xend = displ, yend = bad_fitted),
+    color = "red",
+    alpha = 0.4,
+    linewidth = 1
+  ) +
+  geom_point(alpha = 0.85) +
+  geom_abline(
+    intercept = bad_intercept,
+    slope = bad_slope,
+    color = "darkgreen",
+    linewidth = 2
+  ) +
+  labs(
+    title = "Highway MPG vs. Engine Displacement",
+    subtitle = paste0(
+      "Non-optimal line: RSS = ",
+      round(bad_rss, 1)
+    ),
+    x = "Displacement (litres)",
+    y = "Highway miles per gallon"
+  ) +
+  theme(
+    plot.subtitle = element_text(
+      colour = "red",
+      face = "bold",
+      size = rel(1.2)
+    )
+  )
+
+p_bad
+```
+
+:::
+
+::::
+
+
+## Least Squares Estimates
+
+- The least-squares approach chooses $b_0$ and $b_1$ to minimize $SS_{res}$:
+$$(b_0, b_1) = \arg\min_{\alpha_0, \alpha_1} \sum_{i=1}^n(y_i - \alpha_0 - \alpha_1x_i)^2$$
+. . .
+
+$$ \color{red}{b_0 = \overline{y} - b_1\overline{x}}$$
+
+
+$$\color{red}{b_1 = \frac{\sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} = \frac{S_{xy}}{S_{xx}} = r \frac{\sqrt{S_{yy}}}{\sqrt{S_{xx}}}},$$ where $S_{xx} = \sum_{i=1}^n(x_i - \overline{x})^2$, $S_{yy} = \sum_{i=1}^n(y_i - \overline{y})^2$, $S_{xy} = \sum_{i=1}^n(x_i - \overline{x})(y_i - \overline{y})$, and $r$ is the sample correlation coefficient between $x$ and $y$.
+
+. . .
+
+::: question
+What can we learn from the formulas for $b_0$ and $b_1$?
+:::
+
+
+::: notes
+- The LS regression line passes through the centroid.
+- $b_1$ is kinda like a scaled covariance of X and Y.
+- $b_0$ and $b_1$ are correlated.
+:::
+
+
+## Why squared residuals matter {visibility="hidden"}
+
+| Residual | Absolute error | Squared error | Consequence |
+|---:|---:|---:|---|
+| 1 | 1 | 1 | small penalty |
+| 2 | 2 | 4 | larger penalty |
+| 5 | 5 | 25 | very large penalty |
+| 10 | 10 | 100 | can dominate the fit |
+
+
+::: {.fragment}
+
+**Least squares is sensitive to large residuals.** That is useful when large errors really matter, dangerous when they are mistakes or special cases.
+
+:::
+
+## Formula, but only the useful version {visibility="hidden"}
+
+$$
+(b_0,b_1)=\arg\min_{a,b}\sum_{i=1}^{n}(y_i-a-bx_i)^2
+$$
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+| Quantity | Interpretation |
+|---|---|
+| $b_1$ | estimated change in mean $Y$ per 1-unit increase in $X$ |
+| $b_0$ | estimated mean $Y$ when $X=0$ |
+| $\hat y_i$ | fitted mean at $x_i$ |
+| $e_i$ | remaining error after using the line |
+
+:::
+
+::: {.column width="50%"}
+
+**Key point:** fitting is not the hard part. The hard part is deciding whether the fitted line answers the question.
+
+:::
+:::
+
+
+## Fitting
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+(reg_fit <- lm(formula = hwy ~ displ, data = mpg))
+```
+
+. . .
+
+- $\widehat{hwy}_{i} = b_0 + b_1 \times displ_{i} =  35.7  - 3.5 \times displ_{i}$
+
+<!-- - $b_1$: For one unit (litre) increase of the displacement, we expect the highway MPG to be decreased, [on average]{.red}, by 3.5 miles. -->
+
+- $b_1$: For each one-liter increase in engine displacement, expected highway fuel economy decreases by 3.5 MPG, [on average]{.red}.
+
+. . .
+
+::: question
+
+Is the intercept meaningful here?
+
+:::
+
+
+## What did we estimate in the MPG example? {visibility="hidden"}
+
+```{r}
+#| label: mpg-fit-table
+coef_tbl <- tibble(
+  term = c("Intercept", "Engine displacement"),
+  estimate = round(coef(fit_mpg), 2),
+  meaning = c(
+    "Predicted highway MPG at 0 liters; not substantively useful here",
+    "Change in expected highway MPG for +1 liter displacement"
+  )
+)
+knitr::kable(coef_tbl, align = c("l", "r", "l"))
+```
+
+## Slope Interpretation
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+coef(reg_fit)
+```
+
+| Component | MPG example |
+|---|---|
+| Direction | larger engines have lower predicted highway MPG |
+| Magnitude | about `r round(coef(fit_mpg)[2], 2)` MPG per additional liter |
+| Units | MPG per liter |
+| Population | car models like those in `ggplot2::mpg` |
+| Range | mainly within observed displacement values |
+| Causal language? | not justified from this dataset alone |
+
+
+
+## Centering Makes the Intercept Meaningful
+
+<!-- Raw model: -->
+
+<!-- $$ -->
+<!-- \widehat{hwy}=b_0+b_1\,displ -->
+<!-- $$ -->
+
+<!-- . . . -->
+
+Centered model:
+
+$$
+\widehat{hwy}=c_0+c_1(displ-\overline{displ})
+$$
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-line-numbers: false
+mpg_data <- ggplot2::mpg |>
+  filter(!is.na(displ), !is.na(hwy)) |>
+  mutate(displ_c = displ - mean(displ))
+```
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+(fit_mpg_c <- lm(hwy ~ displ_c, data = mpg_data))
+```
+
+
+
+```{r}
+#| label: centering-table
+center_tbl <- tibble(
+  model = c("Raw", "Centered"),
+  intercept = round(c(coef(fit_mpg)[1], coef(fit_mpg_c)[1]), 2),
+  slope = round(c(coef(fit_mpg)[2], coef(fit_mpg_c)[2]), 2),
+  `intercept meaning` = c(
+    "predicted MPG at 0 liters",
+    paste("predicted MPG at", kableExtra::cell_spec(
+      "average", color = "red"), "displacement"
+    )
+  )
+)
+
+knitr::kable(
+  center_tbl,
+  escape = FALSE
+)
+```
+
+
+## Comparisons are Regressions
+
+```{r}
+#| label: prepare-transmission-example
+#| include: false
+library(ggplot2)
+library(dplyr)
+
+mpg_new <- ggplot2::mpg |>
+  mutate(
+    trans = if_else(
+      grepl("^auto", trans),
+      "auto",
+      "manual"
+    ),
+    trans = factor(
+      trans,
+      levels = c("auto", "manual")
+    ),
+    manual = if_else(
+      trans == "manual",
+      1,
+      0
+    )
+  )
+
+trans_fit <- lm(hwy ~ manual, data = mpg_new)
+
+b0 <- unname(coef(trans_fit)[1])
+b1 <- unname(coef(trans_fit)[2])
+
+trans_summary <- mpg_new |>
+  group_by(trans) |>
+  summarize(
+    mean_hwy = mean(hwy),
+    .groups = "drop"
+  )
+```
+
+```{r}
+#| echo: false
+#| out-width: 100%
+#| label: transmission-comparison-plot
+trans_summary <- mpg_new |>
+  dplyr::group_by(trans) |>
+  dplyr::summarize(
+    mean_hwy = mean(hwy),
+    .groups = "drop"
+  )
+
+label_dat <- trans_summary |>
+  dplyr::mutate(
+    x = c(0.72, 2.28),   # move labels away from point cloud
+    y = 42.5,
+    lab = paste0("Mean = ", round(mean_hwy, 2))
+  )
+
+ggplot(mpg_new, aes(x = trans, y = hwy, fill = trans, color = trans)) +
+  geom_boxplot(
+    width = 0.45,
+    outlier.shape = NA,
+    alpha = 0.22
+  ) +
+  geom_jitter(
+    width = 0.10,
+    height = 0,
+    alpha = 0.35,
+    size = 1.8
+  ) +
+  geom_point(
+    data = trans_summary,
+    aes(y = mean_hwy),
+    shape = 18,
+    size = 5,
+    show.legend = FALSE
+  ) +
+  geom_text(
+    data = label_dat,
+    aes(x = x, y = y, label = lab, color = trans),
+    inherit.aes = FALSE,
+    size = 5,
+    fontface = "bold"
+  ) +
+  scale_x_discrete(
+    labels = c(
+      auto = "Automatic",
+      manual = "Manual"
+    )
+  ) +
+  scale_fill_manual(
+    values = c(
+      auto = "#1f78b4",
+      manual = "#e31a1c"
+    )
+  ) +
+  scale_color_manual(
+    values = c(
+      auto = "#1f78b4",
+      manual = "#e31a1c"
+    )
+  ) +
+  coord_cartesian(ylim = c(10, 44)) +
+  labs(
+    x = "Transmission type",
+    y = "Highway fuel economy (MPG)"
+  ) +
+  theme_classic(base_size = 18) +
+  theme(legend.position = "none")
+```
+
+
+## Categorical Predictor with 2 Categories
+
+**Question**: [How do automatic and manual transmissions differ in highway MPG?]{.blue}
+
+:::: {.columns}
+
+::: {.column width="31%"}
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+mpg |>  
+  select(hwy, trans) |>  
+  print(n = 4)
+```
+
+:::
+
+
+
+::: {.column width="69%"}
+
+::: {.fragment}
+
+```{r}
+#| purl: false
+#| echo: true
+#| code-line-numbers: false
+mpg_new <- mpg
+mpg_new$trans[grepl("auto", mpg_new$trans)] <- "auto"
+mpg_new$trans[grepl("manual", mpg_new$trans)] <- "manual"
+
+mpg_new |> 
+    select(hwy, trans) |> 
+    print(n = 4)
+```
+
+:::
+
+:::
+
+::::
+
+. . .
+
+- `trans = auto`: automatic transmission
+- `trans = manual`: manual transmission
+
+
+## Indicator Variables
+
+Define a binary indicator variable:
+
+$$
+x_i =
+\begin{cases}
+0, & \text{automatic},\\
+1, & \text{manual}.
+\end{cases}
+$$
+
+The regression model is
+
+$$
+hwy_i = \beta_0+\beta_1x_i+\epsilon_i.
+$$
+
+| Coefficient | Meaning |
+|---|---|
+| $\beta_0$ | Mean highway MPG for automatic transmission |
+| $\beta_1$ | Manual mean minus automatic mean |
+| $\beta_0+\beta_1$ | Mean highway MPG for manual transmission |
+
+
+. . .
+
+The fitted regression model is
+
+$$
+\widehat{hwy}_i = b_0+b_1 x_i
+$$
+
+
+
+::: notes
+
+- A regression predictor does not have to be quantitative.
+- Transmission type has two categories: automatic and manual.
+- We represent transmission type using an indicator variable.
+- Automatic transmission is the reference category and is assigned a value of zero.
+- Manual transmission is assigned a value of one.
+- The regression coefficient beta one is therefore a difference between two group means.
+- This illustrates an important general idea: a comparison between two groups can be written as a regression model.
+
+:::
+
+
+## The Slope is a Mean Difference
+
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+trans_fit <- lm(hwy ~ trans, data = mpg_new)
+coef(trans_fit)
+```
+
+::: center
+
+$\widehat{hwy}_i = 22.29+3.49 x_i$
+
+:::
+  
+<!-- The fitted regression model is -->
+
+<!-- $$ -->
+<!-- \widehat{hwy}_i -->
+<!-- = -->
+<!-- `r sprintf("%.2f", b0)` -->
+<!-- + -->
+<!-- `r sprintf("%.2f", b1)`M_i. -->
+<!-- $$ -->
+
+. . .
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Auto $x_i=0$
+
+$$
+\begin{aligned}
+\widehat{hwy}_{\text{auto}}
+&=
+`r sprintf("%.2f", b0)`
++
+`r sprintf("%.2f", b1)`(0)\\
+&=
+`r sprintf("%.2f", b0)`
+\text{ MPG}
+\end{aligned}
+$$
+
+**$b_0$ is the mean highway MPG for the [reference (baseline)]{.red} category.**
+
+:::
+
+::: {.column width="50%"}
+
+### Manual $x_i=1$
+
+$$
+\begin{aligned}
+\widehat{hwy}_{\text{manual}}
+&=
+`r sprintf("%.2f", b0)`
++
+`r sprintf("%.2f", b1)`(1)\\
+&=
+`r sprintf("%.2f", b0 + b1)`
+\text{ MPG}
+\end{aligned}
+$$
+
+**$b_0+b_1$ is the mean highway MPG for [manual]{.red} transmission.**
+
+:::
+
+::::
+
+::: {.fragment}
+
+<!-- $$ -->
+<!-- \underbrace{ -->
+<!-- `r sprintf("%.2f", b0 + b1)` -->
+<!-- }_{\text{manual mean}} -->
+<!-- - -->
+<!-- \underbrace{ -->
+<!-- `r sprintf("%.2f", b0)` -->
+<!-- }_{\text{automatic mean}} -->
+<!-- = -->
+<!-- \underbrace{ -->
+<!-- `r sprintf("%.2f", b1)` -->
+<!-- }_{\text{regression coefficient}} -->
+<!-- $$ -->
+
+- **Slope:** Cars with manual transmissions are expected to have 3.49 MPG higher highway fuel economy, on average, than cars with automatic transmissions.
+  + The coefficient compares the other level (`trans = manual`) with the baseline (`trans = auto`).
+
+
+:::
+
+::: notes
+
+- When the indicator variable equals zero, the fitted value equals the intercept.
+- Therefore, the intercept is the mean highway MPG for automatic-transmission configurations.
+- When the indicator variable equals one, the fitted value is the intercept plus the manual-transmission coefficient.
+- The slope is exactly the difference between the two group means.
+- We should interpret this as an observed comparison or association, not as a causal effect.
+- The data do not establish that changing a vehicle from automatic to manual transmission would cause highway MPG to increase by this amount.
+- Automatic and manual vehicle configurations can also differ in engine displacement, vehicle class, manufacturer, and other characteristics.
+
+:::
+
+
+##
+
+```{r}
+#| label: prepare-transmission-reg-example
+#| include: false
+
+library(ggplot2)
+library(dplyr)
+
+mpg_new <- ggplot2::mpg |>
+  mutate(
+    trans = if_else(
+      grepl("^auto", trans),
+      "auto",
+      "manual"
+    ),
+    trans = factor(
+      trans,
+      levels = c("auto", "manual")
+    ),
+    manual = if_else(
+      trans == "manual",
+      1,
+      0
+    )
+  )
+
+trans_fit <- lm(hwy ~ manual, data = mpg_new)
+
+b0 <- unname(coef(trans_fit)[1])
+b1 <- unname(coef(trans_fit)[2])
+
+trans_summary <- mpg_new |>
+  group_by(manual) |>
+  summarize(
+    mean_hwy = mean(hwy),
+    .groups = "drop"
+  )
+
+ybar0 <- trans_summary |>
+  filter(manual == 0) |>
+  pull(mean_hwy)
+
+ybar1 <- trans_summary |>
+  filter(manual == 1) |>
+  pull(mean_hwy)
+
+eq_lab <- paste0(
+  "y = ", round(b0, 1),
+  ifelse(b1 >= 0, " + ", " - "),
+  round(abs(b1), 1), " x"
+)
+```
+
+```{r}
+#| label: transmission-comparison-reg-plot
+#| echo: false
+#| out-width: 100%
+
+ggplot() +
+  geom_jitter(
+    data = mpg_new |> filter(manual == 0),
+    aes(x = manual, y = hwy),
+    width = 0,
+    height = 0,
+    size = 2,
+    alpha = 0.35,
+    color = "#1f78b4"
+  ) +
+  geom_jitter(
+    data = mpg_new |> filter(manual == 1),
+    aes(x = manual, y = hwy),
+    width = 0,
+    height = 0,
+    size = 2,
+    alpha = 0.35,
+    color = "#e31a1c"
+  ) +
+  geom_abline(
+    intercept = b0,
+    slope = b1,
+    linewidth = 1,
+    color = "black"
+  ) +
+  geom_hline(
+    yintercept = ybar0,
+    linetype = "dashed",
+    color = "gray45",
+    linewidth = 0.4
+  ) +
+  geom_hline(
+    yintercept = ybar1,
+    linetype = "dashed",
+    color = "gray45",
+    linewidth = 0.4
+  ) +
+  annotate(
+    "text",
+    x = 0.05,
+    y = ybar0 - 1.5,
+    label = sprintf("bar(y)[auto] == %.1f", ybar0),
+    parse = TRUE,
+    hjust = 0,
+    size = 8,
+    color = "#1f78b4"
+  ) +
+  annotate(
+    "text",
+    x = 0.95,
+    y = ybar1 + 1,
+    label = sprintf("bar(y)[man] == %.1f", ybar1),
+    parse = TRUE,
+    hjust = 1,
+    size = 8,
+    color = "#e31a1c"
+  ) +
+  annotate(
+    "text",
+    x = 0.30,
+    y = b0 + 0.5 * b1 + 0.8,
+    label = eq_lab,
+    size = 8,
+    color = "black"
+  ) +
+  scale_x_continuous(
+    breaks = c(0, 1),
+    labels = c("Automatic (x = 0)", "Manual (x = 1)"),
+    limits = c(-0.25, 1.25)
+  ) +
+  labs(
+    x = "Transmission type (x)",
+    y = "Highway fuel economy (MPG)"
+  )
+```
+
+
+
+## Estimation for $\sigma^2$
+
+- Think of $\sigma^2$ as the **variance around the population regression line**.
+
+- The estimate of $\sigma^2$, denoted by $s^2$ or $\hat{\sigma}^2$, is computed from the data as
+$$s^2 = \frac{SS_{res}}{df_{res}} = \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2} = MS_{res}$$
+
+<!-- - Think of $\sigma^2$ as **variance around the line** or the **mean squared error**. -->
+
+<!-- - The estimate of $\sigma^2$, denoted as $s^2$ or $\hat{\sigma}^$, computed from the data is  -->
+<!-- $$s^2 = \frac{SS_{res}}{df_{res}} = \frac{\sum_{i=1}^n(y_i - \hat{y}_i)^2}{n-2} = MS_{res}$$ -->
+
+<!-- - $s$: the **residual standard error** or **standard error of regression**, is a measure of the *lack of fit* of the regression model to the data. -->
+
+- $s$, the **residual standard error**, estimates the typical vertical distance between an observed response and the fitted line.
+
+
+. . .
+
+```{r}
+#| echo: true
+#| output.lines: !expr c(15, 16)
+#| code-line-numbers: false
+(summ_reg_fit <- summary(reg_fit))
+```
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+summ_reg_fit$sigma
+```
+
+
+::: notes
+
+- So we are done estimation for $beta$. Let's talk about the estimation of $\sigma^2$.
+- The estimate of $\sigma^2$, denoted as $s^2$ or $s_{\epsilon}^2$, based on the sample data is residual sum of squares divided by $n-2$, the degrees of freedom
+- It can be shown that $E(SS_{res}) = (n-2)\sigma^2$. That is, $s^2$ is an *unbiased* estimator for $\sigma^2$. `r emo::ji('thumbsup')`
+- measure of the *lack of fit* of the regression model to the data.
+
+:::
+
+
+
+## Measure of the *Lack of Fit*
+
+- If $\hat{y}_i \approx y_i$, then $s$ will be small, and the model fits the data well.
+
+<!-- - If $\hat{y}_i$ is far away from $y_i$, $s$ may be large, indicating the model does not fit the data well.  -->
+
+- If many fitted values $\hat y_i$ are far from the observed responses $y_i$, then $s$ will be large, indicating substantial unexplained variation or model misspecification.
+
+
+```{r}
+#| fig-asp: 0.3
+#| out-width: 100%
+par(mar = c(3, 3, 1.5, 1), mgp = c(2, 1, 0))
+x <- seq(-1, 2, length  = 50)
+y_small <- 2 + 1 * x + rnorm(50, 0, .5)
+y_mis <- 2 + 1 * x^2 + rnorm(50, 0, .5)
+y_vio <- 2 + 1 * x + rnorm(50, 0, sqrt(seq(0, 3, length = 50)))
+par(mfrow = c(1, 3))
+plot(x, y_small, main = "small var", ylab = "y", las = 1,
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
+abline(lm(y_small~x), col = 2, lwd = 2)
+abline(a = 2, b = 1, col = 1, lwd = 1)
+legend("topleft", c("fitted", "true"), col = c(2, 1), lwd = c(2, 1), bty = "n")
+plot(x, y_mis, main = "large var: model misspecified", ylab = "y", las = 1,
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
+abline(lm(y_mis~x), col = 2, lwd = 2)
+lines(x, 2 + 1 * x^2, col = 1, lwd = 1)
+plot(x, y_vio, main = "large var: assumption violated", ylab = "y", las = 1,
+     col = 4, pch = 16, ylim = c(0, 8), cex.main = 1.9)
+abline(lm(y_vio~x), col = 2, lwd = 2)
+abline(a = 2, b = 1, col = 1, lwd = 1)
+```
+
+
+
+::: notes
+
+- If the fitted value using the model is close to the true value, $\hat{y}_i \approx y_i$, then $s$ will be small, and the model fits the data well. 
+- If $\hat{y}_i$ is far away from $y_i$, $s$ may be large, indicating that the model does not fit the data well. 
+- Let's see the example shown below. If X and Y have a linear relationship and the relationship is pretty tight, we should see the fitted values on the fitted line are close to the observations, and the $s$ will be small.
+- But if X and Y have a quadratic relationship, but we fit a linear regression, the fitted values will be distant from the observations, and $s$ may be large.
+- The case on the right shows the violation of constant variance. In this case, the fitted values are away from the observations too, resulting in large $s$, and indicating the model does not fit the data well. OK.
+
+:::
+
+
+
+
+# Uncertainty Quantification 
+
+
+
+## Sampling Variation
+
+- Our data are **one realization** among many possible data sets generated by a true data-generating process described by a regression model.
+
+- **[Repeated Sampling]** If we collected another data set, we would obtain a different pair $(b_0, b_1)$.
+
+- Suppose the true model is $Y_i = 5 + 2X_i + \epsilon_i$, $\epsilon_i \stackrel{iid}{\sim} N(0, 25)$
+
+. . .
+
+```{r}
+library(tidyverse)
+library(patchwork)
+
+#--------------------------------------------------
+# 1. Specify the true data-generating process
+#--------------------------------------------------
+
+set.seed(4780)
+
+n <- 30
+
+beta_0 <- 5
+beta_1 <- 2
+sigma  <- 5
+
+# Use the same predictor values in both samples
+x <- seq(0, 10, length.out = n)
+
+#--------------------------------------------------
+# 2. Generate two independent samples
+#    from the same regression model
+#--------------------------------------------------
+
+sample_1 <- tibble(
+    sample = "Sample 1",
+    x = x,
+    epsilon = rnorm(n, mean = 0, sd = sigma),
+    y = beta_0 + beta_1 * x + epsilon
+)
+
+sample_2 <- tibble(
+    sample = "Sample 2",
+    x = x,
+    epsilon = rnorm(n, mean = 0, sd = sigma),
+    y = beta_0 + beta_1 * x + epsilon
+)
+
+#--------------------------------------------------
+# 3. Fit separate regression models
+#--------------------------------------------------
+
+fit_1 <- lm(y ~ x, data = sample_1)
+fit_2 <- lm(y ~ x, data = sample_2)
+
+b_0_1 <- coef(fit_1)[1]
+b_1_1 <- coef(fit_1)[2]
+
+b_0_2 <- coef(fit_2)[1]
+b_1_2 <- coef(fit_2)[2]
+
+# Fitted-line equations shown in the plots
+equation_1 <- sprintf(
+    "Fitted line:  y-hat = %.2f %+.2f x",
+    b_0_1, b_1_1
+)
+
+equation_2 <- sprintf(
+    "Fitted line:  y-hat = %.2f %+.2f x",
+    b_0_2, b_1_2
+)
+
+#--------------------------------------------------
+# 4. Use common axis limits for fair comparison
+#--------------------------------------------------
+
+combined_data <- bind_rows(sample_1, sample_2)
+
+y_limits <- range(
+    combined_data$y,
+    beta_0 + beta_1 * x
+)
+
+y_padding <- 0.08 * diff(y_limits)
+
+common_y_limits <- c(
+    y_limits[1] - y_padding,
+    y_limits[2] + y_padding
+)
+
+#--------------------------------------------------
+# 5. Create a plotting function
+#--------------------------------------------------
+
+make_sampling_plot <- function(data, fit, equation, title) {
+    
+    ggplot(data, aes(x = x, y = y)) +
+        
+        # Observed data
+        geom_point(
+            size = 3,
+            alpha = 0.75
+        ) +
+        
+        # True population regression line
+        geom_abline(
+            intercept = beta_0,
+            slope = beta_1,
+            linewidth = 2
+        ) +
+        
+        # Estimated regression line
+        geom_abline(
+            intercept = coef(fit)[1],
+            slope = coef(fit)[2],
+            linewidth = 2,
+            linetype = "dashed",
+            colour = "blue"
+        ) +
+        
+        # Estimated equation
+        annotate(
+            "label",
+            x = -Inf,
+            y = Inf,
+            label = equation,
+            hjust = -0.05,
+            vjust = 1.3,
+            size = 10,
+            label.size = 0.25
+        ) +
+        
+        scale_x_continuous(
+            limits = range(x),
+            expand = expansion(mult = c(0.03, 0.03))
+        ) +
+        
+        scale_y_continuous(
+            limits = common_y_limits,
+            expand = expansion(mult = c(0, 0))
+        ) +
+        
+        labs(
+            title = title,
+            # subtitle = paste0(
+            #     "Same true model:  Y = ",
+            #     beta_0, " + ", beta_1,
+            #     "x + epsilon,   epsilon ~ N(0, ",
+            #     sigma^2, ")"
+            # ),
+            x = expression(x),
+            y = expression(y),
+            # caption = "Dashed line: true regression line    Solid line: fitted regression line"
+        ) +
+        
+        theme_classic(base_size = 18) +
+        
+        theme(
+            plot.title = element_text(
+                face = "bold",
+                size = 17
+            ),
+            plot.subtitle = element_text(
+                size = 11
+            ),
+            plot.caption = element_text(
+                hjust = 0,
+                size = 10
+            ),
+            axis.title = element_text(
+                face = "bold"
+            )
+        )
+}
+
+#--------------------------------------------------
+# 6. Produce the two plots
+#--------------------------------------------------
+
+p1 <- make_sampling_plot(
+    data = sample_1,
+    fit = fit_1,
+    equation = equation_1,
+    title = ""
+)
+
+p2 <- make_sampling_plot(
+    data = sample_2,
+    fit = fit_2,
+    equation = equation_2,
+    title = ""
+)
+```
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: center
+$(b_0, b_1) = (4.67, 2.05)$
+:::
+
+```{r}
+#| out-width: 100%
+p2
+```
+
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+
+::: center
+$(b_0, b_1) = (3.56, 2.48)$
+:::
+
+```{r}
+#| out-width: 100%
+p1
+```
+
+:::
+
+:::
+
+::::
+
+
+## Sampling Variation
+
+- We quantify the sampling variation of $(b_0,b_1)$ to assess the uncertainty in using them to estimate $(\beta_0,\beta_1)$.
+
+- If $\epsilon_i\stackrel{iid}{\sim}N(0,\sigma^2)$, we can derive the exact sampling distributions of $b_0$ and $b_1$.[^1]
+
+[^1]: We can also derive an exact sampling distribution for an estimator of $\sigma^2$. The framework used in this course for inference, prediction, and uncertainty quantification is the **frequentist** approach.
+
+. . . 
+
+These sampling distributions yield confidence intervals (CIs) for $\beta_0$ and $\beta_1$:
+
+- A $(1-\alpha)100\%$ CI for $\beta_1$ is $\small \boxed{b_1\pm t_{\alpha/2,\,n-2}\,se(b_1)}$, where $se(b_1)$ is the standard error of $b_1$.
+
+- A 95% CI for $\beta_1$ is approximately $\small \boxed{b_1\pm2\,se(b_1)}$.
+
+. . .
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+confint(reg_fit)
+```
+
+. . .
+
+::: danger
+
+We would never know whether the CI covers the true parameter values or not.
+
+:::
+
+
+::: notes
+
+summ_reg_fit$coefficients
+
+:::
+
+<!-- # Learning from Simulation -->
+
+
+
+<!-- ## Fake-data simulation workflow -->
+
+<!-- | Step | What we do | Why | -->
+<!-- |---|---|---| -->
+<!-- | 1 | Choose a known data-generating model | truth is known | -->
+<!-- | 2 | Simulate many datasets | see sample-to-sample variation | -->
+<!-- | 3 | Fit the same regression each time | test the workflow | -->
+<!-- | 4 | Compare estimates to truth | learn what uncertainty means | -->
+
+
+
+
+## Generating Sampling Distribution from Simulation
+
+
+::: {.instructions}
+
+**Algorithm**  
+
+- [Create the pretend world]{.blue}
+  + A true regression model
+  
+- [Repeat sampling $M$ times]{.blue}
+  + Generate $M$ data sets of size $n$ from the true model: $D^1, \dots, D^M$
+
+- [Fit the model $M$ times]{.blue}
+  + For each data set $D^m, m = 1, \dots, M$, compute the estimate $b_1^m$ and confidence intervals $CI^m$
+
+- [Quantify uncertainty]{.blue}
+  + Plot a histogram of the $M$ estimates $b_1^1, \dots, b_1^M$ to visualize sampling variation
+  + Compute the percentage of confidence intervals that contain the true value
+
+:::
+
+
+
+<!-- ::: algo -->
+
+
+<!-- - Create the pretend world  -->
+<!--  + Set the true regression model -->
+
+<!-- - Simulate  -->
+
+
+<!-- ::: -->
+
+
+
+<!-- ## Same Truth, Different Data -->
+
+##
+
+- True model: $Y_i = 5 + 2X_i + \epsilon_i$, $\epsilon_i \stackrel{iid}{\sim} N(0, 25)$
+
+- Generate $M=100$ simulated data sets, each of size $n=50$.
+
+- Each data set produces a different pair $(b_0,b_1)$.
+
+```{r}
+library(tidyverse)
+
+set.seed(2026)
+
+#--------------------------------------------------
+# 1. Simulation settings
+#--------------------------------------------------
+
+true_b0 <- 5
+true_b1 <- 2
+sigma   <- 5
+
+n_sim     <- 100
+n          <- 50
+conf_level <- 0.95
+
+x_grid <- seq(1, 6, length.out = 60)
+
+
+#--------------------------------------------------
+# 2. Create one organized simulation data frame
+#--------------------------------------------------
+
+sim_df <- tibble(
+  sample = seq_len(n_sim)
+) |>
+  mutate(
+
+    # Generate one dataset for each simulation
+    data = map(sample, \(s) {
+
+      x <- runif(n, min = 1, max = 6)
+
+      y <- true_b0 +
+        true_b1 * x +
+        rnorm(n, mean = 0, sd = sigma)
+
+      tibble(x = x, y = y)
+    }),
+
+    # Fit a regression model to each dataset
+    fit = map(
+      data,
+      \(dat) lm(y ~ x, data = dat)
+    ),
+
+    # Extract estimated coefficients
+    intercept = map_dbl(
+      fit,
+      \(model) coef(model)[["(Intercept)"]]
+    ),
+
+    slope = map_dbl(
+      fit,
+      \(model) coef(model)[["x"]]
+    ),
+
+    # Extract standard error of the estimated slope
+    slope_se = map_dbl(
+      fit,
+      \(model) coef(summary(model))["x", "Std. Error"]
+    ),
+
+    # Residual degrees of freedom
+    residual_df = map_int(
+      fit,
+      df.residual
+    ),
+
+    # Critical t value
+    t_star = qt(
+      1 - (1 - conf_level) / 2,
+      df = residual_df
+    ),
+
+    # Confidence interval for beta_1
+    lower = slope - t_star * slope_se,
+    upper = slope + t_star * slope_se,
+
+    # Does the interval contain the true slope?
+    covered = lower <= true_b1 & true_b1 <= upper,
+
+    # Coordinates for plotting each fitted line
+    fitted_line = map(
+      fit,
+      \(model) {
+        tibble(
+          x = x_grid,
+          yhat = predict(
+            model,
+            newdata = tibble(x = x_grid)
+          )
+        )
+      }
+    )
+  )
+```
+
+
+```{r}
+#| label: fake-lines
+#| out-width: 100%
+
+truth_dat <- tibble(
+  x = x_grid,
+  y = true_b0 + true_b1 * x_grid
+)
+
+line_plot_df <- sim_df |>
+  filter(sample <= 100) |>
+  select(sample, fitted_line) |>
+  unnest(fitted_line)
+
+p_lines <- ggplot(
+  line_plot_df,
+  aes(
+    x = x,
+    y = yhat,
+    group = sample
+  )
+) +
+  geom_line(
+    alpha = 0.10,
+    colour = 4
+  ) +
+  geom_line(
+    data = truth_dat,
+    aes(x = x, y = y),
+    inherit.aes = FALSE,
+    linewidth = 1.5,
+    colour = "black"
+  ) +
+  labs(
+    title = "Same Truth, Different Data, Different Fitted Lines",
+    x = "X",
+    y = "Y"
+  )
+
+p_lines
+```
+
+
+
+## Sampling Variation of the Slope
+
+```{r}
+#| label: slope-sim
+#| out-width: 100%
+
+p_histogram <- ggplot(
+  sim_df,
+  aes(x = slope)
+) +
+  geom_histogram(
+    bins = 20,
+    alpha = 0.30,
+    colour = 4,
+    fill = 4
+  ) +
+  geom_vline(
+    xintercept = true_b1,
+    linewidth = 1.5,
+    colour = "black"
+  ) +
+  labs(
+    title = "The Estimated Slope Is a Random Quantity",
+    subtitle = "Histogram of slope estimates",
+    x = expression("Estimated slope, " * b[1]),
+    y = "Number of simulated samples"
+  )
+
+p_histogram
+```
+
+
+
+## Coverage Probabilities
+
+- $\text{Empirical coverage}=\dfrac{\text{number of CIs containing }\beta_1}{M}$
+
+
+```{r}
+#| out-width: 100%
+coverage_probability <- mean(sim_df$covered)
+number_missed <- sum(!sim_df$covered)
+
+p_confidence_intervals <- ggplot(
+  sim_df,
+  aes(
+    x = sample,
+    y = slope,
+    colour = covered
+  )
+) +
+  geom_hline(
+    yintercept = true_b1,
+    colour = "red",
+    linewidth = 2
+  ) +
+  geom_linerange(
+    aes(
+      ymin = lower,
+      ymax = upper
+    ),
+    linewidth = 1.2,
+    alpha = 1
+  ) +
+  geom_point(
+    size = 1.2,
+    alpha = 0.9
+  ) +
+  scale_colour_manual(
+    values = c(
+      "TRUE"  = 4,
+      "FALSE" = "#E69F00"
+    ),
+    labels = c(
+      "TRUE"  = "Contains true slope",
+      "FALSE" = "Misses true slope"
+    ),
+    name = NULL
+  ) +
+  scale_x_continuous(
+    breaks = NULL,
+    expand = expansion(mult = c(0.005, 0.005))
+  ) +
+  labs(
+    title = expression(
+      "95% Confidence Intervals for " * beta[1]
+    ),
+    # subtitle = sprintf(
+    #   "%d intervals missed the true slope; empirical coverage = %.1f%%",
+    #   number_missed,
+    #   100 * coverage_probability
+    # ),
+    x = "Simulated sample",
+    y = expression(
+      "95% confidence interval"
+    )
+  ) +
+  theme(
+    axis.line.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    legend.position = "bottom"
+  )
+
+p_confidence_intervals
+```
+
+```{r}
+#| eval: false
+coverage_summary <- sim_df |>
+  summarise(
+    number_of_simulations = n(),
+    number_covered = sum(covered),
+    number_missed = sum(!covered),
+    coverage_probability = mean(covered),
+    coverage_percent = 100 * mean(covered),
+    monte_carlo_se = sqrt(
+      coverage_probability *
+        (1 - coverage_probability) /
+        number_of_simulations
+    )
+  )
+
+coverage_summary
+```
+
+
+
+## What uncertainty is trying to say {visibility="hidden"}
+
+::: danger
+
+
+| Output | Better interpretation | Common misuse |
+|---|---|---|
+| Estimate | best single-number summary from this data/model | the truth |
+| Standard error | typical estimation noise | measurement error of $Y$ |
+| Confidence interval | plausible values under the model | probability the fixed parameter is in this one interval |
+| p-value | incompatibility with a point null | probability the null is true |
+
+
+:::
+
+
+<!-- # Inference without overemphasizing tests -->
+
+## Testing the slope: what the test can and cannot say {visibility="hidden"}
+
+| Result | What it supports | What it does not prove |
+|---|---|---|
+| small p-value | data are not very compatible with zero slope under the model | the relationship is linear |
+| large p-value | slope is not precisely distinguished from zero | no relationship exists |
+| narrow interval | slope is estimated precisely | model assumptions are correct |
+| wide interval | data are not very informative | the effect is unimportant |
+
+
+
+## Hypothesis Testing
+
+- <span style="color:blue"> $H_0: \beta_1 = \beta_1^0 \quad H_1: \beta_1 \ne \beta_1^0$  </span>
+
+- Under $H_0$, the test statistic is $t_{test}=\dfrac{b_1-\color{red}{\beta_1^0}}{se(b_1)}\sim t_{n-2}$.
+
+- Reject $H_0$ in favor of $H_1$ if 
+  + $|t_{test}| > t_{\alpha/2, \, n-2}$ (critical value method)
+  + $\text{p-value} = 2P(t_{n-2} > |t_{test}|) < \alpha$ (p-value method)
+ 
+. . .
+
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+summ_reg_fit$coefficients
+```
+
+- By default, `summary()` tests $H_0:\beta_0=0$ and $H_0:\beta_1=0$.
+
+::: notes
+- in addition to estimation, we may be interested in testing.
+- To do the testing on $\beta_1$, the testing procedure is basically the same as the procedure for population mean $\mu$ we reviewed last week.
+- Usually $\beta_1^0 = 0$, but we may be interested in other values.
+- good growth $\beta_1 > 2$
+car::linearHypothesis()
+:::
+
+
+
+## Interpretation of Testing Results
+
+- <span style="color:blue"> $H_0: \beta_1 = 0 \quad H_1: \beta_1 \ne 0$ </span>
+- *Failing to reject $H_0: \beta_1 = 0$* (large p-value) means that the slope is not estimated precisely enough to distinguish it from zero.
+  + It does not mean the slope is exactly zero
+  + It does not *prove* that no linear relationship exists
+  + A nonlinear relationship may still exist.
+
+
+::: notes
+
+- So back to the testing on $\beta_1$.
+- If we do not reject $H_0$, it implies there is **no linear relationship** between $Y$ and $X$. Right? Because $\beta_1$, the slope of the regression line is pretty much 0. 
+:::
+
+. . .
+
+```{r}
+#| fig-asp: 0.5
+#| out-width: 50%
+set.seed(9274)
+x1 <- seq(0, 6, by = 0.05)
+y_u <- (x1-3)^2 - 4 + rnorm(length(x1), mean = 0, sd = 1)
+x2 <- seq(-8, -2, by = 0.05)
+y_none <- rnorm(length(x2), mean = 0, sd = 1)
+par(mfrow = c(1, 2))
+par(mar = c(0, 0, 0, 0))
+plot(y_none ~ x2, xlab = "", ylab = "",
+     yaxt = "n", xaxt = "n", pch = 19, col = "lightblue")
+abline(h = 0, col = "blue", lwd = 2)
+plot(y_u ~ x1, xlab = "", ylab = "",
+     yaxt = "n", xaxt = "n", pch = 19, col = "lightblue")
+abline(h = 0, col = "blue", lwd = 2)
+```
+
+
+::: notes
+- But it actually has two cases. One $x$ and $y$ may have no relationship at all, or they don't have linear relationship but have another kind of relationship, like quadratic.
+- So we have to be careful when we interpret the testing result. OK.
+:::
+
+::: notes
+We have to be more careful and precise on what we are claiming.
+:::
+
+
+
+## Interpretation of Testing Results
+
+- *Rejecting $H_0: \beta_1 = 0$* (small p-value) means that the data are not very compatible with a zero slope under the model.
+
+- The result is consistent with several possibilities:
+  + the straight-line model may be adequate
+  + it does not prove that the relationship is linear
+  + another model may describe the relationship better
+  
+```{r}
+#| fig-asp: 0.5
+#| out-width: 45%
+set.seed(9274)
+x <- seq(-3, 4, 0.05)
+y_s <-  -0.5 * x^3 + x^2 + x + rnorm(length(x), mean = 0, sd = 2)
+y_pos_lin_strong <- 3 * x + rnorm(length(x), mean = 0, sd = 2)
+par(mfrow = c(1, 2))
+par(mar = c(0, 0, 0, 0))
+plot(y_pos_lin_strong ~ x, xlab = "", ylab = "",
+     yaxt = "n", xaxt = "n", pch = 19, col = "lightblue")
+abline(lm(y_pos_lin_strong ~ x), col = "blue", lwd = 2)
+plot(y_s ~ x, xlab = "", ylab = "",
+     yaxt = "n", xaxt = "n", pch = 19, col = "lightblue")
+abline(lm(y_s ~ x), col = "blue", lwd = 2)
+```
+
+
+::: notes
+
+- *Rejecting $H_0: \beta_1 = 0$* (small p-value) means data are not very compatible with zero slope under the model.
+
+- It could mean 
+  + the straight-line model is adequate
+  + it does not prove the relationship is linear
+  + better results could be obtained with a more complicated model even though there is a linear effect of $x$ , even though the fitted linear slope differs from zero.
+  
+  
+:::
+
+
+
+# Prediction
+
+## Fitting and Predicting
+
+- **Fitting** uses the observed data to estimate a model.
+
+- **Prediction** applies the fitted model to unseen data.
+  + We use the model to predict a response at a new predictor value $x^{new}$.
+
+. . .
+
+- Two prediction targets:
+
+  + **Mean response:** <span style="color:blue">The **mean** highway MPG, $E(Y\mid X=x^{new})$, for cars with $x^{new}=3$ liters of displacement.</span>
+  
+  + **New observation:** <span style="color:blue">The highway MPG, $Y^{new}$, of **one future car** with $x^{new}=3$ liters of displacement.</span>
+  
+::: question
+Which prediction is harder? 🤔
+:::
+  
+## Point Prediction
+
+- The fitted value on the regression line is the point prediction for both the mean response and a new observation.
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+predict(reg_fit, newdata = data.frame(displ = 3))
+```
+
+```{r}
+p + geom_smooth(method = "lm", color = "blue", se = FALSE, linewidth = 2) +
+    geom_vline(xintercept = 3, linetype = 2, linewidth = 1.1) +
+    annotate("point", x = 3, y = 35.698-3.531*3, color = "red", size = 5) +
+    annotate("label", x = 3, y = 43, label = "new car:\n3.0 L", size = 5)
+```
+
+
+::: notes
+| Target | Question | Usually shown as |
+|---|---|---|
+| Fitted value | What does the fitted line say at $x_0$? | point on line |
+| Mean response | What is the average $Y$ among units with $X=x_0$? | confidence interval/band |
+| New observation | What might one future $Y$ be at $X=x_0$? | prediction interval/band |
+:::
+
+
+## Predictive Uncertainty
+
+<!-- - **Mean response**: The *linear predictor* $\beta_0 + \beta_1x^{new}$ propagates the inferential uncertainty in $(\beta_0, \beta_1)$. -->
+<!--   + represents the distribution of uncertainty about the expected or average value of $y$ for new data points with predictors $x^{new}$ -->
+
+<!-- - **New observation**: The predictive distribution for a new observation, $\beta_0 + \beta_1x^{new} + \epsilon$: -->
+<!--   + represents uncertainty about a new observation $y^{new}$ with predictors $x^{new}$ -->
+
+
+- **Mean response:** Uncertainty arises because $\beta_0$ and $\beta_1$ are estimated from a sample.
+  + It quantifies uncertainty about the expected response $E(Y\mid X=x^{new}) = \beta_0 + \beta_1x^{new}$.
+  
+- **New observation:** The predictive distribution includes both parameter-estimation uncertainty and a new random error $\epsilon$, $\beta_0 + \beta_1x^{new} + \epsilon$.
+  + It quantifies uncertainty about one future response $Y^{new}$ at $x^{new}$.
+
+
+
+. . .
+
+::: question
+Which uncertainty is larger? 🤔
+:::
+  
+. . .
+
+::: danger
+
+- As sample size approaches infinity, $\beta_0$ and $\beta_1$ are estimated more and more precisely, and the uncertainty in the linear predictor approaches zero.
+
+- Uncertainty for a new observation does not approach zero; it approaches irreducible error standard deviation $\sigma$.
+
+:::
+
+
+## Interval Prediction
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+With $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$, we have
+
+- The $(1-\alpha)100\%$ CI for $E(y\mid x^{new})$ is $$\small (b_0+b_1x^{new}) \pm t_{\alpha/2, n-2} S\sqrt{\frac{1}{n} + \frac{(x^{new} - \overline{x})^2}{S_{xx}}}$$
+
+- The $(1-\alpha)100\%$ **prediction interval** (PI) for $y(x^{new})$ is $$\small (b_0+b_1x^{new}) \pm t_{\alpha/2, n-2} S\sqrt{ {\color{red}{1}} + \frac{1}{n} + \frac{(x^{new} - \overline{x})^2}{S_{xx}}}$$
+
+::: fragment
+
+- *The PI is wider because it includes uncertainty about $\beta_0$ and $\beta_1$ as well as the random error $\epsilon$*.
+
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+::: fragment
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+## CI for the mean response
+predict(reg_fit, 
+        newdata = data.frame(displ = 3), 
+        interval = "confidence", 
+        level = 0.95)
+```
+
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+## PI for a new observation
+predict(reg_fit, 
+        newdata = data.frame(displ = 3), 
+        interval = "prediction", 
+        level = 0.95)
+```
+
+:::
+
+:::
+
+::::
+
+
+
+
+## Confidence Interval vs. Prediction Interval
+
+```{r}
+#| out-width: 100%
+par(mar = c(3, 3, 0, 0), mgp = c(2, 0.5, 0))
+## Data and regression line
+plot(x = mpg$displ, y = mpg$hwy, las = 1, pch = 19, cex = 0.5, ylim = c(7.5, 45),
+     xlab = "Displacement (litres)", ylab = "Highway MPG")
+legend("topright", c("CI for the mean response", "PI for a new observation"), 
+       col = c("red", "green3"), lwd = c(3, 3), bty = "n")
+abline(reg_fit, col = "blue", lwd = 3) # abline(a = 47.475, b = -7.859, col = "#003366", lwd = 3)
+segments(x0 = 3.02, y0 = 24.6, y1 = 25.6, col = "red", lwd = 4)
+segments(x0 = 2.98, y0 = 17.5, y1 = 32.7, col = "green3", lwd = 4)
+abline(h = 25.1, lty = 2)
+```
+
+
+
+## Confidence Interval vs. Prediction Interval
+
+The interval is shortest when $x^{new} = \bar{x}$!
+
+```{r}
+par(mar = c(3, 3, 0, 0), mgp = c(2, 0.5, 0))
+plot(x = mpg$displ, y = mpg$hwy, las = 1, pch = 19, cex = 0.5, ylim = c(4, 45),
+     xlab = "Displacement (litres)", ylab = "Highway MPG")
+newx <- seq(min(mpg$displ), max(mpg$displ), by = 0.1)
+ci <- predict(reg_fit, newdata = data.frame(displ = newx), interval = "confidence", level = 0.95)
+pi <- predict(reg_fit, newdata = data.frame(displ = newx), interval = "prediction", level = 0.95)
+lines(newx, ci[, 1], col = "blue", lwd = 2)
+matlines(newx, ci[, 2:3], col = "red", lty = 1, lwd = 2)
+matlines(newx, pi[, 2:3], col = "green3", lty = 1, lwd = 2)
+abline(v = mean(mpg$displ))
+segments(x0 = 3.02, y0 = 24.6, y1 = 25.6, col = "red", lwd = 4)
+segments(x0 = 2.98, y0 = 17.5, y1 = 32.7, col = "green3", lwd = 4)
+legend("topright", c("Fitted line", "CI", "PI"),
+       lty = c(1, 1, 1), lwd = c(3, 3, 3), col = c("blue", "red", "green3"), bty = "n")
+```
+
+
+## Interpolation vs extrapolation {visibility="hidden"}
+
+```{r}
+#| label: extrapolation-plot
+x_ext <- seq(0.5, 8.5, length.out = 160)
+line_ext <- as.data.frame(predict(fit_mpg, newdata = data.frame(displ = x_ext), interval = "prediction"))
+ext_df <- tibble(displ = x_ext, fit = line_ext$fit, lwr = line_ext$lwr, upr = line_ext$upr)
+obs_range <- range(mpg_data$displ)
+
+ggplot(mpg_data, aes(displ, hwy)) +
+  geom_rect(data = tibble(xmin = obs_range[1], xmax = obs_range[2], ymin = -Inf, ymax = Inf),
+            aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
+            inherit.aes = FALSE, alpha = 0.10) +
+  geom_ribbon(data = ext_df, aes(x = displ, ymin = lwr, ymax = upr), inherit.aes = FALSE, alpha = 0.15) +
+  geom_line(data = ext_df, aes(y = fit), linewidth = 1.2) +
+  geom_point(alpha = 0.5, size = 2) +
+  annotate("text", x = mean(obs_range), y = 45, label = "data-supported range", size = 5) +
+  annotate("text", x = 8, y = 45, label = "extrapolation", size = 5) +
+  coord_cartesian(xlim = c(0.5, 8.5), ylim = c(5, 48)) +
+  labs(x = "Engine displacement (liters)", y = "Highway MPG")
+```
+
+
+
+## {background-iframe="https://chenghanyustats-introstat-regression-ci.share.connect.posit.cloud/" background-interactive="true"}
+
+
+## Prediction requires available predictors {visibility="hidden"}
+
+| Predictor type | Safe for future prediction? | Example |
+|---|---|---|
+| measured before prediction time | usually yes | engine displacement |
+| measured after the outcome | no | final exam score to predict course grade |
+| derived using the outcome | no | rank computed after observing $Y$ |
+| forecasted predictor | maybe | economic growth forecast for election prediction |
+
+
+
+# Model Checking
+
+## A Fitted Line Can Miss Curvature
+
+```{r}
+#| label: nonlinear-miss
+set.seed(479)
+curve_dat <- tibble(x = runif(120, 0, 10)) |>
+  mutate(y = 18 + 3.8 * x - 0.35 * x^2 + rnorm(n(), 0, 2.5))
+fit_curve_line <- lm(y ~ x, data = curve_dat)
+curve_aug <- curve_dat |>
+  mutate(fitted = fitted(fit_curve_line), resid = resid(fit_curve_line))
+
+ggplot(curve_dat, aes(x, y)) +
+  geom_point(alpha = 0.55, size = 2.1) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = 1.2) +
+  geom_smooth(se = FALSE, linewidth = 1.2, linetype = 2) +
+  labs(
+    title = "A line can be fit even when the pattern is not linear",
+    # subtitle = "Solid: linear fit. Dashed: flexible smooth.",
+    x = "X",
+    y = "Y"
+  )
+```
+
+
+## Residuals: what remains after the line?  {visibility="hidden"}
+
+```{r}
+#| label: residual-plot-mpg
+mpg_aug <- mpg_data |>
+  mutate(fitted = fitted(fit_mpg), resid = resid(fit_mpg))
+
+ggplot(mpg_aug, aes(fitted, resid)) +
+  geom_hline(yintercept = 0, linewidth = 1) +
+  geom_point(alpha = 0.55, size = 2.2) +
+  labs(
+    title = "Residual plot: look for remaining structure",
+    x = "Fitted highway MPG",
+    y = "Residual"
+  )
+```
+
+
+## Graphical Diagnostics: Residual Plot
+
+- Residuals should be distributed randomly around 0.
+- Check this by plotting residuals against the fitted value of $y$: $e_i$ vs. $\hat{y}_i$
+- Look for a roughly horizontal band with no systematic pattern.
+
+
+```{r}
+#| purl: false
+#| echo: false
+#| out-width: 56%
+df <- tibble(
+    fake_resid = rnorm(1000, mean = 0, sd = 30),
+    fake_predicted = runif(1000, min = 0, max = 200)
+)
+ggplot(df, mapping = aes(x = fake_predicted, y = fake_resid)) +
+    geom_point(alpha = 0.5) +
+    geom_hline(yintercept = 0, color = "red") +
+    labs(x = "Predicted (y_hat)", y = "Residuals (e)")
+```
+
+::: notes
+We are looking for
+- Residuals distributed randomly around 0.
+- With no visible pattern along the $x$ or $y$ axes.
+- This can be checked by plotting residuals against the fitted value of $y$.
+- Here shows a good residual plot. Residuals are around 0, and its variation is more or less the same across different values of $\hat{y}$.
+- There is no significant pattern in the plot.
+:::
+
+## Residual Pattern Reveals the Miss
+
+```{r}
+#| label: nonlinear-resid
+
+ggplot(curve_aug, aes(fitted, resid)) +
+  geom_hline(yintercept = 0, linewidth = 1) +
+  geom_point(alpha = 0.55, size = 2.1) +
+  geom_smooth(se = FALSE, linewidth = 1.2) +
+  labs(
+    title = "Curvature shows up as structure in residuals",
+    x = "Fitted value",
+    y = "Residual"
+  )
+```
+
+## Not looking for...
+
+:::{.large}
+**Fan shapes**
+:::
+
+```{r}
+#| purl: false
+#| echo: false
+#| out-width: 60%
+set.seed(12346)
+df <- tibble(
+  fake_resid = c(rnorm(100, mean = 0, sd = 1), 
+                 rnorm(100, mean = 0, sd = 15), 
+                 rnorm(100, mean = 0, sd = 25), 
+                 rnorm(100, mean = 0, sd = 20), 
+                 rnorm(100, mean = 0, sd = 25), 
+                 rnorm(100, mean = 0, sd = 50), 
+                 rnorm(100, mean = 0, sd = 35), 
+                 rnorm(100, mean = 0, sd = 40),
+                 rnorm(200, mean = 0, sd = 80)),
+  fake_predicted = seq(0.2, 200, 0.2)
+)
+ggplot(df, mapping = aes(x = fake_predicted, y = fake_resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(x = "Predicted (y_hat)", y = "Residuals (e)")
+```
+
+::: notes
+- We are not looking for a plot that has a fan shape.
+:::
+
+
+
+## Not looking for...
+
+:::{.large}
+**Distinct groups or clusters**
+:::
+
+```{r}
+#| purl: false
+#| echo: false
+#| out-width: 60%
+set.seed(12346)
+df <- tibble(
+  fake_predicted = seq(0.2, 200, 0.2),
+  fake_resid = c(
+    rnorm(500, mean = -20, sd = 10),
+    rnorm(500, mean = 10, sd = 10)
+  )
+)
+ggplot(df, mapping = aes(x = fake_predicted, y = fake_resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(x = "Predicted (y_hat)", y = "Residuals (e)")
+```
+
+
+::: notes
+- We are not looking for a plot that has **Groups of patterns**
+:::
+
+
+
+## Not looking for...
+
+:::{.large}
+**Residuals correlated with predicted values**
+:::
+
+```{r}
+#| purl: false
+#| echo: false
+#| out-width: 60%
+set.seed(12346)
+df <- tibble(
+  fake_predicted = seq(0.2, 200, 0.2),
+  fake_resid = fake_predicted + rnorm(1000, mean = 0, sd = 50)
+)
+ggplot(df, mapping = aes(x = fake_predicted, y = fake_resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(x = "Predicted (y_hat)", y = "Residuals (e)")
+```
+
+
+::: notes
+- We also don't want Residuals to be correlated with predicted values
+:::
+
+
+
+## Not looking for...
+
+:::{.large}
+**Any patterns!**
+:::
+
+```{r}
+#| purl: false
+#| echo: false
+#| out-width: 60%
+set.seed(12346)
+df <- tibble(
+  fake_predicted = seq(-10, 10, 0.4),
+  fake_resid = -.5*fake_predicted^3 - 3*fake_predicted + rnorm(length(fake_predicted), mean = 0, sd = 100)
+)
+ggplot(df, mapping = aes(x = fake_predicted, y = fake_resid)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, color = "red") +
+  labs(x = "Predicted (y_hat)", y = "Residuals (e)")
+```
+
+::: notes
+- We basically don't want the residuals show Any patterns!
+- If $X$ and $Y$ are not linearly related, or the residual plot exists some pattern, some data transformation is needed. Or use another model.
+:::
+
+
+
+## MPG Data Residuals
+
+```{r}
+#| echo: !expr c(-1)
+#| code-line-numbers: false
+par(mar = c(4, 4, 2, 0))
+plot(reg_fit, which = 1, col = "blue", las = 1)
+```
+
+
+
+
+## Nonconstant Variance Changes Uncertainty  {visibility="hidden"}
+
+<!-- # ```{r} -->
+<!-- # #| label: heteroskedastic -->
+<!-- # set.seed(480) -->
+<!-- # het_dat <- tibble(x = runif(180, 0, 10)) |> -->
+<!-- #   mutate(y = 5 + 2 * x + rnorm(n(), 0, 0.5 + 0.45 * x)) -->
+<!-- # fit_het <- lm(y ~ x, data = het_dat) -->
+<!-- # het_aug <- het_dat |> -->
+<!-- #   mutate(fitted = fitted(fit_het), resid = resid(fit_het)) -->
+<!-- #  -->
+<!-- # ggplot(het_aug, aes(fitted, resid)) + -->
+<!-- #   geom_hline(yintercept = 0, linewidth = 1) + -->
+<!-- #   geom_point(alpha = 0.55, size = 2.1) + -->
+<!-- #   labs( -->
+<!-- #     title = "Fan-shaped residuals suggest changing variability", -->
+<!-- #     x = "Fitted value", -->
+<!-- #     y = "Residual" -->
+<!-- #   ) -->
+<!-- # ``` -->
+
+
+# Considerations in the Usage of Regression
+
+
+
+## Considerations in Regression: Extrapolation
+
+- Regression models are most reliable for **interpolation** within *the range of predictor values* used to fit the model.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| out-width: 100%
+set.seed(9274)
+x <- seq(-3, 4, 0.05)
+y_s <-  -0.5 * x ^ 3 + x ^ 2 + x + rnorm(length(x), mean = 0, sd = 2)
+par(mar = c(0, 0, 0, 0))
+plot(y_s[1:40] ~ x[1:40], xlab = "", ylab = "", ylim = range(y_s), xlim = range(x),
+     yaxt = "n", xaxt = "n", pch = 19, col = "green3")
+abline(lm(y_s[1:40] ~ x[1:40]), col = "blue", lwd = 2)
+# abline(v = x[40], lty = 2, col = "red")
+segments(x0 = -3, y0 = min(y_s)-0.5, x1 = x[40], y1 = min(y_s)-0.5, col = 2, 
+         lwd = 3)
+text(x = -2, y = min(y_s)+0.2, "range of x", cex = 1.5)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| out-width: 100%
+set.seed(9274)
+x <- seq(-3, 4, 0.05)
+y_s <-  -0.5 * x ^ 3 + x ^ 2 + x + rnorm(length(x), mean = 0, sd = 2)
+y_s_1 <- x ^ 2 + x + rnorm(length(x), mean = 0, sd = 2)
+par(mar = c(0, 0, 0, 0))
+plot(y_s ~ x, xlab = "", ylab = "",
+     yaxt = "n", xaxt = "n", pch = 19, col = "green3")
+points(y_s[41:length(x)] ~ x[41:length(x)], pch = 19, col = 1)
+points(y_s_1[41:length(x)] ~ x[41:length(x)], pch = 19, col = 2)
+abline(lm(y_s[1:40] ~ x[1:40]), col = "blue", lwd = 2)
+abline(v = x[40], lty = 2, col = "red")
+# segments(x0 = -3, y0 = min(y_s)-0.5, x1 = x[40], y1 = min(y_s)-0.5, col = 2, 
+#          lwd = 3)
+# text(x = -2, y = min(y_s), "range of x")
+```
+
+:::
+
+::::
+
+
+
+::: notes
+
+- First, Regression models are intended as **interpolation** equations over the range of the regressors used to fit the model.
+- Regression does a really bad job for extrapolation. 
+- Look at this figure for example.
+- Suppose the data we collected have the range of X like this.
+- Based on the data, we train our model, and estimate the parameters for prediction and inference.
+- Our prediction and inference will be more plausible or convicing when the new $x$ is within the range of $X$.
+- Again, the only information we have is our data. 
+- When we do extrapolation, it's like doing a prediction or inference without any reliable information at hand.
+- Our conclusion may be totally wrong. Based on the collected data, we thought x and y are linear related.
+- But the true x-y relationship may not be linear at all, and because our data only cover a small range of $X$, we don't know what really happens outside the range of data. 
+- We cannot say much about the predictive mean response or observation outside the range of $X$, and we cannot conclude the relationship between x and y outside the range as well.
+
+:::
+
+
+## Considerations in the Use of Regression: Outliers
+
+- **Outlier**: An observation with an *unusual response value* relative to other observations, especially given its $x$ value.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| out-width: 100%
+set.seed(83629)
+x <- seq(1, 30, 1)
+par(mar = c(0, 0, 0, 0))
+y <- -2 * x + 20 + rnorm(length(x), mean = 0, sd = 10)
+y_outlier <- c(y[1:15], y[16]+200, y[17:30])
+plot(y_outlier ~ x, pch = 19, col = "black", 
+     xlab = "", ylab = "", xaxt = "n", yaxt = "n")
+lm_outlier = lm(y_outlier ~ x)
+lm_no_outlier <- lm(y ~ x)
+abline(lm_outlier, col = "blue", lwd = 2)
+abline(lm_no_outlier, col = "red", lwd = 2)
+```
+
+:::
+
+
+
+::: {.column width="50%"}
+
+- The estimated coefficients may change substantially.
+
+- The residual mean square may be inflated.
+
+```{r}
+#| echo: true
+#| code-line-numbers: false
+summary(lm_outlier)$sigma ^ 2
+summary(lm_no_outlier)$sigma ^ 2
+```
+
+:::
+
+::::
+
+
+
+::: notes
+
+- The second consideration is outlier.
+- it might be just measurement error.
+- If it is not an typo, we have to look into this point with great care, and see why this happened and see if we need to do some correction to it.
+- We will talk about outliers in detail later in this course.
+
+:::
+
+
+
+## Considerations in Regression: Influential Points {.nostretch}
+
+- **Influential point**: An observation whose inclusion substantially *changes the fitted regression results*; it often has an *unusual $x$ value.*
+
+```{r}
+#| out-width: 65%
+x_influential <- c(x[1:29], 200)
+par(mar = c(0, 0, 0, 0))
+plot(y ~ x_influential, pch = 19, col = "black", 
+     xlab = "", ylab = "", xaxt = "n", yaxt = "n")
+lm_influential = lm(y ~ x_influential)
+lm_influential_rm <- lm(y ~ x)
+abline(lm_influential, col = "blue")
+abline(lm_influential_rm, col = "red")
+```
+
+
+::: notes
+
+- Our inference and prediction may be totally distorted just because of one single influential point. So again, we have to very careful about it.
+
+:::
+
+
+## Considerations in Regression: Causal Interpretation?
+<!-- - Correlation is NOT Causation! -->
+<!-- - Remember this when interpreting model coefficients! -->
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| out-width: 56%
+knitr::include_graphics("./images/04-slr-f26/icecream.jpeg")
+```
+
+```{r}
+#| out-width: 90%
+par(mar = c(3, 3, 0, 0), mgp = c(2, 0.5, 0))
+drowning <- c(2, 3, 7, 9, 14, 27, 33, 38, 28, 13, 7, 2)
+ice_cream <- drowning + rnorm(12, 0, 3)
+plot(1:12, drowning, axes = F, xlab = "", type = "l", col = "red", lwd = 3, ylab = "")
+axis(1, at = 1:12, labels = month.abb, cex.axis = 0.8)
+axis(2, tick = FALSE, labels = FALSE)
+lines(ice_cream, col = "blue", lwd = 3)
+legend("topleft", c("Ice Cream Sales", "Drownings"), col = c("blue", "red"), lwd = c(3, 3), bty = "n")
+```
+
+:::
+
+
+
+::: {.column width="50%"}
+
+```{r}
+#| out-width: 56%
+knitr::include_graphics("./images/04-slr-f26/drowning.jpeg")
+```
+
+```{r}
+#| out-width: 90%
+par(mar = c(3, 3, 0.1, 0.1), mgp = c(2, 0.5, 0))
+drowning <- sort(as.integer(runif(40, 0, 40)))
+ice_cream_sale <- sort(as.integer(runif(40, 10, 35)))
+plot(ice_cream_sale, drowning, las = 1,
+     xlab = "Drownings", ylab = "Ice Cream Sales (thousands $)")
+abline(lm(drowning~ice_cream_sale)$coef, col = "red", lwd  = 2)
+```
+
+:::
+
+::::
+
+::: notes
+
+- Regression is just a model. It does not tell you X-Y's relationship is correlation relationship or causal relationship. 
+- It is the person who uses the model tell the relationship.
+- So we have to be careful when interpreting regression result.
+- They are correlated, not one causes the other.
+- Actually, there is another factor that causes the sales and # of drownings to go up and down together.
+
+:::
+
+
+## Considerations in Regression: Unknown Predictor
+
+- Consider maximum daily electrical load $(Y)$ and maximum daily temperature $(X)$.
+
+- To predict tomorrow's maximum load, we must first know or forecast tomorrow's maximum temperature.
+
+- The load prediction is therefore **conditional** on the temperature forecast.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+knitr::include_graphics("./images/04-slr-f26/electricity.jpeg")
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+knitr::include_graphics("./images/04-slr-f26/electricity_snow.jpeg")
+```
+
+:::
+
+::::
+
+
+
+## Outlier, leverage, influence  {visibility="hidden"}
+
+| Term | Plain meaning | Main question |
+|---|---|---|
+| Outlier | unusual $Y$ given its $X$ | does the model miss this case? |
+| High leverage | unusual $X$ value | can this point pull the line? |
+| Influential | changes the fitted result | does the conclusion depend on it? |
+
+
+
+## Influence is about what changes  {visibility="hidden"}
+
+```{r}
+#| label: influence-plot
+set.seed(481)
+base_dat <- tibble(x = runif(35, 1, 6), y = 35 - 3 * x + rnorm(35, 0, 2.2))
+infl_dat <- bind_rows(base_dat, tibble(x = 9.0, y = 34)) |>
+  mutate(point_type = ifelse(row_number() == n(), "added point", "original data"))
+fit_no <- lm(y ~ x, data = base_dat)
+fit_yes <- lm(y ~ x, data = infl_dat)
+line_infl <- tibble(x = seq(1, 9, length.out = 100)) |>
+  mutate(without_point = coef(fit_no)[1] + coef(fit_no)[2] * x,
+         with_point = coef(fit_yes)[1] + coef(fit_yes)[2] * x) |>
+  pivot_longer(-x, names_to = "fit", values_to = "y")
+
+ggplot(infl_dat, aes(x, y)) +
+  geom_point(aes(shape = point_type), size = 2.7, alpha = 0.75) +
+  geom_line(data = line_infl, aes(x, y, linetype = fit), linewidth = 1.2, inherit.aes = FALSE) +
+  labs(
+    title = "A high-leverage point can change the fitted line",
+    x = "X",
+    y = "Y",
+    shape = NULL,
+    linetype = NULL
+  )
+```
+
+
+
+## Leave-one-out sensitivity  {visibility="hidden"}
+
+```{r}
+#| label: leave-one-out
+loo_slopes <- lapply(seq_len(nrow(infl_dat)), function(i) {
+  fit_i <- lm(y ~ x, data = infl_dat[-i, ])
+  tibble(omitted = i, slope = coef(fit_i)[2], x = infl_dat$x[i], y = infl_dat$y[i])
+}) |> bind_rows() |>
+  mutate(point = ifelse(omitted == nrow(infl_dat), "added point", "other"))
+
+ggplot(loo_slopes, aes(omitted, slope)) +
+  geom_hline(yintercept = coef(fit_yes)[2], linewidth = 1, linetype = 2) +
+  geom_point(aes(shape = point), size = 3) +
+  labs(
+    title = "If removing one point changes the slope, inspect it",
+    subtitle = "Dashed line: slope using all observations",
+    x = "Omitted observation index",
+    y = "Slope after omitting that observation",
+    shape = NULL
+  )
+```
+
+
+
+## $R^2$: useful but limited  {visibility="hidden"}
+
+::: {.columns}
+::: {.column width="47%"}
+
+```{r}
+#| label: anscombe-r2
+ans <- datasets::anscombe |>
+  as_tibble()
+ans_long <- bind_rows(
+  tibble(set = "I", x = ans$x1, y = ans$y1),
+  tibble(set = "II", x = ans$x2, y = ans$y2),
+  tibble(set = "III", x = ans$x3, y = ans$y3),
+  tibble(set = "IV", x = ans$x4, y = ans$y4)
+)
+
+ggplot(ans_long, aes(x, y)) +
+  geom_point(size = 2.2) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linewidth = 1.0) +
+  facet_wrap(~ set, nrow = 2) +
+  labs(title = "Similar summaries, very different data", x = "X", y = "Y")
+```
+
+:::
+
+::: {.column width="53%"}
+
+| $R^2$ says | $R^2$ does not say |
+|---|---|
+| in-sample variance explained | causal validity |
+| fit relative to mean-only model | linearity is adequate |
+| descriptive strength | prediction works on new data |
+| one-number summary | conclusions are robust |
+
+:::
+
+:::
+
+# Interpretation and misuse  {visibility="hidden"}
+
+## Association is not automatically causation  {visibility="hidden"}
+
+| Regression output | Causal interpretation needs |
+|---|---|
+| slope of $Y$ on $X$ | a causal question |
+| adjustment variables | pre-treatment covariates, not post-treatment variables |
+| small p-value | not enough |
+| good prediction | not enough |
+| observational data | design and assumptions about confounding |
+
+
+
+## Regression conclusion template  {visibility="hidden"}
+
+> Among **[population]**, over **[range of X]**, a one-unit increase in **[X]** is associated with an estimated **[change]** in the conditional mean of **[Y]**. The uncertainty interval is **[interval]**. This is **[prediction / description / comparison / causal claim]**, and the main limitations are **[diagnostics / sampling / confounding / extrapolation]**.
+
+## Checklist Before Reporting a Regression Analysis
+
+| Check | Ask this before you report |
+|---|---|
+| Goal | prediction, description, comparison, or causality? |
+| Scale | are units and transformations clear? |
+| Range | interpolation or extrapolation? |
+| Uncertainty | mean response or new observation? |
+| Diagnostics | what pattern remains in residuals? |
+| Sensitivity | do a few observations drive the result? |
+| Causality | what design or assumptions justify causal language? |
