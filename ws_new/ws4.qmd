@@ -1,0 +1,98 @@
+---
+title: "Worksheet-04"
+subtitle: "Interactions"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Regression Scenario {.unnumbered}
+
+A researcher compares two training programs.
+
+Let
+
+- $Y$ = performance score,
+- $X$ = hours of practice,
+- $D=0$ for Program A,
+- $D=1$ for Program B.
+
+The fitted regression model is
+
+$$
+\widehat{Y}
+=
+50 + 4X + 12D - 2.5XD.
+$$
+
+## What do the two fitted lines look like?
+
+Write the fitted regression equation for each program.
+
+**Program A:** $D=0$
+
+$$
+\widehat{Y} =
+$$
+
+\vspace{0.3in}
+
+**Program B:** $D=1$
+
+$$
+\widehat{Y} =
+$$
+
+\vspace{0.3in}
+
+Which program has the **steeper slope**?
+
+____________________________________________________________________________
+
+## Which interpretation would you defend?
+
+Consider the interaction coefficient $-2.5$.
+
+**A.** "Program B lowers performance by 2.5 points."
+
+**B.** "The relationship between practice time and performance is 2.5 points per hour weaker for Program B than for Program A."
+
+**C.** "Program B is always worse than Program A."
+
+Circle one choice for each statement.
+
+| Statement | Accept | Revise | Reject |
+|:--:|:--:|:--:|:--:|
+| A | ○ | ○ | ○ |
+| B | ○ | ○ | ○ |
+| C | ○ | ○ | ○ |
+
+**Briefly explain one of your choices.**
+
+\vspace{0.5in}
+
+## Which program is better?
+
+At $X=0$, which program has the higher predicted performance?
+
+____________________________________________________________________________
+
+At approximately what value of $X$ do the two fitted lines cross?
+
+\vspace{0.35in}
+
+A student concludes:
+
+> "Program B is better because its main-effect coefficient is positive: $12>0$."
+
+Do you agree? Why or why not?
+
+\vspace{0.55in}
+
+**(MSSC)** Suppose practice hours are centered at 5 hours instead of 0. How would that change the interpretation of the Program indicator coefficient? Would the fitted values change?
+
+<!-- \vspace{0.6in} -->

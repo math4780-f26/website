@@ -1,6 +1,6 @@
-# Website for MATH 4720 (MSSC 5720) at Marquette University (Fall 2026)
+# Website for MATH 4780 (MSSC 5780) at Marquette University (Fall 2026)
 
-🔗 <https://math4720-f26.github.io/website/>
+🔗 <https://math4780-f26.github.io/website/>
 
 <hr>
 

@@ -42,6 +42,23 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 
 (@) $Y_1 \sim N(3, 8)$ and $Y_2 \sim N(1, 4)$, and $Y_1$ and $Y_2$ are independent. What is the distribution the variable $2Y_1 + 3Y_2$ follows?
 
+```{r}
+#| label: solution-q1
+#| echo: false
+# Assume N(mu, sigma^2), so the second parameter is the variance.
+mu_Y1 <- 3
+var_Y1 <- 8
+mu_Y2 <- 1
+var_Y2 <- 4
+
+mu_new <- 2 * mu_Y1 + 3 * mu_Y2
+var_new <- 2^2 * var_Y1 + 3^2 * var_Y2
+
+cat("Mean =", mu_new, "\n")
+cat("Variance =", var_new, "\n")
+cat("Therefore, 2Y1 + 3Y2 ~ N(9, 68).\n")
+```
+
 <!-- 3. Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
 
 <!-- 4. Let the sample variance be $S^2 = \frac{\sum_{i=1}^n(Y_i - \overline{Y})^2}{n-1}$. The two facts are -->
@@ -51,9 +68,103 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
 
 (@) Plot normal density curves of $Y_1 \sim N(3, 8)$, $Y_2 \sim N(1, 4)$, and $2Y_1 + 3Y_2$ in one single plot.
 
+
+```{r}
+#| label: solution-q2
+#| echo: false
+#| warning: false
+library(ggplot2)
+
+x <- seq(-10, 35, length.out = 1000)
+
+density_data <- rbind(
+  data.frame(
+    x = x,
+    density = dnorm(x, mean = 3, sd = sqrt(8)),
+    distribution = "Y1 ~ N(3, 8)"
+  ),
+  data.frame(
+    x = x,
+    density = dnorm(x, mean = 1, sd = sqrt(4)),
+    distribution = "Y2 ~ N(1, 4)"
+  ),
+  data.frame(
+    x = x,
+    density = dnorm(x, mean = 9, sd = sqrt(68)),
+    distribution = "2Y1 + 3Y2 ~ N(9, 68)"
+  )
+)
+
+ggplot(density_data, aes(x = x, y = density, linetype = distribution)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Value",
+    y = "Density",
+    linetype = NULL
+  ) +
+  theme_classic(base_size = 13) +
+  theme(legend.position = "top")
+```
+
+
 (@) Choose a continuous variable in the data set [`boston`](./data/boston.csv). 
     (a) Draw a simple random sample of size 20 from this population. Calculate the sample average.
     (b) Repeat this exercise several times to get a sense of the sampling distribution of the sample mean for this example.
+
+
+```{r}
+#| label: solution-q3
+#| echo: true
+#| warning: false
+#| code-fold: true
+library(ggplot2)
+
+boston <- read.csv("./data/boston.csv")
+
+# Choose MEDV (median home value) as the continuous variable.
+# This also works if the column name in the csv is written as MEDV.
+medv_name <- names(boston)[tolower(names(boston)) == "medv"]
+if (length(medv_name) != 1) {
+  stop("Could not find the MEDV variable in boston.csv.")
+}
+
+population <- boston[[medv_name]]
+population <- population[!is.na(population)]
+
+# (a) One simple random sample of size 20
+set.seed(4780)
+sample_20 <- sample(population, size = 20, replace = FALSE)
+sample_mean <- mean(sample_20)
+sample_mean
+
+# (b) Repeat the sampling experiment many times
+B <- 1000
+sample_means <- replicate(
+  B,
+  mean(sample(population, size = 20, replace = FALSE))
+)
+
+# A few repeated sample means
+head(sample_means, 10)
+
+# Compare the sampling distribution with the population mean
+mean(sample_means)
+mean(population)
+
+ggplot(data.frame(sample_mean = sample_means), aes(x = sample_mean)) +
+  geom_histogram(bins = 30, boundary = 0) +
+  geom_vline(
+    xintercept = mean(population),
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  labs(
+    x = "Sample mean (n = 20)",
+    y = "Frequency"
+  ) +
+  theme_classic(base_size = 13)
+```
+
 
 (@) A test is graded from 0 to 50, with an average score of 35 and a standard deviation of 10. For comparison to other tests, it would be convenient to rescale to a mean of 100 and standard deviation of 15. 
 [Note:] If $X \sim N(\mu, \sigma^2)$, for a real value $a$ and $c$, $a + cX \sim N(a + c\mu, c^2\sigma^2)$.
@@ -61,14 +172,53 @@ Please sharpen your coding skill using R or any language you prefer. **No need**
     (b) What is the range of possible values of this rescaled score y? 
     (c) Plot the line showing y vs. x.
 
+
+```{r}
+#| label: solution-q4
+#| echo: true
+#| warning: false
+#| code-fold: true
+library(ggplot2)
+
+# We want y = a + b*x.
+# SD(y) = |b| SD(x), so choose a positive b:
+b <- 15 / 10
+
+# E(y) = a + b E(x) = 100
+a <- 100 - b * 35
+
+cat("a =", a, "\n")
+cat("b =", b, "\n")
+cat("Transformation: y =", a, "+", b, "x\n")
+
+# (b) Original scores range from 0 to 50.
+y_min <- a + b * 0
+y_max <- a + b * 50
+cat("Range of y: [", y_min, ", ", y_max, "]\n", sep = "")
+
+# (c) Plot y versus x.
+transform_data <- data.frame(x = seq(0, 50, length.out = 200))
+transform_data$y <- a + b * transform_data$x
+
+ggplot(transform_data, aes(x = x, y = y)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Original score x",
+    y = "Rescaled score y"
+  ) +
+  theme_classic(base_size = 13)
+```
+
+
 (@) Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$, with unknown $\mu$ and $\sigma$. The $100(1-\alpha)\%$ confidence interval (CI) for the population mean $\mu$ is $\left( \overline{y}- t_{\alpha/2, n-1}\frac{s}{\sqrt{n}}, \overline{y} + t_{\alpha/2, n-1}\frac{s}{\sqrt{n}} \right)$. 
     (a) Use simulation with $\alpha = 0.1$, $n = 20$, $\mu = 4$ and $\sigma = 2$ to verify that such CIs contain $\mu$ about $100(1-\alpha)\%$ of times.
     (b) Construct the graph as attached.
     
     
 ```{r}
-#| echo: false
-#| include: false
+#| echo: true
+#| code-fold: true
+#| include: true
 library(ggplot2)
 
 set.seed(4780)
@@ -126,7 +276,8 @@ estimated_coverage
 ```
 
 ```{r}
-#| echo: false
+#| echo: true
+#| code-fold: true
 # Select 100 confidence intervals for plotting
 number_to_plot <- 100
 
@@ -210,6 +361,79 @@ ggplot(
 
 <!-- 7. **(MSSC)** Suppose $Y_i \stackrel{iid}{\sim} N(\mu, \sigma^2)$, $i = 1, 2, \dots, n$. Show that $\overline{Y} \sim N\left(\mu,\frac{\sigma^2}{n} \right)$, where $\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i$. -->
 
+
+```{r}
+#| label: solution-q6
+#| echo: true
+#| code-fold: true
+#| fig-width: 9
+#| fig-height: 7
+set.seed(4780)
+
+N <- 10000
+U1 <- runif(N)
+U2 <- runif(N)
+
+# Box-Muller transformation
+X1 <- sqrt(-2 * log(U1)) * cos(2 * pi * U2)
+X2 <- sqrt(-2 * log(U1)) * sin(2 * pi * U2)
+
+# Numerical summaries should be close to those of N(0,1).
+c(
+  mean_X1 = mean(X1),
+  sd_X1 = sd(X1),
+  mean_X2 = mean(X2),
+  sd_X2 = sd(X2),
+  correlation = cor(X1, X2)
+)
+
+# Histograms with the standard normal density, plus a scatterplot.
+old_par <- par(mfrow = c(2, 2))
+
+hist(
+  X1,
+  probability = TRUE,
+  breaks = 40,
+  main = expression("Histogram of " * X[1]),
+  xlab = expression(X[1])
+)
+curve(dnorm(x), add = TRUE, lwd = 2)
+
+hist(
+  X2,
+  probability = TRUE,
+  breaks = 40,
+  main = expression("Histogram of " * X[2]),
+  xlab = expression(X[2])
+)
+curve(dnorm(x), add = TRUE, lwd = 2)
+
+plot(
+  X1,
+  X2,
+  pch = 16,
+  cex = 0.35,
+  xlab = expression(X[1]),
+  ylab = expression(X[2]),
+  main = expression(X[1] * " versus " * X[2])
+)
+
+plot.new()
+text(
+  0.5,
+  0.55,
+  paste0("Correlation = ", round(cor(X1, X2), 4)),
+  cex = 1.2
+)
+text(
+  0.5,
+  0.40,
+  "A correlation close to 0 is consistent with independence here.",
+  cex = 0.9
+)
+
+par(old_par)
+```
 
 (@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
     (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?

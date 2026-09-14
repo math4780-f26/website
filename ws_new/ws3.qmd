@@ -1,0 +1,96 @@
+---
+title: "Worksheet-03"
+subtitle: "Regression Diagnostics"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Diagnostic Cases {.unnumbered}
+
+Four regression analyses show the following patterns.
+
+| Case | Diagnostic pattern |
+|:--:|:------------------------|
+| **A** | Residual-versus-fitted plot shows a clear **U-shaped pattern** |
+| **B** | Residual spread is small for low fitted values and becomes wider for high fitted values, producing a **funnel shape** |
+| **C** | Normal Q--Q plot follows the line near the center but bends away strongly in both tails |
+| **D** | One observation has standardized residual = 0.8, leverage $h_{ii}=0.41$, and Cook's distance = 0.92. Most other observations have leverage below 0.08 and Cook's distance below 0.10 |
+
+## What is the most likely problem?
+
+Match each case with the most likely concern.
+
+- nonlinearity
+- nonconstant variance
+- nonnormal or heavy-tailed errors
+- unusual leverage or influence
+
+| Case | Most likely concern |
+|:--:|:--|
+| A | __________________________________________ |
+| B | __________________________________________ |
+| C | __________________________________________ |
+| D | __________________________________________ |
+
+Choose **one** case and briefly explain what feature of the diagnostic pattern led you to your answer.
+
+\vspace{0.55in}
+
+## Should we delete this observation?
+
+For Case D:
+
+- standardized residual = 0.8
+- leverage = 0.41
+- Cook's distance = 0.92
+
+A student says:
+
+> "Cook's distance is large, so we should delete this observation."
+
+Do you agree? Why or why not?
+
+\vspace{0.6in}
+
+Circle the best description of this observation.
+
+**A.** Clearly an outlier in the response direction  
+**B.** A high-leverage observation that may be influential  
+**C.** A normal observation with no reason for concern  
+**D.** Impossible to evaluate from any diagnostic information
+
+Briefly explain your choice.
+
+\vspace{0.45in}
+
+## What would you do next?
+
+Suppose the residual plot shows the **funnel shape** from Case B.
+
+Three analysts suggest different responses.
+
+**Analyst 1:**  
+> "Ignore it. The fitted regression line is still the same."
+
+**Analyst 2:**  
+> "The unequal spread may affect uncertainty estimates, so I would investigate a transformation, a variance model, or a method that allows nonconstant variance."
+
+**Analyst 3:**  
+> "Delete the observations with the largest residuals until the funnel disappears."
+
+Which response would you defend most strongly?
+
+Analyst: __________
+
+Why?
+
+\vspace{0.65in}
+
+**(MSSC)** Can an observation have **high leverage but a small residual** and still be influential? Explain the distinction among an outlier, a high-leverage point, and an influential point.
+
+<!-- \vspace{0.6in} -->

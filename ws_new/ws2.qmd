@@ -1,0 +1,96 @@
+---
+title: "Worksheet-02"
+subtitle: "Multiple Linear Regression"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Regression Scenario {.unnumbered}
+
+A professor studies factors associated with final exam score.
+
+Let
+
+- $Y$ = final exam score,
+- $X_1$ = weekly study hours,
+- $X_2$ = prior GPA.
+
+Two regression models are fitted.
+
+**Model 1: Simple regression**
+
+$$
+\widehat{Y} = 61.2 + 4.80X_1
+$$
+
+**Model 2: Multiple regression**
+
+$$
+\widehat{Y} = 42.7 + 2.90X_1 + 7.60X_2
+$$
+
+In the sample,
+
+- Study Hours and Final Exam have correlation 0.58,
+- Prior GPA and Final Exam have correlation 0.71,
+- Study Hours and Prior GPA have correlation 0.46.
+
+## Which interpretation would you defend?
+
+Consider these interpretations of the Study Hours coefficient **2.90** in Model 2.
+
+**A.** "Studying one additional hour causes a student's exam score to increase by 2.90 points."
+
+**B.** "Among students with the same prior GPA, one additional hour of study is associated with about a 2.90-point difference in mean exam score."
+
+**C.** "Students who study one additional hour score 2.90 points higher on average, regardless of their prior GPA."
+
+Circle one choice for each statement.
+
+| Statement | Accept | Revise | Reject |
+|:--:|:--:|:--:|:--:|
+| A | ○ | ○ | ○ |
+| B | ○ | ○ | ○ |
+| C | ○ | ○ | ○ |
+
+**Briefly explain one of your choices.**
+
+\vspace{0.5in}
+
+## Why did the coefficient change?
+
+The Study Hours coefficient changes from **4.80** in Model 1 to **2.90** in Model 2.
+
+A student says:
+
+> "After GPA was added, studying became less important."
+
+Do you agree? Explain why the coefficient may have changed.
+
+\vspace{0.65in}
+
+## Two students, one model
+
+Consider two students:
+
+| Student | Study Hours | Prior GPA |
+|:--|--:|--:|
+| A | 6 | 3.0 |
+| B | 8 | 2.5 |
+
+Using Model 2, determine which student has the **higher predicted exam score**. Show enough work to explain your reasoning.
+
+\vspace{0.6in}
+
+What does this example illustrate about making predictions with multiple predictors?
+
+\vspace{0.4in}
+
+**(MSSC)** Suppose that after adding Prior GPA, the Study Hours coefficient had changed from **4.80 to 6.20** instead of decreasing. Is that possible? Explain what kind of relationship among Study Hours, Prior GPA, and Exam Score could make an adjusted coefficient become larger.
+
+<!-- \vspace{0.6in} -->

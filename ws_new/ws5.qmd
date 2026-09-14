@@ -1,0 +1,73 @@
+---
+title: "Worksheet-05"
+subtitle: "Model Court"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Model Comparison {.unnumbered}
+
+Three regression models are proposed for predicting house sale price.
+
+All performance measures use the same dataset and the same cross-validation splits.
+
+| Model | Predictors | Adj. $R^2$ | AIC | CV RMSE ($1,000s) | Max VIF | Diagnostics |
+|:--|-------:|----:|--:|--:|--:|:-------------|
+| A | 3 | 0.71 | 1240 | 31.5 | 2.1 | Good |
+| B | 8 | 0.78 | 1208 | **27.9** | 8.7 | One moderately influential point |
+| C | 15 + interactions | **0.80** | 1215 | 30.2 | 18.5 | Several unstable coefficients |
+
+Lower AIC and lower CV RMSE are preferred.
+
+## Prediction Goal: choose a model
+
+Suppose the goal is to **predict future house prices**.
+
+Which model would you choose?
+
+**Model:** __________
+
+Give the **strongest reason** for your choice.
+
+\vspace{0.5in}
+
+Give **one reason to remain cautious** about your chosen model.
+
+\vspace{0.45in}
+
+## Which argument would you defend?
+
+Three students make different claims.
+
+**A.** "Model C is best because it has the largest adjusted $R^2$."
+
+**B.** "Model B is best because it has the lowest cross-validation RMSE."
+
+**C.** "Model A is best because it is the simplest and has the smallest VIF."
+
+Which statement would you defend most strongly **for the prediction goal**?
+
+Student: __________
+
+Why?
+
+\vspace{0.6in}
+
+## Now change the goal
+
+Suppose the researchers now want a **stable and interpretable explanation** using only a small number of housing characteristics.
+
+Would you necessarily choose the same model?
+
+**Yes / No**
+
+Explain what changes when the goal changes from **prediction** to **interpretation**.
+
+\vspace{0.65in}
+
+**(MSSC)** Why can AIC and cross-validation rank models differently? In your answer, distinguish between a likelihood-based model-selection criterion and direct evaluation of held-out prediction error.

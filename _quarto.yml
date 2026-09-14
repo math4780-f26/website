@@ -95,12 +95,13 @@ website:
       # - exercise.qmd
       # - exam.qmd
       # - project/project.qmd
-      - section: "Class Activities"
-        contents:
-          - href: activity-description_new.qmd
-            text: Description
-          - href: activity-work_new.qmd
-            text: Activity work
+      # - section: "Activities/Worksheet"
+        # contents:
+        #   - href: activity-description_new.qmd
+        #     text: Description
+        #   - href: activity-work_new.qmd
+        #     text: Activity work
+      - ws.qmd
 
       - section: "Project"
         contents:
