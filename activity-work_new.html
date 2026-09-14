@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MSSC 5780 Project Description – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<title>Class Activity Work – MATH 4780 (MSSC 5780) - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,6 +35,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./project-description-4780_new.qmd" rel="next">
+<link href="./activity-description_new.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -77,8 +79,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<meta property="og:title" content="MSSC 5780 Project Description – MATH 4780 (MSSC 5780) - Fall 2026">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Class Activity Work – MATH 4780 (MSSC 5780) - Fall 2026">
 <meta property="og:description" content="Homepage for MATH 4780 (MSSC 5780) - Statistical Methods at Marquette University, Fall 2026.">
 <meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
 </head>
@@ -254,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">MSSC 5780 Project Description</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./activity-description_new.html">Class Activities</a></li><li class="breadcrumb-item"><a href="./activity-work_new.html">Activity work</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -320,21 +351,38 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Homework</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ws.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Class Activity/Worksheet</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Project</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./activity-description_new.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Description</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./activity-work_new.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Activity work</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./project-description-4780_new.qmd" class="sidebar-item-text sidebar-link">
@@ -357,13 +405,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Supplementary material for MSSC 5780</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
@@ -400,32 +448,69 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#written-report" id="toc-written-report" class="nav-link active" data-scroll-target="#written-report">Written Report</a>
+  <li><a href="#how-to-use-this-page" id="toc-how-to-use-this-page" class="nav-link active" data-scroll-target="#how-to-use-this-page">How to Use This Page</a></li>
+  <li><a href="#activity-1-read-a-regression" id="toc-activity-1-read-a-regression" class="nav-link" data-scroll-target="#activity-1-read-a-regression">Activity 1: Read a Regression</a>
   <ul class="collapse">
-  <li><a href="#timeline-and-things-to-do" id="toc-timeline-and-things-to-do" class="nav-link" data-scroll-target="#timeline-and-things-to-do">Timeline and Things to Do</a></li>
-  <li><a href="#project-writing" id="toc-project-writing" class="nav-link" data-scroll-target="#project-writing">Project Writing</a>
-  <ul class="collapse">
-  <li><a href="#regression-content" id="toc-regression-content" class="nav-link" data-scroll-target="#regression-content">Regression Content</a></li>
-  <li><a href="#paper-structure" id="toc-paper-structure" class="nav-link" data-scroll-target="#paper-structure">Paper Structure</a></li>
-  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#scenario" id="toc-scenario" class="nav-link" data-scroll-target="#scenario">Scenario</a></li>
+  <li><a href="#discuss" id="toc-discuss" class="nav-link" data-scroll-target="#discuss">Discuss</a></li>
+  <li><a href="#group-challenge" id="toc-group-challenge" class="nav-link" data-scroll-target="#group-challenge">Group Challenge</a></li>
+  <li><a href="#exit-ticket" id="toc-exit-ticket" class="nav-link" data-scroll-target="#exit-ticket">Exit Ticket</a></li>
   </ul></li>
-  <li><a href="#project-evaluation" id="toc-project-evaluation" class="nav-link" data-scroll-target="#project-evaluation">Project Evaluation</a></li>
-  </ul></li>
-  <li><a href="#participation-of-math-4780-project-presentation" id="toc-participation-of-math-4780-project-presentation" class="nav-link" data-scroll-target="#participation-of-math-4780-project-presentation">Participation of MATH 4780 Project Presentation</a>
+  <li><a href="#activity-2-same-x-different-story" id="toc-activity-2-same-x-different-story" class="nav-link" data-scroll-target="#activity-2-same-x-different-story">Activity 2: Same X, Different Story</a>
   <ul class="collapse">
-  <li><a href="#assessment-policy" id="toc-assessment-policy" class="nav-link" data-scroll-target="#assessment-policy">Assessment Policy</a></li>
+  <li><a href="#scenario-1" id="toc-scenario-1" class="nav-link" data-scroll-target="#scenario-1">Scenario</a>
+  <ul class="collapse">
+  <li><a href="#model-1" id="toc-model-1" class="nav-link" data-scroll-target="#model-1">Model 1</a></li>
+  <li><a href="#model-2" id="toc-model-2" class="nav-link" data-scroll-target="#model-2">Model 2</a></li>
+  </ul></li>
+  <li><a href="#discuss-1" id="toc-discuss-1" class="nav-link" data-scroll-target="#discuss-1">Discuss</a></li>
+  <li><a href="#group-challenge-1" id="toc-group-challenge-1" class="nav-link" data-scroll-target="#group-challenge-1">Group Challenge</a></li>
+  <li><a href="#exit-ticket-1" id="toc-exit-ticket-1" class="nav-link" data-scroll-target="#exit-ticket-1">Exit Ticket</a></li>
+  </ul></li>
+  <li><a href="#activity-3-regression-detective" id="toc-activity-3-regression-detective" class="nav-link" data-scroll-target="#activity-3-regression-detective">Activity 3: Regression Detective</a>
+  <ul class="collapse">
+  <li><a href="#scenario-2" id="toc-scenario-2" class="nav-link" data-scroll-target="#scenario-2">Scenario</a>
+  <ul class="collapse">
+  <li><a href="#case-a" id="toc-case-a" class="nav-link" data-scroll-target="#case-a">Case A</a></li>
+  <li><a href="#case-b" id="toc-case-b" class="nav-link" data-scroll-target="#case-b">Case B</a></li>
+  <li><a href="#case-c" id="toc-case-c" class="nav-link" data-scroll-target="#case-c">Case C</a></li>
+  <li><a href="#case-d" id="toc-case-d" class="nav-link" data-scroll-target="#case-d">Case D</a></li>
+  </ul></li>
+  <li><a href="#discuss-2" id="toc-discuss-2" class="nav-link" data-scroll-target="#discuss-2">Discuss</a></li>
+  <li><a href="#group-challenge-2" id="toc-group-challenge-2" class="nav-link" data-scroll-target="#group-challenge-2">Group Challenge</a></li>
+  <li><a href="#exit-ticket-2" id="toc-exit-ticket-2" class="nav-link" data-scroll-target="#exit-ticket-2">Exit Ticket</a></li>
+  </ul></li>
+  <li><a href="#activity-4-can-we-trust-this-ci" id="toc-activity-4-can-we-trust-this-ci" class="nav-link" data-scroll-target="#activity-4-can-we-trust-this-ci">Activity 4: Can We Trust This CI?</a>
+  <ul class="collapse">
+  <li><a href="#scenario-3" id="toc-scenario-3" class="nav-link" data-scroll-target="#scenario-3">Scenario</a></li>
+  <li><a href="#discuss-3" id="toc-discuss-3" class="nav-link" data-scroll-target="#discuss-3">Discuss</a></li>
+  <li><a href="#group-challenge-3" id="toc-group-challenge-3" class="nav-link" data-scroll-target="#group-challenge-3">Group Challenge</a></li>
+  <li><a href="#exit-ticket-3" id="toc-exit-ticket-3" class="nav-link" data-scroll-target="#exit-ticket-3">Exit Ticket</a></li>
+  </ul></li>
+  <li><a href="#activity-5-build-the-model-from-the-picture" id="toc-activity-5-build-the-model-from-the-picture" class="nav-link" data-scroll-target="#activity-5-build-the-model-from-the-picture">Activity 5: Build the Model from the Picture</a>
+  <ul class="collapse">
+  <li><a href="#scenario-4" id="toc-scenario-4" class="nav-link" data-scroll-target="#scenario-4">Scenario</a></li>
+  <li><a href="#discuss-4" id="toc-discuss-4" class="nav-link" data-scroll-target="#discuss-4">Discuss</a></li>
+  <li><a href="#group-challenge-4" id="toc-group-challenge-4" class="nav-link" data-scroll-target="#group-challenge-4">Group Challenge</a></li>
+  <li><a href="#exit-ticket-4" id="toc-exit-ticket-4" class="nav-link" data-scroll-target="#exit-ticket-4">Exit Ticket</a></li>
+  </ul></li>
+  <li><a href="#activity-6-model-court" id="toc-activity-6-model-court" class="nav-link" data-scroll-target="#activity-6-model-court">Activity 6: Model Court</a>
+  <ul class="collapse">
+  <li><a href="#scenario-5" id="toc-scenario-5" class="nav-link" data-scroll-target="#scenario-5">Scenario</a></li>
+  <li><a href="#discuss-5" id="toc-discuss-5" class="nav-link" data-scroll-target="#discuss-5">Discuss</a></li>
+  <li><a href="#group-challenge-model-court" id="toc-group-challenge-model-court" class="nav-link" data-scroll-target="#group-challenge-model-court">Group Challenge: Model Court</a></li>
+  <li><a href="#exit-ticket-5" id="toc-exit-ticket-5" class="nav-link" data-scroll-target="#exit-ticket-5">Exit Ticket</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/project-description-5780.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/activity-work_new.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./activity-description_new.html">Class Activities</a></li><li class="breadcrumb-item"><a href="./activity-work_new.html">Activity work</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">MSSC 5780 Project Description</h1>
+<h1 class="title">Class Activity Work</h1>
 </div>
 
 
@@ -442,190 +527,613 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The final project written report and participation of MATH 4780 project presentation account for 220 points of the total 1200 points.</p>
-<section id="written-report" class="level1">
-<h1>Written Report</h1>
-<section id="timeline-and-things-to-do" class="level2">
-<h2 class="anchored" data-anchor-id="timeline-and-things-to-do">Timeline and Things to Do</h2>
-<ul>
-<li><strong>Team up!</strong> You work as a team of <strong>two</strong> or <strong>three</strong>. No individual project. One of you, please email me your group <em>member list</em> by <span style="color:red;"><strong>Friday, 11/17 11:59 PM</strong></span>.
-<ul>
-<li>You lose 20 points if you miss the deadline.</li>
-<li>You will be randomly assigned to a group if you do not belong to any group before the deadline.</li>
-</ul></li>
-<li><strong>Proposal</strong>. Please send me a <strong>one-page PDF</strong> describing what you are going to do for your project (no word limit) with your <em>project title</em> by <span style="color:red;"><strong>Friday, 12/1 11:59 PM</strong></span>.
-<ul>
-<li>You lose 20 points if you miss the deadline.</li>
-</ul></li>
-<li><strong>Material</strong>. Please submit your <strong>report and code</strong> to D2L by <span style="color:red;"><strong>Tuesday, 12/12 11:59 PM</strong></span>.
-<ul>
-<li>You receive 0 point if you miss the deadline.</li>
-</ul></li>
-</ul>
-</section>
-<section id="project-writing" class="level2">
-<h2 class="anchored" data-anchor-id="project-writing">Project Writing</h2>
-<p>Your project can be in either of the following categories:</p>
+<section id="how-to-use-this-page" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-page">How to Use This Page</h2>
+<p>For each activity:</p>
 <ol type="1">
-<li><p><strong>Data Analysis (DA)</strong> using one or more regression methods learned in class.</p></li>
-<li><p><strong>Introduce a new regression model/method/algorithm (RM)</strong> and compare it with the model/method/algorithms learned in class.</p></li>
+<li>Think about the problem briefly on your own.</li>
+<li>Discuss it with your group.</li>
+<li>Be ready to explain your group’s reasoning.</li>
+<li>Submit the short exit ticket before leaving class.</li>
 </ol>
-<section id="regression-content" class="level3">
-<h3 class="anchored" data-anchor-id="regression-content">Regression Content</h3>
-<p>If you choose to do <strong>DA</strong>, your project should:</p>
+<p>There is no penalty for an incorrect answer. The goal is to <strong>reason, discuss, and participate</strong>.</p>
+<p>MSSC 5780 students should also discuss the <strong>Graduate Challenge</strong>.</p>
+<hr>
+</section>
+<section id="activity-1-read-a-regression" class="level1">
+<h1>Activity 1: Read a Regression</h1>
+<p><strong>Suggested date:</strong> Thu, Sep 17<br>
+<strong>Topic:</strong> Simple Linear Regression<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario" class="level2">
+<h2 class="anchored" data-anchor-id="scenario">Scenario</h2>
+<p>A professor studies the relationship between weekly study time and exam score.</p>
+<p>Let</p>
 <ul>
-<li><p>Include regression diagnostics: <em>model adequacy checking, residual diagnostics, leverage and influence diagnostics, and collinearity diagnostics</em>.</p></li>
-<li><p>Explain how you deal with violation of assumptions and collinearity issue if it exists.</p></li>
-<li><p>Demonstrate that your final selected model has no violation of assumptions and answers your questions well through any inference (estimation and testing) or prediction methods. If some issues remain, explain why they cannot be fixed, and what is the limitation of your model due to these issues. Provide suggestions for improving your analysis.</p></li>
-<li><p>The chosen data set cannot be any data set used in class, the textbook or homework assignments.</p></li>
-<li><p>Below are a list of data repositories you may start with, but you are encouraged to explore more and find your favorite one.</p>
-<ul>
-<li><a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a></li>
-<li><a href="https://www.kaggle.com/datasets">Kaggle</a></li>
-<li><a href="https://github.com/awesomedata/awesome-public-datasets">Awesome Public Datasets</a></li>
-<li><a href="https://dataverse.harvard.edu/">Harvard Dataverse</a></li>
-<li><a href="https://archive.ics.uci.edu/ml/index.php">UCI Machine Learning Repository</a></li>
-<li><a href="https://data.fivethirtyeight.com/">FiveThirtyEight</a></li>
-</ul></li>
+<li><span class="math inline">\(Y\)</span> = exam score from 0 to 100,</li>
+<li><span class="math inline">\(X\)</span> = hours studied during the week before the exam.</li>
 </ul>
-<p>If you choose to do <strong>RM</strong>, your project should:</p>
+<p>A simple linear regression gives</p>
+<p><span class="math display">\[
+\widehat{\text{Score}} = 58.4 + 3.15(\text{Study Hours}).
+\]</span></p>
+<p>The estimated standard error of the slope is 0.62, and the 95% confidence interval for the slope is</p>
+<p><span class="math display">\[
+(1.91,\;4.39).
+\]</span></p>
+<p>For a student who studies 6 hours:</p>
 <ul>
-<li><p>Explain the model/method. Define and explain the notations, parameters, and model/method assumptions. Compare it with the model/method learned in class.</p></li>
-<li><p>Show the model/method with graphics and possible geometrical meaning. Compare it with the model/method learned in class.</p></li>
-<li><p>Show how to perform parameter estimation and response prediction. Discuss the methods used for training/fitting the model, and compare the prediction performance with MLR.</p></li>
-<li><p>Interpret the fitted and prediction results.</p></li>
-<li><p>Discuss the advantages and disadvantages of the model/method. Under what situations the model/method performs the best/worst?</p></li>
-<li><p>Demonstrate how to fit the model and implement its relevant method/algorithm via a simulation study or data analysis. The data set could be a data set used in class.</p></li>
-<li><p>Possible topics being considered include but not limited to:</p>
-<ul>
-<li>Bayesian linear regression</li>
-<li>Gaussian process regression</li>
-<li>LASSO</li>
-<li>Poisson regression</li>
-<li>Regression trees</li>
-<li>Multivariate adaptive regression splines</li>
-<li>Generalized additive model</li>
-<li>Robust regression</li>
-<li>Quantile regression</li>
-<li>Partial Least Squares Regression</li>
-</ul></li>
+<li>fitted mean score: <strong>77.3</strong></li>
+<li>95% confidence interval for the <strong>mean score</strong>: <strong>(74.9, 79.7)</strong></li>
+<li>95% prediction interval for <strong>one new student’s score</strong>: <strong>(66.2, 88.4)</strong></li>
 </ul>
 </section>
-<section id="paper-structure" class="level3">
-<h3 class="anchored" data-anchor-id="paper-structure">Paper Structure</h3>
-<p>If you choose to do <strong>DA</strong>, your report should include the following sections:</p>
-<ul>
-<li><p><strong>Introduction</strong>: State why you think the questions you would like to answer are important or interesting, and why you think the method(s) you consider is an appropriate one to answer your questions.</p></li>
-<li><p><strong>Data</strong>: Describe the selected data set. Perform a thorough exploratory data analysis.</p></li>
-<li><p><strong>Analysis</strong>: Include the Regression Content by</p>
-<ul>
-<li>Explaining the chosen model/method.</li>
-<li>Showing why the chosen model(s) is appropriate and better than others.</li>
-<li>Answering your research questions by the analysis result.</li>
-</ul></li>
-<li><p><strong>Conclusion</strong>: Restate your research question, and summarize how you learn from data to answer your questions. What is the contribution of this project? Discuss any limitation of your model/method, and how it could be improved for better inference or prediction results.</p></li>
-<li><p><strong>References/Bibliography</strong>: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.</p></li>
-</ul>
-<p>If you choose to do <strong>RM</strong>, your report should include the following sections:</p>
-<ul>
-<li><p><strong>Introduction</strong>: State why you choose to learn this new method. Provide an overview and little history of the method. Describe the intuition and idea of the method. What are the pros and cons of the method?</p></li>
-<li><p><strong>Model/Method</strong>: Provide the mathematical expression of the model. Address the points mentioned in Regression Content.</p></li>
-<li><p><strong>Simulation</strong>: Do a simulation study, and compare the chosen method with other methods learned in class. Determine which method performs better under what conditions. Address the points mentioned in Regression Content.</p></li>
-<li><p><strong>Discussion</strong>: Based on the simulation results, discuss the advantages and disadvantages of the chosen method. Discuss any variants of the chosen method.</p></li>
-<li><p><strong>References/Bibliography</strong>: Include a detailed list of references, including papers, books, websites, code, and any idea/work that is not produced by yourself.</p></li>
-</ul>
+<section id="discuss" class="level2">
+<h2 class="anchored" data-anchor-id="discuss">Discuss</h2>
+<ol type="1">
+<li><p>What does the slope 3.15 mean in this context?</p></li>
+<li><p>What does the intercept 58.4 mean? Is it useful?</p></li>
+<li><p>A student studies 6 hours. Which number would you use as the predicted score?</p></li>
+<li><p>If that student asks, “What range of scores is plausible for my score?”, which interval should you use?</p></li>
+<li><p>Consider the statement:</p>
+<blockquote class="blockquote">
+<p>“Studying one extra hour causes a student’s score to increase by 3.15 points.”</p>
+</blockquote>
+<p>What is potentially wrong with this statement?</p></li>
+</ol>
 </section>
-<section id="format" class="level3">
-<h3 class="anchored" data-anchor-id="format">Format</h3>
+<section id="group-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge">Group Challenge</h2>
+<p>Write a three-sentence summary:</p>
 <ul>
-<li><p>Except the project title and section title, the font size is <strong>12 pt</strong>.</p></li>
-<li><p>Your paper should have your <strong>project title</strong> and <strong>your name</strong> on the first page. Date, Abstract, Keywords are optional.</p></li>
-<li><p>Please use <strong>1.5</strong> or <strong>double</strong> line spacing.</p></li>
-<li><p>Your report, <em>including everything</em>, should have <strong>at least 10 pages</strong>, but <strong>no more than 13 pages</strong>.</p></li>
-<li><p>Your code should NOT be included in the paper.</p></li>
+<li>one sentence about the relationship,</li>
+<li>one sentence about prediction,</li>
+<li>one sentence about an important limitation.</li>
 </ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Discuss:</p>
+<ol type="1">
+<li>Why is the prediction interval wider than the confidence interval for the mean response?</li>
+<li>What assumptions are needed for the usual <span class="math inline">\(t\)</span>-based confidence interval for the slope?</li>
+</ol>
+</div>
+</div>
 </section>
-<section id="code" class="level3">
-<h3 class="anchored" data-anchor-id="code">Code</h3>
-<ul>
-<li>Your code should be able to <strong>reproduce all the numerical results, outputs, tables, and figures shown in the report</strong>, including the source of the raw data (where you find and load the data) if the project is about data analysis.</li>
-</ul>
-</section>
-</section>
-<section id="project-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="project-evaluation">Project Evaluation</h2>
-<p>Your project will be evaluated based on</p>
-<ul>
-<li><p><strong>Content</strong>:</p>
-<ul>
-<li>The quality of research question and relevancy of data to those questions? For example, the relationship between human height and weight is a BAD question. An elementary-school height and weight data set is a BAD data set.</li>
-<li>The quality of the chosen model. For example, one-way ANOVA is a BAD model.</li>
-</ul></li>
-<li><p><strong>Correctness, Completeness and Complexity</strong>:</p>
-<ul>
-<li>Are the regression methods carried out and explained correctly?</li>
-<li>Does project include rigorous analysis and models? Simple linear regression model lacks complexity.</li>
-</ul></li>
-<li><p><strong>Writing</strong>: The quality of the regression model/method presentation, visualization, writing, and explanations.</p></li>
-<li><p><strong>Format</strong>: Does the report follow the required format?</p></li>
-<li><p><strong>Creativity and Critical Thought</strong>: Is the project carefully thought out? Are the limitations carefully considered? Does it appear that time and effort went into the planning and implementation of the project?</p></li>
-<li><p><strong>Reproducibility</strong>: Can your code reproduce what you show in the paper?</p></li>
-<li><p><strong>Reference</strong>: Do you cite others work properly?</p></li>
-</ul>
+<section id="exit-ticket" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket">Exit Ticket</h2>
+<p>Complete this sentence:</p>
+<blockquote class="blockquote">
+<p>One thing I would be careful about when interpreting this regression is __________.</p>
+</blockquote>
+<hr>
 </section>
 </section>
-<section id="participation-of-math-4780-project-presentation" class="level1">
-<h1>Participation of MATH 4780 Project Presentation</h1>
-<p></p>
+<section id="activity-2-same-x-different-story" class="level1">
+<h1>Activity 2: Same X, Different Story</h1>
+<p><strong>Suggested date:</strong> Thu, Oct 1<br>
+<strong>Topic:</strong> Multiple Linear Regression<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario-1" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-1">Scenario</h2>
+<p>Suppose <span class="math inline">\(Y\)</span> is a student’s final exam score.</p>
+<p>Two models are fitted.</p>
+<section id="model-1" class="level3">
+<h3 class="anchored" data-anchor-id="model-1">Model 1</h3>
+<p><span class="math display">\[
+\widehat{Y} = 61.2 + 4.80(\text{Study Hours}).
+\]</span></p>
+</section>
+<section id="model-2" class="level3">
+<h3 class="anchored" data-anchor-id="model-2">Model 2</h3>
+<p><span class="math display">\[
+\widehat{Y}
+=
+42.7
++
+2.90(\text{Study Hours})
++
+7.60(\text{Prior GPA}).
+\]</span></p>
+<p>The sample correlations are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variables</th>
+<th style="text-align: right;">Correlation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Study Hours and Final Exam</td>
+<td style="text-align: right;">0.58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prior GPA and Final Exam</td>
+<td style="text-align: right;">0.71</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Study Hours and Prior GPA</td>
+<td style="text-align: right;">0.46</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="discuss-1" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-1">Discuss</h2>
+<ol type="1">
+<li>How would you interpret the Study Hours coefficient in Model 1?</li>
+<li>How would you interpret the Study Hours coefficient in Model 2?</li>
+<li>Why might the coefficient change from 4.80 to 2.90 after Prior GPA is added?</li>
+<li>Does the smaller coefficient mean that studying became “less important”?</li>
+</ol>
+</section>
+<section id="group-challenge-1" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge-1">Group Challenge</h2>
+<p>Compare these two questions:</p>
+<p><strong>Question A:</strong><br>
+Among all students, how are study hours associated with final exam score?</p>
+<p><strong>Question B:</strong><br>
+Among students with similar prior GPA, how are study hours associated with final exam score?</p>
+<p>Which model is more directly connected to each question?</p>
+<p>Then explain in plain language what <strong>“holding Prior GPA constant”</strong> means.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the idea of omitted-variable bias or partial regression to explain why the Study Hours coefficient can change.</p>
+<p>Then discuss:</p>
+<blockquote class="blockquote">
+<p>Would adding Prior GPA always make the Study Hours coefficient smaller?</p>
+</blockquote>
+<p>Why or why not?</p>
+</div>
+</div>
+</section>
+<section id="exit-ticket-1" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket-1">Exit Ticket</h2>
+<p>In one sentence:</p>
+<blockquote class="blockquote">
+<p>What is the main difference between interpreting a coefficient in simple regression and multiple regression?</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="activity-3-regression-detective" class="level1">
+<h1>Activity 3: Regression Detective</h1>
+<p><strong>Suggested date:</strong> Thu, Oct 29<br>
+<strong>Topic:</strong> Regression Diagnostics<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario-2" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-2">Scenario</h2>
+<p>Four analysts fit linear regression models.</p>
+<p>Each model has a different possible problem.</p>
+<section id="case-a" class="level3">
+<h3 class="anchored" data-anchor-id="case-a">Case A</h3>
+<p>The residual-versus-fitted plot shows a clear <strong>U-shaped pattern</strong>.</p>
+</section>
+<section id="case-b" class="level3">
+<h3 class="anchored" data-anchor-id="case-b">Case B</h3>
+<p>The residual spread is small for low fitted values and becomes progressively wider for high fitted values, producing a <strong>funnel shape</strong>.</p>
+</section>
+<section id="case-c" class="level3">
+<h3 class="anchored" data-anchor-id="case-c">Case C</h3>
+<p>The normal Q–Q plot follows the reference line in the center but bends strongly away from the line in both tails.</p>
+</section>
+<section id="case-d" class="level3">
+<h3 class="anchored" data-anchor-id="case-d">Case D</h3>
+<p>One observation has:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Quantity</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Standardized residual</td>
+<td style="text-align: right;">0.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Leverage <span class="math inline">\(h_{ii}\)</span></td>
+<td style="text-align: right;">0.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cook’s distance</td>
+<td style="text-align: right;">0.92</td>
+</tr>
+</tbody>
+</table>
+<p>Most other observations have leverage below 0.08 and Cook’s distance below 0.10.</p>
+</section>
+</section>
+<section id="discuss-2" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-2">Discuss</h2>
+<p>Match each case with the most likely issue:</p>
 <ul>
-<li><p>The presentation date/time is <strong>Tuesday, Dec 12, 5:45 - 7:45 PM</strong> in CU 120.</p></li>
-<li><p>You evaluate MATH 4780 group projects.</p></li>
-<li><p>Please be attentive to the presentations, and take this evaluation seriously because your judgement affects MATH 4780 student’s final grade.</p></li>
-<li><p>If your evaluation is an “outlier” that is significantly different from others, your evaluation will be dropped in the calculation of MATH 4780 final grade, and <strong>you lose 30 points of your project grade</strong>.</p></li>
+<li>nonlinearity,</li>
+<li>nonconstant variance,</li>
+<li>nonnormal or heavy-tailed errors,</li>
+<li>unusual leverage or influence.</li>
 </ul>
-<section id="assessment-policy" class="level2">
-<h2 class="anchored" data-anchor-id="assessment-policy">Assessment Policy</h2>
+<p>Then discuss:</p>
+<ol type="1">
+<li>Which case suggests that the mean structure may be wrong?</li>
+<li>Which case most directly suggests nonconstant variance?</li>
+<li>Is the observation in Case D necessarily an outlier in the response direction?</li>
+<li>Should the analyst automatically delete the observation in Case D?</li>
+</ol>
+</section>
+<section id="group-challenge-2" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge-2">Group Challenge</h2>
+<p>For each case, answer:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Case</th>
+<th style="text-align: left;">What do you see?</th>
+<th style="text-align: left;">What might be wrong?</th>
+<th style="text-align: left;">What would you check or try next?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain the difference among:</p>
 <ul>
-<li><p>You evaluate group performance based on the four criteria:</p>
-<ul>
-<li><strong>Project Content and Organization (8 pts)</strong></li>
-<li><strong>Slides Quality (4 pts)</strong></li>
-<li><strong>Oral Presentation Skill and Delivery (4 pts)</strong></li>
-<li><strong>Interactions and Q&amp;A (4 pts)</strong></li>
-</ul></li>
-<li><p>The total points of a project presentation is <strong>20</strong> points.</p></li>
-<li><p>Evaluation sheets will be provided on the presentation day.</p></li>
-<li><p><strong>Content and Organization</strong></p>
-<ul>
-<li>Clear visualization that helps find out relationship of variables and specification of models</li>
-<li>All questions are answered accurately by the models</li>
-<li>Discuss how and why the models are chosen</li>
-<li>Apply sophisticated models and detailed analysis including diagnostics</li>
-<li>All ideas are presented in logical order</li>
-</ul></li>
-<li><p><strong>Slides Quality</strong></p>
-<ul>
-<li>Slides show code and output beautifully</li>
-<li>Slides clearly aid the speaker in telling a coherent story</li>
-<li>All tables and graphics are informative and related to the topic and make it easier to understand</li>
-<li>Attractive design, layout, and neatness.</li>
-</ul></li>
-<li><p><strong>Oral Presentation Skill</strong></p>
-<ul>
-<li>Good volume and energy</li>
-<li>Proper pace and diction</li>
-<li>Avoidance of distracting gestures</li>
-</ul></li>
-<li><p><strong>Interactions and Q&amp;A</strong></p>
-<ul>
-<li>Good eye contact with audience</li>
-<li>Excellent listening skills</li>
-<li>Answers audience questions with authority and accuracy</li>
-</ul></li>
-<li><p>After you evaluate group project presentations, you rank them from 1st to the last based on their earned points.</p></li>
-<li><p><strong>No two groups receive the same ranking</strong>. If you give two or more groups some points, you still need to give them a different ranking, deciding which teams deserve a higher ranking according to your personal preference.</p></li>
+<li>an outlier,</li>
+<li>a high-leverage point,</li>
+<li>an influential point.</li>
 </ul>
-<p><span style="color:blue;">Dr.&nbsp;Yu reserves the right to make changes to the project policy.</span></p>
+<p>Can a point have high leverage but a small residual?</p>
+<p>Can it still be influential?</p>
+</div>
+</div>
+</section>
+<section id="exit-ticket-2" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket-2">Exit Ticket</h2>
+<p>Write one thing you would <strong>check before deleting an unusual observation</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="activity-4-can-we-trust-this-ci" class="level1">
+<h1>Activity 4: Can We Trust This CI?</h1>
+<p><strong>Suggested date:</strong> Thu, Nov 5<br>
+<strong>Topic:</strong> Bootstrap Inference<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario-3" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-3">Scenario</h2>
+<p>A researcher fits a regression using a small dataset with <span class="math inline">\(n=22\)</span>.</p>
+<p>The estimated slope is</p>
+<p><span class="math display">\[
+\hat{\beta}_1 = 0.66.
+\]</span></p>
+<p>Two 95% confidence intervals are reported:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">95% CI for <span class="math inline">\(\beta_1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Usual <span class="math inline">\(t\)</span>-interval</td>
+<td style="text-align: left;"><span class="math inline">\((-0.10,\;1.42)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bootstrap percentile interval</td>
+<td style="text-align: left;"><span class="math inline">\((0.18,\;1.51)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The bootstrap distribution of the slope is somewhat right-skewed rather than symmetric.</p>
+</section>
+<section id="discuss-3" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-3">Discuss</h2>
+<ol type="1">
+<li>Do the two intervals lead to the same conclusion about whether 0 is plausible?</li>
+<li>Why might two reasonable methods give different answers with a small sample?</li>
+<li>In plain language, what is bootstrap resampling trying to learn?</li>
+<li>Does bootstrap automatically fix:
+<ul>
+<li>confounding,</li>
+<li>poor data quality,</li>
+<li>extrapolation,</li>
+<li>model misspecification?</li>
+</ul></li>
+</ol>
+</section>
+<section id="group-challenge-3" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge-3">Group Challenge</h2>
+<p>Consider the statement:</p>
+<blockquote class="blockquote">
+<p>“The bootstrap interval is better because it does not use assumptions.”</p>
+</blockquote>
+<p>Do you agree?</p>
+<p>Rewrite the statement so that it is more defensible.</p>
+<p>Then give:</p>
+<ul>
+<li>one reason you might use bootstrap inference,</li>
+<li>one reason you might still be cautious.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compare:</p>
+<ul>
+<li><strong>pairs bootstrap:</strong> resample observed <span class="math inline">\((x_i,y_i)\)</span> pairs,</li>
+<li><strong>residual bootstrap:</strong> hold the observed <span class="math inline">\(x_i\)</span> values fixed and resample residuals.</li>
+</ul>
+<p>Discuss what is treated as random in each method and what assumptions each strategy uses.</p>
+</div>
+</div>
+</section>
+<section id="exit-ticket-3" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket-3">Exit Ticket</h2>
+<p>Complete this sentence:</p>
+<blockquote class="blockquote">
+<p>Bootstrap can help us understand __________, but it cannot fix __________.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="activity-5-build-the-model-from-the-picture" class="level1">
+<h1>Activity 5: Build the Model from the Picture</h1>
+<p><strong>Suggested date:</strong> Thu, Nov 19<br>
+<strong>Topic:</strong> Categorical Predictors and Interactions<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario-4" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-4">Scenario</h2>
+<p>Two training programs are being compared.</p>
+<p>Let</p>
+<ul>
+<li><span class="math inline">\(Y\)</span> = performance score,</li>
+<li><span class="math inline">\(X\)</span> = hours of practice,</li>
+<li><span class="math inline">\(D=0\)</span> for Program A,</li>
+<li><span class="math inline">\(D=1\)</span> for Program B.</li>
+</ul>
+<p>The fitted lines are</p>
+<p><span class="math display">\[
+\text{Program A:}\qquad \widehat{Y}=50+4X,
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\text{Program B:}\qquad \widehat{Y}=62+1.5X.
+\]</span></p>
+<p>Consider the interaction model</p>
+<p><span class="math display">\[
+Y=\beta_0+\beta_1X+\beta_2D+\beta_3XD+\epsilon.
+\]</span></p>
+</section>
+<section id="discuss-4" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-4">Discuss</h2>
+<p>Without using software, try to determine:</p>
+<ol type="1">
+<li><span class="math inline">\(\beta_0\)</span></li>
+<li><span class="math inline">\(\beta_1\)</span></li>
+<li><span class="math inline">\(\beta_2\)</span></li>
+<li><span class="math inline">\(\beta_3\)</span></li>
+</ol>
+<p>Then discuss:</p>
+<ol start="5" type="1">
+<li>What does <span class="math inline">\(\beta_3\)</span> mean?</li>
+<li>Which program has the larger predicted value at <span class="math inline">\(X=0\)</span>?</li>
+<li>Which program has the steeper relationship with practice time?</li>
+<li>At approximately what value of <span class="math inline">\(X\)</span> do the fitted lines cross?</li>
+</ol>
+</section>
+<section id="group-challenge-4" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge-4">Group Challenge</h2>
+<p>Consider:</p>
+<blockquote class="blockquote">
+<p>“Program B is better because <span class="math inline">\(\beta_2&gt;0\)</span>.”</p>
+</blockquote>
+<p>Why is this statement incomplete when there is an interaction?</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Discuss:</p>
+<ol type="1">
+<li>What hypothesis would test whether the two programs have the same slope?</li>
+<li>Why does the interpretation of <span class="math inline">\(\beta_2\)</span> depend on what <span class="math inline">\(X=0\)</span> means?</li>
+<li>What happens to the interpretation if we center <span class="math inline">\(X\)</span> around 5 hours?</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="exit-ticket-4" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket-4">Exit Ticket</h2>
+<p>In one sentence:</p>
+<blockquote class="blockquote">
+<p>Why can an interaction make a main effect difficult to interpret by itself?</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="activity-6-model-court" class="level1">
+<h1>Activity 6: Model Court</h1>
+<p><strong>Suggested date:</strong> Thu, Dec 3<br>
+<strong>Topic:</strong> Variable Selection and Model Comparison<br>
+<strong>Time:</strong> 15–20 minutes</p>
+<section id="scenario-5" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-5">Scenario</h2>
+<p>Three regression models are proposed for predicting house sale price.</p>
+<p>All performance measures use the same dataset and the same cross-validation splits.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Predictors</th>
+<th style="text-align: right;">Adjusted <span class="math inline">\(R^2\)</span></th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">CV RMSE in $1,000s</th>
+<th style="text-align: right;">Maximum VIF</th>
+<th style="text-align: left;">Diagnostics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">1240</td>
+<td style="text-align: right;">31.5</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: left;">Good</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">1208</td>
+<td style="text-align: right;"><strong>27.9</strong></td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: left;">One moderately influential point</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">15 plus interactions</td>
+<td style="text-align: right;"><strong>0.80</strong></td>
+<td style="text-align: right;">1215</td>
+<td style="text-align: right;">30.2</td>
+<td style="text-align: right;">18.5</td>
+<td style="text-align: left;">Several unstable coefficients</td>
+</tr>
+</tbody>
+</table>
+<p>Lower AIC and lower CV RMSE are preferred.</p>
+</section>
+<section id="discuss-5" class="level2">
+<h2 class="anchored" data-anchor-id="discuss-5">Discuss</h2>
+<p>Suppose the primary goal is <strong>prediction of future house prices</strong>.</p>
+<ol type="1">
+<li>Which model would you choose?</li>
+<li>What is the strongest evidence supporting your choice?</li>
+<li>What makes you cautious about that model?</li>
+<li>Why is choosing the model with the largest adjusted <span class="math inline">\(R^2\)</span> alone not enough?</li>
+<li>Why is choosing the model with the smallest AIC alone not enough?</li>
+</ol>
+</section>
+<section id="group-challenge-model-court" class="level2">
+<h2 class="anchored" data-anchor-id="group-challenge-model-court">Group Challenge: Model Court</h2>
+<p>Your group is a statistical review panel.</p>
+<p>Complete:</p>
+<blockquote class="blockquote">
+<p><strong>We recommend Model ___ because …</strong></p>
+</blockquote>
+<p>Use at least three pieces of information from the table.</p>
+<p>Then identify <strong>one additional thing you would investigate</strong> before making a final decision.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>MSSC 5780 Graduate Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now change the goal.</p>
+<p>Suppose the researchers want a <strong>stable and interpretable explanation</strong> using a small number of housing characteristics rather than the best possible prediction.</p>
+<p>Would you necessarily choose the same model?</p>
+<p>Discuss the tradeoff among:</p>
+<ul>
+<li>prediction accuracy,</li>
+<li>interpretability,</li>
+<li>coefficient stability,</li>
+<li>multicollinearity,</li>
+<li>model complexity.</li>
+</ul>
+<p>Also discuss why AIC and cross-validation may rank models differently.</p>
+</div>
+</div>
+</section>
+<section id="exit-ticket-5" class="level2">
+<h2 class="anchored" data-anchor-id="exit-ticket-5">Exit Ticket</h2>
+<p>Complete this sentence:</p>
+<blockquote class="blockquote">
+<p>The best regression model depends on __________.</p>
+</blockquote>
 
 
 </section>
@@ -1045,6 +1553,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./activity-description_new.html" class="pagination-link" aria-label="Description">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Description</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./project-description-4780_new.qmd" class="pagination-link" aria-label="Guideline for MATH 4780">
+        <span class="nav-page-text">Guideline for MATH 4780</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1053,7 +1573,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/project-description-5780.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/activity-work_new.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
