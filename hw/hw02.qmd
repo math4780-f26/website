@@ -1,0 +1,163 @@
+---
+title: "Homework 2"
+subtitle: "Simple Linear Regression"
+categories: "Homework"
+editor: source
+params:
+  show_sol: true
+execute:
+  echo: false
+---
+
+::: callout-important
+[Due **Friday, Sep 25, 11:59 PM**]{.red}
+:::
+
+<!-- # Homework Instruction and Requirement -->
+
+<!-- - Homework 1 covers course materials of Week 1 to 2. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not accepted. 
+
+- In your homework, please number questions **in order**.
+
+<!-- - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- Questions started with **(MSSC)** are *required* for MSSC 5780 students, and optional for MATH 4780 students.
+
+
+(@) **Comparing simulated data to assumed parameter values.**
+    (a) Simulate 100 data points from the model, $y = 2 + 3x + \epsilon$, with predictors $x$ drawn from a uniform distribution from 0 to 20, and with independent errors drawn from the normal distribution with mean 0 and standard deviation 5. Fit a simple linear regression (SLR) model to the simulated data. Plot the data and fitted regression line.
+    (b) Check that the estimated coefficients from the fitted model are reasonably close to the assumed true values. What does “reasonably close” mean in this context?
+    (c) Repeat the previous steps 1000 times (omitting the plotting). Check that the coefficient estimates are approximately unbiased, meaning that their center is close to the their corresponding true coefficient. Also check that their standard deviations in the sampling distribution are approximately equal to their standard errors, and that approximately 95% of the estimate $\pm$ 2 standard error intervals contain the true parameter values.
+
+
+(@) **Least squares (LS) and [least absolute deviation](https://en.wikipedia.org/wiki/Least_absolute_deviations) (LAD)**
+    (a) Use the data [`hibbs`](https://raw.githubusercontent.com/avehtari/ROS-Examples/refs/heads/master/ElectionsEconomy/data/hibbs.dat). Evaluate sum of squares residuals ($SS_{res}$) at several different values of $(b_0, b_1)$. Make two graphs: a plot of $SS_{res}$ as a function of $b_0$, with $b_1$ fixed at its LS estimate, and a plot of $SS_{res}$ as a function of $b_1$, with $b_0$ fixed at its LS estimate. Confirm that $SS_{res}$ is indeed minimized at the LS estimate.
+    (b) Use the same data `hibbs`. Find the $(\hat{\beta}_0, \hat{\beta}_1)$ that minimizes the sum of absolute values of residuals $SA_{res}$, $\sum_{i=1}^n | y_i - \hat{y}_i |$. Plot $SA_{res}$ as a function of $\hat{\beta}_0$ and of $\hat{\beta}_1$. Compare the LS and LAD estimates of $(\beta_0, \beta_1)$.
+    (c) Construct a set of data $(x_i, y_i), i = 1,\dots, n$, for which the LS and LAD estimates of $(\beta_0, \beta_1)$ in the simple linear regression fit are much different. Show that LAD is more robust to extreme values than LS.
+    
+    
+(@) **Regression and two-sample t test.** Use the data [`score`](./data/score.csv) with `Traditional` and `Online` students only.
+    (a) Perform a two-sample t-test assuming equal variances.
+    (b) Fit `lm(score ~ method)` to the same observations. Interpret the intercept and the coefficient for `methodOnline`.
+    (c) Use the fitted regression coefficients to obtain the estimated mean score for each group. Compare these with the sample means.
+    (d) Compare the hypothesis test for `methodOnline` with the two-sample t-test in (a). Explain why the results agree.
+
+(@) **(MSSC)** In SLR, show that both $b_0$ and $b_1$ are linear combinations of $y_1, \dots, y_n$.
+
+<!-- - **Relevant code should be attached.** -->
+
+
+<!-- # Mathematical Derivation and Reasoning -->
+
+<!-- The following questions are based on the population and sample linear regression model defined in our course slides and textbook. -->
+
+
+<!-- 1. **(MSSC)** Find the least squares estimator $b_0$ and $b_1$ such that $$(b_0, b_1) = \arg\min_{\beta_0, \beta_1} \sum_{i=1}^n(y_i - \beta_0 - \beta_1x_i)^2.$$ -->
+
+<!-- 2. **(MSSC)** Show that $\hat{y}_i = \sum_{j=1}^n h_{ij}y_j$ where $h_{ij} = \frac{1}{n} + \frac{(x_i-\overline{x})(x_j-\overline{x})}{S_{xx}}$.  -->
+
+<!-- 1. The least squares approach chooses $b_0$ and $b_1$ to minimize the $SS_{res}$, i.e., $$(b_0, b_1) = \arg\min_{\beta_0, \beta_1} \sum_{i=1}^n(y_i - \beta_0 - \beta_1x_i)^2.$$ Show that $$b_0 = \overline{y} - b_1\overline{x}$$ and $$b_1 = \frac{\sum_{i=1}^n(x_i-\overline{x})(y_i - \overline{y})}{\sum_{i=1}^n(x_i - \overline{x})^2} := \frac{S_{xy}}{S_{xx}}.$$ -->
+
+<!-- 2. **(MSSC)** Remember that before training sample is collected, $y_i$ are assumed random variables. Show that $b_0$ is an unbiased estimator for $\beta_0$, i.e., $E(b_0) = \beta_0$. -->
+
+<!-- 3. **(MSSC)** Show that $\sum_{i=1}^n(y_i - \overline{y})^2 = \sum_{i=1}^n(\hat{y}_i - \overline{y})^2 + \sum_{i=1}^n(y_i - \hat{y}_i)^2$, i.e., $SS_T = SS_R + SS_{res}$. -->
+
+<!-- 5.  **(MSSC)** Show that $SS_{res} = SS_T - b_1S_{xy}$, i.e., $SS_R = b_1S_{xy}$. This proof tells us that $SS_{res}$ is the variation with all variation explained by the association of $x$ and $y$ removed. -->
+
+<!-- 6.  **(MSSC)** Show that $E(MS_{res}) = \sigma^2$ and $E(MS_R) = \sigma^2 + \beta_1^2S_{xx}$. [*Hint:* Use the fact that a $\chi^2_{k}$ random variable has the mean value $k$.] This proof tells us that $MS_R$ is also an estimator for $\sigma^2$. Although it is usually biased, it is unbiased when $\beta_1 = 0$. Would $MS_R \ge MS_{res}$ always hold? Why or why not? Please explain. -->
+
+<!-- # Statistical Computing and Data Analysis -->
+
+<!-- Please perform a data analysis using $\texttt{R}$ or your preferred language. **Any results should be generated by computer outputs, and your work should be done entirely by your computer**. **Handwriting is not allowed**. **Relevant code should be attached.** -->
+
+
+<!-- ## Simulation -->
+
+<!-- 1. Generate a simulated data of size $n = 100$ from the regression  -->
+
+<!-- $$y_i = 10 + 5x_i + \epsilon_i, ~~ \epsilon_i \stackrel{iid}{\sim} N(0, 2)$$ -->
+
+<!-- by completing the code -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- x <- runif(_____) -->
+<!-- y <- ____ + ____ * ____ + r____(_____, sd = _____) -->
+<!-- ``` -->
+
+
+<!-- Fit a simple linear regression model to the data, then check whether the true slope is captured by the 90% confidence interval for the slope. -->
+
+
+<!-- ## Data Analysis -->
+
+<!-- The data set [`mpg.csv`](./data/mpg.csv) presents data on the gasoline mileage performance of 32 different automobiles. (Table B.3 in the textbook LRA) -->
+
+<!-- To import the data set into your R session, use `read.csv()` like -->
+
+<!-- ```{r} -->
+<!-- #| eval: false -->
+<!-- data_name_you_like <- read.csv("the_path_that_saves_your_data/mpg.csv") -->
+<!-- ``` -->
+
+<!-- Once you load the data set, type its name on the R console. The data should be a data frame with 32 rows and 12 columns that looks like -->
+
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- mpg <- read.csv("./data/mpg.csv") -->
+<!-- head(mpg) -->
+<!-- ``` -->
+
+<!-- If this is what you get, you are good to start!  -->
+
+<!-- The variables are -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- - $y$: Miles per gallon -->
+<!-- - $x_1$: Displacement (cubic in.) -->
+<!-- - $x_2$: Horsepower (ft-lb) -->
+<!-- - $x_3$: Torque (ft-lb) -->
+<!-- - $x_4$: Compression ratio -->
+<!-- - $x_5$: Rear axle ratio -->
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- - $x_6$: Carburetor (barrels) -->
+<!-- - $x_7$: No. of transmission speeds -->
+<!-- - $x_8$: Overall length (in.) -->
+<!-- - $x_9$: Width (in.) -->
+<!-- - $x_{10}$: Weight (lb) -->
+<!-- - $x_{11}$: Type of transmission (A automatic; M manual) -->
+<!-- ::: -->
+
+<!-- :::: -->
+
+<!-- 1.  Fit a simple linear regression model relating gasoline mileage $y$ (miles per gallon) to engine displacement $x_1$ (cubic inches). Explain your coefficients. Any potential concern? -->
+
+<!-- 2.  Provide the $95\%$ CI for $\beta_0$, $\beta_1$ and $\sigma^2$. -->
+
+<!-- 3.  With $\alpha = 0.05$, test if $\beta_1$ is significantly different from 0. Provide procedure and steps, for example, $H_0$ and $H_1$, the test statistic or $p$-value, and decision rule. -->
+
+<!-- 4.  Construct the ANOVA table and test for significance of regression. -->
+
+<!-- 5.  What percent of the total variability in gasoline mileage is accounted for by the linear relationship with engine displacement? -->
+
+<!-- 6.  Find a $95\%$ CI on the mean gasoline mileage if the engine displacement is 275 in$^3$ engine. -->
+
+<!-- 7.  Suppose that we wish to predict the gasoline mileage obtained from a car with a 275 in$^3$ engine. Give a point estimate of mileage. Find a 95% prediction interval (PI) on the mileage. Compare the PI with the CI in 6. Explain the difference between them. Which one is wider, and why? -->
+
+<!-- 8.  Plot data $\{(x_{1i}, y_i)\}_{i=1}^{32}$, the fitted regression line, CI for $\mu_{Y|X}$ and PI for $y$ in one figure. Add appropriate labels of axes, title, and legend. [*Hint:* Create a sequence of values of $x$, and obtain CI and PI for each value of $x$. Use `legend()` to add legends to a plot.] -->
+
+<!-- 9.  Use the data and your fitted result to verify that -->
+<!--     + (a) $\scriptstyle \sum_{i=1}^{32}(y_i - \hat{y}_i) = \sum_{i=1}^ne_i = 0$ -->
+<!--     + (b) $\scriptstyle  \sum_{i=1}^{32}y_i = \sum_{i=1}^{32}\hat{y}_i$ -->
+<!--     + (c) The LS regression line passes through the centroid $(\overline{x}, \overline{y})$ -->
+<!--     + (d) $\scriptstyle \sum_{i=1}^{32}x_ie_i = 0$ -->
+<!--     + (e) $\scriptstyle  \sum_{i=1}^{32}\hat{y}_ie_i = 0$ -->
+

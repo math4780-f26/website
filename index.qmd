@@ -34,8 +34,8 @@ format:
 | 2 | Tue, Sep 8 | Simple Linear Regression (SLR) | 🖥️ [slr](slides/04-slr-f26-slides.html) |  | [IS Ch 27](https://chenghanyu-introstatsbook.netlify.app/model-reg) |  |  |  |  |
 |  | Thu, Sep 10 | Simple Linear Regression |  |  |  |  |  |  |  |
 | 3 | Tue, Sep 15 | Simple Linear Regression |  | 👉 [regression CI](https://chenghanyustats-introstat-regression-ci.share.connect.posit.cloud/) |  |  |  |  |  |
-|  | Thu, Sep 17 | Simple Linear Regression |  |  |  | ✍️ HW 2 (due 9/25) |  |  |  |
-| 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ mlr |  |  |  | worksheet 1 |  |  |
+|  | Thu, Sep 17 | Simple Linear Regression |  |  |  | ✍️ [HW 2 (due 9/25)](hw/hw02.html) | [worksheet 1](ws/ws1.html) |  |  |
+| 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ mlr |  |  |  |  |  |  |
 |  | Thu, Sep 24 | Multiple Linear Regression |  |  |  |  |  |  |  |
 | 5 | Tue, Sep 29 | Multiple Linear Regression |  |  |  |  |  |  |  |
 |  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ HW 3 (due 10/9) |  |  |  |

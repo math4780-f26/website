@@ -88,27 +88,35 @@ $$
 
 Would you trust this prediction? Why or why not?
 
-\vspace{0.6in}
+<!-- \vspace{0.6in} -->
 
-## Does the regression show that studying causes higher scores?
+<!-- ## Does the regression show that studying causes higher scores? -->
 
-The professor concludes:
+<!-- The professor concludes: -->
 
-> "The positive slope proves that increasing study time causes higher exam scores."
+<!-- > "The positive slope proves that increasing study time causes higher exam scores." -->
 
-Complete the statement:
+<!-- Complete the statement: -->
 
-> The regression provides evidence of ____________________________________________,  
-> but it does not by itself establish ____________________________________________.
+<!-- > The regression provides evidence of ____________________________________________,   -->
+<!-- > but it does not by itself establish ____________________________________________. -->
 
-Give **one possible variable** that could be related to both study time and exam performance:
+<!-- Give **one possible variable** that could be related to both study time and exam performance: -->
 
-____________________________________________________________________________
+<!-- ____________________________________________________________________________ -->
 
-**In one sentence, explain why it could matter.**
+<!-- **In one sentence, explain why it could matter.** -->
 
-\vspace{0.5in}
+<!-- \vspace{0.5in} -->
 
-**(MSSC)** Suppose the residual variability increases as study time increases. What concern does this create for the usual prediction or inference?
+<!-- **(MSSC)** Suppose the residual variability increases as study time increases. What concern does this create for the usual prediction or inference? -->
+
+**(MSSC)** Suppose we redefine the predictor as
+
+$$
+X_c = X - 5,
+$$
+
+so that $X_c=0$ corresponds to studying 5 hours. Without refitting the model, determine the new regression equation. What changes about the intercept and slope? Would any fitted values or predictions change? Explain.
 
 \vspace{0.55in}
