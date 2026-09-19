@@ -35,12 +35,12 @@ format:
 |  | Thu, Sep 10 | Simple Linear Regression |  |  |  |  |  |  |  |
 | 3 | Tue, Sep 15 | Simple Linear Regression |  | 👉 [regression CI](https://chenghanyustats-introstat-regression-ci.share.connect.posit.cloud/) |  |  |  |  |  |
 |  | Thu, Sep 17 | Simple Linear Regression |  |  |  | ✍️ [HW 2 (due 9/25)](hw/hw02.html) | [worksheet 1](ws/ws1.html) |  |  |
-| 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ mlr |  |  |  |  |  |  |
+| 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ [mlr](slides/05-mlr-slides.html) |  |  |  |  |  |  |
 |  | Thu, Sep 24 | Multiple Linear Regression |  |  |  |  |  |  |  |
 | 5 | Tue, Sep 29 | Multiple Linear Regression |  |  |  |  |  |  |  |
-|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ HW 3 (due 10/9) |  |  |  |
+|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ HW 3 (due 10/9) | worksheet 2 |  |  |
 | 6 | Tue, Oct 6 | Matrix Algebra Review | 🖥️ mat |  |  |  |  |  |  |
-|  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ mlr-mat |  |  |  | worksheet 2 |  |  |
+|  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ mlr-mat |  |  |  |  |  |  |
 | 7 | Tue, Oct 13 | Diagnostics: Residuals and Unusual Data | 🖥️ diag-unusual |  |  |  |  |  |  |
 |  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ diag-normality |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ diag-const-var |  |  |  |  |  |  |
