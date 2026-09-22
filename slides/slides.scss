@@ -202,17 +202,53 @@ h2 {
   background-color: #fcf1eb;
 }
 .danger:before{
-  content: "Danger:";
+  content: "Attention:";
   font-size: 100%;
   font-weight: bold;
   color: #e36414;
   margin-bottom: 5px;
 }
 
+
+.danger {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+
+  border-right: solid 5px #e36414;
+  background-color: #fcf1eb;
+
+  /* Reserve space on the left for "Attention:" */
+  padding: 0.25em 0.75em 0.25em 6.5em;
+}
+
+.danger::before {
+  content: "Attention:";
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+
+  font-size: 100%;
+  font-weight: bold;
+  color: #e36414;
+  line-height: 1.4;
+}
+
+/* Remove unnecessary space at the top and bottom of each box */
+.danger > :first-child {
+  margin-top: 0;
+}
+
+.danger > :last-child {
+  margin-bottom: 0;
+}
+
 .algo {
   border-right: solid 5px #FFCC00;
   background-color: #FFCC0050;
 }
+
+
 .algo:before {
   content: "Algorithm";
   font-size: 100%;
@@ -221,17 +257,50 @@ h2 {
   margin-bottom: 1px;
 }
 
-.fact {
-  border-right: solid 5px #F26BAA;
-  background-color: #E7E7E7;
+
+
+.algo ul li:before {
+  color: #FFCC00;
+  display: inline-block;
+  width: .5em;
+  margin-left: -.5em
 }
 
-.fact:before{
-  content: "Fact:";
-  font-size: 100%;
+
+
+.instructions {
+  border-left: solid 5px #FFCC00;
+  background-color: #FFCC0050;
+  padding: 10px 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.instructions li::before {
+  /* content: ">";  */
+  color: #FFCC00;
+  display: inline-block;
+  margin-left: -1.5em
+}
+
+
+.your-turn {
+  border-left: solid 5px #FFCC00;
+  background-color: #fff9e5;
+}
+.your-turn:before{
+  content: "Your turn!";
+  font-size: 140%;
   font-weight: bold;
-  color: #F26BAA;
-  margin-bottom: 1px;
+  color: #FFCC00;
+  margin-bottom: 0px;
+}
+.your-turn ul li:before {
+  color: #FFCC00;
+  display: inline-block;
+  width: .5em;
+  margin-left: -.5em
 }
 
 
@@ -251,6 +320,23 @@ h2 {
   margin-left: -1.5em
 }
 
+
+.fact {
+  border-right: solid 5px #F26BAA;
+  background-color: #E7E7E7;
+}
+
+.fact:before{
+  content: "Fact:";
+  font-size: 100%;
+  font-weight: bold;
+  color: #F26BAA;
+  margin-bottom: 1px;
+}
+
+
+
+
 .question, .your-turn, .tip {
   padding: 1px 1px;
   margin-top: 20px;
@@ -262,23 +348,7 @@ h2 {
   background-color: #d2dee0;
 }
 
-.your-turn {
-  border-left: solid 5px #FFCC00;
-  background-color: #fff9e5;
-}
-.your-turn:before{
-  content: "Your turn!";
-  font-size: 140%;
-  font-weight: bold;
-  color: #FFCC00;
-  margin-bottom: 0px;
-}
-.your-turn ul li:before {
-  color: #FFCC00;
-  display: inline-block;
-  width: .5em;
-  margin-left: -.5em
-}
+
 
 .lab {
   border-left: solid 5px #16a5f5;
