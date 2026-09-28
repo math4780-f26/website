@@ -1,0 +1,114 @@
+---
+title: "Homework 3"
+subtitle: "Simple and Multiple Linear Regression"
+categories: "Homework"
+editor: source
+params:
+  show_sol: true
+execute:
+  echo: false
+---
+
+::: callout-important
+[Due **Friday, Oct 9, 11:59 PM**]{.red}
+:::
+
+<!-- # Homework Instruction and Requirement -->
+
+<!-- - Homework 1 covers course materials of Week 1 to 2. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not accepted. 
+
+- In your homework, please number questions **in order**.
+
+<!-- - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- Questions started with **(MSSC)** are *required* for MSSC 5780 students, and optional for MATH 4780 students.
+
+
+# Homework Questions
+
+(@) **Checking statistical significance.** 
+    (a) Generate 1000 data points `var1` from a standard normal distribution. Generate another variable `var2` in the same way. Run a regression of one variable on the other. Is the slope coefficient “statistically significant”?
+    (b) Run a simulation repeating this process 2000 times. This can be done using a loop. From each simulation, save the test statistic (the estimated coefficient of `var1` divided by its standard error). If the absolute value of the test statistic exceeds 2, the estimate is “statistically significant.” How many of these test statistics exceed 2 in absolute value, thus achieving the conventional level of statistical significance?
+    (c) Plot the distribution of the estimated slopes and p-values. Based on your answers of (a), (b) and (c), what is your thought about the statistical significance approach?
+
+<br>
+
+(@) **Residual plots.** Suppose the true data-generating model is $Y = \beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1X_2+\varepsilon,$ where $X_1$ is continuous, $X_2$ is binary, and $\varepsilon\sim N(0,\sigma^2)$. Investigate what happens when the interaction term is omitted from the fitted regression model.
+    (a) Generate $n=300$ observations as follows: $X_1\sim N(0,1)$, $X_2\sim \text{Bernoulli}(0.5)$, and generate $Y$ using $Y=2+X_1+X_2+2X_1X_2+\varepsilon$,
+$\varepsilon\sim N(0,0.7^2)$. Fit the additive regression model $$Y=\alpha_0+\alpha_1X_1+\alpha_2X_2+\text{error},$$ which incorrectly omits the interaction between $X_1$ and $X_2$.
+    (b) Obtain the residuals from the fitted model in part (a). Make a plot of the residuals versus $X_1$, using different plotting symbols for observations with $X_2=0$ and $X_2=1$. Add a horizontal reference line at residual $=0$. Describe the pattern you observe. In particular, does the relationship between the residuals and $X_1$ appear to be the same for the two groups?
+    (c) Add a separate fitted line to the residual plot for the $X_2=0$ observations and for the $X_2=1$ observations. Explain why the two fitted residual trends suggest that the additive regression model is missing an interaction.
+    (d) Now fit the interaction model
+    $$Y=\gamma_0+\gamma_1X_1+\gamma_2X_2+\gamma_3X_1X_2+\text{error}.$$ Again plot the residuals versus $X_1$, using different symbols for the two values of $X_2$. Compare this residual plot with the one from part (b). What changes after the interaction term is included?
+    (e) Based on this simulation, explain how a residual plot can reveal a missing interaction between a continuous predictor and a binary predictor.
+    
+<br>
+
+(@) **Residuals and predictions.** The data [`Pyth`](https://raw.githubusercontent.com/chenghanyustats/ROS-Examples/refs/heads/master/Pyth/pyth.txt) contains outcome `y` and predictors `x1`, `x2` for 40 data points, with a further 20 points with the predictors but no observed outcome.
+    (a) Fit a linear regression model predicting `y` from `x1` and `x2`, using the first 40 data points in the file. Summarize the inferences and check $R^2$ for model fit. 
+    (b) Display the estimated model graphically as [the plots](https://math4780-f26.github.io/website/slides/05-mlr-slides.html#/visualing-the-fitted-model) that fix the other variable at their average level. 
+    (c) Make three residual plots: `residual` vs. $\hat{y}$, `residual` vs. $x_1$, and `residual` vs. $x_2$. A good model is supposed to have residual plots having mean around 0 with no patterns.  Do the assumptions appear to be met?
+    (d) Make predictions for the remaining 20 data points in the file. How confident do you feel about these predictions?
+
+<!-- After doing this exercise, take a look at Gelman and Nolan (2017, section 10.4) to see where these data came from. -->
+
+
+<br>
+
+
+(@) We will use [`mtcars`](./data/mtcars.csv) data set. The variables used are:
+- `mpg`: miles per gallon,
+- `wt`: vehicle weight in 1000 lbs,
+- `hp`: gross horsepower. <br>
+The goal is to understand what $\beta_1$ means after accounting for `hp` in the model  $mpg_i=\beta_0+\beta_1 wt_i+\beta_2 hp_i+\varepsilon_i$.
+    (a) Fit multiple linear regression (MLR) `mpg ~ wt + hp`, and report the estimated coefficient and standard error for `wt`. Interpret the coefficient of `wt` in the context of fuel economy.
+    (b) Fit simple linear regression (SLR) `wt ~ hp`, and save the residuals as `wt_res`. What does a positive value of `wt_res` mean for a particular car? What does a negative value mean?
+    (c) Fit SLR `mpg ~ hp`, and save the residuals as `mpg_res`. Explain what `mpg_res` represents.
+    (d) Now fit SLR `mpg_res ~ wt_res`. Compare its slope with the coefficient of `wt` from the multiple regression in part (a). What do you observe? This numerical equality is an example of the [Frisch–Waugh–Lovell theorem](https://en.wikipedia.org/wiki/Frisch%E2%80%93Waugh%E2%80%93Lovell_theorem).
+    (e) Make a scatterplot of `mpg_res` versus `wt_res` and add the fitted regression line. Use this plot to explain what the coefficient of `wt` in `mpg ~ wt + hp` is measuring. In particular, explain why this relationship is different from simply plotting `mpg` against `wt`.
+    (f) Compare the estimated coefficient of `wt` from SLR `mpg ~ wt` with the coefficient from MLR fit `mpg ~ wt + hp`. Why are the two coefficients different? Use the relationships among `mpg`, `wt`, and `hp` to explain your answer.
+    (g) Based on this exercise, explain in your own words what the phrase _**“the association between `wt` and `mpg`, holding `hp` constant”**_ means. Your explanation should use the idea of residualizing rather than simply saying that `hp` is “fixed.”
+
+<!-- ### (g) Unique variation and multicollinearity -->
+
+<!-- Now consider the model -->
+
+<!-- ```r -->
+<!-- lm(mpg ~ wt + hp + disp, data = mtcars) -->
+<!-- ``` -->
+
+<!-- where `disp` is engine displacement. -->
+
+<!-- First regress `wt` on both `hp` and `disp`: -->
+
+<!-- ```r -->
+<!-- lm(wt ~ hp + disp, data = mtcars) -->
+<!-- ``` -->
+
+<!-- and save the residuals. -->
+
+<!-- Compare the variance of these residuals with the variance of `wt_res` from part (b). -->
+
+<!-- Then compare the standard error of the `wt` coefficient between -->
+
+<!-- ```r -->
+<!-- lm(mpg ~ wt + hp, data = mtcars) -->
+<!-- ``` -->
+
+<!-- and -->
+
+<!-- ```r -->
+<!-- lm(mpg ~ wt + hp + disp, data = mtcars) -->
+<!-- ``` -->
+
+<!-- Explain the connection between the amount of unique variation remaining in `wt` and the uncertainty of its regression coefficient. -->
+
+
+<br>
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

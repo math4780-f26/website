@@ -1539,7 +1539,7 @@
     "href": "index.html",
     "title": "MATH 4780 (MSSC 5780) Regression Analysis Fall 2026",
     "section": "",
-    "text": "This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nSlides\nApp\nReading\nHomework\nWorksheet\nExam\nProject\n\n\n\n1\nTue, Sep 1\nGreetings + Overview of Regression\n🖥️ syllabus 🖥️ overview\n\n\n\nSyllabusGenAI Video\n\n\n\n\n\n\n\n\nThu, Sep 3\nProbability and Statistics Review\n🖥️ prob-stat\n\n👉 distributions  👉 mean  👉 sd  👉 CLT\n\n\nIS Ch 9-13 IS Ch 14, 16 IS Appendix\n\n✍️ HW 1 (due 9/11)\n\n\n\n\n\n\n2\nTue, Sep 8\nSimple Linear Regression (SLR)\n🖥️ slr\n\n\nIS Ch 27\n\n\n\n\n\n\n\nThu, Sep 10\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\n3\nTue, Sep 15\nSimple Linear Regression\n\n👉 regression CI\n\n\n\n\n\n\n\n\n\nThu, Sep 17\nSimple Linear Regression\n\n\n\n✍️ HW 2 (due 9/25)\n\nworksheet 1\n\n\n\n\n4\nTue, Sep 22\nMultiple Linear Regression (MLR)\n🖥️ mlr\n\n\n\n\n\n\n\n\n\n\nThu, Sep 24\nMultiple Linear Regression\n\n\n\n\n\n\n\n\n\n5\nTue, Sep 29\nMultiple Linear Regression\n\n\n\n\n\n\n\n\n\n\nThu, Oct 1\nMultiple Linear Regression\n\n\n\n✍️ HW 3 (due 10/9)\nworksheet 2\n\n\n\n\n6\nTue, Oct 6\nMatrix Algebra Review\n🖥️ mat\n\n\n\n\n\n\n\n\n\nThu, Oct 8\nMLR in Matrix Form (MSSC only)\n🖥️ mlr-mat\n\n\n\n\n\n\n\n\n7\nTue, Oct 13\nDiagnostics: Residuals and Unusual Data\n🖥️ diag-unusual\n\n\n\n\n\n\n\n\n\nThu, Oct 15\nDiagnostics: Symmetry and Normality\n🖥️ diag-normality\n\n\n\n\n\n\n\n\n8\nTue, Oct 20\nDiagnostics: Constant Variance\n🖥️ diag-const-var\n\n\n\n\n\n\n\n\n\nThu, Oct 22\nNO CLASS: Midterm break\n\n\n\n✍️ HW 4 (due 10/30)\n\n\n\n\n\n9\nTue, Oct 27\nDiagnostics: Linearity\n🖥️ diag-linearity\n\n\n\n\n\n\n\n\n\nThu, Oct 29\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n\n\n10\nTue, Nov 3\nBootstrapping and Simulation-based Inference\n🖥️ bootstrap\n\n\n\nworksheet 3\n\n\n\n\n\nThu, Nov 5\nPolynomial Regression\n🖥️ poly-reg\n\n\n\n\n\n\n\n\n11\nTue, Nov 10\n\nIn-Class Exam ✅\n\n\n\n\n\n\n\n\n\n\nThu, Nov 12\nNonparametric Regression\n🖥️ nonpara-reg\n\n\n✍️ HW 5 (due 11/20)\n\n\n\n\n\n12\nTue, Nov 17\nCategorical Variables\n🖥️ cat-var\n\n\n\n\n\n\n\n\n\nThu, Nov 19\nCategorical Variables\n\n\n\n\n\n\n\n\n\n13\nTue, Nov 24\nCollinearity\n🖥️ collinearity\n\n\n\nworksheet 4\n\n\n\n\n\nThu, Nov 26\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n\n\n14\nTue, Dec 1\nVariable Selection\n🖥️ var-select\n\n\n\n\n\n\n\n\n\nThu, Dec 3\nVariable Selection\n\n\n\n✍️ HW 6 (due 12/11)\n\n\n\n\n\n15\nTue, Dec 8\nLogistic Regression\n🖥️ logistic-reg\n\n\n\n\n\n\n\n\n\nThu, Dec 10\nLogistic Regression\n\n\n\n\nworksheet 5\n\n\n\n\n16\nMon, Dec 14\nProject Presentation (10:30 AM - 12:30 PM)\n\n\n\n\n\n\n\n\n\n\n\nDr. Yu reserves the right to make changes to the schedule.",
+    "text": "This schedule will be updated as the semester progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nSlides\nApp\nReading\nHomework\nWorksheet\nExam\nProject\n\n\n\n1\nTue, Sep 1\nGreetings + Overview of Regression\n🖥️ syllabus 🖥️ overview\n\n\n\nSyllabusGenAI Video\n\n\n\n\n\n\n\n\nThu, Sep 3\nProbability and Statistics Review\n🖥️ prob-stat\n\n👉 distributions  👉 mean  👉 sd  👉 CLT\n\n\nIS Ch 9-13 IS Ch 14, 16 IS Appendix\n\n✍️ HW 1 (due 9/11)\n\n\n\n\n\n\n2\nTue, Sep 8\nSimple Linear Regression (SLR)\n🖥️ slr\n\n\nIS Ch 27\n\n\n\n\n\n\n\nThu, Sep 10\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\n3\nTue, Sep 15\nSimple Linear Regression\n\n👉 regression CI\n\n\n\n\n\n\n\n\n\nThu, Sep 17\nSimple Linear Regression\n\n\n\n✍️ HW 2 (due 9/25)\n\nworksheet 1\n\n\n\n\n4\nTue, Sep 22\nMultiple Linear Regression (MLR)\n🖥️ mlr\n\n\n\n\n\n\n\n\n\n\nThu, Sep 24\nMultiple Linear Regression\n\n\n\n\n\n\n\n\n\n5\nTue, Sep 29\nMultiple Linear Regression\n\n\n\n\n\n\n\n\n\n\nThu, Oct 1\nMultiple Linear Regression\n\n\n\n✍️ HW 3 (due 10/9)\n\nworksheet 2\n\n\n\n\n6\nTue, Oct 6\nMatrix Algebra Review\n🖥️ mat\n\n👉3Blue1Blown: matrices\n\n\n\n\n\n\n\n\n\nThu, Oct 8\nMLR in Matrix Form (MSSC only)\n🖥️ mlr-mat\n\n\n\n\n\n\n\n\n\n7\nTue, Oct 13\nDiagnostics: Residuals and Unusual Data\n🖥️ diag-unusual\n\n\n\n\n\n\n\n\n\nThu, Oct 15\nDiagnostics: Symmetry and Normality\n🖥️ diag-normality\n\n\n\n\n\n\n\n\n8\nTue, Oct 20\nDiagnostics: Constant Variance\n🖥️ diag-const-var\n\n\n\n\n\n\n\n\n\nThu, Oct 22\nNO CLASS: Midterm break\n\n\n\n✍️ HW 4 (due 10/30)\n\n\n\n\n\n9\nTue, Oct 27\nDiagnostics: Linearity\n🖥️ diag-linearity\n\n\n\n\n\n\n\n\n\nThu, Oct 29\nDiagnostics: Lack of Fit\n\n\n\n\n\n\n\n\n\n10\nTue, Nov 3\nBootstrapping and Simulation-based Inference\n🖥️ bootstrap\n\n\n\nworksheet 3\n\n\n\n\n\nThu, Nov 5\nPolynomial Regression\n🖥️ poly-reg\n\n\n\n\n\n\n\n\n11\nTue, Nov 10\n\nIn-Class Exam ✅\n\n\n\n\n\n\n\n\n\n\nThu, Nov 12\nNonparametric Regression\n🖥️ nonpara-reg\n\n\n✍️ HW 5 (due 11/20)\n\n\n\n\n\n12\nTue, Nov 17\nCategorical Variables\n🖥️ cat-var\n\n\n\n\n\n\n\n\n\nThu, Nov 19\nCategorical Variables\n\n\n\n\n\n\n\n\n\n13\nTue, Nov 24\nCollinearity\n🖥️ collinearity\n\n\n\nworksheet 4\n\n\n\n\n\nThu, Nov 26\nNO CLASS: Thanksgiving\n\n\n\n\n\n\n\n\n\n14\nTue, Dec 1\nVariable Selection\n🖥️ var-select\n\n\n\n\n\n\n\n\n\nThu, Dec 3\nVariable Selection\n\n\n\n✍️ HW 6 (due 12/11)\n\n\n\n\n\n15\nTue, Dec 8\nLogistic Regression\n🖥️ logistic-reg\n\n\n\n\n\n\n\n\n\nThu, Dec 10\nLogistic Regression\n\n\n\n\nworksheet 5\n\n\n\n\n16\nMon, Dec 14\nProject Presentation (10:30 AM - 12:30 PM)\n\n\n\n\n\n\n\n\n\n\n\nDr. Yu reserves the right to make changes to the schedule.",
     "crumbs": [
       "Course Information",
       "Schedule"
@@ -3311,7 +3311,7 @@
     "href": "hw.html",
     "title": "Homework",
     "section": "",
-    "text": "More homework sets to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\n\nNo.\n\n\n\nTitle\n\n\n\nDue date\n\n\n\n\n\n\n\n\nHomework 1\n\n\nProbability and Statistics\n\n\n\n\n\n\n\n\n\nHomework 2\n\n\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "text": "More homework sets to be added as the semester progresses.\n\n\n\n\n\n\n\n\n\n\nNo.\n\n\n\nTitle\n\n\n\nDue date\n\n\n\n\n\n\n\n\nHomework 1\n\n\nProbability and Statistics\n\n\n\n\n\n\n\n\n\nHomework 2\n\n\nSimple Linear Regression\n\n\n\n\n\n\n\n\n\nHomework 3\n\n\nSimple and Multiple Linear Regression\n\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Homework"
     ]
@@ -3469,5 +3469,635 @@
       "Course Information",
       "Syllabus"
     ]
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#matrix",
+    "href": "slides/06-mat-slides.html#matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Matrix",
+    "text": "Matrix\n\nA matrix \\({\\bf A}\\) that has \\(n\\) rows and \\(m\\) columns is defined as \\[{\\bf A} = (a_{ij})_{n \\times m}\\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1m} \\\\ a_{21} & a_{22} & \\cdots & a_{2m} \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ a_{n1} & a_{n2} & \\cdots & a_{nm} \\end{bmatrix}_{n \\times m}\\]\n\n\n\n\n\n\n(A &lt;- matrix(data = 1:6, \n             nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nclass(A)\n\n[1] \"matrix\" \"array\" \n\n\n\n\nattributes(A)\n\n$dim\n[1] 2 3\n\n\n\n\n\n\nBut what is the geometrical meaning of matrices?\n\n\nFirst index is for row and the second index is for column\nUse command matrix() to create a matrix.\nA matrix is a two-dimensional analog of a vector.\nLike all elements of a matrix must be of the same type."
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#section-1",
+    "href": "slides/06-mat-slides.html#section-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed. Grids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#section-3",
+    "href": "slides/06-mat-slides.html#section-3",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed.\nGrids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#column-vector",
+    "href": "slides/06-mat-slides.html#column-vector",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Column Vector",
+    "text": "Column Vector\n\nIf \\(m = 1\\), it becomes a \\(n\\) by 1 matrix or a column vector of size \\(n\\). \\[\\small {\\bf y} = \\begin{bmatrix} y_{1}  \\\\ y_{2}  \\\\ \\vdots  \\\\  y_{n} \\end{bmatrix}_{n \\times 1} \\quad {\\bf 1} = \\begin{bmatrix} 1  \\\\ 1  \\\\ \\vdots  \\\\  1 \\end{bmatrix}_{n \\times 1}\\]\n\n\n\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n## 2nd column\nA[, 2]\n\n[1] 3 4\n\n## becomes a numeric vector\nclass(A[, 2]) \n\n[1] \"integer\"\n\n\n\n\n## keep its matrix class\nA[, 2, drop = FALSE] \n\n     [,1]\n[1,]    3\n[2,]    4\n\nclass(A[, 2, drop = FALSE])  \n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#row-vector",
+    "href": "slides/06-mat-slides.html#row-vector",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Row Vector",
+    "text": "Row Vector\n\nIf \\(n = 1\\), it becomes a \\(1\\) by \\(m\\) matrix or a row vector of size \\(m\\). \\[{\\bf x} = \\begin{bmatrix} x_{1} &  x_{2}  & \\dots  &  x_{m} \\end{bmatrix}_{1 \\times m}\\]\n\nBy default, a vector means a column vector.\n\n\n## 2nd row\nA[2, , drop = FALSE]\n\n     [,1] [,2] [,3]\n[1,]    2    4    6\n\n## keep its matrix class\nclass(A[2, , drop = FALSE]) \n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#transpose",
+    "href": "slides/06-mat-slides.html#transpose",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Transpose",
+    "text": "Transpose\n\nLet \\({\\bf A}\\) be an \\(n \\times m\\) matrix. The transpose of \\({\\bf A}\\), denoted by \\({\\bf A}'\\) or \\({\\bf A}^T\\), is a \\(m \\times n\\) matrix whose columns are the rows of \\({\\bf A}\\). \\[{\\bf A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6\\end{bmatrix}\\] \\[{\\bf X}_{n \\times 2}\\begin{bmatrix} 1 & x_1 \\\\ 1 & x_{2} \\\\ \\vdots  & \\vdots  \\\\ 1 & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1} & {\\bf x} \\end{bmatrix}\\] \\[{\\bf X}'_{2 \\times n} = \\begin{bmatrix} 1 & 1 & \\cdots & 1 \\\\ x_1 & x_2 & \\cdots & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1}' \\\\ {\\bf x}' \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#transpose-in-r",
+    "href": "slides/06-mat-slides.html#transpose-in-r",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Transpose in R",
+    "text": "Transpose in R\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nt(A)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#linear-independence",
+    "href": "slides/06-mat-slides.html#linear-independence",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Linear Independence",
+    "text": "Linear Independence\n\n\n\nVectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly independent if for scalars \\(c_{1},c_{2},\\dots,c_{k} \\in \\mathbf{R},\\) \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\] can only be satisfied by \\(c_i = 0\\) for all \\(i = 1, 2, \\dots, k\\).\n\n\nAre \\({\\bf v}_1 = (1, 1)'\\) and \\({\\bf v}_2 = (-3, 2)'\\) linearly independent?\n\n\nWays to check linear independence:\n\nsolve the homogeneous linear system \\(\\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix}\\begin{bmatrix} c_1 \\\\ c_2 \\end{bmatrix}=\\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix}\\) for \\(c_1\\) and \\(c_2\\).\ncheck if \\(\\text{det} \\left( \\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix} \\right)\\) is non-zero."
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#linear-independence-1",
+    "href": "slides/06-mat-slides.html#linear-independence-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Linear Independence",
+    "text": "Linear Independence\n\nV &lt;- matrix(c(1, 1, -3, 2), nrow = 2, ncol = 2)\nsolve(a = V, b = rep(0, 2))\n\n[1] 0 0\n\ndet(V)\n\n[1] 5\n\n\n\nA is invertible, that is, A has an inverse, is nonsingular, and is nondegenerate.\nA is row-equivalent to the n-by-n identity matrix In.\nA is column-equivalent to the n-by-n identity matrix In.\nA has n pivot positions.\nA has full rank; that is, rank A = n.\nBased on the rank A=n, the equation Ax = 0 has only the trivial solution x = 0. and the equation Ax = b has exactly one solution for each b in Kn.\nThe kernel (null space) of A is trivial\nThe columns of A are linearly independent.\nThe columns of A span Kn.\nThe columns of A form a basis of Kn.\ndet A ≠ 0.\nThe number 0 is not an eigenvalue of A.\nThe transpose AT is an invertible matrix"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#operations-addition",
+    "href": "slides/06-mat-slides.html#operations-addition",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Operations: Addition",
+    "text": "Operations: Addition\n\nAddition: \\({\\bf A + B}\\) is adding the corresponding elements together \\(a_{ij} + b_{ij}\\).\n\\({\\bf A}\\) and \\({\\bf B}\\) must have an equal number of rows and columns.\n\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(6:1, nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    6    4    2\n[2,]    5    3    1\n\nA + B\n\n     [,1] [,2] [,3]\n[1,]    7    7    7\n[2,]    7    7    7\n\n\n\n\n\n(B &lt;- matrix(1:4, nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nA + B\n\nError in `A + B`:\n! non-conformable arrays"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#operations-multiplication",
+    "href": "slides/06-mat-slides.html#operations-multiplication",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Operations: Multiplication",
+    "text": "Operations: Multiplication\n\n\nMultiplication: The product of matrices \\({\\bf A}\\) and \\({\\bf B}\\) is denoted as \\({\\bf AB}\\).\n\n\n\nThe number of columns in \\({\\bf A}\\) must be equal to the number of rows \\({\\bf B}\\).\nThe result matrix \\({\\bf C}\\) has the number of rows of \\({\\bf A}\\) and the number of columns of the \\({\\bf B}\\).\n\n\nThe number of columns in the first matrix \\({\\bf A}\\) must be equal to the number of rows in the second matrix of \\({\\bf B}\\).\nThe resulting matrix \\({\\bf C}\\) has dimension of the number of rows of the first and the number of columns of the second matrix."
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#operations-multiplication-1",
+    "href": "slides/06-mat-slides.html#operations-multiplication-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Operations: Multiplication",
+    "text": "Operations: Multiplication\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(1:12, nrow = 3, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7   10\n[2,]    2    5    8   11\n[3,]    3    6    9   12\n\n\n\n\n\n(C &lt;- A %*% B)\n\n     [,1] [,2] [,3] [,4]\n[1,]   22   49   76  103\n[2,]   28   64  100  136\n\n(B &lt;- matrix(1:8, nrow = 2, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    3    5    7\n[2,]    2    4    6    8\n\nA %*% B\n\nError in `A %*% B`:\n! non-conformable arguments"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#operations-multiplication-2",
+    "href": "slides/06-mat-slides.html#operations-multiplication-2",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Operations: Multiplication",
+    "text": "Operations: Multiplication\n\n\\({\\bf A}{\\bf B} \\ne {\\bf B}{\\bf A}\\) in general.\n\\(({\\bf A}{\\bf B})' =  {\\bf B}'{\\bf A}'\\).\n\n\n\n\n\n(C &lt;- matrix(1:4, 2, 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n(D &lt;- matrix(2:5, 2, 2))\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5\n\nC %*% D\n\n     [,1] [,2]\n[1,]   11   19\n[2,]   16   28\n\n\n\n\n\nD %*% C\n\n     [,1] [,2]\n[1,]   10   22\n[2,]   13   29\n\nt(C %*% D)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28\n\nt(D) %*% t(C)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#special-matrices-symmetric-and-identity",
+    "href": "slides/06-mat-slides.html#special-matrices-symmetric-and-identity",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Special Matrices: Symmetric and Identity",
+    "text": "Special Matrices: Symmetric and Identity\n\nA square matrix \\((m = n)\\) \\({\\bf A}_{n \\times n}\\) is a symmetric matrix if \\({\\bf A} = {\\bf A}'\\).\n\n\\[{\\bf A} = \\begin{bmatrix} 1 & 2  \\\\ 2 & 5 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 2 \\\\ 2 & 5 \\end{bmatrix}\\]\n\nA square matrix \\({\\bf I}_{n \\times n}\\) whose diagonal elements are 1’s and off diagonal elements are 0’s is called an identity matrix of order \\(n\\). \\[{\\bf I} = \\begin{bmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ 0 & 0 & \\cdots & 1 \\end{bmatrix}\\]\n\n\n\nIf the inverse exists, it is unique."
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#identity-and-diagonal-matrix",
+    "href": "slides/06-mat-slides.html#identity-and-diagonal-matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Identity and Diagonal Matrix",
+    "text": "Identity and Diagonal Matrix\n\n\n\n## Identity matrix\nI &lt;- diag(4)\nI\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n## A diagonal matrix\ndiag(c(4, 2, 5))\n\n     [,1] [,2] [,3]\n[1,]    4    0    0\n[2,]    0    2    0\n[3,]    0    0    5\n\n\n\n\n## Extract diagonal elements\nD &lt;- matrix(1:4, 2, 2)\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\ndiag(D)\n\n[1] 1 4"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#inverse-matrix",
+    "href": "slides/06-mat-slides.html#inverse-matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Inverse Matrix",
+    "text": "Inverse Matrix\n\nThe inverse of a square matrix \\({\\bf A}\\), denoted by \\({\\bf A}^{-1}\\), is a square matrix such that \\[{\\bf A}^{-1}{\\bf A} = {\\bf A}{\\bf A}^{-1} = {\\bf I}\\]\n\n\n\n\n\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nD_inv &lt;- solve(D)\nD_inv\n\n     [,1] [,2]\n[1,]   -2  1.5\n[2,]    1 -0.5\n\n\n\n\nD_inv %*% D\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\nD %*% D_inv\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#idempotent-and-orthogonal",
+    "href": "slides/06-mat-slides.html#idempotent-and-orthogonal",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Idempotent and Orthogonal",
+    "text": "Idempotent and Orthogonal\n\nA square matrix \\({\\bf A}\\) is idempotent if \\({\\bf A}{\\bf A} = {\\bf A}\\).\nA square matrix \\({\\bf A}\\) is orthogonal if \\({\\bf A}^{-1} = {\\bf A}'\\) and hence \\({\\bf A}'{\\bf A} = {\\bf I}\\).\n\n\n\n\n\n## Idempotent and symmetric matrix\n(A &lt;- matrix(1, 2, 2)/2)\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\nA %*% A\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\n\n\n\n## Orthogonal matrix\n(E &lt;- matrix(c(1, 0, 0, -1), \n             nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nsolve(E)\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nt(E) %*% E\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1"
+  },
+  {
+    "objectID": "slides/06-mat-slides.html#trace",
+    "href": "slides/06-mat-slides.html#trace",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "Trace",
+    "text": "Trace\n\nThe trace of \\({\\bf A}_{n \\times n}\\), denoted by \\(\\text{tr}({\\bf A})\\), is defined as \\[\\text{tr}({\\bf A}) = a_{11} + a_{22} + \\dots + a_{nn}\\]\n\\(\\text{tr}({\\bf A}{\\bf B}) = \\text{tr}({\\bf B}{\\bf A})\\)\n\n\n(G &lt;- matrix(1:9, 3, 3))\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\nsum(diag(G))\n\n[1] 15"
+  },
+  {
+    "objectID": "slides/06-mat.html",
+    "href": "slides/06-mat.html",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix \\({\\bf A}\\) that has \\(n\\) rows and \\(m\\) columns is defined as \\[{\\bf A} = (a_{ij})_{n \\times m}\\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1m} \\\\ a_{21} & a_{22} & \\cdots & a_{2m} \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ a_{n1} & a_{n2} & \\cdots & a_{nm} \\end{bmatrix}_{n \\times m}\\]\n\n\n. . .\n\n\n\n(A &lt;- matrix(data = 1:6, \n             nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nclass(A)\n\n[1] \"matrix\" \"array\" \n\n\n\n\nattributes(A)\n\n$dim\n[1] 2 3\n\n\n\n\n. . .\n\nBut what is the geometrical meaning of matrices?\n\n\n\nFirst index is for row and the second index is for column\nUse command matrix() to create a matrix.\nA matrix is a two-dimensional analog of a vector.\nLike all elements of a matrix must be of the same type.\n\n\n\n\n\n\n\nA matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed. Grids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed.\nGrids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)\n\n\n\n\nIf \\(m = 1\\), it becomes a \\(n\\) by 1 matrix or a column vector of size \\(n\\). \\[\\small {\\bf y} = \\begin{bmatrix} y_{1}  \\\\ y_{2}  \\\\ \\vdots  \\\\  y_{n} \\end{bmatrix}_{n \\times 1} \\quad {\\bf 1} = \\begin{bmatrix} 1  \\\\ 1  \\\\ \\vdots  \\\\  1 \\end{bmatrix}_{n \\times 1}\\]\n\n\n. . .\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n## 2nd column\nA[, 2]\n\n[1] 3 4\n\n## becomes a numeric vector\nclass(A[, 2]) \n\n[1] \"integer\"\n\n\n\n\n## keep its matrix class\nA[, 2, drop = FALSE] \n\n     [,1]\n[1,]    3\n[2,]    4\n\nclass(A[, 2, drop = FALSE])  \n\n[1] \"matrix\" \"array\" \n\n\n\n\n\n\nIf \\(n = 1\\), it becomes a \\(1\\) by \\(m\\) matrix or a row vector of size \\(m\\). \\[{\\bf x} = \\begin{bmatrix} x_{1} &  x_{2}  & \\dots  &  x_{m} \\end{bmatrix}_{1 \\times m}\\]\n\nBy default, a vector means a column vector.\n\n\n## 2nd row\nA[2, , drop = FALSE]\n\n     [,1] [,2] [,3]\n[1,]    2    4    6\n\n## keep its matrix class\nclass(A[2, , drop = FALSE]) \n\n[1] \"matrix\" \"array\" \n\n\n\n\nLet \\({\\bf A}\\) be an \\(n \\times m\\) matrix. The transpose of \\({\\bf A}\\), denoted by \\({\\bf A}'\\) or \\({\\bf A}^T\\), is a \\(m \\times n\\) matrix whose columns are the rows of \\({\\bf A}\\). \\[{\\bf A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6\\end{bmatrix}\\] \\[{\\bf X}_{n \\times 2}\\begin{bmatrix} 1 & x_1 \\\\ 1 & x_{2} \\\\ \\vdots  & \\vdots  \\\\ 1 & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1} & {\\bf x} \\end{bmatrix}\\] \\[{\\bf X}'_{2 \\times n} = \\begin{bmatrix} 1 & 1 & \\cdots & 1 \\\\ x_1 & x_2 & \\cdots & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1}' \\\\ {\\bf x}' \\end{bmatrix}\\]\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nt(A)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\n\n\n\n\nVectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly independent if for scalars \\(c_{1},c_{2},\\dots,c_{k} \\in \\mathbf{R},\\) \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\] can only be satisfied by \\(c_i = 0\\) for all \\(i = 1, 2, \\dots, k\\).\n\n\nAre \\({\\bf v}_1 = (1, 1)'\\) and \\({\\bf v}_2 = (-3, 2)'\\) linearly independent?\n\n. . .\nWays to check linear independence:\n\nsolve the homogeneous linear system \\(\\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix}\\begin{bmatrix} c_1 \\\\ c_2 \\end{bmatrix}=\\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix}\\) for \\(c_1\\) and \\(c_2\\).\ncheck if \\(\\text{det} \\left( \\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix} \\right)\\) is non-zero.\n\n\n\n\nV &lt;- matrix(c(1, 1, -3, 2), nrow = 2, ncol = 2)\nsolve(a = V, b = rep(0, 2))\n\n[1] 0 0\n\ndet(V)\n\n[1] 5\n\n\n\n\nA is invertible, that is, A has an inverse, is nonsingular, and is nondegenerate.\nA is row-equivalent to the n-by-n identity matrix In.\nA is column-equivalent to the n-by-n identity matrix In.\nA has n pivot positions.\nA has full rank; that is, rank A = n.\nBased on the rank A=n, the equation Ax = 0 has only the trivial solution x = 0. and the equation Ax = b has exactly one solution for each b in Kn.\nThe kernel (null space) of A is trivial\nThe columns of A are linearly independent.\nThe columns of A span Kn.\nThe columns of A form a basis of Kn.\ndet A ≠ 0.\nThe number 0 is not an eigenvalue of A.\nThe transpose AT is an invertible matrix\n\n\n\n\nThe rank of a matrix \\({\\bf A} = \\begin{bmatrix} {\\bf a}_1 & {\\bf a}_2 & \\cdots & {\\bf a}_m \\end{bmatrix}\\) is the number of linearly independent columns (dimension of the column space).\nIf \\(k\\) of the \\(m\\) column vectors \\({\\bf a}_1, {\\bf a}_2, \\dots, {\\bf a}_m\\) are linearly independent, the rank of \\({\\bf A}\\) is \\(k\\).\nThe remaining \\(m-k\\) columns of \\({\\bf A}\\) can be written as a linear combination of the \\(k\\) linearly independent columns.\n\n\n\nIf \\(k = m\\), it is full rank\nIf \\(k\\) of the \\(n\\) column vectors \\({\\bf a}_1, {\\bf a}_2, \\dots, {\\bf a}_n\\) are linearly independent, the rank of \\({\\bf A}\\) is \\(k\\). The remaining \\(n-k\\) columns can be written as a linear combination of the \\(k\\) columns.\nThe vectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly dependent if there exist scalars \\(c_{1},c_{2},\\dots,c_{k},\\) not all zero, such that \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\]\n\nThe column vectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly independent if it is not linearly dependent, that is, if \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\] can only be satisfied by \\(c_i = 0, i = 1, 2, \\dots, k.\\)\n\n\n\n\n\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n[1] 2\n\n\n\nCan you see why the rank is 2, meaning that one column can be written as a linear combo of the other two?\n\n. . .\n\n\\({\\bf a}_3 = 2{\\bf a_2}-{\\bf a}_1\\)\n\n\n\n[1] 7 8 9\n\n\n\n\nFind the row or column basis of A using reduced row echelon form\nthe dimension of the vector space generated (or spanned) by its columns\ndimension: number of basis in the vector space.\n\n\n\n\nAddition: \\({\\bf A + B}\\) is adding the corresponding elements together \\(a_{ij} + b_{ij}\\).\n\\({\\bf A}\\) and \\({\\bf B}\\) must have an equal number of rows and columns.\n\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(6:1, nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    6    4    2\n[2,]    5    3    1\n\nA + B\n\n     [,1] [,2] [,3]\n[1,]    7    7    7\n[2,]    7    7    7\n\n\n\n\n\n(B &lt;- matrix(1:4, nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nA + B\n\nError in `A + B`:\n! non-conformable arrays\n\n\n\n\n\n\n\n\nMultiplication: The product of matrices \\({\\bf A}\\) and \\({\\bf B}\\) is denoted as \\({\\bf AB}\\).\n\n\n\n\n\n\n\n\n\n\nThe number of columns in \\({\\bf A}\\) must be equal to the number of rows \\({\\bf B}\\).\nThe result matrix \\({\\bf C}\\) has the number of rows of \\({\\bf A}\\) and the number of columns of the \\({\\bf B}\\).\n\n\n\nThe number of columns in the first matrix \\({\\bf A}\\) must be equal to the number of rows in the second matrix of \\({\\bf B}\\).\nThe resulting matrix \\({\\bf C}\\) has dimension of the number of rows of the first and the number of columns of the second matrix.\n\n\n\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(1:12, nrow = 3, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7   10\n[2,]    2    5    8   11\n[3,]    3    6    9   12\n\n\n\n\n\n(C &lt;- A %*% B)\n\n     [,1] [,2] [,3] [,4]\n[1,]   22   49   76  103\n[2,]   28   64  100  136\n\n(B &lt;- matrix(1:8, nrow = 2, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    3    5    7\n[2,]    2    4    6    8\n\nA %*% B\n\nError in `A %*% B`:\n! non-conformable arguments\n\n\n\n\n\n\n\n\n\n\\({\\bf A}{\\bf B} \\ne {\\bf B}{\\bf A}\\) in general.\n\\(({\\bf A}{\\bf B})' =  {\\bf B}'{\\bf A}'\\).\n\n\n\n\n\n(C &lt;- matrix(1:4, 2, 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n(D &lt;- matrix(2:5, 2, 2))\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5\n\nC %*% D\n\n     [,1] [,2]\n[1,]   11   19\n[2,]   16   28\n\n\n\n\n\nD %*% C\n\n     [,1] [,2]\n[1,]   10   22\n[2,]   13   29\n\nt(C %*% D)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28\n\nt(D) %*% t(C)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28\n\n\n\n\n\n\n\n\n\nA square matrix \\((m = n)\\) \\({\\bf A}_{n \\times n}\\) is a symmetric matrix if \\({\\bf A} = {\\bf A}'\\).\n\n\\[{\\bf A} = \\begin{bmatrix} 1 & 2  \\\\ 2 & 5 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 2 \\\\ 2 & 5 \\end{bmatrix}\\]\n\nA square matrix \\({\\bf I}_{n \\times n}\\) whose diagonal elements are 1’s and off diagonal elements are 0’s is called an identity matrix of order \\(n\\). \\[{\\bf I} = \\begin{bmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ 0 & 0 & \\cdots & 1 \\end{bmatrix}\\]\n\n\n\n\nIf the inverse exists, it is unique.\n\n\n\n\n\n\n## Identity matrix\nI &lt;- diag(4)\nI\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n## A diagonal matrix\ndiag(c(4, 2, 5))\n\n     [,1] [,2] [,3]\n[1,]    4    0    0\n[2,]    0    2    0\n[3,]    0    0    5\n\n\n\n\n## Extract diagonal elements\nD &lt;- matrix(1:4, 2, 2)\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\ndiag(D)\n\n[1] 1 4\n\n\n\n\n\n\nThe inverse of a square matrix \\({\\bf A}\\), denoted by \\({\\bf A}^{-1}\\), is a square matrix such that \\[{\\bf A}^{-1}{\\bf A} = {\\bf A}{\\bf A}^{-1} = {\\bf I}\\]\n\n\n\n\n\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nD_inv &lt;- solve(D)\nD_inv\n\n     [,1] [,2]\n[1,]   -2  1.5\n[2,]    1 -0.5\n\n\n\n\nD_inv %*% D\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\nD %*% D_inv\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n\n\n\n\n\nA square matrix \\({\\bf A}\\) is idempotent if \\({\\bf A}{\\bf A} = {\\bf A}\\).\nA square matrix \\({\\bf A}\\) is orthogonal if \\({\\bf A}^{-1} = {\\bf A}'\\) and hence \\({\\bf A}'{\\bf A} = {\\bf I}\\).\n\n. . .\n\n\n\n## Idempotent and symmetric matrix\n(A &lt;- matrix(1, 2, 2)/2)\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\nA %*% A\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\n\n\n\n## Orthogonal matrix\n(E &lt;- matrix(c(1, 0, 0, -1), \n             nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nsolve(E)\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nt(E) %*% E\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\n\n\n\n\n\nLet \\({\\bf A}\\) be a \\(n \\times n\\) matrix and \\({\\bf y}\\) be a \\(n \\times 1\\) vector. \\[{\\bf y}'{\\bf A} {\\bf y} = \\sum_{i=1}^n\\sum_{j=1}^na_{ij}y_iy_j\\] is called a quadratic form of \\({\\bf y}\\).\n\n. . .\n\nA symmetric matrix \\({\\bf A}\\) is said to be \n\n\npositive definite if \\({\\bf y}'{\\bf A} {\\bf y} &gt; 0\\) for all \\({\\bf y \\ne 0}\\).\n\npositive semi-definite if \\({\\bf y}'{\\bf A} {\\bf y} \\ge 0\\) for all \\({\\bf y \\ne 0}\\) and \\({\\bf y}'{\\bf A} {\\bf y} = 0\\) for some \\({\\bf y \\ne 0}\\).\n\n\nIf \\({\\bf A}\\) is symmetric and idempotent, then \\({\\bf A}\\) is positive semi-definite.\n\n\n\nHow about negative definite\n\n\n\n\n\n\n## Idempotent and symmetric matrix\n(A &lt;- matrix(1, 2, 2)/2)\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\nA %*% A\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\n\n\n\n## Orthogonal matrix\n(E &lt;- matrix(c(0, 1, 0, -1, 0, 0, 0, 0, -1), \n             nrow = 3, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    0   -1    0\n[2,]    1    0    0\n[3,]    0    0   -1\n\nsolve(E)\n\n     [,1] [,2] [,3]\n[1,]    0    1    0\n[2,]   -1    0    0\n[3,]    0    0   -1\n\nt(E) %*% E\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1\n\n\n\n\n\n\n\n\n\n\n\nThe trace of \\({\\bf A}_{n \\times n}\\), denoted by \\(\\text{tr}({\\bf A})\\), is defined as \\[\\text{tr}({\\bf A}) = a_{11} + a_{22} + \\dots + a_{nn}\\]\n\\(\\text{tr}({\\bf A}{\\bf B}) = \\text{tr}({\\bf B}{\\bf A})\\)\n\n\n(G &lt;- matrix(1:9, 3, 3))\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\nsum(diag(G))\n\n[1] 15"
+  },
+  {
+    "objectID": "slides/06-mat.html#matrix",
+    "href": "slides/06-mat.html#matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix \\({\\bf A}\\) that has \\(n\\) rows and \\(m\\) columns is defined as \\[{\\bf A} = (a_{ij})_{n \\times m}\\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1m} \\\\ a_{21} & a_{22} & \\cdots & a_{2m} \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ a_{n1} & a_{n2} & \\cdots & a_{nm} \\end{bmatrix}_{n \\times m}\\]\n\n\n. . .\n\n\n\n(A &lt;- matrix(data = 1:6, \n             nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nclass(A)\n\n[1] \"matrix\" \"array\" \n\n\n\n\nattributes(A)\n\n$dim\n[1] 2 3\n\n\n\n\n. . .\n\nBut what is the geometrical meaning of matrices?\n\n\n\nFirst index is for row and the second index is for column\nUse command matrix() to create a matrix.\nA matrix is a two-dimensional analog of a vector.\nLike all elements of a matrix must be of the same type."
+  },
+  {
+    "objectID": "slides/06-mat.html#section-1",
+    "href": "slides/06-mat.html#section-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed. Grids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)"
+  },
+  {
+    "objectID": "slides/06-mat.html#section-3",
+    "href": "slides/06-mat.html#section-3",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A matrix is actually a numerical representation of a linear transformation in a linear space which is a function that takes an vector as an input and produces another vector as an output.\nIf we use the grid lines to represent the entire coordinate system, we will see that when we use (1, 0) and (0, 1) as the two bases, all lines are vertical and horizontal, showing, for example, the integer values of each coordinate.\nLinear transformation means we stretch or rotate the lines, but at the same time, all lines remains lines and origin remain fixed.\nGrids lines are parallel and evenly spaced after linear transformation.\n(-1, 3) is the transformed vector of (-1, 2) when the two new transformed basis are (3, 1) and (1, 2)"
+  },
+  {
+    "objectID": "slides/06-mat.html#column-vector",
+    "href": "slides/06-mat.html#column-vector",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "If \\(m = 1\\), it becomes a \\(n\\) by 1 matrix or a column vector of size \\(n\\). \\[\\small {\\bf y} = \\begin{bmatrix} y_{1}  \\\\ y_{2}  \\\\ \\vdots  \\\\  y_{n} \\end{bmatrix}_{n \\times 1} \\quad {\\bf 1} = \\begin{bmatrix} 1  \\\\ 1  \\\\ \\vdots  \\\\  1 \\end{bmatrix}_{n \\times 1}\\]\n\n\n. . .\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n## 2nd column\nA[, 2]\n\n[1] 3 4\n\n## becomes a numeric vector\nclass(A[, 2]) \n\n[1] \"integer\"\n\n\n\n\n## keep its matrix class\nA[, 2, drop = FALSE] \n\n     [,1]\n[1,]    3\n[2,]    4\n\nclass(A[, 2, drop = FALSE])  \n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "slides/06-mat.html#row-vector",
+    "href": "slides/06-mat.html#row-vector",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "If \\(n = 1\\), it becomes a \\(1\\) by \\(m\\) matrix or a row vector of size \\(m\\). \\[{\\bf x} = \\begin{bmatrix} x_{1} &  x_{2}  & \\dots  &  x_{m} \\end{bmatrix}_{1 \\times m}\\]\n\nBy default, a vector means a column vector.\n\n\n## 2nd row\nA[2, , drop = FALSE]\n\n     [,1] [,2] [,3]\n[1,]    2    4    6\n\n## keep its matrix class\nclass(A[2, , drop = FALSE]) \n\n[1] \"matrix\" \"array\""
+  },
+  {
+    "objectID": "slides/06-mat.html#transpose",
+    "href": "slides/06-mat.html#transpose",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "Let \\({\\bf A}\\) be an \\(n \\times m\\) matrix. The transpose of \\({\\bf A}\\), denoted by \\({\\bf A}'\\) or \\({\\bf A}^T\\), is a \\(m \\times n\\) matrix whose columns are the rows of \\({\\bf A}\\). \\[{\\bf A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6\\end{bmatrix}\\] \\[{\\bf X}_{n \\times 2}\\begin{bmatrix} 1 & x_1 \\\\ 1 & x_{2} \\\\ \\vdots  & \\vdots  \\\\ 1 & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1} & {\\bf x} \\end{bmatrix}\\] \\[{\\bf X}'_{2 \\times n} = \\begin{bmatrix} 1 & 1 & \\cdots & 1 \\\\ x_1 & x_2 & \\cdots & x_n \\end{bmatrix} = \\begin{bmatrix} {\\bf 1}' \\\\ {\\bf x}' \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "slides/06-mat.html#transpose-in-r",
+    "href": "slides/06-mat.html#transpose-in-r",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\nt(A)\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6"
+  },
+  {
+    "objectID": "slides/06-mat.html#linear-independence",
+    "href": "slides/06-mat.html#linear-independence",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "Vectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly independent if for scalars \\(c_{1},c_{2},\\dots,c_{k} \\in \\mathbf{R},\\) \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\] can only be satisfied by \\(c_i = 0\\) for all \\(i = 1, 2, \\dots, k\\).\n\n\nAre \\({\\bf v}_1 = (1, 1)'\\) and \\({\\bf v}_2 = (-3, 2)'\\) linearly independent?\n\n. . .\nWays to check linear independence:\n\nsolve the homogeneous linear system \\(\\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix}\\begin{bmatrix} c_1 \\\\ c_2 \\end{bmatrix}=\\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix}\\) for \\(c_1\\) and \\(c_2\\).\ncheck if \\(\\text{det} \\left( \\begin{bmatrix} 1 & -3 \\\\ 1 & 2 \\end{bmatrix} \\right)\\) is non-zero."
+  },
+  {
+    "objectID": "slides/06-mat.html#linear-independence-1",
+    "href": "slides/06-mat.html#linear-independence-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "V &lt;- matrix(c(1, 1, -3, 2), nrow = 2, ncol = 2)\nsolve(a = V, b = rep(0, 2))\n\n[1] 0 0\n\ndet(V)\n\n[1] 5\n\n\n\n\nA is invertible, that is, A has an inverse, is nonsingular, and is nondegenerate.\nA is row-equivalent to the n-by-n identity matrix In.\nA is column-equivalent to the n-by-n identity matrix In.\nA has n pivot positions.\nA has full rank; that is, rank A = n.\nBased on the rank A=n, the equation Ax = 0 has only the trivial solution x = 0. and the equation Ax = b has exactly one solution for each b in Kn.\nThe kernel (null space) of A is trivial\nThe columns of A are linearly independent.\nThe columns of A span Kn.\nThe columns of A form a basis of Kn.\ndet A ≠ 0.\nThe number 0 is not an eigenvalue of A.\nThe transpose AT is an invertible matrix"
+  },
+  {
+    "objectID": "slides/06-mat.html#rank",
+    "href": "slides/06-mat.html#rank",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "The rank of a matrix \\({\\bf A} = \\begin{bmatrix} {\\bf a}_1 & {\\bf a}_2 & \\cdots & {\\bf a}_m \\end{bmatrix}\\) is the number of linearly independent columns (dimension of the column space).\nIf \\(k\\) of the \\(m\\) column vectors \\({\\bf a}_1, {\\bf a}_2, \\dots, {\\bf a}_m\\) are linearly independent, the rank of \\({\\bf A}\\) is \\(k\\).\nThe remaining \\(m-k\\) columns of \\({\\bf A}\\) can be written as a linear combination of the \\(k\\) linearly independent columns.\n\n\n\nIf \\(k = m\\), it is full rank\nIf \\(k\\) of the \\(n\\) column vectors \\({\\bf a}_1, {\\bf a}_2, \\dots, {\\bf a}_n\\) are linearly independent, the rank of \\({\\bf A}\\) is \\(k\\). The remaining \\(n-k\\) columns can be written as a linear combination of the \\(k\\) columns.\nThe vectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly dependent if there exist scalars \\(c_{1},c_{2},\\dots,c_{k},\\) not all zero, such that \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\]\n\nThe column vectors \\({\\bf v}_1, {\\bf v}_2, \\dots, {\\bf v}_k\\) is said to be linearly independent if it is not linearly dependent, that is, if \\[c_{1}{\\bf v}_1 + c_{2}{\\bf v}_2 + \\cdots + c_{k}{\\bf v}_k = \\bf 0\\] can only be satisfied by \\(c_i = 0, i = 1, 2, \\dots, k.\\)"
+  },
+  {
+    "objectID": "slides/06-mat.html#rank-1",
+    "href": "slides/06-mat.html#rank-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "[,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\n\n[1] 2\n\n\n\nCan you see why the rank is 2, meaning that one column can be written as a linear combo of the other two?\n\n. . .\n\n\\({\\bf a}_3 = 2{\\bf a_2}-{\\bf a}_1\\)\n\n\n\n[1] 7 8 9\n\n\n\n\nFind the row or column basis of A using reduced row echelon form\nthe dimension of the vector space generated (or spanned) by its columns\ndimension: number of basis in the vector space."
+  },
+  {
+    "objectID": "slides/06-mat.html#operations-addition",
+    "href": "slides/06-mat.html#operations-addition",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "Addition: \\({\\bf A + B}\\) is adding the corresponding elements together \\(a_{ij} + b_{ij}\\).\n\\({\\bf A}\\) and \\({\\bf B}\\) must have an equal number of rows and columns.\n\n\n\n\nA\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(6:1, nrow = 2, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    6    4    2\n[2,]    5    3    1\n\nA + B\n\n     [,1] [,2] [,3]\n[1,]    7    7    7\n[2,]    7    7    7\n\n\n\n\n\n(B &lt;- matrix(1:4, nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nA + B\n\nError in `A + B`:\n! non-conformable arrays"
+  },
+  {
+    "objectID": "slides/06-mat.html#operations-multiplication",
+    "href": "slides/06-mat.html#operations-multiplication",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "Multiplication: The product of matrices \\({\\bf A}\\) and \\({\\bf B}\\) is denoted as \\({\\bf AB}\\).\n\n\n\n\n\n\n\n\n\n\nThe number of columns in \\({\\bf A}\\) must be equal to the number of rows \\({\\bf B}\\).\nThe result matrix \\({\\bf C}\\) has the number of rows of \\({\\bf A}\\) and the number of columns of the \\({\\bf B}\\).\n\n\n\nThe number of columns in the first matrix \\({\\bf A}\\) must be equal to the number of rows in the second matrix of \\({\\bf B}\\).\nThe resulting matrix \\({\\bf C}\\) has dimension of the number of rows of the first and the number of columns of the second matrix."
+  },
+  {
+    "objectID": "slides/06-mat.html#operations-multiplication-1",
+    "href": "slides/06-mat.html#operations-multiplication-1",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n(B &lt;- matrix(1:12, nrow = 3, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    4    7   10\n[2,]    2    5    8   11\n[3,]    3    6    9   12\n\n\n\n\n\n(C &lt;- A %*% B)\n\n     [,1] [,2] [,3] [,4]\n[1,]   22   49   76  103\n[2,]   28   64  100  136\n\n(B &lt;- matrix(1:8, nrow = 2, ncol = 4))\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    3    5    7\n[2,]    2    4    6    8\n\nA %*% B\n\nError in `A %*% B`:\n! non-conformable arguments"
+  },
+  {
+    "objectID": "slides/06-mat.html#operations-multiplication-2",
+    "href": "slides/06-mat.html#operations-multiplication-2",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "\\({\\bf A}{\\bf B} \\ne {\\bf B}{\\bf A}\\) in general.\n\\(({\\bf A}{\\bf B})' =  {\\bf B}'{\\bf A}'\\).\n\n\n\n\n\n(C &lt;- matrix(1:4, 2, 2))\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\n(D &lt;- matrix(2:5, 2, 2))\n\n     [,1] [,2]\n[1,]    2    4\n[2,]    3    5\n\nC %*% D\n\n     [,1] [,2]\n[1,]   11   19\n[2,]   16   28\n\n\n\n\n\nD %*% C\n\n     [,1] [,2]\n[1,]   10   22\n[2,]   13   29\n\nt(C %*% D)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28\n\nt(D) %*% t(C)\n\n     [,1] [,2]\n[1,]   11   16\n[2,]   19   28"
+  },
+  {
+    "objectID": "slides/06-mat.html#special-matrices-symmetric-and-identity",
+    "href": "slides/06-mat.html#special-matrices-symmetric-and-identity",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A square matrix \\((m = n)\\) \\({\\bf A}_{n \\times n}\\) is a symmetric matrix if \\({\\bf A} = {\\bf A}'\\).\n\n\\[{\\bf A} = \\begin{bmatrix} 1 & 2  \\\\ 2 & 5 \\\\ \\end{bmatrix} \\quad {\\bf A}' =\\begin{bmatrix} 1 & 2 \\\\ 2 & 5 \\end{bmatrix}\\]\n\nA square matrix \\({\\bf I}_{n \\times n}\\) whose diagonal elements are 1’s and off diagonal elements are 0’s is called an identity matrix of order \\(n\\). \\[{\\bf I} = \\begin{bmatrix} 1 & 0 & \\cdots & 0 \\\\ 0 & 1 & \\cdots & 0 \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ 0 & 0 & \\cdots & 1 \\end{bmatrix}\\]\n\n\n\n\nIf the inverse exists, it is unique."
+  },
+  {
+    "objectID": "slides/06-mat.html#identity-and-diagonal-matrix",
+    "href": "slides/06-mat.html#identity-and-diagonal-matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "## Identity matrix\nI &lt;- diag(4)\nI\n\n     [,1] [,2] [,3] [,4]\n[1,]    1    0    0    0\n[2,]    0    1    0    0\n[3,]    0    0    1    0\n[4,]    0    0    0    1\n\n## A diagonal matrix\ndiag(c(4, 2, 5))\n\n     [,1] [,2] [,3]\n[1,]    4    0    0\n[2,]    0    2    0\n[3,]    0    0    5\n\n\n\n\n## Extract diagonal elements\nD &lt;- matrix(1:4, 2, 2)\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\ndiag(D)\n\n[1] 1 4"
+  },
+  {
+    "objectID": "slides/06-mat.html#inverse-matrix",
+    "href": "slides/06-mat.html#inverse-matrix",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "The inverse of a square matrix \\({\\bf A}\\), denoted by \\({\\bf A}^{-1}\\), is a square matrix such that \\[{\\bf A}^{-1}{\\bf A} = {\\bf A}{\\bf A}^{-1} = {\\bf I}\\]\n\n\n\n\n\nD\n\n     [,1] [,2]\n[1,]    1    3\n[2,]    2    4\n\nD_inv &lt;- solve(D)\nD_inv\n\n     [,1] [,2]\n[1,]   -2  1.5\n[2,]    1 -0.5\n\n\n\n\nD_inv %*% D\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1\n\nD %*% D_inv\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1"
+  },
+  {
+    "objectID": "slides/06-mat.html#idempotent-and-orthogonal",
+    "href": "slides/06-mat.html#idempotent-and-orthogonal",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "A square matrix \\({\\bf A}\\) is idempotent if \\({\\bf A}{\\bf A} = {\\bf A}\\).\nA square matrix \\({\\bf A}\\) is orthogonal if \\({\\bf A}^{-1} = {\\bf A}'\\) and hence \\({\\bf A}'{\\bf A} = {\\bf I}\\).\n\n. . .\n\n\n\n## Idempotent and symmetric matrix\n(A &lt;- matrix(1, 2, 2)/2)\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\nA %*% A\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\n\n\n\n## Orthogonal matrix\n(E &lt;- matrix(c(1, 0, 0, -1), \n             nrow = 2, ncol = 2))\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nsolve(E)\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0   -1\n\nt(E) %*% E\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1"
+  },
+  {
+    "objectID": "slides/06-mat.html#section-7",
+    "href": "slides/06-mat.html#section-7",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "Let \\({\\bf A}\\) be a \\(n \\times n\\) matrix and \\({\\bf y}\\) be a \\(n \\times 1\\) vector. \\[{\\bf y}'{\\bf A} {\\bf y} = \\sum_{i=1}^n\\sum_{j=1}^na_{ij}y_iy_j\\] is called a quadratic form of \\({\\bf y}\\).\n\n. . .\n\nA symmetric matrix \\({\\bf A}\\) is said to be \n\n\npositive definite if \\({\\bf y}'{\\bf A} {\\bf y} &gt; 0\\) for all \\({\\bf y \\ne 0}\\).\n\npositive semi-definite if \\({\\bf y}'{\\bf A} {\\bf y} \\ge 0\\) for all \\({\\bf y \\ne 0}\\) and \\({\\bf y}'{\\bf A} {\\bf y} = 0\\) for some \\({\\bf y \\ne 0}\\).\n\n\nIf \\({\\bf A}\\) is symmetric and idempotent, then \\({\\bf A}\\) is positive semi-definite.\n\n\n\nHow about negative definite"
+  },
+  {
+    "objectID": "slides/06-mat.html#special-matrices-idempotent-orthogonal",
+    "href": "slides/06-mat.html#special-matrices-idempotent-orthogonal",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "## Idempotent and symmetric matrix\n(A &lt;- matrix(1, 2, 2)/2)\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\nA %*% A\n\n     [,1] [,2]\n[1,]  0.5  0.5\n[2,]  0.5  0.5\n\n\n\n\n## Orthogonal matrix\n(E &lt;- matrix(c(0, 1, 0, -1, 0, 0, 0, 0, -1), \n             nrow = 3, ncol = 3))\n\n     [,1] [,2] [,3]\n[1,]    0   -1    0\n[2,]    1    0    0\n[3,]    0    0   -1\n\nsolve(E)\n\n     [,1] [,2] [,3]\n[1,]    0    1    0\n[2,]   -1    0    0\n[3,]    0    0   -1\n\nt(E) %*% E\n\n     [,1] [,2] [,3]\n[1,]    1    0    0\n[2,]    0    1    0\n[3,]    0    0    1"
+  },
+  {
+    "objectID": "slides/06-mat.html#trace",
+    "href": "slides/06-mat.html#trace",
+    "title": "Matrix Algebra for Regression \n",
+    "section": "",
+    "text": "The trace of \\({\\bf A}_{n \\times n}\\), denoted by \\(\\text{tr}({\\bf A})\\), is defined as \\[\\text{tr}({\\bf A}) = a_{11} + a_{22} + \\dots + a_{nn}\\]\n\\(\\text{tr}({\\bf A}{\\bf B}) = \\text{tr}({\\bf B}{\\bf A})\\)\n\n\n(G &lt;- matrix(1:9, 3, 3))\n\n     [,1] [,2] [,3]\n[1,]    1    4    7\n[2,]    2    5    8\n[3,]    3    6    9\n\nsum(diag(G))\n\n[1] 15"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#regression-model-in-matrix-form",
+    "href": "slides/06-mlr-mat-slides.html#regression-model-in-matrix-form",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Regression Model in Matrix Form",
+    "text": "Regression Model in Matrix Form\n\\[y_i= \\beta_0 + \\beta_1x_{i1} + \\beta_2x_{i2} + \\dots + \\beta_kx_{ik} + \\epsilon_i, \\quad \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2), \\quad i = 1, 2, \\dots, n\\]\n\n\n\\[\\bf y = \\bf X \\boldsymbol \\beta+ \\boldsymbol \\epsilon\\]\n\\[\\begin{align}\n\\bf y = \\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n \\end{bmatrix},\\quad\n\\bf X = \\begin{bmatrix}\n  1 & x_{11} & x_{12} & \\cdots & x_{1k} \\\\\n  1 & x_{21} & x_{22} & \\cdots & x_{2k} \\\\\n  \\vdots & \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\\n  1 & x_{n1} & x_{n2} & \\cdots & x_{nk} \\end{bmatrix}, \\quad\n\\boldsymbol \\beta= \\begin{bmatrix}\n\\beta_0 \\\\\n\\beta_1 \\\\\n\\vdots \\\\\n\\beta_k \\end{bmatrix} , \\quad\n\\boldsymbol \\epsilon= \\begin{bmatrix}\n\\epsilon_1 \\\\\n\\epsilon_2 \\\\\n\\vdots \\\\\n\\epsilon_n\\end{bmatrix}\n\\end{align}\\]\n\n\n\\({\\bf X}_{n \\times p}\\): Design matrix\n\n\\(\\boldsymbol \\epsilon\\sim N_n({\\bf 0}, \\sigma^2 {\\bf I}_n)\\) 1\n\n\n\nLet’s first write our model in a matrix form.\n\n\\(\\bf X\\) is usually called the design matrix.\n\n\nFor simplicity and convenience, \\(N({\\bf a}, {\\bf B})\\) represents a multivariate normal distribution with mean vector \\({\\bf a}\\) and covariance matrix \\({\\bf B}\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#least-squares-estimation-in-matrix-form",
+    "href": "slides/06-mlr-mat-slides.html#least-squares-estimation-in-matrix-form",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Least Squares Estimation in Matrix Form",
+    "text": "Least Squares Estimation in Matrix Form\n\\[S(\\beta_0, \\beta_1, \\dots, \\beta_k) = \\sum_{i=1}^n\\epsilon_i^2 = \\sum_{i=1}^n\\left(y_i - \\beta_0 - \\sum_{j=1}^k\\beta_j x_{ij}\\right)^2\\]\n\\[\\begin{align}\n\\left.\\frac{\\partial S}{\\partial\\beta_0}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right) = 0\\\\\n\\left.\\frac{\\partial S}{\\partial\\beta_j}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right)x_{ij} = 0, \\quad j = 1, 2, \\dots, k\n\\end{align}\\]\n\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta)\n\\end{align}\\]\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y'}{\\bf y} - \\boldsymbol \\beta'{\\bf X'}{\\bf y} - {\\bf y'}{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\\\\\n&={\\bf y}'{\\bf y} - 2\\boldsymbol \\beta'{\\bf X}'{\\bf y} + \\boldsymbol \\beta' {\\bf X}' {\\bf X} \\boldsymbol \\beta\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#least-squares-estimation-in-matrix-form-1",
+    "href": "slides/06-mlr-mat-slides.html#least-squares-estimation-in-matrix-form-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Least Squares Estimation in Matrix Form",
+    "text": "Least Squares Estimation in Matrix Form\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y}'{\\bf y} - \\boldsymbol \\beta'{\\bf X}'{\\bf y} - {\\bf y}'{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\n\\end{align}\\]\n\n\n\n\n\n\nNormal equations: \\(\\begin{align} \\left.\\frac{\\partial S}{\\partial \\boldsymbol \\beta}\\right \\vert_{\\bf b} = -2 {\\bf X}' {\\bf y} + 2 {\\bf X}' {\\bf X} {\\bf b} = \\boldsymbol{0} \\end{align}\\)\n\n\n\nTo get the LSE in a matrix form, we first write the sum of squares using matrices.\n\n\nLSE for \\(\\boldsymbol \\beta\\):\n\n \\[\\begin{align} \\boxed{{\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' \\bf y} \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#normal-equations",
+    "href": "slides/06-mlr-mat-slides.html#normal-equations",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Normal Equations",
+    "text": "Normal Equations\n\\((\\bf X' \\bf X){ \\bf b} = {\\bf X'} {\\bf y}\\)\n\n\nSimple linear regression case."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#design-matrix-and-outcome-vector",
+    "href": "slides/06-mlr-mat-slides.html#design-matrix-and-outcome-vector",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Design Matrix and Outcome Vector",
+    "text": "Design Matrix and Outcome Vector\n\n\n\n\nX &lt;- cbind(1, delivery_data[, c(2, 3)])\n\n   1    7  560\n   1    3  220\n   1    3  340\n   1    4   80\n   1    6  150\n   1    7  330\n   1    2  110\n   1    7  210\n   1   30 1460\n   1    5  605\n   1   16  688\n   1   10  215\n   1    4  255\n   1    6  462\n   1    9  448\n   1   10  776\n   1    6  200\n   1    7  132\n   1    3   36\n   1   17  770\n   1   10  140\n   1   26  810\n   1    9  450\n   1    8  635\n   1    4  150\n\n\n\n\ny &lt;- as.matrix(delivery_data$time)\n\n16.7\n11.5\n12.0\n14.9\n13.8\n18.1\n 8.0\n17.8\n79.2\n21.5\n40.3\n21.0\n13.5\n19.8\n24.0\n29.0\n15.3\n19.0\n 9.5\n35.1\n17.9\n52.3\n18.8\n19.8\n10.8"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#regression-coefficients",
+    "href": "slides/06-mlr-mat-slides.html#regression-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Regression Coefficients",
+    "text": "Regression Coefficients\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} \\bf X' \\bf y\\)\n\nt(X) %*% X\n\n             1  cases distance\n1           25    219    10232\ncases      219   3055   133899\ndistance 10232 133899  6725688\n\nt(X) %*% y\n\n           [,1]\n1           560\ncases      7375\ndistance 337072\n\nsolve(t(X) %*% X) %*% t(X) %*% y\n\n          [,1]\n1        2.341\ncases    1.616\ndistance 0.014"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#hat-matrix",
+    "href": "slides/06-mlr-mat-slides.html#hat-matrix",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Hat Matrix",
+    "text": "Hat Matrix\n\n\n\\[\\hat{\\bf y} = {\\bf X} {\\bf b} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' {\\bf y} = {\\bf H} {\\bf y}\\]\n\n\\({\\bf H} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}'\\) is called hat matrix whose elements are \\(h_{ij} = \\dfrac{1}{n} + \\dfrac{(x_i-\\overline{x})(x_j-\\overline{x})}{S_{xx}}\\)\nThe vector of residuals \\(e_i = y_i - \\hat{y}_i\\) is \\[{\\bf e} = {\\bf y} - \\hat{\\bf y} ={ \\bf y} - {\\bf X} {\\bf b} = {\\bf y} - {\\bf H} {\\bf y} = ({\\bf I} - {\\bf H}) {\\bf y}\\]\n\n\n\n\nBoth \\(\\bf H\\) and \\(\\bf I-H\\) are symmetric and idempotent. They are orthogonal projection matrices.\n\n\\(\\bf H\\) projects \\(\\bf y\\) to \\(\\hat{\\bf y}\\) on the \\(p\\)-dimensional space spanned by columns of \\(\\bf X\\), or the column space of \\(\\bf X\\), \\(Col({\\bf X}) = \\{ {\\bf Xv}: {\\bf v} \\in {\\bf R}^p \\}\\).\n\n\\(\\bf I - H\\) projects \\(\\bf y\\) to \\(\\bf e\\) on the space perpendicular to \\(Col(\\bf X)\\), or \\(Col(\\bf X)^{\\bot}\\).\n\n\n\nThe vector of fitted values \\(\\hat{y}_i\\) corresponding to \\(y_i\\) is \\[\\hat{\\bf y} = \\bf X \\bf b = \\bf X (\\bf X' \\bf X) ^{-1} \\bf X' \\bf y = \\bf H \\bf y\\]\n\n\n\\(\\bf H\\) plays an important role in regression analysis.\nAnd it will be shown up many times later in many topics of this course.\nOK. It’s a little abstract. Let’s look into the geometrical interpretation of least squares little by little."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#geometrical-interpretation-of-least-squares",
+    "href": "slides/06-mlr-mat-slides.html#geometrical-interpretation-of-least-squares",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Geometrical Interpretation of Least Squares",
+    "text": "Geometrical Interpretation of Least Squares\n\n\n\n\\({\\bf y} \\notin Col({\\bf X})\\)\n\\(\\hat{{\\bf y}} = {\\bf Xb} = {\\bf H} {\\bf y} \\in Col({\\bf X})\\)\nMinimize the distance of \\(\\color{red}{A}\\) to \\(Col(\\bf X)\\): Find the point in \\(Col(\\bf X)\\) that is closest to \\(A\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwhat is column space of \\(X\\)?\n\n\nThe col space of \\(X\\) is the set or the collection of all linear combinations of columns of \\(X\\). In other words, column space of \\(X\\) is the space spanned by the columns of \\(X\\).\nExample\nFor visualization purpose, suppose \\(X\\) has 2 columns, \\(x_1\\) and \\(x_2\\). The column space of \\(X\\) will be the plane spanned by the 2 columns, shown in green color.\n\n\n\n\nobservation \\(y\\).\n\n\nBasically 99% of the time, \\(Y\\) will not be in the column space of \\(X\\).\n\\(y_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik} + e_i\\)\n\n\\(y_i\\) is not the linear combo of columns of \\(X\\), and \\(y\\) is not a point in Col(X).\nSo \\(y\\) is point in the \\(n\\)-dimensional space, and not on the plane spanned by columns of \\(X\\).\n\n\n\n\nH (Let’s see what the projection matrix \\(H\\) is doing)\n\n\nWhen we multiply \\(H\\) by \\(y\\), we are finding the projection of \\(y\\) onto the Col(X).\nThe projection of \\(y\\) on the Col(X) is actually the fitted value \\(\\hat{y}\\).\n\\(\\hat{y}_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik}\\)\nThere are so many (actually infinitely many) linear combo of columns of \\(X\\), why this particular vector is our \\(\\hat{y}\\)?\nThe distance between \\(y\\) and Col(X) is actually the shortest when we do the projection of \\(y\\) onto the Col(X).\nIn other words the distance between \\(y\\) and \\(\\hat{y}\\) is the minimal distance among all the distance between \\(y\\) and any point in the Col(X)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#geometrical-interpretation-of-least-squares-1",
+    "href": "slides/06-mlr-mat-slides.html#geometrical-interpretation-of-least-squares-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Geometrical Interpretation of Least Squares",
+    "text": "Geometrical Interpretation of Least Squares\n\n\n\nThe distance is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\). \\(\\small {\\bf e} = ({\\bf I} - {\\bf H}) {\\bf y} \\perp Col({\\bf X})\\)\n\n\\({\\bf X}'( {\\bf y} - {\\bf Xb}) = {\\bf 0}\\)\n\n\nSearching for the LS solution \\(\\bf b\\) that minimizes \\(SS_{res}\\) is the same as locating the point \\({\\bf Xb} \\in Col({\\bf X})\\) that is as close to \\(\\bf y\\) as possible!"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#section-1",
+    "href": "slides/06-mlr-mat-slides.html#section-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "(I - H) Now let’s see what (I - H) is doing.\n\n\nThe residual vector is \\(y - \\hat{y}\\). Geometrically, the residual vector is this dash line vector that is perpendicular to the column space of \\(X\\). In other words,the residual vector is the normal vector of Col(X).\nThis is the result of projection. The distance between \\(y\\) and the column space is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\).\nWe know that e = (I - H)y. So (I - H) project \\(Y\\) onto the space that is perpendicular to Col(X). And the vector in that space is the residual vector.\n\n\n\nCalculus connects to Linear Algebra"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#reduced-model-vs.-full-model",
+    "href": "slides/06-mlr-mat-slides.html#reduced-model-vs.-full-model",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Reduced Model vs. Full Model",
+    "text": "Reduced Model vs. Full Model\n\nOverall test of significance: all predictors\nPartial individual \\(t\\)-test: one single predictor\nHow to test any subset of predictors?\n\n\n\n\nFull Model: \\(y = \\beta_0 + \\beta_1x_1+\\beta_2x_2 + \\beta_3x_3 + \\beta_4x_4 + \\epsilon\\)\n\n\\(H_0: \\beta_{2} = \\beta_{4} = 0\\)\n\n\n\n\n\nReduced Model (under \\(H_0\\)): \\(y = \\beta_0 + \\beta_1x_1 + \\beta_3x_3 + \\epsilon\\)\n\nLike to see if \\(x_2\\) and \\(x_4\\) can contribute significantly to the regression model when \\(x_1\\) and \\(x_3\\) are in the model.\n\nIf yes, \\(\\beta_{2} \\ne 0\\) and/or \\(\\beta_{4} \\ne 0\\). (Reject \\(H_0\\))\nOtherwise, \\(\\beta_{2} = \\beta_{4} = 0\\). (Do not reject \\(H_0\\))\n\n\n\n\n\n\nGiven \\(x_1\\) and \\(x_3\\) in the model, we examine how much extra \\(SS_R\\) is increased ( \\(SS_{res}\\) is reduced) if \\(x_2\\) and \\(x_4\\) are added to the model.\n\n\nIf much more extra \\(SS_R\\) is increased after \\(x_2\\) and \\(x_4\\) are included in the model, meaning that lots of variation in \\(y\\) that were treated as unexplained variation or variation that cannot be explained by the \\(x_1\\) and \\(x_3\\), now are absorbed or explained by \\(x_2\\) and \\(x_4\\).\n\n\\(x_2\\) and \\(x_4\\) provide some important and valuable information that \\(x_1\\) and \\(x_3\\) cannot provide, and that information helps us better predict response values and explain the variation of \\(Y\\).\nSo if we observe a significant increase in SS_R, it means that \\(x_2\\) and \\(x_4\\) are valuable and their coefficient is significantly non-zero. Therefore, we should keep the full model that includes all predictors, or reject \\(H_0\\) because the reduced model is too simple, and lose lots of useful information for explaining variation in \\(Y\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#extra-sum-of-squares",
+    "href": "slides/06-mlr-mat-slides.html#extra-sum-of-squares",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares",
+    "text": "Extra Sum-of-squares\n\nFull Model: \\(\\bf y = X\\boldsymbol \\beta+\\boldsymbol \\epsilon\\)\nPartition coefficient vector:\n\n\\[\\boldsymbol \\beta_{p \\times 1} = \\left[\n\\begin{array}{c}\n  \\boldsymbol \\beta_1 \\\\\n  \\hline\n  \\boldsymbol \\beta_2\n\\end{array}\n\\right]\\]\nwhere \\(\\boldsymbol \\beta_1\\) is \\((p-r) \\times 1\\) and \\(\\boldsymbol \\beta_2\\) is \\(r \\times 1\\)\n\nTest \\(H_0: \\boldsymbol \\beta_2 = {\\bf 0}\\), \\(H_1: \\boldsymbol \\beta_2 \\ne {\\bf 0}\\)\nExample:  \\(p=5\\), \\(r=2\\), \\(\\boldsymbol \\beta_1 = (\\beta_0, \\beta_1, \\beta_3)'\\), \\(\\boldsymbol \\beta_2 = (\\beta_2, \\beta_4)'\\).\n\n\nFor simplicity, we can partition the coefficient vector to beta_1 and beta_2, where beta_2 is the subset we’d like to test.\n\\(1 \\le r \\le k\\)\n\n\\[{\\bf y} = {\\bf X} \\boldsymbol \\beta+\\boldsymbol \\epsilon= {\\bf X}_1\\boldsymbol \\beta_1 + {\\bf X}_2\\boldsymbol \\beta_2 + \\boldsymbol \\epsilon\\]\n\n\\(n \\times (p-r)\\) matrix \\({\\bf X}_1\\): the columns of \\(\\bf X\\) associated with \\(\\boldsymbol \\beta_1\\)\n\\(n \\times r\\) matrix \\({\\bf X}_2\\): the columns of \\(\\bf X\\) associated with \\(\\boldsymbol \\beta_2\\)"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#extra-sum-of-squares-1",
+    "href": "slides/06-mlr-mat-slides.html#extra-sum-of-squares-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares",
+    "text": "Extra Sum-of-squares\n\n\nFull Model: \\(\\small \\color{red}{{\\bf y} = {\\bf X}\\boldsymbol \\beta+\\boldsymbol \\epsilon= {\\bf X}_1\\boldsymbol \\beta_1 + {\\bf X}_2\\boldsymbol \\beta_2 + \\boldsymbol \\epsilon}\\)\n\n\n\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' {\\bf y}\\) \n\n\n\nReduced Model: \\(\\small \\color{red}{{\\bf y} = {\\bf X}_1\\boldsymbol \\beta_1+\\boldsymbol \\epsilon}\\) \\(\\color{red}{(\\boldsymbol \\beta_2 = {\\bf 0})}\\)\n\n\n\\({\\bf b}_1 = ({\\bf X}_1' {\\bf X}_1) ^{-1} {\\bf X}_1' {\\bf y}\\) \n\n\n\n\nTo find the contribution of the terms in \\(\\boldsymbol \\beta_2\\) to the regression, fit the model assuming that \\(H_0: \\bf \\boldsymbol \\beta_2 = 0\\) is true. \n\n\n\nThe \\(SS_R\\) due to \\(\\boldsymbol \\beta_2\\) given that \\(\\boldsymbol \\beta_1\\) is in the model is \\[\\begin{align} SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1) &= SS_R(\\boldsymbol \\beta) - SS_R(\\boldsymbol \\beta_1)\\\\ &= SS_R(\\boldsymbol \\beta_1, \\boldsymbol \\beta_2) - SS_R(\\boldsymbol \\beta_1) \\end{align}\\] with \\(r\\) dfs.\nThis is the extra sum of squares due to \\(\\boldsymbol \\beta_2\\).\nIt measures the increase in the \\(SS_R\\) that results from adding regressors in \\({\\bf X}_2\\) to the model that already contains regressors in \\({\\bf X}_1\\).\n\n\nThe regression sum of squares due to \\(\\boldsymbol \\beta_2\\) given that \\(\\boldsymbol \\beta_1\\) is in the model is \\[SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1) = SS_R(\\boldsymbol \\beta) - SS_R(\\boldsymbol \\beta_1)\\] with \\(p - (p-r) = r\\) dfs.\nThis is extra sum of squares due to \\(\\boldsymbol \\beta_2\\).\nIt measures the increase in the \\(SS_R\\) that results from adding \\(x_{k-r+1}, x_{k-r+2}, \\dots, x_k\\) to the model that already contains \\(x_{1}, x_{2}, \\dots, x_{k-r}\\).\nTo find the contribution of the terms in \\(\\boldsymbol \\beta_2\\) to the regression, fit the model assuming that \\(H_0: \\bf \\boldsymbol \\beta_2 = 0\\) is true."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#partial-f-test",
+    "href": "slides/06-mlr-mat-slides.html#partial-f-test",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Partial \\(F\\)-test",
+    "text": "Partial \\(F\\)-test\n\n\\(F_{test} = \\dfrac{SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)/r}{SS_{res}(\\boldsymbol \\beta)/(n-p)} = \\dfrac{MS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)}{MS_{res}}\\)\nUnder \\(H_0\\) that \\(\\boldsymbol \\beta_2 = \\bf 0\\), \\(F_{test} \\sim F_{r, n-p}\\). \\((p = k+1)\\)\nReject \\(H_0\\) if \\(F_{test} &gt; F_{\\alpha, r, n-p}\\).\n\n\n\nGiven the regressors of \\({\\bf X}_1\\) are in the model,\n\nIf the regressors of \\({\\bf X}_2\\) contribute much, \\(SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)\\) will be large.\nA large \\(SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)\\) implies a large \\(F_{test}\\).\nA large \\(F_{test}\\) tends to reject \\(H_0\\), and conclude that \\(\\boldsymbol \\beta_2 \\ne \\bf 0\\).\n\\(\\boldsymbol \\beta_2 \\ne \\bf 0\\) means the regressors of \\({\\bf X}_2\\) provide additional explanatory and prediction power that \\({\\bf X}_1\\) cannot provide."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#example-delivery-data",
+    "href": "slides/06-mlr-mat-slides.html#example-delivery-data",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Example: Delivery Data",
+    "text": "Example: Delivery Data\n\n\\(H_0: \\beta_2 = 0 \\qquad H_1: \\beta_2 \\ne 0\\)\nFull model: \\(y = \\beta_0 + \\beta_1x_1+\\beta_2x_2+\\epsilon\\)\n\n\n\nWhat is the reduced model?\n\n\n\n\nReduced model: \\(y = \\beta_0 + \\beta_1x_1 +\\epsilon\\)\n\n\n\n\n\n\\(SS_R(\\beta_2|\\beta_1, \\beta_0) = SS_R(\\beta_2, \\beta_1, \\beta_0) -SS_R(\\beta_1, \\beta_0)\\)\n\\(F_{test} = \\dfrac{SS_R(\\beta_2|\\beta_1, \\beta_0)/1}{SS_{res}(\\boldsymbol \\beta)/(25-3)}\\)\nReject \\(H_0\\) if \\(F_{test} &gt; F_{\\alpha, 1, 22}\\)\n\n\n\n\n\nWhen \\(r=1\\), partial \\(F\\)-test is equivalent to marginal \\(t\\)-test."
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#extra-sum-of-squares-approach",
+    "href": "slides/06-mlr-mat-slides.html#extra-sum-of-squares-approach",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares Approach",
+    "text": "Extra Sum-of-squares Approach\n\nfull_lm &lt;- delivery_lm\nreduced_lm &lt;- lm(time ~ cases, data = delivery_data)\nanova(reduced_lm, full_lm)\n\nAnalysis of Variance Table\n\nModel 1: time ~ cases\nModel 2: time ~ cases + distance\n  Res.Df RSS Df Sum of Sq    F  Pr(&gt;F)    \n1     23 402                              \n2     22 234  1       168 15.8 0.00063 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nsumm_delivery$coefficients\n\n            Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)    2.341     1.0967     2.1  4.4e-02\ncases          1.616     0.1707     9.5  3.3e-09\ndistance       0.014     0.0036     4.0  6.3e-04"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#standardized-regression-coefficients",
+    "href": "slides/06-mlr-mat-slides.html#standardized-regression-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Standardized Regression Coefficients",
+    "text": "Standardized Regression Coefficients\n\n\\(\\hat{y} = 5 + x_1 + 1000x_2\\). Can we conclude that the effect of \\(x_2\\) on \\(y\\) is 1000 times larger than the effect of \\(x_1\\)?\n\n\n\nNope! If \\(x_1\\) is measured in litres and \\(x_2\\) in millilitres, although \\(b_2\\) is 1000 times larger than \\(b_1\\), both effects on \\(\\hat{y}\\) are identical given the other.\n\n\n\n\nThe units of \\(\\beta_j\\) are \\(\\frac{\\text{units of } y}{\\text{units of } x_j}\\)\n\n \\(\\beta_2\\): delivery time (min) \\((y)\\) per distance (ft) walked by the driver \\((x_2)\\). \n\n\nIt is helpful to work with dimensionless or standardized coefficients.\n\ncomparison\nget rid of round-off errors in \\(( {\\bf X'} {\\bf X} )^{-1}\\).\n\n\n\n\ninterpretation\nIt is difficult to compare coefficients because the magnitude of \\(b_j\\) reflects the units of measurement of \\(x_j\\).\n\n\n\n\nIn Intro Stats, how do we standardize a variable?"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#unit-normal-scaling",
+    "href": "slides/06-mlr-mat-slides.html#unit-normal-scaling",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Unit Normal Scaling",
+    "text": "Unit Normal Scaling\nFor \\(i = 1, \\dots, n, \\, j = 1, \\dots, k\\),\n\n\\(z_{ij} = \\dfrac{x_{ij}-\\overline{x}_j}{s_j}\\), where \\(s_j\\) is the sample SD of \\(x_j\\).\n\\(y^*_{i} = \\dfrac{y_{i}-\\overline{y}}{s_y}\\), where \\(s_y\\) is the sample SD of \\(y\\).\nThe scaled predictors and response have mean 0 and variance 1.\nThe new model: \\[y_i^* = \\alpha_1z_{i1} + \\alpha_2z_{i2} + \\cdots + \\alpha_kz_{ik} + \\epsilon_i\\]\n\n\nWhy no intercept term \\(\\alpha_0\\)?\n\n\n\nThe least-squares estimator for \\(\\boldsymbol \\alpha\\): \\[{\\bf a} = {\\bf (Z'Z)}^{-1} {\\bf Z'y}^*\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat-slides.html#standardized-coefficients",
+    "href": "slides/06-mlr-mat-slides.html#standardized-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Standardized Coefficients",
+    "text": "Standardized Coefficients\n\n## unit normal scaling\nscale_data &lt;- scale(delivery_data, center = TRUE, scale = TRUE)  ## becomes a matrix\napply(scale_data, 2, mean)\n\n    time    cases distance \n-6.2e-17  8.9e-18  9.8e-17 \n\napply(scale_data, 2, sd)\n\n    time    cases distance \n       1        1        1 \n\n\n\n\n## No-intercept\nscale_lm &lt;- lm(time ~ cases + distance - 1, data = as.data.frame(scale_data)) \nscale_lm$coefficients\n\n   cases distance \n    0.72     0.30 \n\n## With intercept\nscale_lm_0 &lt;- lm(time ~ cases + distance, data = as.data.frame(scale_data))  \nscale_lm_0$coefficients\n\n(Intercept)       cases    distance \n   -1.5e-16     7.2e-01     3.0e-01"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html",
+    "href": "slides/06-mlr-mat.html",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\[y_i= \\beta_0 + \\beta_1x_{i1} + \\beta_2x_{i2} + \\dots + \\beta_kx_{ik} + \\epsilon_i, \\quad \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2), \\quad i = 1, 2, \\dots, n\\]\n\n. . .\n\\[\\bf y = \\bf X \\boldsymbol \\beta+ \\boldsymbol \\epsilon\\]\n\\[\\begin{align}\n\\bf y = \\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n \\end{bmatrix},\\quad\n\\bf X = \\begin{bmatrix}\n  1 & x_{11} & x_{12} & \\cdots & x_{1k} \\\\\n  1 & x_{21} & x_{22} & \\cdots & x_{2k} \\\\\n  \\vdots & \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\\n  1 & x_{n1} & x_{n2} & \\cdots & x_{nk} \\end{bmatrix}, \\quad\n\\boldsymbol \\beta= \\begin{bmatrix}\n\\beta_0 \\\\\n\\beta_1 \\\\\n\\vdots \\\\\n\\beta_k \\end{bmatrix} , \\quad\n\\boldsymbol \\epsilon= \\begin{bmatrix}\n\\epsilon_1 \\\\\n\\epsilon_2 \\\\\n\\vdots \\\\\n\\epsilon_n\\end{bmatrix}\n\\end{align}\\]\n\n\n\\({\\bf X}_{n \\times p}\\): Design matrix\n\n\\(\\boldsymbol \\epsilon\\sim N_n({\\bf 0}, \\sigma^2 {\\bf I}_n)\\) 1\n\n\n\n\nLet’s first write our model in a matrix form.\n\n\\(\\bf X\\) is usually called the design matrix.\n\n\n\n\nFor a random vector \\({\\bf Z} = (Z_1, \\dots, Z_n)'\\), its mean vector is \\[E({\\bf Z}) = E\\begin{pmatrix}\nZ_1 \\\\\nZ_2 \\\\\n\\vdots \\\\\nZ_n\\end{pmatrix} = \\begin{bmatrix}\nE(Z_1) \\\\\nE(Z_2) \\\\\n\\vdots \\\\\nE(Z_n)\\end{bmatrix}\\]\nIts (symmetric) variance-covariance matrix is \\[\\scriptsize \\begin{align} \\mathrm{Cov}({\\bf Z}) = {\\bf \\Sigma} &= \\begin{bmatrix} \\mathrm{Var}(Z_1) & \\mathrm{Cov}(Z_1, Z_2) & \\cdots & \\mathrm{Cov}(Z_1, Z_n) \\\\ \\mathrm{Cov}(Z_2, Z_1) & \\mathrm{Var}(Z_2) & \\cdots & \\mathrm{Cov}(Z_2, Z_n) \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ \\mathrm{Cov}(Z_n, Z_1) & \\mathrm{Cov}(Z_n, Z_2) & \\cdots & \\mathrm{Var}(Z_n) \\end{bmatrix} \\end{align}\\]\n\n\n\\[S(\\beta_0, \\beta_1, \\dots, \\beta_k) = \\sum_{i=1}^n\\epsilon_i^2 = \\sum_{i=1}^n\\left(y_i - \\beta_0 - \\sum_{j=1}^k\\beta_j x_{ij}\\right)^2\\]\n\\[\\begin{align}\n\\left.\\frac{\\partial S}{\\partial\\beta_0}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right) = 0\\\\\n\\left.\\frac{\\partial S}{\\partial\\beta_j}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right)x_{ij} = 0, \\quad j = 1, 2, \\dots, k\n\\end{align}\\]\n. . .\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta)\n\\end{align}\\]\n\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y'}{\\bf y} - \\boldsymbol \\beta'{\\bf X'}{\\bf y} - {\\bf y'}{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\\\\\n&={\\bf y}'{\\bf y} - 2\\boldsymbol \\beta'{\\bf X}'{\\bf y} + \\boldsymbol \\beta' {\\bf X}' {\\bf X} \\boldsymbol \\beta\n\\end{align}\\]\n\n\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y}'{\\bf y} - \\boldsymbol \\beta'{\\bf X}'{\\bf y} - {\\bf y}'{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\n\\end{align}\\]\n\n\n\n\n\n\nNormal equations: \\(\\begin{align} \\left.\\frac{\\partial S}{\\partial \\boldsymbol \\beta}\\right \\vert_{\\bf b} = -2 {\\bf X}' {\\bf y} + 2 {\\bf X}' {\\bf X} {\\bf b} = \\boldsymbol{0} \\end{align}\\)\n\n\n\n\nTo get the LSE in a matrix form, we first write the sum of squares using matrices.\n\n\n. . .\n\nLSE for \\(\\boldsymbol \\beta\\):\n\n \\[\\begin{align} \\boxed{{\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' \\bf y} \\end{align}\\] \n\n\\((\\bf X' \\bf X){ \\bf b} = {\\bf X'} {\\bf y}\\)\n\n\n\n\n\n\n\n\n\n\nSimple linear regression case.\n\n\n\n\n\n\n\nX &lt;- cbind(1, delivery_data[, c(2, 3)])\n\n   1    7  560\n   1    3  220\n   1    3  340\n   1    4   80\n   1    6  150\n   1    7  330\n   1    2  110\n   1    7  210\n   1   30 1460\n   1    5  605\n   1   16  688\n   1   10  215\n   1    4  255\n   1    6  462\n   1    9  448\n   1   10  776\n   1    6  200\n   1    7  132\n   1    3   36\n   1   17  770\n   1   10  140\n   1   26  810\n   1    9  450\n   1    8  635\n   1    4  150\n\n\n\n\ny &lt;- as.matrix(delivery_data$time)\n\n16.7\n11.5\n12.0\n14.9\n13.8\n18.1\n 8.0\n17.8\n79.2\n21.5\n40.3\n21.0\n13.5\n19.8\n24.0\n29.0\n15.3\n19.0\n 9.5\n35.1\n17.9\n52.3\n18.8\n19.8\n10.8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} \\bf X' \\bf y\\)\n\nt(X) %*% X\n\n             1  cases distance\n1           25    219    10232\ncases      219   3055   133899\ndistance 10232 133899  6725688\n\nt(X) %*% y\n\n           [,1]\n1           560\ncases      7375\ndistance 337072\n\nsolve(t(X) %*% X) %*% t(X) %*% y\n\n          [,1]\n1        2.341\ncases    1.616\ndistance 0.014\n\n\n\n\n\n\n\n\\[\\hat{\\bf y} = {\\bf X} {\\bf b} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' {\\bf y} = {\\bf H} {\\bf y}\\]\n\n\\({\\bf H} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}'\\) is called hat matrix whose elements are \\(h_{ij} = \\dfrac{1}{n} + \\dfrac{(x_i-\\overline{x})(x_j-\\overline{x})}{S_{xx}}\\)\nThe vector of residuals \\(e_i = y_i - \\hat{y}_i\\) is \\[{\\bf e} = {\\bf y} - \\hat{\\bf y} ={ \\bf y} - {\\bf X} {\\bf b} = {\\bf y} - {\\bf H} {\\bf y} = ({\\bf I} - {\\bf H}) {\\bf y}\\]\n\n. . .\n\n\nBoth \\(\\bf H\\) and \\(\\bf I-H\\) are symmetric and idempotent. They are orthogonal projection matrices.\n\n\\(\\bf H\\) projects \\(\\bf y\\) to \\(\\hat{\\bf y}\\) on the \\(p\\)-dimensional space spanned by columns of \\(\\bf X\\), or the column space of \\(\\bf X\\), \\(Col({\\bf X}) = \\{ {\\bf Xv}: {\\bf v} \\in {\\bf R}^p \\}\\).\n\n\\(\\bf I - H\\) projects \\(\\bf y\\) to \\(\\bf e\\) on the space perpendicular to \\(Col(\\bf X)\\), or \\(Col(\\bf X)^{\\bot}\\).\n\n\n\n\nThe vector of fitted values \\(\\hat{y}_i\\) corresponding to \\(y_i\\) is \\[\\hat{\\bf y} = \\bf X \\bf b = \\bf X (\\bf X' \\bf X) ^{-1} \\bf X' \\bf y = \\bf H \\bf y\\]\n\n\n\\(\\bf H\\) plays an important role in regression analysis.\nAnd it will be shown up many times later in many topics of this course.\nOK. It’s a little abstract. Let’s look into the geometrical interpretation of least squares little by little.\n\n\n\n\n\n\n\\({\\bf y} \\notin Col({\\bf X})\\)\n\\(\\hat{{\\bf y}} = {\\bf Xb} = {\\bf H} {\\bf y} \\in Col({\\bf X})\\)\nMinimize the distance of \\(\\color{red}{A}\\) to \\(Col(\\bf X)\\): Find the point in \\(Col(\\bf X)\\) that is closest to \\(A\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwhat is column space of \\(X\\)?\n\n\nThe col space of \\(X\\) is the set or the collection of all linear combinations of columns of \\(X\\). In other words, column space of \\(X\\) is the space spanned by the columns of \\(X\\).\nExample\nFor visualization purpose, suppose \\(X\\) has 2 columns, \\(x_1\\) and \\(x_2\\). The column space of \\(X\\) will be the plane spanned by the 2 columns, shown in green color.\n\n\n\n\nobservation \\(y\\).\n\n\nBasically 99% of the time, \\(Y\\) will not be in the column space of \\(X\\).\n\\(y_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik} + e_i\\)\n\n\\(y_i\\) is not the linear combo of columns of \\(X\\), and \\(y\\) is not a point in Col(X).\nSo \\(y\\) is point in the \\(n\\)-dimensional space, and not on the plane spanned by columns of \\(X\\).\n\n\n\n\nH (Let’s see what the projection matrix \\(H\\) is doing)\n\n\nWhen we multiply \\(H\\) by \\(y\\), we are finding the projection of \\(y\\) onto the Col(X).\nThe projection of \\(y\\) on the Col(X) is actually the fitted value \\(\\hat{y}\\).\n\\(\\hat{y}_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik}\\)\nThere are so many (actually infinitely many) linear combo of columns of \\(X\\), why this particular vector is our \\(\\hat{y}\\)?\nThe distance between \\(y\\) and Col(X) is actually the shortest when we do the projection of \\(y\\) onto the Col(X).\nIn other words the distance between \\(y\\) and \\(\\hat{y}\\) is the minimal distance among all the distance between \\(y\\) and any point in the Col(X).\n\n\n\n\n\n\n\n\n\nThe distance is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\). \\(\\small {\\bf e} = ({\\bf I} - {\\bf H}) {\\bf y} \\perp Col({\\bf X})\\)\n\n\\({\\bf X}'( {\\bf y} - {\\bf Xb}) = {\\bf 0}\\)\n\n\nSearching for the LS solution \\(\\bf b\\) that minimizes \\(SS_{res}\\) is the same as locating the point \\({\\bf Xb} \\in Col({\\bf X})\\) that is as close to \\(\\bf y\\) as possible!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(I - H) Now let’s see what (I - H) is doing.\n\n\nThe residual vector is \\(y - \\hat{y}\\). Geometrically, the residual vector is this dash line vector that is perpendicular to the column space of \\(X\\). In other words,the residual vector is the normal vector of Col(X).\nThis is the result of projection. The distance between \\(y\\) and the column space is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\).\nWe know that e = (I - H)y. So (I - H) project \\(Y\\) onto the space that is perpendicular to Col(X). And the vector in that space is the residual vector.\n\n\n\nCalculus connects to Linear Algebra\n\n\n\n\n\n\n\\({\\bf H} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} \\bf X'\\)\n\nH &lt;- X %*% solve(t(X) %*% X) %*% t(X)\n\n\\(\\hat{\\bf y} = \\bf H \\bf y\\)\n\nfitted_y &lt;- H %*% y\nfitted_y[1:4]\n\n[1] 22 10 12 10\n\ndelivery_lm$fitted.values[1:4]\n\n 1  2  3  4 \n22 10 12 10 \n\n\n\n\\({\\bf e} = ({\\bf I} - {\\bf H}) {\\bf y}\\)\n\nn &lt;- length(y)\nI &lt;- diag(n)\nres &lt;- (I - H) %*% y\nres[1:4]\n\n[1] -5.03  1.15 -0.05  4.92\n\ndelivery_lm$residuals[1:4]\n\n    1     2     3     4 \n-5.03  1.15 -0.05  4.92 \n\n## residual vector in the left null space of X\nt(X) %*% res\n\n             [,1]\n1        -8.2e-13\ncases    -2.0e-12\ndistance -7.0e-11\n\n\n\n\n\n\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} \\bf X' \\bf y\\)\n\\[\\textbf{b} \\sim N\\left(\\boldsymbol \\beta, \\sigma^2 {( {\\bf X'} {\\bf X} )}^{-1} \\right)\\]  \n\nThe standard error of \\(b_j\\) is \\({\\sqrt{s^2C_{jj}}}\\), where \\(C_{jj}\\) is the diagonal element of \\(( {\\bf X'} {\\bf X} )^{-1}\\) corresponding to \\(b_j\\).\n\n\nIf \\({\\bf y} \\sim N_n(\\bsmu, {\\bf \\Sigma})\\), and \\({\\bf Z = By + c}\\) with a constant vector \\(\\bf c\\), then \\[{\\bf Z} \\sim N({\\bf B\\bsmu}, {\\bf B \\Sigma B}')\\]. \\[\\mathrm{Var}(\\textbf{b}) = E\\left[(\\textbf{b} - E(\\textbf{b}))(\\textbf{b}-E(\\textbf{b}))'\\right] = \\mathrm{Var}\\left[\\bf{(X'X)^{-1}X'y}\\right] = \\sigma^2 \\bf (X'X)^{-1}\\]\n\nThe standard error of \\(b_j\\) is \\({\\sqrt{\\hat{\\sigma}^2C_{jj}}}\\), where \\(C_{jj}\\) is the diagonal element of \\(({\\bf X'X})^{-1}\\) corresponding to \\(b_j\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#regression-model-in-matrix-form",
+    "href": "slides/06-mlr-mat.html#regression-model-in-matrix-form",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\[y_i= \\beta_0 + \\beta_1x_{i1} + \\beta_2x_{i2} + \\dots + \\beta_kx_{ik} + \\epsilon_i, \\quad \\epsilon_i \\stackrel{iid}{\\sim} N(0, \\sigma^2), \\quad i = 1, 2, \\dots, n\\]\n\n. . .\n\\[\\bf y = \\bf X \\boldsymbol \\beta+ \\boldsymbol \\epsilon\\]\n\\[\\begin{align}\n\\bf y = \\begin{bmatrix}\ny_1 \\\\\ny_2 \\\\\n\\vdots \\\\\ny_n \\end{bmatrix},\\quad\n\\bf X = \\begin{bmatrix}\n  1 & x_{11} & x_{12} & \\cdots & x_{1k} \\\\\n  1 & x_{21} & x_{22} & \\cdots & x_{2k} \\\\\n  \\vdots & \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\\n  1 & x_{n1} & x_{n2} & \\cdots & x_{nk} \\end{bmatrix}, \\quad\n\\boldsymbol \\beta= \\begin{bmatrix}\n\\beta_0 \\\\\n\\beta_1 \\\\\n\\vdots \\\\\n\\beta_k \\end{bmatrix} , \\quad\n\\boldsymbol \\epsilon= \\begin{bmatrix}\n\\epsilon_1 \\\\\n\\epsilon_2 \\\\\n\\vdots \\\\\n\\epsilon_n\\end{bmatrix}\n\\end{align}\\]\n\n\n\\({\\bf X}_{n \\times p}\\): Design matrix\n\n\\(\\boldsymbol \\epsilon\\sim N_n({\\bf 0}, \\sigma^2 {\\bf I}_n)\\) 1\n\n\n\n\nLet’s first write our model in a matrix form.\n\n\\(\\bf X\\) is usually called the design matrix."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#regression-model-in-matrix-form-1",
+    "href": "slides/06-mlr-mat.html#regression-model-in-matrix-form-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "For a random vector \\({\\bf Z} = (Z_1, \\dots, Z_n)'\\), its mean vector is \\[E({\\bf Z}) = E\\begin{pmatrix}\nZ_1 \\\\\nZ_2 \\\\\n\\vdots \\\\\nZ_n\\end{pmatrix} = \\begin{bmatrix}\nE(Z_1) \\\\\nE(Z_2) \\\\\n\\vdots \\\\\nE(Z_n)\\end{bmatrix}\\]\nIts (symmetric) variance-covariance matrix is \\[\\scriptsize \\begin{align} \\mathrm{Cov}({\\bf Z}) = {\\bf \\Sigma} &= \\begin{bmatrix} \\mathrm{Var}(Z_1) & \\mathrm{Cov}(Z_1, Z_2) & \\cdots & \\mathrm{Cov}(Z_1, Z_n) \\\\ \\mathrm{Cov}(Z_2, Z_1) & \\mathrm{Var}(Z_2) & \\cdots & \\mathrm{Cov}(Z_2, Z_n) \\\\ \\vdots  & \\vdots  & \\ddots & \\vdots  \\\\ \\mathrm{Cov}(Z_n, Z_1) & \\mathrm{Cov}(Z_n, Z_2) & \\cdots & \\mathrm{Var}(Z_n) \\end{bmatrix} \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#least-squares-estimation-in-matrix-form",
+    "href": "slides/06-mlr-mat.html#least-squares-estimation-in-matrix-form",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\[S(\\beta_0, \\beta_1, \\dots, \\beta_k) = \\sum_{i=1}^n\\epsilon_i^2 = \\sum_{i=1}^n\\left(y_i - \\beta_0 - \\sum_{j=1}^k\\beta_j x_{ij}\\right)^2\\]\n\\[\\begin{align}\n\\left.\\frac{\\partial S}{\\partial\\beta_0}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right) = 0\\\\\n\\left.\\frac{\\partial S}{\\partial\\beta_j}\\right\\vert_{b_0, b_1, \\dots, b_k} &= -2 \\sum_{i=1}^n\\left(y_i - b_0 - \\sum_{j=1}^k b_j x_{ij}\\right)x_{ij} = 0, \\quad j = 1, 2, \\dots, k\n\\end{align}\\]\n. . .\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta)\n\\end{align}\\]\n\n\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y'}{\\bf y} - \\boldsymbol \\beta'{\\bf X'}{\\bf y} - {\\bf y'}{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\\\\\n&={\\bf y}'{\\bf y} - 2\\boldsymbol \\beta'{\\bf X}'{\\bf y} + \\boldsymbol \\beta' {\\bf X}' {\\bf X} \\boldsymbol \\beta\n\\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#least-squares-estimation-in-matrix-form-1",
+    "href": "slides/06-mlr-mat.html#least-squares-estimation-in-matrix-form-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\[\\begin{align}\nS(\\boldsymbol \\beta) = \\sum_{i=1}^n\\epsilon_i^2 = \\boldsymbol \\epsilon'\\boldsymbol \\epsilon&= ({\\bf y} - {\\bf X} \\boldsymbol \\beta)'({\\bf y} - \\bf X \\boldsymbol \\beta) \\\\\n&= {\\bf y}'{\\bf y} - \\boldsymbol \\beta'{\\bf X}'{\\bf y} - {\\bf y}'{\\bf X} \\boldsymbol \\beta+ \\boldsymbol \\beta' \\bf X' \\bf X \\boldsymbol \\beta\n\\end{align}\\]\n\n\n\n\n\n\nNormal equations: \\(\\begin{align} \\left.\\frac{\\partial S}{\\partial \\boldsymbol \\beta}\\right \\vert_{\\bf b} = -2 {\\bf X}' {\\bf y} + 2 {\\bf X}' {\\bf X} {\\bf b} = \\boldsymbol{0} \\end{align}\\)\n\n\n\n\nTo get the LSE in a matrix form, we first write the sum of squares using matrices.\n\n\n. . .\n\nLSE for \\(\\boldsymbol \\beta\\):\n\n \\[\\begin{align} \\boxed{{\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' \\bf y} \\end{align}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#normal-equations",
+    "href": "slides/06-mlr-mat.html#normal-equations",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\((\\bf X' \\bf X){ \\bf b} = {\\bf X'} {\\bf y}\\)\n\n\n\n\n\n\n\n\n\n\nSimple linear regression case."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#design-matrix-and-outcome-vector",
+    "href": "slides/06-mlr-mat.html#design-matrix-and-outcome-vector",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "X &lt;- cbind(1, delivery_data[, c(2, 3)])\n\n   1    7  560\n   1    3  220\n   1    3  340\n   1    4   80\n   1    6  150\n   1    7  330\n   1    2  110\n   1    7  210\n   1   30 1460\n   1    5  605\n   1   16  688\n   1   10  215\n   1    4  255\n   1    6  462\n   1    9  448\n   1   10  776\n   1    6  200\n   1    7  132\n   1    3   36\n   1   17  770\n   1   10  140\n   1   26  810\n   1    9  450\n   1    8  635\n   1    4  150\n\n\n\n\ny &lt;- as.matrix(delivery_data$time)\n\n16.7\n11.5\n12.0\n14.9\n13.8\n18.1\n 8.0\n17.8\n79.2\n21.5\n40.3\n21.0\n13.5\n19.8\n24.0\n29.0\n15.3\n19.0\n 9.5\n35.1\n17.9\n52.3\n18.8\n19.8\n10.8"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#regression-coefficients",
+    "href": "slides/06-mlr-mat.html#regression-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} \\bf X' \\bf y\\)\n\nt(X) %*% X\n\n             1  cases distance\n1           25    219    10232\ncases      219   3055   133899\ndistance 10232 133899  6725688\n\nt(X) %*% y\n\n           [,1]\n1           560\ncases      7375\ndistance 337072\n\nsolve(t(X) %*% X) %*% t(X) %*% y\n\n          [,1]\n1        2.341\ncases    1.616\ndistance 0.014"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#hat-matrix",
+    "href": "slides/06-mlr-mat.html#hat-matrix",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\[\\hat{\\bf y} = {\\bf X} {\\bf b} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' {\\bf y} = {\\bf H} {\\bf y}\\]\n\n\\({\\bf H} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}'\\) is called hat matrix whose elements are \\(h_{ij} = \\dfrac{1}{n} + \\dfrac{(x_i-\\overline{x})(x_j-\\overline{x})}{S_{xx}}\\)\nThe vector of residuals \\(e_i = y_i - \\hat{y}_i\\) is \\[{\\bf e} = {\\bf y} - \\hat{\\bf y} ={ \\bf y} - {\\bf X} {\\bf b} = {\\bf y} - {\\bf H} {\\bf y} = ({\\bf I} - {\\bf H}) {\\bf y}\\]\n\n. . .\n\n\nBoth \\(\\bf H\\) and \\(\\bf I-H\\) are symmetric and idempotent. They are orthogonal projection matrices.\n\n\\(\\bf H\\) projects \\(\\bf y\\) to \\(\\hat{\\bf y}\\) on the \\(p\\)-dimensional space spanned by columns of \\(\\bf X\\), or the column space of \\(\\bf X\\), \\(Col({\\bf X}) = \\{ {\\bf Xv}: {\\bf v} \\in {\\bf R}^p \\}\\).\n\n\\(\\bf I - H\\) projects \\(\\bf y\\) to \\(\\bf e\\) on the space perpendicular to \\(Col(\\bf X)\\), or \\(Col(\\bf X)^{\\bot}\\).\n\n\n\n\nThe vector of fitted values \\(\\hat{y}_i\\) corresponding to \\(y_i\\) is \\[\\hat{\\bf y} = \\bf X \\bf b = \\bf X (\\bf X' \\bf X) ^{-1} \\bf X' \\bf y = \\bf H \\bf y\\]\n\n\n\\(\\bf H\\) plays an important role in regression analysis.\nAnd it will be shown up many times later in many topics of this course.\nOK. It’s a little abstract. Let’s look into the geometrical interpretation of least squares little by little."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#geometrical-interpretation-of-least-squares",
+    "href": "slides/06-mlr-mat.html#geometrical-interpretation-of-least-squares",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\({\\bf y} \\notin Col({\\bf X})\\)\n\\(\\hat{{\\bf y}} = {\\bf Xb} = {\\bf H} {\\bf y} \\in Col({\\bf X})\\)\nMinimize the distance of \\(\\color{red}{A}\\) to \\(Col(\\bf X)\\): Find the point in \\(Col(\\bf X)\\) that is closest to \\(A\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nwhat is column space of \\(X\\)?\n\n\nThe col space of \\(X\\) is the set or the collection of all linear combinations of columns of \\(X\\). In other words, column space of \\(X\\) is the space spanned by the columns of \\(X\\).\nExample\nFor visualization purpose, suppose \\(X\\) has 2 columns, \\(x_1\\) and \\(x_2\\). The column space of \\(X\\) will be the plane spanned by the 2 columns, shown in green color.\n\n\n\n\nobservation \\(y\\).\n\n\nBasically 99% of the time, \\(Y\\) will not be in the column space of \\(X\\).\n\\(y_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik} + e_i\\)\n\n\\(y_i\\) is not the linear combo of columns of \\(X\\), and \\(y\\) is not a point in Col(X).\nSo \\(y\\) is point in the \\(n\\)-dimensional space, and not on the plane spanned by columns of \\(X\\).\n\n\n\n\nH (Let’s see what the projection matrix \\(H\\) is doing)\n\n\nWhen we multiply \\(H\\) by \\(y\\), we are finding the projection of \\(y\\) onto the Col(X).\nThe projection of \\(y\\) on the Col(X) is actually the fitted value \\(\\hat{y}\\).\n\\(\\hat{y}_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik}\\)\nThere are so many (actually infinitely many) linear combo of columns of \\(X\\), why this particular vector is our \\(\\hat{y}\\)?\nThe distance between \\(y\\) and Col(X) is actually the shortest when we do the projection of \\(y\\) onto the Col(X).\nIn other words the distance between \\(y\\) and \\(\\hat{y}\\) is the minimal distance among all the distance between \\(y\\) and any point in the Col(X)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#geometrical-interpretation-of-least-squares-1",
+    "href": "slides/06-mlr-mat.html#geometrical-interpretation-of-least-squares-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "The distance is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\). \\(\\small {\\bf e} = ({\\bf I} - {\\bf H}) {\\bf y} \\perp Col({\\bf X})\\)\n\n\\({\\bf X}'( {\\bf y} - {\\bf Xb}) = {\\bf 0}\\)\n\n\nSearching for the LS solution \\(\\bf b\\) that minimizes \\(SS_{res}\\) is the same as locating the point \\({\\bf Xb} \\in Col({\\bf X})\\) that is as close to \\(\\bf y\\) as possible!"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#section-1",
+    "href": "slides/06-mlr-mat.html#section-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "(I - H) Now let’s see what (I - H) is doing.\n\n\nThe residual vector is \\(y - \\hat{y}\\). Geometrically, the residual vector is this dash line vector that is perpendicular to the column space of \\(X\\). In other words,the residual vector is the normal vector of Col(X).\nThis is the result of projection. The distance between \\(y\\) and the column space is minimized when the point in the space is the foot of the line from \\(A\\) normal to the space. This is point \\(C\\).\nWe know that e = (I - H)y. So (I - H) project \\(Y\\) onto the space that is perpendicular to Col(X). And the vector in that space is the residual vector.\n\n\n\nCalculus connects to Linear Algebra"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#r-lab-verify-identity",
+    "href": "slides/06-mlr-mat.html#r-lab-verify-identity",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\({\\bf H} = {\\bf X} ({\\bf X}' {\\bf X}) ^{-1} \\bf X'\\)\n\nH &lt;- X %*% solve(t(X) %*% X) %*% t(X)\n\n\\(\\hat{\\bf y} = \\bf H \\bf y\\)\n\nfitted_y &lt;- H %*% y\nfitted_y[1:4]\n\n[1] 22 10 12 10\n\ndelivery_lm$fitted.values[1:4]\n\n 1  2  3  4 \n22 10 12 10 \n\n\n\n\\({\\bf e} = ({\\bf I} - {\\bf H}) {\\bf y}\\)\n\nn &lt;- length(y)\nI &lt;- diag(n)\nres &lt;- (I - H) %*% y\nres[1:4]\n\n[1] -5.03  1.15 -0.05  4.92\n\ndelivery_lm$residuals[1:4]\n\n    1     2     3     4 \n-5.03  1.15 -0.05  4.92 \n\n## residual vector in the left null space of X\nt(X) %*% res\n\n             [,1]\n1        -8.2e-13\ncases    -2.0e-12\ndistance -7.0e-11"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#multivariate-normal-distribution",
+    "href": "slides/06-mlr-mat.html#multivariate-normal-distribution",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "",
+    "text": "\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} \\bf X' \\bf y\\)\n\\[\\textbf{b} \\sim N\\left(\\boldsymbol \\beta, \\sigma^2 {( {\\bf X'} {\\bf X} )}^{-1} \\right)\\]  \n\nThe standard error of \\(b_j\\) is \\({\\sqrt{s^2C_{jj}}}\\), where \\(C_{jj}\\) is the diagonal element of \\(( {\\bf X'} {\\bf X} )^{-1}\\) corresponding to \\(b_j\\).\n\n\nIf \\({\\bf y} \\sim N_n(\\bsmu, {\\bf \\Sigma})\\), and \\({\\bf Z = By + c}\\) with a constant vector \\(\\bf c\\), then \\[{\\bf Z} \\sim N({\\bf B\\bsmu}, {\\bf B \\Sigma B}')\\]. \\[\\mathrm{Var}(\\textbf{b}) = E\\left[(\\textbf{b} - E(\\textbf{b}))(\\textbf{b}-E(\\textbf{b}))'\\right] = \\mathrm{Var}\\left[\\bf{(X'X)^{-1}X'y}\\right] = \\sigma^2 \\bf (X'X)^{-1}\\]\n\nThe standard error of \\(b_j\\) is \\({\\sqrt{\\hat{\\sigma}^2C_{jj}}}\\), where \\(C_{jj}\\) is the diagonal element of \\(({\\bf X'X})^{-1}\\) corresponding to \\(b_j\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#reduced-model-vs.-full-model",
+    "href": "slides/06-mlr-mat.html#reduced-model-vs.-full-model",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Reduced Model vs. Full Model",
+    "text": "Reduced Model vs. Full Model\n\nOverall test of significance: all predictors\nPartial individual \\(t\\)-test: one single predictor\nHow to test any subset of predictors?\n\n. . .\n\n\nFull Model: \\(y = \\beta_0 + \\beta_1x_1+\\beta_2x_2 + \\beta_3x_3 + \\beta_4x_4 + \\epsilon\\)\n\n\\(H_0: \\beta_{2} = \\beta_{4} = 0\\)\n\n. . .\n\n\nReduced Model (under \\(H_0\\)): \\(y = \\beta_0 + \\beta_1x_1 + \\beta_3x_3 + \\epsilon\\)\n\nLike to see if \\(x_2\\) and \\(x_4\\) can contribute significantly to the regression model when \\(x_1\\) and \\(x_3\\) are in the model.\n\nIf yes, \\(\\beta_{2} \\ne 0\\) and/or \\(\\beta_{4} \\ne 0\\). (Reject \\(H_0\\))\nOtherwise, \\(\\beta_{2} = \\beta_{4} = 0\\). (Do not reject \\(H_0\\))\n\n\n\n. . .\n\nGiven \\(x_1\\) and \\(x_3\\) in the model, we examine how much extra \\(SS_R\\) is increased ( \\(SS_{res}\\) is reduced) if \\(x_2\\) and \\(x_4\\) are added to the model.\n\n\n\nIf much more extra \\(SS_R\\) is increased after \\(x_2\\) and \\(x_4\\) are included in the model, meaning that lots of variation in \\(y\\) that were treated as unexplained variation or variation that cannot be explained by the \\(x_1\\) and \\(x_3\\), now are absorbed or explained by \\(x_2\\) and \\(x_4\\).\n\n\\(x_2\\) and \\(x_4\\) provide some important and valuable information that \\(x_1\\) and \\(x_3\\) cannot provide, and that information helps us better predict response values and explain the variation of \\(Y\\).\nSo if we observe a significant increase in SS_R, it means that \\(x_2\\) and \\(x_4\\) are valuable and their coefficient is significantly non-zero. Therefore, we should keep the full model that includes all predictors, or reject \\(H_0\\) because the reduced model is too simple, and lose lots of useful information for explaining variation in \\(Y\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#extra-sum-of-squares",
+    "href": "slides/06-mlr-mat.html#extra-sum-of-squares",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares",
+    "text": "Extra Sum-of-squares\n\nFull Model: \\(\\bf y = X\\boldsymbol \\beta+\\boldsymbol \\epsilon\\)\nPartition coefficient vector:\n\n\\[\\boldsymbol \\beta_{p \\times 1} = \\left[\n\\begin{array}{c}\n  \\boldsymbol \\beta_1 \\\\\n  \\hline\n  \\boldsymbol \\beta_2\n\\end{array}\n\\right]\\]\nwhere \\(\\boldsymbol \\beta_1\\) is \\((p-r) \\times 1\\) and \\(\\boldsymbol \\beta_2\\) is \\(r \\times 1\\)\n\nTest \\(H_0: \\boldsymbol \\beta_2 = {\\bf 0}\\), \\(H_1: \\boldsymbol \\beta_2 \\ne {\\bf 0}\\)\nExample:  \\(p=5\\), \\(r=2\\), \\(\\boldsymbol \\beta_1 = (\\beta_0, \\beta_1, \\beta_3)'\\), \\(\\boldsymbol \\beta_2 = (\\beta_2, \\beta_4)'\\).\n\n\n\nFor simplicity, we can partition the coefficient vector to beta_1 and beta_2, where beta_2 is the subset we’d like to test.\n\\(1 \\le r \\le k\\)\n\n\n. . .\n\\[{\\bf y} = {\\bf X} \\boldsymbol \\beta+\\boldsymbol \\epsilon= {\\bf X}_1\\boldsymbol \\beta_1 + {\\bf X}_2\\boldsymbol \\beta_2 + \\boldsymbol \\epsilon\\]\n\n\\(n \\times (p-r)\\) matrix \\({\\bf X}_1\\): the columns of \\(\\bf X\\) associated with \\(\\boldsymbol \\beta_1\\)\n\\(n \\times r\\) matrix \\({\\bf X}_2\\): the columns of \\(\\bf X\\) associated with \\(\\boldsymbol \\beta_2\\)"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#extra-sum-of-squares-1",
+    "href": "slides/06-mlr-mat.html#extra-sum-of-squares-1",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares",
+    "text": "Extra Sum-of-squares\n\n\nFull Model: \\(\\small \\color{red}{{\\bf y} = {\\bf X}\\boldsymbol \\beta+\\boldsymbol \\epsilon= {\\bf X}_1\\boldsymbol \\beta_1 + {\\bf X}_2\\boldsymbol \\beta_2 + \\boldsymbol \\epsilon}\\)\n\n\n\\({\\bf b} = ({\\bf X}' {\\bf X}) ^{-1} {\\bf X}' {\\bf y}\\) \n\n\n\nReduced Model: \\(\\small \\color{red}{{\\bf y} = {\\bf X}_1\\boldsymbol \\beta_1+\\boldsymbol \\epsilon}\\) \\(\\color{red}{(\\boldsymbol \\beta_2 = {\\bf 0})}\\)\n\n\n\\({\\bf b}_1 = ({\\bf X}_1' {\\bf X}_1) ^{-1} {\\bf X}_1' {\\bf y}\\) \n\n\n\n\n\n\nTo find the contribution of the terms in \\(\\boldsymbol \\beta_2\\) to the regression, fit the model assuming that \\(H_0: \\bf \\boldsymbol \\beta_2 = 0\\) is true. \n\n\n\n. . .\n\nThe \\(SS_R\\) due to \\(\\boldsymbol \\beta_2\\) given that \\(\\boldsymbol \\beta_1\\) is in the model is \\[\\begin{align} SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1) &= SS_R(\\boldsymbol \\beta) - SS_R(\\boldsymbol \\beta_1)\\\\ &= SS_R(\\boldsymbol \\beta_1, \\boldsymbol \\beta_2) - SS_R(\\boldsymbol \\beta_1) \\end{align}\\] with \\(r\\) dfs.\nThis is the extra sum of squares due to \\(\\boldsymbol \\beta_2\\).\nIt measures the increase in the \\(SS_R\\) that results from adding regressors in \\({\\bf X}_2\\) to the model that already contains regressors in \\({\\bf X}_1\\).\n\n\n\nThe regression sum of squares due to \\(\\boldsymbol \\beta_2\\) given that \\(\\boldsymbol \\beta_1\\) is in the model is \\[SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1) = SS_R(\\boldsymbol \\beta) - SS_R(\\boldsymbol \\beta_1)\\] with \\(p - (p-r) = r\\) dfs.\nThis is extra sum of squares due to \\(\\boldsymbol \\beta_2\\).\nIt measures the increase in the \\(SS_R\\) that results from adding \\(x_{k-r+1}, x_{k-r+2}, \\dots, x_k\\) to the model that already contains \\(x_{1}, x_{2}, \\dots, x_{k-r}\\).\nTo find the contribution of the terms in \\(\\boldsymbol \\beta_2\\) to the regression, fit the model assuming that \\(H_0: \\bf \\boldsymbol \\beta_2 = 0\\) is true."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#partial-f-test",
+    "href": "slides/06-mlr-mat.html#partial-f-test",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Partial \\(F\\)-test",
+    "text": "Partial \\(F\\)-test\n\n\\(F_{test} = \\dfrac{SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)/r}{SS_{res}(\\boldsymbol \\beta)/(n-p)} = \\dfrac{MS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)}{MS_{res}}\\)\nUnder \\(H_0\\) that \\(\\boldsymbol \\beta_2 = \\bf 0\\), \\(F_{test} \\sim F_{r, n-p}\\). \\((p = k+1)\\)\nReject \\(H_0\\) if \\(F_{test} &gt; F_{\\alpha, r, n-p}\\).\n\n. . .\n\nGiven the regressors of \\({\\bf X}_1\\) are in the model,\n\nIf the regressors of \\({\\bf X}_2\\) contribute much, \\(SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)\\) will be large.\nA large \\(SS_R(\\boldsymbol \\beta_2|\\boldsymbol \\beta_1)\\) implies a large \\(F_{test}\\).\nA large \\(F_{test}\\) tends to reject \\(H_0\\), and conclude that \\(\\boldsymbol \\beta_2 \\ne \\bf 0\\).\n\\(\\boldsymbol \\beta_2 \\ne \\bf 0\\) means the regressors of \\({\\bf X}_2\\) provide additional explanatory and prediction power that \\({\\bf X}_1\\) cannot provide."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#example-delivery-data",
+    "href": "slides/06-mlr-mat.html#example-delivery-data",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Example: Delivery Data",
+    "text": "Example: Delivery Data\n\n\\(H_0: \\beta_2 = 0 \\qquad H_1: \\beta_2 \\ne 0\\)\nFull model: \\(y = \\beta_0 + \\beta_1x_1+\\beta_2x_2+\\epsilon\\)\n\n. . .\n\nWhat is the reduced model?\n\n. . .\n\nReduced model: \\(y = \\beta_0 + \\beta_1x_1 +\\epsilon\\)\n\n\n. . .\n\n\\(SS_R(\\beta_2|\\beta_1, \\beta_0) = SS_R(\\beta_2, \\beta_1, \\beta_0) -SS_R(\\beta_1, \\beta_0)\\)\n\\(F_{test} = \\dfrac{SS_R(\\beta_2|\\beta_1, \\beta_0)/1}{SS_{res}(\\boldsymbol \\beta)/(25-3)}\\)\nReject \\(H_0\\) if \\(F_{test} &gt; F_{\\alpha, 1, 22}\\)\n\n\n. . .\n\nWhen \\(r=1\\), partial \\(F\\)-test is equivalent to marginal \\(t\\)-test."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#extra-sum-of-squares-approach",
+    "href": "slides/06-mlr-mat.html#extra-sum-of-squares-approach",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Extra Sum-of-squares Approach",
+    "text": "Extra Sum-of-squares Approach\n\nfull_lm &lt;- delivery_lm\nreduced_lm &lt;- lm(time ~ cases, data = delivery_data)\nanova(reduced_lm, full_lm)\n\nAnalysis of Variance Table\n\nModel 1: time ~ cases\nModel 2: time ~ cases + distance\n  Res.Df RSS Df Sum of Sq    F  Pr(&gt;F)    \n1     23 402                              \n2     22 234  1       168 15.8 0.00063 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nsumm_delivery$coefficients\n\n            Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)    2.341     1.0967     2.1  4.4e-02\ncases          1.616     0.1707     9.5  3.3e-09\ndistance       0.014     0.0036     4.0  6.3e-04"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#general-linear-hypothesis",
+    "href": "slides/06-mlr-mat.html#general-linear-hypothesis",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "General Linear Hypothesis",
+    "text": "General Linear Hypothesis\n\nPrevious testing procedures are special cases of the general linear hypothesis testing.\n\\(H_0: {\\bf T\\boldsymbol \\beta= c}\\), where \\({\\bf T}\\) is an \\(m \\times p\\) constant matrix and \\(\\bf c\\) is a \\(m \\times 1\\) constant vector.\nThere are \\(m\\) linear hypotheses to be tested. 2\nFull Model: \\(y = \\beta_0 + \\beta_1x_1+\\beta_2x_2 + \\beta_3x_3 + \\epsilon\\)\nThe model under \\(H_0\\) is the reduced model or restricted model.\n\n\\[H_0: \\begin{align}&\\beta_1 + 2 \\beta_2 = 0 \\\\\n&\\beta_3 = 2 \\end{align}\\]\n\\[\\begin{bmatrix}\n0 & 1 & 2 & 0  \\\\\n0 & 0 & 0 & 1\n\\end{bmatrix}\\begin{bmatrix}\n\\beta_0 \\\\\n\\beta_1 \\\\\n\\beta_2 \\\\\n\\beta_3\n\\end{bmatrix}=\n\\begin{bmatrix}\n0 \\\\\n2\n\\end{bmatrix} \\iff {\\bf T}_{2 \\times 4} \\boldsymbol \\beta_{4 \\times 1} = {\\bf c}_{2 \\times 1}\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#general-f-test",
+    "href": "slides/06-mlr-mat.html#general-f-test",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "General \\(F\\)-test",
+    "text": "General \\(F\\)-test\n\n\nReject \\(H_0\\) if \\(F_{test} &gt; F_{\\alpha, r, n-p}\\), where \\(r\\) is the rank of \\(\\bf T\\). \\((F_{test}\\) is shown in Eq. (3.43) in LRA)\nBack to Delivery example. Suppose we test \\(H_0: \\beta_{1} = \\beta_{2} = 0 \\quad H_1: \\beta_j \\ne 0 \\text{ for at least one } j\\)\n\n. . .\n\nWhat are \\(\\bf T\\), \\(\\boldsymbol \\beta\\) and \\(\\bf c\\)?\n\n. . .\n\n\n\\[H_0: \\begin{align} &\\beta_1 = 0 \\\\\n&\\beta_2 = 0 \\end{align}\\]\n\\[\\begin{bmatrix}\n0 & 1 & 0  \\\\\n0 & 0 & 1\n\\end{bmatrix}\\begin{bmatrix}\n\\beta_0 \\\\\n\\beta_1 \\\\\n\\beta_2\n\\end{bmatrix}=\n\\begin{bmatrix}\n0 \\\\\n0\n\\end{bmatrix}\\]\n\n\nTT &lt;- matrix(0, 2, 3)\nTT[1, 2] &lt;- 1; TT[2, 3] &lt;- 1\nTT\n\n     [,1] [,2] [,3]\n[1,]    0    1    0\n[2,]    0    0    1\n\nc0 &lt;- c(0, 0)"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#r-lab-general-linear-hypothesis",
+    "href": "slides/06-mlr-mat.html#r-lab-general-linear-hypothesis",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "\nR Lab General Linear Hypothesis",
+    "text": "R Lab General Linear Hypothesis\n\nlibrary(car)  ## Companion to Applied Regression\ncar::lht(model = delivery_lm,\n         hypothesis.matrix = TT,\n         rhs = c0)\n\n\nLinear hypothesis test:\ncases = 0\ndistance = 0\n\nModel 1: restricted model\nModel 2: time ~ cases + distance\n\n  Res.Df  RSS Df Sum of Sq   F  Pr(&gt;F)    \n1     24 5785                             \n2     22  234  2      5551 261 4.7e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nThis is (of course) exactly the same as the test for significance!"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#standardized-regression-coefficients",
+    "href": "slides/06-mlr-mat.html#standardized-regression-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Standardized Regression Coefficients",
+    "text": "Standardized Regression Coefficients\n\n\\(\\hat{y} = 5 + x_1 + 1000x_2\\). Can we conclude that the effect of \\(x_2\\) on \\(y\\) is 1000 times larger than the effect of \\(x_1\\)?\n\n. . .\n\nNope! If \\(x_1\\) is measured in litres and \\(x_2\\) in millilitres, although \\(b_2\\) is 1000 times larger than \\(b_1\\), both effects on \\(\\hat{y}\\) are identical given the other.\n\n. . .\n\nThe units of \\(\\beta_j\\) are \\(\\frac{\\text{units of } y}{\\text{units of } x_j}\\)\n\n \\(\\beta_2\\): delivery time (min) \\((y)\\) per distance (ft) walked by the driver \\((x_2)\\). \n\n\nIt is helpful to work with dimensionless or standardized coefficients.\n\ncomparison\nget rid of round-off errors in \\(( {\\bf X'} {\\bf X} )^{-1}\\).\n\n\n\n\n\ninterpretation\nIt is difficult to compare coefficients because the magnitude of \\(b_j\\) reflects the units of measurement of \\(x_j\\).\n\n\n. . .\n\nIn Intro Stats, how do we standardize a variable?"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#unit-normal-scaling",
+    "href": "slides/06-mlr-mat.html#unit-normal-scaling",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Unit Normal Scaling",
+    "text": "Unit Normal Scaling\nFor \\(i = 1, \\dots, n, \\, j = 1, \\dots, k\\),\n\n\\(z_{ij} = \\dfrac{x_{ij}-\\overline{x}_j}{s_j}\\), where \\(s_j\\) is the sample SD of \\(x_j\\).\n\\(y^*_{i} = \\dfrac{y_{i}-\\overline{y}}{s_y}\\), where \\(s_y\\) is the sample SD of \\(y\\).\nThe scaled predictors and response have mean 0 and variance 1.\nThe new model: \\[y_i^* = \\alpha_1z_{i1} + \\alpha_2z_{i2} + \\cdots + \\alpha_kz_{ik} + \\epsilon_i\\]\n\n\nWhy no intercept term \\(\\alpha_0\\)?\n\n. . .\n\nThe least-squares estimator for \\(\\boldsymbol \\alpha\\): \\[{\\bf a} = {\\bf (Z'Z)}^{-1} {\\bf Z'y}^*\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#unit-length-scaling",
+    "href": "slides/06-mlr-mat.html#unit-length-scaling",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Unit Length Scaling",
+    "text": "Unit Length Scaling\n\n\n\\(w_{ij} = \\frac{x_{ij}-\\overline{x}_j}{S_{jj}^{1/2}}, \\, i = 1, \\dots, n, \\, j = 1, \\dots, k\\), where \\(S_{jj} = \\sum_{i=1}^n(x_{ij}-\\overline{x}_j)^2\\) is the (corrected) sum of squares for \\(x_j\\).\n\n\\(y^0_{i} = \\frac{y_{i}-\\overline{y}}{SS_T^{1/2}}, \\, i = 1, \\dots, n\\).\nThe new regressor and response have mean 0 and length 1 \\((\\sqrt{\\sum_{i=1}^nw_{ij}^2} = 1)\\).\nThe new model: \\[y_i^0 = \\alpha_1w_{i1} + \\alpha_2w_{i2} + \\cdots + \\alpha_kw_{ik} + \\epsilon_i\\]\n\nThe least-squares estimator for \\(\\bsalpha\\): \\[{\\bf a} = {\\bf (W'W)}^{-1} {\\bf W'y}^0\\]\n\n\n\n\n\n\\(S_{jj} = \\sum_{i=1}^n(x_{ij}-\\overline{x}_j)^2\\) is the (corrected) sum of squares for \\(x_j\\)."
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#comparison",
+    "href": "slides/06-mlr-mat.html#comparison",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Comparison",
+    "text": "Comparison\n\n\\({\\bf W'W}\\) is the correlation matrix formed by \\(x_1, \\dots, x_k\\).\n\\(\\bf W'y^0\\) is the correlation between \\(x_j\\) and \\(y\\).\n\\({\\bf Z'Z} = (n-1) {\\bf W'W}\\)\n\\({\\bf a} = {\\bf (Z'Z)}^{-1} {\\bf Z'y}^* =  {\\bf (W'W)}^{-1} {\\bf W'y}^0\\)\n\n\\[b_j = a_j \\left( \\frac{SS_T}{S_{jj}}\\right)^{1/2}, \\quad j = 1, 2, \\dots, k\\] \\[b_0 = \\overline{y} - \\sum_{j=1}^kb_j\\overline{x}_j\\]"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#standardized-coefficients",
+    "href": "slides/06-mlr-mat.html#standardized-coefficients",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Standardized Coefficients",
+    "text": "Standardized Coefficients\n\n## unit normal scaling\nscale_data &lt;- scale(delivery_data, center = TRUE, scale = TRUE)  ## becomes a matrix\napply(scale_data, 2, mean)\n\n    time    cases distance \n-6.2e-17  8.9e-18  9.8e-17 \n\napply(scale_data, 2, sd)\n\n    time    cases distance \n       1        1        1 \n\n\n. . .\n\n## No-intercept\nscale_lm &lt;- lm(time ~ cases + distance - 1, data = as.data.frame(scale_data)) \nscale_lm$coefficients\n\n   cases distance \n    0.72     0.30 \n\n## With intercept\nscale_lm_0 &lt;- lm(time ~ cases + distance, data = as.data.frame(scale_data))  \nscale_lm_0$coefficients\n\n(Intercept)       cases    distance \n   -1.5e-16     7.2e-01     3.0e-01"
+  },
+  {
+    "objectID": "slides/06-mlr-mat.html#footnotes",
+    "href": "slides/06-mlr-mat.html#footnotes",
+    "title": "Multiple Linear Regression - Matrix Approach \n",
+    "section": "Footnotes",
+    "text": "Footnotes\n\nFor simplicity and convenience, \\(N({\\bf a}, {\\bf B})\\) represents a multivariate normal distribution with mean vector \\({\\bf a}\\) and covariance matrix \\({\\bf B}\\).↩︎\nAssume only \\(r\\) of the \\(m\\) equations are independent.↩︎"
+  },
+  {
+    "objectID": "hw/hw03.html",
+    "href": "hw/hw03.html",
+    "title": "Homework 3",
+    "section": "",
+    "text": "Important\n\n\n\nDue Friday, Oct 9, 11:59 PM\n\n\n\n\n\nPlease submit your work in one PDF file to D2L &gt; Assessments &gt; Dropbox. Multiple files or a file that is not in pdf format is not accepted.\nIn your homework, please number questions in order.\n\n\n\nQuestions started with (MSSC) are required for MSSC 5780 students, and optional for MATH 4780 students.\n\n\nHomework Questions\n\nChecking statistical significance.\n\nGenerate 1000 data points var1 from a standard normal distribution. Generate another variable var2 in the same way. Run a regression of one variable on the other. Is the slope coefficient “statistically significant”?\nRun a simulation repeating this process 2000 times. This can be done using a loop. From each simulation, save the test statistic (the estimated coefficient of var1 divided by its standard error). If the absolute value of the test statistic exceeds 2, the estimate is “statistically significant.” How many of these test statistics exceed 2 in absolute value, thus achieving the conventional level of statistical significance?\nPlot the distribution of the estimated slopes and p-values. Based on your answers of (a), (b) and (c), what is your thought about the statistical significance approach?\n\n\n\n\nResidual plots. Suppose the true data-generating model is \\(Y = \\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_1X_2+\\varepsilon,\\) where \\(X_1\\) is continuous, \\(X_2\\) is binary, and \\(\\varepsilon\\sim N(0,\\sigma^2)\\). Investigate what happens when the interaction term is omitted from the fitted regression model.\n\nGenerate \\(n=300\\) observations as follows: \\(X_1\\sim N(0,1)\\), \\(X_2\\sim \\text{Bernoulli}(0.5)\\), and generate \\(Y\\) using \\(Y=2+X_1+X_2+2X_1X_2+\\varepsilon\\), \\(\\varepsilon\\sim N(0,0.7^2)\\). Fit the additive regression model \\[Y=\\alpha_0+\\alpha_1X_1+\\alpha_2X_2+\\text{error},\\] which incorrectly omits the interaction between \\(X_1\\) and \\(X_2\\).\nObtain the residuals from the fitted model in part (a). Make a plot of the residuals versus \\(X_1\\), using different plotting symbols for observations with \\(X_2=0\\) and \\(X_2=1\\). Add a horizontal reference line at residual \\(=0\\). Describe the pattern you observe. In particular, does the relationship between the residuals and \\(X_1\\) appear to be the same for the two groups?\nAdd a separate fitted line to the residual plot for the \\(X_2=0\\) observations and for the \\(X_2=1\\) observations. Explain why the two fitted residual trends suggest that the additive regression model is missing an interaction.\nNow fit the interaction model \\[Y=\\gamma_0+\\gamma_1X_1+\\gamma_2X_2+\\gamma_3X_1X_2+\\text{error}.\\] Again plot the residuals versus \\(X_1\\), using different symbols for the two values of \\(X_2\\). Compare this residual plot with the one from part (b). What changes after the interaction term is included?\nBased on this simulation, explain how a residual plot can reveal a missing interaction between a continuous predictor and a binary predictor.\n\n\n\n\nResiduals and predictions. The data Pyth contains outcome y and predictors x1, x2 for 40 data points, with a further 20 points with the predictors but no observed outcome.\n\nFit a linear regression model predicting y from x1 and x2, using the first 40 data points in the file. Summarize the inferences and check \\(R^2\\) for model fit.\nDisplay the estimated model graphically as the plots that fix the other variable at their average level.\nMake three residual plots: residual vs. \\(\\hat{y}\\), residual vs. \\(x_1\\), and residual vs. \\(x_2\\). A good model is supposed to have residual plots having mean around 0 with no patterns. Do the assumptions appear to be met?\nMake predictions for the remaining 20 data points in the file. How confident do you feel about these predictions?\n\n\n\n\n\nWe will use mtcars data set. The variables used are:\n\n\nmpg: miles per gallon,\nwt: vehicle weight in 1000 lbs,\nhp: gross horsepower.  The goal is to understand what \\(\\beta_1\\) means after accounting for hp in the model \\(mpg_i=\\beta_0+\\beta_1 wt_i+\\beta_2 hp_i+\\varepsilon_i\\).\n\nFit multiple linear regression (MLR) mpg ~ wt + hp, and report the estimated coefficient and standard error for wt. Interpret the coefficient of wt in the context of fuel economy.\nFit simple linear regression (SLR) wt ~ hp, and save the residuals as wt_res. What does a positive value of wt_res mean for a particular car? What does a negative value mean?\nFit SLR mpg ~ hp, and save the residuals as mpg_res. Explain what mpg_res represents.\nNow fit SLR mpg_res ~ wt_res. Compare its slope with the coefficient of wt from the multiple regression in part (a). What do you observe? This numerical equality is an example of the Frisch–Waugh–Lovell theorem.\nMake a scatterplot of mpg_res versus wt_res and add the fitted regression line. Use this plot to explain what the coefficient of wt in mpg ~ wt + hp is measuring. In particular, explain why this relationship is different from simply plotting mpg against wt.\nCompare the estimated coefficient of wt from SLR mpg ~ wt with the coefficient from MLR fit mpg ~ wt + hp. Why are the two coefficients different? Use the relationships among mpg, wt, and hp to explain your answer.\nBased on this exercise, explain in your own words what the phrase “the association between wt and mpg, holding hp constant” means. Your explanation should use the idea of residualizing rather than simply saying that hp is “fixed.”\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAI Usage Declaration. Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:\n\nWhy/How I Used AI Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?\nGenerated Output Include a screenshot or excerpt (copy and paste) of the AI’s response.\nHow I Used the Output Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?"
   }
 ]

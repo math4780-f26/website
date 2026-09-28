@@ -38,9 +38,9 @@ format:
 | 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ [mlr](slides/05-mlr-slides.html) |  |  |  |  |  |  |
 |  | Thu, Sep 24 | Multiple Linear Regression |  |  |  |  |  |  |  |
 | 5 | Tue, Sep 29 | Multiple Linear Regression |  |  |  |  |  |  |  |
-|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ HW 3 (due 10/9) | worksheet 2 |  |  |
-| 6 | Tue, Oct 6 | Matrix Algebra Review | 🖥️ mat |  |  |  |  |  |  |
-|  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ mlr-mat |  |  |  |  |  |  |
+|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ [HW 3 (due 10/9)](hw/hw03.html) | worksheet 2 |  |  |
+| 6 | Tue, Oct 6 | Matrix Algebra Review | 🖥️ [mat](slides/06-mat-slides.html) | 👉[3Blue1Blown: matrices](https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=4) |  |  |  |  |  |
+|  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ [mlr-mat](slides/06-mlr-mat-slides.html) |  |  |  |  |  |  |
 | 7 | Tue, Oct 13 | Diagnostics: Residuals and Unusual Data | 🖥️ diag-unusual |  |  |  |  |  |  |
 |  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ diag-normality |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ diag-const-var |  |  |  |  |  |  |
