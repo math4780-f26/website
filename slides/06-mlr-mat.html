@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>Multiple Linear Regression - Matrix Approach  – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4e2696270196a660e2818279c815d08b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Multiple Linear Regression - Matrix Approach r fontawesome::fa(&quot;table&quot;) – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
+<meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/06-mlr-mat/normal_eqn.png">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:image:height" content="814">
+<meta property="og:image:width" content="1931">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Multiple Linear Regression - Matrix Approach <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg>
+</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Activity/Worksheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description-4780_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guideline for MATH 4780</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description-5780_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guideline for MATH 5780</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-work_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Group and Proposal</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Supplementary material for MSSC 5780</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLR matrix notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log transformations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model selection criteria</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="06-mlr-mat-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Multiple Linear Regression - Matrix Approach <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"></path></svg>
+</h1>
+<p class="subtitle lead">MATH 4780/MSSC 5780 Regression Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="section" class="level1" data-visibility="hidden"><h1 data-visibility="hidden"></h1>
+<section id="regression-model-in-matrix-form" class="level2"><h2 class="anchored" data-anchor-id="regression-model-in-matrix-form">Regression Model in Matrix Form</h2>
+<p><span class="math display">\[y_i= \beta_0 + \beta_1x_{i1} + \beta_2x_{i2} + \dots + \beta_kx_{ik} + \epsilon_i, \quad \epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2), \quad i = 1, 2, \dots, n\]</span></p>
+<!-- - $\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)$ -->
+<p>. . .</p>
+<p><span class="math display">\[\bf y = \bf X \boldsymbol \beta+ \boldsymbol \epsilon\]</span></p>
+<p><span class="math display">\[\begin{align}
+\bf y = \begin{bmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n \end{bmatrix},\quad
+\bf X = \begin{bmatrix}
+  1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1k} \\
+  1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2k} \\
+  \vdots &amp; \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
+  1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nk} \end{bmatrix}, \quad
+\boldsymbol \beta= \begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\vdots \\
+\beta_k \end{bmatrix} , \quad
+\boldsymbol \epsilon= \begin{bmatrix}
+\epsilon_1 \\
+\epsilon_2 \\
+\vdots \\
+\epsilon_n\end{bmatrix}
+\end{align}\]</span></p>
+<ul>
+<li>
+<span class="math inline">\({\bf X}_{n \times p}\)</span>: Design matrix</li>
+<li>
+<span class="math inline">\(\boldsymbol \epsilon\sim N_n({\bf 0}, \sigma^2 {\bf I}_n)\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Let’s first write our model in a matrix form.</li>
+<li>
+<span class="math inline">\(\bf X\)</span> is usually called the design matrix.</li>
+</ul>
+</div>
+</section><section id="regression-model-in-matrix-form-1" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="regression-model-in-matrix-form-1">Regression Model in Matrix Form</h2>
+<div class="fact">
+<p>For a random vector <span class="math inline">\({\bf Z} = (Z_1, \dots, Z_n)'\)</span>, its mean vector is <span class="math display">\[E({\bf Z}) = E\begin{pmatrix}
+Z_1 \\
+Z_2 \\
+\vdots \\
+Z_n\end{pmatrix} = \begin{bmatrix}
+E(Z_1) \\
+E(Z_2) \\
+\vdots \\
+E(Z_n)\end{bmatrix}\]</span></p>
+<p>Its (symmetric) variance-covariance matrix is <span class="math display">\[\scriptsize \begin{align} \mathrm{Cov}({\bf Z}) = {\bf \Sigma} &amp;= \begin{bmatrix} \mathrm{Var}(Z_1) &amp; \mathrm{Cov}(Z_1, Z_2) &amp; \cdots &amp; \mathrm{Cov}(Z_1, Z_n) \\ \mathrm{Cov}(Z_2, Z_1) &amp; \mathrm{Var}(Z_2) &amp; \cdots &amp; \mathrm{Cov}(Z_2, Z_n) \\ \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\ \mathrm{Cov}(Z_n, Z_1) &amp; \mathrm{Cov}(Z_n, Z_2) &amp; \cdots &amp; \mathrm{Var}(Z_n) \end{bmatrix} \end{align}\]</span></p>
+</div>
+</section><section id="least-squares-estimation-in-matrix-form" class="level2"><h2 class="anchored" data-anchor-id="least-squares-estimation-in-matrix-form">Least Squares Estimation in Matrix Form</h2>
+<p><span class="math display">\[S(\beta_0, \beta_1, \dots, \beta_k) = \sum_{i=1}^n\epsilon_i^2 = \sum_{i=1}^n\left(y_i - \beta_0 - \sum_{j=1}^k\beta_j x_{ij}\right)^2\]</span></p>
+<p><span class="math display">\[\begin{align}
+\left.\frac{\partial S}{\partial\beta_0}\right\vert_{b_0, b_1, \dots, b_k} &amp;= -2 \sum_{i=1}^n\left(y_i - b_0 - \sum_{j=1}^k b_j x_{ij}\right) = 0\\
+\left.\frac{\partial S}{\partial\beta_j}\right\vert_{b_0, b_1, \dots, b_k} &amp;= -2 \sum_{i=1}^n\left(y_i - b_0 - \sum_{j=1}^k b_j x_{ij}\right)x_{ij} = 0, \quad j = 1, 2, \dots, k
+\end{align}\]</span></p>
+<p>. . .</p>
+<p><span class="math display">\[\begin{align}
+S(\boldsymbol \beta) = \sum_{i=1}^n\epsilon_i^2 = \boldsymbol \epsilon'\boldsymbol \epsilon= ({\bf y} - {\bf X} \boldsymbol \beta)'({\bf y} - \bf X \boldsymbol \beta)
+\end{align}\]</span></p>
+<div class="notes">
+<p><span class="math display">\[\begin{align}
+S(\boldsymbol \beta) = \sum_{i=1}^n\epsilon_i^2 = \boldsymbol \epsilon'\boldsymbol \epsilon&amp;= ({\bf y} - {\bf X} \boldsymbol \beta)'({\bf y} - \bf X \boldsymbol \beta) \\
+&amp;= {\bf y'}{\bf y} - \boldsymbol \beta'{\bf X'}{\bf y} - {\bf y'}{\bf X} \boldsymbol \beta+ \boldsymbol \beta' \bf X' \bf X \boldsymbol \beta\\
+&amp;={\bf y}'{\bf y} - 2\boldsymbol \beta'{\bf X}'{\bf y} + \boldsymbol \beta' {\bf X}' {\bf X} \boldsymbol \beta
+\end{align}\]</span></p>
+</div>
+</section><section id="least-squares-estimation-in-matrix-form-1" class="level2"><h2 class="anchored" data-anchor-id="least-squares-estimation-in-matrix-form-1">Least Squares Estimation in Matrix Form</h2>
+<p><span class="math display">\[\begin{align}
+S(\boldsymbol \beta) = \sum_{i=1}^n\epsilon_i^2 = \boldsymbol \epsilon'\boldsymbol \epsilon&amp;= ({\bf y} - {\bf X} \boldsymbol \beta)'({\bf y} - \bf X \boldsymbol \beta) \\
+&amp;= {\bf y}'{\bf y} - \boldsymbol \beta'{\bf X}'{\bf y} - {\bf y}'{\bf X} \boldsymbol \beta+ \boldsymbol \beta' \bf X' \bf X \boldsymbol \beta
+\end{align}\]</span></p>
+<!-- ::: fact -->
+<!-- Let ${\bf t}$ and ${\bf a}$ be $n \times 1$ column vectors, and ${\bf A}_{n \times n}$ is a symmetric matrix. -->
+<!-- - $\frac{\partial {\bf t}'{\bf a} }{\partial {\bf t}} = \frac{\partial {\bf a}'{\bf t} }{\partial {\bf t}} = {\bf a}$ -->
+<!-- - $\frac{\partial {\bf t}'{\bf A} {\bf t}}{\partial {\bf t}} = 2{\bf A} {\bf t}$ -->
+<!-- ::: -->
+<ul>
+<li>Normal equations: <span class="math inline">\(\begin{align} \left.\frac{\partial S}{\partial \boldsymbol \beta}\right \vert_{\bf b} = -2 {\bf X}' {\bf y} + 2 {\bf X}' {\bf X} {\bf b} = \boldsymbol{0} \end{align}\)</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>To get the LSE in a matrix form, we first write the sum of squares using matrices.</li>
+</ul>
+</div>
+<p>. . .</p>
+<ul>
+<li>LSE for <span class="math inline">\(\boldsymbol \beta\)</span>:</li>
+</ul>
+<p><span style="color:blue"> <span class="math display">\[\begin{align} \boxed{{\bf b} = ({\bf X}' {\bf X}) ^{-1} {\bf X}' \bf y} \end{align}\]</span> </span></p>
+</section><section id="normal-equations" class="level2"><h2 class="anchored" data-anchor-id="normal-equations">Normal Equations</h2>
+<p><span class="math inline">\((\bf X' \bf X){ \bf b} = {\bf X'} {\bf y}\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/normal_eqn.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Simple linear regression case.</li>
+</ul>
+</div>
+</section><section id="design-matrix-and-outcome-vector" class="level2"><h2 class="anchored" data-anchor-id="design-matrix-and-outcome-vector">Design Matrix and Outcome Vector</h2>
+<div class="columns">
+<div class="small">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">delivery_data</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_classfull"><code>   1    7  560
+   1    3  220
+   1    3  340
+   1    4   80
+   1    6  150
+   1    7  330
+   1    2  110
+   1    7  210
+   1   30 1460
+   1    5  605
+   1   16  688
+   1   10  215
+   1    4  255
+   1    6  462
+   1    9  448
+   1   10  776
+   1    6  200
+   1    7  132
+   1    3   36
+   1   17  770
+   1   10  140
+   1   26  810
+   1    9  450
+   1    8  635
+   1    4  150</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">delivery_data</span><span class="op">$</span><span class="va">time</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_classfull"><code>16.7
+11.5
+12.0
+14.9
+13.8
+18.1
+ 8.0
+17.8
+79.2
+21.5
+40.3
+21.0
+13.5
+19.8
+24.0
+29.0
+15.3
+19.0
+ 9.5
+35.1
+17.9
+52.3
+18.8
+19.8
+10.8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="regression-coefficients" class="level2"><h2 class="anchored" data-anchor-id="regression-coefficients">Regression Coefficients</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/xtx.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/xty.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/b.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- # ```{r} -->
+<!-- # #| out-width: 90% -->
+<!-- # knitr::include_graphics("./images/06-mlr-mat/xty.png") -->
+<!-- # ``` -->
+<!-- # ```{r} -->
+<!-- # #| out-width: 90% -->
+<!-- # knitr::include_graphics("./images/06-mlr-mat/b.png") -->
+<!-- # ``` -->
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\({\bf b} = ({\bf X}' {\bf X}) ^{-1} \bf X' \bf y\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">X</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             1  cases distance
+1           25    219    10232
+cases      219   3055   133899
+distance 10232 133899  6725688</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]
+1           560
+cases      7375
+distance 337072</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+1        2.341
+cases    1.616
+distance 0.014</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section><section id="hat-matrix" class="level2"><h2 class="anchored" data-anchor-id="hat-matrix">Hat Matrix</h2>
+<!-- - In SLR, $\hat{y}_i = h_{i1}y_1 + h_{i2}y_2 + \cdots + h_{in}y_n = {\bf h}_i'{\bf y}$ where $h_{ij} = \frac{1}{n} + \frac{(x_i-\overline{x})(x_j-\overline{x})}{S_{xx}}$ and ${\bf h}_i' = (h_{i1}, h_{i2}, \dots, h_{in})$. The **hat matrix** is ${\bf H} = (h_{ij})_{n \times n}$. -->
+<!-- . . . -->
+<p><span class="math display">\[\hat{\bf y} = {\bf X} {\bf b} = {\bf X} ({\bf X}' {\bf X}) ^{-1} {\bf X}' {\bf y} = {\bf H} {\bf y}\]</span></p>
+<ul>
+<li><p><span class="math inline">\({\bf H} = {\bf X} ({\bf X}' {\bf X}) ^{-1} {\bf X}'\)</span> is called <strong>hat matrix</strong> whose elements are <span class="math inline">\(h_{ij} = \dfrac{1}{n} + \dfrac{(x_i-\overline{x})(x_j-\overline{x})}{S_{xx}}\)</span></p></li>
+<li><p>The vector of residuals <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span> is <span class="math display">\[{\bf e} = {\bf y} - \hat{\bf y} ={ \bf y} - {\bf X} {\bf b} = {\bf y} - {\bf H} {\bf y} = ({\bf I} - {\bf H}) {\bf y}\]</span></p></li>
+</ul>
+<p>. . .</p>
+<div class="alert">
+<ul>
+<li>Both <span class="math inline">\(\bf H\)</span> and <span class="math inline">\(\bf I-H\)</span> are <em>symmetric</em> and <em>idempotent</em>. They are <strong>orthogonal projection</strong> matrices.</li>
+<li>
+<span class="math inline">\(\bf H\)</span> projects <span class="math inline">\(\bf y\)</span> to <span class="math inline">\(\hat{\bf y}\)</span> on the <span class="math inline">\(p\)</span>-dimensional space spanned by columns of <span class="math inline">\(\bf X\)</span>, or the column space of <span class="math inline">\(\bf X\)</span>, <span class="math inline">\(Col({\bf X}) = \{ {\bf Xv}: {\bf v} \in {\bf R}^p \}\)</span>.</li>
+<li>
+<span class="math inline">\(\bf I - H\)</span> projects <span class="math inline">\(\bf y\)</span> to <span class="math inline">\(\bf e\)</span> on the space <strong>perpendicular</strong> to <span class="math inline">\(Col(\bf X)\)</span>, or <span class="math inline">\(Col(\bf X)^{\bot}\)</span>.</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>The vector of fitted values <span class="math inline">\(\hat{y}_i\)</span> corresponding to <span class="math inline">\(y_i\)</span> is <span class="math display">\[\hat{\bf y} = \bf X \bf b = \bf X (\bf X' \bf X) ^{-1} \bf X' \bf y = \bf H \bf y\]</span>
+</li>
+<li>
+<span class="math inline">\(\bf H\)</span> plays an important role in regression analysis.</li>
+<li>And it will be shown up many times later in many topics of this course.</li>
+<li>OK. It’s a little abstract. Let’s look into the geometrical interpretation of least squares little by little.</li>
+</ul>
+</div>
+</section><section id="geometrical-interpretation-of-least-squares" class="level2"><h2 class="anchored" data-anchor-id="geometrical-interpretation-of-least-squares">Geometrical Interpretation of Least Squares</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li><span class="math inline">\({\bf y} \notin Col({\bf X})\)</span></li>
+<li><span class="math inline">\(\hat{{\bf y}} = {\bf Xb} = {\bf H} {\bf y} \in Col({\bf X})\)</span></li>
+<li>Minimize the distance of <span class="math inline">\(\color{red}{A}\)</span> to <span class="math inline">\(Col(\bf X)\)</span>: Find the point in <span class="math inline">\(Col(\bf X)\)</span> that is closest to <span class="math inline">\(A\)</span>.</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/ols_geom_new.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>
+<ol type="1">
+<li>what is column space of <span class="math inline">\(X\)</span>?</li>
+</ol>
+<ul>
+<li>The col space of <span class="math inline">\(X\)</span> is the set or the collection of all linear combinations of columns of <span class="math inline">\(X\)</span>. In other words, column space of <span class="math inline">\(X\)</span> is the space spanned by the columns of <span class="math inline">\(X\)</span>.</li>
+<li>Example</li>
+<li>For visualization purpose, suppose <span class="math inline">\(X\)</span> has 2 columns, <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. The column space of <span class="math inline">\(X\)</span> will be the plane spanned by the 2 columns, shown in green color.</li>
+</ul>
+</li>
+<li>
+<ol start="2" type="1">
+<li>observation <span class="math inline">\(y\)</span>.</li>
+</ol>
+<ul>
+<li>Basically 99% of the time, <span class="math inline">\(Y\)</span> will not be in the column space of <span class="math inline">\(X\)</span>.</li>
+<li><span class="math inline">\(y_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik} + e_i\)</span></li>
+<li>
+<span class="math inline">\(y_i\)</span> is not the linear combo of columns of <span class="math inline">\(X\)</span>, and <span class="math inline">\(y\)</span> is not a point in Col(X).</li>
+<li>So <span class="math inline">\(y\)</span> is point in the <span class="math inline">\(n\)</span>-dimensional space, and not on the plane spanned by columns of <span class="math inline">\(X\)</span>.</li>
+</ul>
+</li>
+<li>
+<ol start="3" type="1">
+<li>H (Let’s see what the projection matrix <span class="math inline">\(H\)</span> is doing)</li>
+</ol>
+<ul>
+<li>When we multiply <span class="math inline">\(H\)</span> by <span class="math inline">\(y\)</span>, we are finding the projection of <span class="math inline">\(y\)</span> onto the Col(X).</li>
+<li>The projection of <span class="math inline">\(y\)</span> on the Col(X) is actually the fitted value <span class="math inline">\(\hat{y}\)</span>.</li>
+<li><span class="math inline">\(\hat{y}_i = b_0 + b_1x_{i1} + ... +  b_kx_{ik}\)</span></li>
+<li>There are so many (actually infinitely many) linear combo of columns of <span class="math inline">\(X\)</span>, why this particular vector is our <span class="math inline">\(\hat{y}\)</span>?</li>
+<li>The distance between <span class="math inline">\(y\)</span> and Col(X) is actually the shortest when we do the projection of <span class="math inline">\(y\)</span> onto the Col(X).</li>
+<li>In other words the distance between <span class="math inline">\(y\)</span> and <span class="math inline">\(\hat{y}\)</span> is the minimal distance among all the distance between <span class="math inline">\(y\)</span> and any point in the Col(X).</li>
+</ul>
+</li>
+</ul>
+<!-- - Any point in the column space of $\bf X$ (estimation space) is of the form $\bf X \bf \bbeta$. --><!-- - Minimizing the distance of point $A$ defined by $\bf y$ to the column space $(S(\bbeta) = \|\bf y - \bf X \bf \bbeta\|^2)$ requires finding the point in the space that is close to $A$.  --><!-- - $\bf y - \hat{\bf y} = \bf {y - X b} \perp Col(X)$ --><!-- - $\bf X'(y - Xb) = 0$. -->
+</div>
+</section><section id="geometrical-interpretation-of-least-squares-1" class="level2"><h2 class="anchored" data-anchor-id="geometrical-interpretation-of-least-squares-1">Geometrical Interpretation of Least Squares</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>The distance is minimized when the point in the space is the foot of the line from <span class="math inline">\(A\)</span> <strong>normal</strong> to the space. This is point <span class="math inline">\(C\)</span>. <span class="math inline">\(\small {\bf e} = ({\bf I} - {\bf H}) {\bf y} \perp Col({\bf X})\)</span>
+</li>
+<li><span class="math inline">\({\bf X}'( {\bf y} - {\bf Xb}) = {\bf 0}\)</span></li>
+</ul>
+<div class="alert">
+<p>Searching for the LS solution <span class="math inline">\(\bf b\)</span> that minimizes <span class="math inline">\(SS_{res}\)</span> is the same as locating the point <span class="math inline">\({\bf Xb} \in Col({\bf X})\)</span> that is as close to <span class="math inline">\(\bf y\)</span> as possible!</p>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/06-mlr-mat/ols_geom_new.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="section-1" class="level2"><h2 class="anchored" data-anchor-id="section-1"></h2>
+<div class="center">
+<p><img src="images/06-mlr-mat/ols.gif" class="img-fluid" style="width:75.0%"></p>
+</div>
+<div class="notes">
+<ul>
+<li>
+<ol start="4" type="1">
+<li>(I - H) Now let’s see what (I - H) is doing.</li>
+</ol>
+<ul>
+<li>The residual vector is <span class="math inline">\(y - \hat{y}\)</span>. Geometrically, the residual vector is this dash line vector that is perpendicular to the column space of <span class="math inline">\(X\)</span>. In other words,the residual vector is the normal vector of Col(X).</li>
+<li>This is the result of projection. The distance between <span class="math inline">\(y\)</span> and the column space is minimized when the point in the space is the foot of the line from <span class="math inline">\(A\)</span> normal to the space. This is point <span class="math inline">\(C\)</span>.</li>
+<li>We know that e = (I - H)y. So (I - H) project <span class="math inline">\(Y\)</span> onto the space that is perpendicular to Col(X). And the vector in that space is the residual vector.</li>
+</ul>
+</li>
+<li><ol start="5" type="1">
+<li>Calculus connects to Linear Algebra</li>
+</ol></li>
+</ul>
+</div>
+</section><section id="r-lab-verify-identity" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="r-lab-verify-identity">
+<span class="pink">R Lab</span> Verify Identity</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\({\bf H} = {\bf X} ({\bf X}' {\bf X}) ^{-1} \bf X'\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">H</span> <span class="op">&lt;-</span> <span class="va">X</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><span class="math inline">\(\hat{\bf y} = \bf H \bf y\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fitted_y</span> <span class="op">&lt;-</span> <span class="va">H</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span>
+<span><span class="va">fitted_y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22 10 12 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delivery_lm</span><span class="op">$</span><span class="va">fitted.values</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 1  2  3  4 
+22 10 12 10 </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\({\bf e} = ({\bf I} - {\bf H}) {\bf y}\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">I</span> <span class="op">-</span> <span class="va">H</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">y</span></span>
+<span><span class="va">res</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -5.03  1.15 -0.05  4.92</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delivery_lm</span><span class="op">$</span><span class="va">residuals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    1     2     3     4 
+-5.03  1.15 -0.05  4.92 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## residual vector in the left null space of X</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">res</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             [,1]
+1        -8.2e-13
+cases    -2.0e-12
+distance -7.0e-11</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section><section id="multivariate-normal-distribution" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="multivariate-normal-distribution">Multivariate Normal Distribution</h2>
+<p><span class="math inline">\({\bf b} = ({\bf X}' {\bf X}) ^{-1} \bf X' \bf y\)</span></p>
+<p><span class="math display">\[\textbf{b} \sim N\left(\boldsymbol \beta, \sigma^2 {( {\bf X'} {\bf X} )}^{-1} \right)\]</span> <!-- $$E(\textbf{b}) = E\left[ {( {\bf X'} {\bf X} )}^{-1} {\bf X}' {\bf y}\right] = \bbeta$$ --> <!-- $$\cov(\textbf{b}) = \cov\left[{( {\bf X'} {\bf X} )}^{-1} {\bf X}' {\bf y} \right] = \sigma^2 {( {\bf X'} {\bf X} )}^{-1}$$ --></p>
+<div class="alert">
+<p>The standard error of <span class="math inline">\(b_j\)</span> is <span class="math inline">\({\sqrt{s^2C_{jj}}}\)</span>, where <span class="math inline">\(C_{jj}\)</span> is the diagonal element of <span class="math inline">\(( {\bf X'} {\bf X} )^{-1}\)</span> corresponding to <span class="math inline">\(b_j\)</span>.</p>
+</div>
+<div class="notes">
+<p>If <span class="math inline">\({\bf y} \sim N_n(\bsmu, {\bf \Sigma})\)</span>, and <span class="math inline">\({\bf Z = By + c}\)</span> with a constant vector <span class="math inline">\(\bf c\)</span>, then <span class="math display">\[{\bf Z} \sim N({\bf B\bsmu}, {\bf B \Sigma B}')\]</span>. <span class="math display">\[\mathrm{Var}(\textbf{b}) = E\left[(\textbf{b} - E(\textbf{b}))(\textbf{b}-E(\textbf{b}))'\right] = \mathrm{Var}\left[\bf{(X'X)^{-1}X'y}\right] = \sigma^2 \bf (X'X)^{-1}\]</span></p>
+<ul>
+<li>The standard error of <span class="math inline">\(b_j\)</span> is <span class="math inline">\({\sqrt{\hat{\sigma}^2C_{jj}}}\)</span>, where <span class="math inline">\(C_{jj}\)</span> is the diagonal element of <span class="math inline">\(({\bf X'X})^{-1}\)</span> corresponding to <span class="math inline">\(b_j\)</span>.</li>
+</ul>
+</div>
+</section></section><section id="hypothesis-testing" class="level1"><h1>Hypothesis Testing</h1>
+<h2 class="anchored" data-anchor-id="hypothesis-testing">
+Tests on Subsets of Coefficients
+</h2>
+<!-- <h2> Testing the General Linear Hypothesis </h2> -->
+<section id="reduced-model-vs.-full-model" class="level2"><h2 class="anchored" data-anchor-id="reduced-model-vs.-full-model">Reduced Model vs.&nbsp;Full Model</h2>
+<ul>
+<li><p>Overall test of significance: <em>all</em> predictors</p></li>
+<li><p>Partial individual <span class="math inline">\(t\)</span>-test: <em>one single</em> predictor</p></li>
+<li><p>How to test <strong>any subset</strong> of predictors?</p></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<strong>Full Model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \epsilon\)</span>
+</li>
+<li><span class="math inline">\(H_0: \beta_{2} = \beta_{4} = 0\)</span></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<strong>Reduced Model</strong> (under <span class="math inline">\(H_0\)</span>): <span class="math inline">\(y = \beta_0 + \beta_1x_1 + \beta_3x_3 + \epsilon\)</span>
+</li>
+<li>Like to see if <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> can contribute significantly to the regression model when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> are in the model.
+<ul>
+<li>If yes, <span class="math inline">\(\beta_{2} \ne 0\)</span> and/or <span class="math inline">\(\beta_{4} \ne 0\)</span>. (Reject <span class="math inline">\(H_0\)</span>)</li>
+<li>Otherwise, <span class="math inline">\(\beta_{2} = \beta_{4} = 0\)</span>. (Do not reject <span class="math inline">\(H_0\)</span>)</li>
+</ul>
+</li>
+</ul>
+<p>. . .</p>
+<div class="alert">
+<p>Given <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> in the model, we examine <strong>how much extra <span class="math inline">\(SS_R\)</span> is increased ( <span class="math inline">\(SS_{res}\)</span> is reduced) if <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> are added to the model</strong>.</p>
+</div>
+<div class="notes">
+<ul>
+<li>If much more extra <span class="math inline">\(SS_R\)</span> is increased after <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> are included in the model, meaning that lots of variation in <span class="math inline">\(y\)</span> that were treated as unexplained variation or variation that cannot be explained by the <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span>, now are absorbed or explained by <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span>.</li>
+<li>
+<span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> provide some important and valuable information that <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> cannot provide, and that information helps us better predict response values and explain the variation of <span class="math inline">\(Y\)</span>.</li>
+<li>So if we observe a significant increase in SS_R, it means that <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> are valuable and their coefficient is significantly non-zero. Therefore, we should keep the full model that includes all predictors, or reject <span class="math inline">\(H_0\)</span> because the reduced model is too simple, and lose lots of useful information for explaining variation in <span class="math inline">\(Y\)</span>.</li>
+</ul>
+</div>
+</section><section id="extra-sum-of-squares" class="level2"><h2 class="anchored" data-anchor-id="extra-sum-of-squares">Extra Sum-of-squares</h2>
+<ul>
+<li><p>Full Model: <span class="math inline">\(\bf y = X\boldsymbol \beta+\boldsymbol \epsilon\)</span></p></li>
+<li><p>Partition coefficient vector:</p></li>
+</ul>
+<p><span class="math display">\[\boldsymbol \beta_{p \times 1} = \left[
+\begin{array}{c}
+  \boldsymbol \beta_1 \\
+  \hline
+  \boldsymbol \beta_2
+\end{array}
+\right]\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol \beta_1\)</span> is <span class="math inline">\((p-r) \times 1\)</span> and <span class="math inline">\(\boldsymbol \beta_2\)</span> is <span class="math inline">\(r \times 1\)</span></p>
+<ul>
+<li><p>Test <span class="math inline">\(H_0: \boldsymbol \beta_2 = {\bf 0}\)</span>, <span class="math inline">\(H_1: \boldsymbol \beta_2 \ne {\bf 0}\)</span></p></li>
+<li><p>Example: <span style="color:blue"> <span class="math inline">\(p=5\)</span>, <span class="math inline">\(r=2\)</span>, <span class="math inline">\(\boldsymbol \beta_1 = (\beta_0, \beta_1, \beta_3)'\)</span>, <span class="math inline">\(\boldsymbol \beta_2 = (\beta_2, \beta_4)'\)</span>.</span></p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>For simplicity, we can partition the coefficient vector to beta_1 and beta_2, where beta_2 is the subset we’d like to test.</li>
+<li><span class="math inline">\(1 \le r \le k\)</span></li>
+</ul>
+</div>
+<p>. . .</p>
+<p><span class="math display">\[{\bf y} = {\bf X} \boldsymbol \beta+\boldsymbol \epsilon= {\bf X}_1\boldsymbol \beta_1 + {\bf X}_2\boldsymbol \beta_2 + \boldsymbol \epsilon\]</span></p>
+<ul>
+<li><p><span class="math inline">\(n \times (p-r)\)</span> matrix <span class="math inline">\({\bf X}_1\)</span>: the columns of <span class="math inline">\(\bf X\)</span> associated with <span class="math inline">\(\boldsymbol \beta_1\)</span></p></li>
+<li><p><span class="math inline">\(n \times r\)</span> matrix <span class="math inline">\({\bf X}_2\)</span>: the columns of <span class="math inline">\(\bf X\)</span> associated with <span class="math inline">\(\boldsymbol \beta_2\)</span></p></li>
+</ul></section><section id="extra-sum-of-squares-1" class="level2"><h2 class="anchored" data-anchor-id="extra-sum-of-squares-1">Extra Sum-of-squares</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Full Model</strong>: <span class="math inline">\(\small \color{red}{{\bf y} = {\bf X}\boldsymbol \beta+\boldsymbol \epsilon= {\bf X}_1\boldsymbol \beta_1 + {\bf X}_2\boldsymbol \beta_2 + \boldsymbol \epsilon}\)</span></p>
+<ul>
+<li>
+<span class="math inline">\({\bf b} = ({\bf X}' {\bf X}) ^{-1} {\bf X}' {\bf y}\)</span> <!-- - $SS_R(\bbeta) = {\bf b}{\bf X}' {\bf y}$ with $p$ dfs -->
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Reduced Model</strong>: <span class="math inline">\(\small \color{red}{{\bf y} = {\bf X}_1\boldsymbol \beta_1+\boldsymbol \epsilon}\)</span> <span class="math inline">\(\color{red}{(\boldsymbol \beta_2 = {\bf 0})}\)</span></p>
+<ul>
+<li>
+<span class="math inline">\({\bf b}_1 = ({\bf X}_1' {\bf X}_1) ^{-1} {\bf X}_1' {\bf y}\)</span> <!-- - $SS_R(\bbeta_1) = {\bf b}_1{\bf X}_1'{\bf y}$ with $p-r$ dfs -->
+</li>
+</ul>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>To find the contribution of the terms in <span class="math inline">\(\boldsymbol \beta_2\)</span> to the regression, fit the model assuming that <span class="math inline">\(H_0: \bf \boldsymbol \beta_2 = 0\)</span> is true. <!-- - To find the contribution of the terms in $\bbeta_2$, fit the model assuming $H_0: \bf \bbeta_2 = 0$ is true. -->
+</li>
+</ul>
+</div>
+<p>. . .</p>
+<ul>
+<li><p>The <span class="math inline">\(SS_R\)</span> due to <span class="math inline">\(\boldsymbol \beta_2\)</span> given that <span class="math inline">\(\boldsymbol \beta_1\)</span> is in the model is <span class="math display">\[\begin{align} SS_R(\boldsymbol \beta_2|\boldsymbol \beta_1) &amp;= SS_R(\boldsymbol \beta) - SS_R(\boldsymbol \beta_1)\\ &amp;= SS_R(\boldsymbol \beta_1, \boldsymbol \beta_2) - SS_R(\boldsymbol \beta_1) \end{align}\]</span> with <span class="math inline">\(r\)</span> dfs.</p></li>
+<li><p>This is the <strong>extra sum of squares</strong> due to <span class="math inline">\(\boldsymbol \beta_2\)</span>.</p></li>
+<li><p>It measures the increase in the <span class="math inline">\(SS_R\)</span> that results from adding regressors in <span class="math inline">\({\bf X}_2\)</span> to the model that already contains regressors in <span class="math inline">\({\bf X}_1\)</span>.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>The regression sum of squares due to <span class="math inline">\(\boldsymbol \beta_2\)</span> given that <span class="math inline">\(\boldsymbol \beta_1\)</span> is in the model is <span class="math display">\[SS_R(\boldsymbol \beta_2|\boldsymbol \beta_1) = SS_R(\boldsymbol \beta) - SS_R(\boldsymbol \beta_1)\]</span> with <span class="math inline">\(p - (p-r) = r\)</span> dfs.</li>
+<li>This is <strong>extra sum of squares</strong> due to <span class="math inline">\(\boldsymbol \beta_2\)</span>.</li>
+<li>It measures the increase in the <span class="math inline">\(SS_R\)</span> that results from adding <span class="math inline">\(x_{k-r+1}, x_{k-r+2}, \dots, x_k\)</span> to the model that already contains <span class="math inline">\(x_{1}, x_{2}, \dots, x_{k-r}\)</span>.</li>
+<li>To find the contribution of the terms in <span class="math inline">\(\boldsymbol \beta_2\)</span> to the regression, fit the model assuming that <span class="math inline">\(H_0: \bf \boldsymbol \beta_2 = 0\)</span> is true.</li>
+</ul>
+</div>
+</section><section id="partial-f-test" class="level2"><h2 class="anchored" data-anchor-id="partial-f-test">Partial <span class="math inline">\(F\)</span>-test</h2>
+<ul>
+<li><p><span class="math inline">\(F_{test} = \dfrac{SS_R(\boldsymbol \beta_2|\boldsymbol \beta_1)/r}{SS_{res}(\boldsymbol \beta)/(n-p)} = \dfrac{MS_R(\boldsymbol \beta_2|\boldsymbol \beta_1)}{MS_{res}}\)</span></p></li>
+<li><p>Under <span class="math inline">\(H_0\)</span> that <span class="math inline">\(\boldsymbol \beta_2 = \bf 0\)</span>, <span class="math inline">\(F_{test} \sim F_{r, n-p}\)</span>. <span class="math inline">\((p = k+1)\)</span></p></li>
+<li><p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(F_{test} &gt; F_{\alpha, r, n-p}\)</span>.</p></li>
+</ul>
+<p>. . .</p>
+<div class="alert">
+<p>Given the regressors of <span class="math inline">\({\bf X}_1\)</span> are in the model,</p>
+<ul>
+<li><p>If the regressors of <span class="math inline">\({\bf X}_2\)</span> contribute much, <span class="math inline">\(SS_R(\boldsymbol \beta_2|\boldsymbol \beta_1)\)</span> will be large.</p></li>
+<li><p>A large <span class="math inline">\(SS_R(\boldsymbol \beta_2|\boldsymbol \beta_1)\)</span> implies a large <span class="math inline">\(F_{test}\)</span>.</p></li>
+<li><p>A large <span class="math inline">\(F_{test}\)</span> tends to reject <span class="math inline">\(H_0\)</span>, and conclude that <span class="math inline">\(\boldsymbol \beta_2 \ne \bf 0\)</span>.</p></li>
+<li><p><span class="math inline">\(\boldsymbol \beta_2 \ne \bf 0\)</span> means the regressors of <span class="math inline">\({\bf X}_2\)</span> provide additional explanatory and prediction power that <span class="math inline">\({\bf X}_1\)</span> cannot provide.</p></li>
+</ul>
+</div>
+</section><section id="example-delivery-data" class="level2"><h2 class="anchored" data-anchor-id="example-delivery-data">Example: Delivery Data</h2>
+<ul>
+<li><p><span class="math inline">\(H_0: \beta_2 = 0 \qquad H_1: \beta_2 \ne 0\)</span></p></li>
+<li><p>Full model: <span class="math inline">\(y = \beta_0 + \beta_1x_1+\beta_2x_2+\epsilon\)</span></p></li>
+</ul>
+<p>. . .</p>
+<div class="question">
+<p>What is the reduced model?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>Reduced model: <span class="math inline">\(y = \beta_0 + \beta_1x_1 +\epsilon\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><span class="math inline">\(SS_R(\beta_2|\beta_1, \beta_0) = SS_R(\beta_2, \beta_1, \beta_0) -SS_R(\beta_1, \beta_0)\)</span></li>
+<li><span class="math inline">\(F_{test} = \dfrac{SS_R(\beta_2|\beta_1, \beta_0)/1}{SS_{res}(\boldsymbol \beta)/(25-3)}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(F_{test} &gt; F_{\alpha, 1, 22}\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<div class="alert">
+<p>When <span class="math inline">\(r=1\)</span>, partial <span class="math inline">\(F\)</span>-test is equivalent to marginal <span class="math inline">\(t\)</span>-test.</p>
+</div>
+</section><section id="extra-sum-of-squares-approach" class="level2"><h2 class="anchored" data-anchor-id="extra-sum-of-squares-approach">Extra Sum-of-squares Approach</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">full_lm</span> <span class="op">&lt;-</span> <span class="va">delivery_lm</span></span>
+<span><span class="va">reduced_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span>, data <span class="op">=</span> <span class="va">delivery_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">reduced_lm</span>, <span class="va">full_lm</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: time ~ cases
+Model 2: time ~ cases + distance
+  Res.Df RSS Df Sum of Sq    F  Pr(&gt;F)    
+1     23 402                              
+2     22 234  1       168 15.8 0.00063 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_delivery</span><span class="op">$</span><span class="va">coefficients</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)    2.341     1.0967     2.1  4.4e-02
+cases          1.616     0.1707     9.5  3.3e-09
+distance       0.014     0.0036     4.0  6.3e-04</code></pre>
+</div>
+</div>
+</section><section id="general-linear-hypothesis" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="general-linear-hypothesis">General Linear Hypothesis</h2>
+<ul>
+<li><p>Previous testing procedures are special cases of the <strong>general linear hypothesis testing</strong>.</p></li>
+<li><p><span class="math inline">\(H_0: {\bf T\boldsymbol \beta= c}\)</span>, where <span class="math inline">\({\bf T}\)</span> is an <span class="math inline">\(m \times p\)</span> constant matrix and <span class="math inline">\(\bf c\)</span> is a <span class="math inline">\(m \times 1\)</span> constant vector.</p></li>
+<li><p>There are <span class="math inline">\(m\)</span> linear hypotheses to be tested. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+<li><p><strong>Full Model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x_1+\beta_2x_2 + \beta_3x_3 + \epsilon\)</span></p></li>
+<li><p>The model under <span class="math inline">\(H_0\)</span> is the reduced model or <strong>restricted model</strong>.</p></li>
+</ul>
+<p><span class="math display">\[H_0: \begin{align}&amp;\beta_1 + 2 \beta_2 = 0 \\
+&amp;\beta_3 = 2 \end{align}\]</span></p>
+<p><span class="math display">\[\begin{bmatrix}
+0 &amp; 1 &amp; 2 &amp; 0  \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}\begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\beta_2 \\
+\beta_3
+\end{bmatrix}=
+\begin{bmatrix}
+0 \\
+2
+\end{bmatrix} \iff {\bf T}_{2 \times 4} \boldsymbol \beta_{4 \times 1} = {\bf c}_{2 \times 1}\]</span></p>
+</section><section id="general-f-test" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="general-f-test">General <span class="math inline">\(F\)</span>-test</h2>
+<!-- - $F_{test} = \frac{(\bf Tb - c)'\left[T(X'X)^{-1}T'\right]^{-1}(\bf Tb - c)}{rMS_{res}}$ where $r$ is the rank of $\bf T$ -->
+<ul>
+<li><p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(F_{test} &gt; F_{\alpha, r, n-p}\)</span>, where <span class="math inline">\(r\)</span> is the rank of <span class="math inline">\(\bf T\)</span>. <span class="math inline">\((F_{test}\)</span> is shown in Eq. (3.43) in LRA)</p></li>
+<li><p>Back to Delivery example. Suppose we test <span class="math inline">\(H_0: \beta_{1} = \beta_{2} = 0 \quad H_1: \beta_j \ne 0 \text{ for at least one } j\)</span></p></li>
+</ul>
+<p>. . .</p>
+<div class="question">
+<p>What are <span class="math inline">\(\bf T\)</span>, <span class="math inline">\(\boldsymbol \beta\)</span> and <span class="math inline">\(\bf c\)</span>?</p>
+</div>
+<p>. . .</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[H_0: \begin{align} &amp;\beta_1 = 0 \\
+&amp;\beta_2 = 0 \end{align}\]</span></p>
+<p><span class="math display">\[\begin{bmatrix}
+0 &amp; 1 &amp; 0  \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}\begin{bmatrix}
+\beta_0 \\
+\beta_1 \\
+\beta_2
+\end{bmatrix}=
+\begin{bmatrix}
+0 \\
+0
+\end{bmatrix}\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">TT</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span>; <span class="va">TT</span><span class="op">[</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="va">TT</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    0    1    0
+[2,]    0    0    1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">c0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section><section id="r-lab-general-linear-hypothesis" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="r-lab-general-linear-hypothesis">
+<span class="pink">R Lab</span> General Linear Hypothesis</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bprice2652/car_repo">car</a></span><span class="op">)</span>  <span class="co">## Companion to Applied Regression</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/linearHypothesis.html">lht</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">delivery_lm</span>,</span>
+<span>         hypothesis.matrix <span class="op">=</span> <span class="va">TT</span>,</span>
+<span>         rhs <span class="op">=</span> <span class="va">c0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_class600"><code>
+Linear hypothesis test:
+cases = 0
+distance = 0
+
+Model 1: restricted model
+Model 2: time ~ cases + distance
+
+  Res.Df  RSS Df Sum of Sq   F  Pr(&gt;F)    
+1     24 5785                             
+2     22  234  2      5551 261 4.7e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li>This is (of course) exactly the same as the test for significance!</li>
+</ul></section><section id="standardized-regression-coefficients" class="level2"><h2 class="anchored" data-anchor-id="standardized-regression-coefficients">Standardized Regression Coefficients</h2>
+<div class="question">
+<p><span class="math inline">\(\hat{y} = 5 + x_1 + 1000x_2\)</span>. Can we conclude that the effect of <span class="math inline">\(x_2\)</span> on <span class="math inline">\(y\)</span> is 1000 times larger than the effect of <span class="math inline">\(x_1\)</span>?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>Nope! If <span class="math inline">\(x_1\)</span> is measured in litres and <span class="math inline">\(x_2\)</span> in millilitres, although <span class="math inline">\(b_2\)</span> is 1000 times larger than <span class="math inline">\(b_1\)</span>, <em>both effects on <span class="math inline">\(\hat{y}\)</span> are identical</em> given the other.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>The units of <span class="math inline">\(\beta_j\)</span> are <span class="math inline">\(\frac{\text{units of } y}{\text{units of } x_j}\)</span>
+<ul>
+<li><span style="color:blue"> <span class="math inline">\(\beta_2\)</span>: delivery time (min) <span class="math inline">\((y)\)</span> per distance (ft) walked by the driver <span class="math inline">\((x_2)\)</span>. </span></li>
+</ul>
+</li>
+<li>It is helpful to work with <strong>dimensionless or standardized</strong> coefficients.
+<ul>
+<li>comparison</li>
+<li>get rid of round-off errors in <span class="math inline">\(( {\bf X'} {\bf X} )^{-1}\)</span>.</li>
+</ul>
+</li>
+</ul>
+<!-- - Two methods of scaling: --><!--   + Unit normal scaling --><!--   + Unit length scaling --><div class="notes">
+<ul>
+<li>interpretation</li>
+<li>It is difficult to compare coefficients because the magnitude of <span class="math inline">\(b_j\)</span> reflects the units of measurement of <span class="math inline">\(x_j\)</span>.</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="question">
+<p>In Intro Stats, how do we standardize a variable?</p>
+</div>
+</section><section id="unit-normal-scaling" class="level2"><h2 class="anchored" data-anchor-id="unit-normal-scaling">Unit Normal Scaling</h2>
+<p>For <span class="math inline">\(i = 1, \dots, n, \, j = 1, \dots, k\)</span>,</p>
+<ul>
+<li><p><span class="math inline">\(z_{ij} = \dfrac{x_{ij}-\overline{x}_j}{s_j}\)</span>, where <span class="math inline">\(s_j\)</span> is the sample SD of <span class="math inline">\(x_j\)</span>.</p></li>
+<li><p><span class="math inline">\(y^*_{i} = \dfrac{y_{i}-\overline{y}}{s_y}\)</span>, where <span class="math inline">\(s_y\)</span> is the sample SD of <span class="math inline">\(y\)</span>.</p></li>
+<li><p>The scaled predictors and response have mean 0 and variance 1.</p></li>
+<li><p>The new model: <span class="math display">\[y_i^* = \alpha_1z_{i1} + \alpha_2z_{i2} + \cdots + \alpha_kz_{ik} + \epsilon_i\]</span></p></li>
+</ul>
+<div class="question">
+<p>Why no intercept term <span class="math inline">\(\alpha_0\)</span>?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>The least-squares estimator for <span class="math inline">\(\boldsymbol \alpha\)</span>: <span class="math display">\[{\bf a} = {\bf (Z'Z)}^{-1} {\bf Z'y}^*\]</span>
+</li>
+</ul></section><section id="unit-length-scaling" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="unit-length-scaling">Unit Length Scaling</h2>
+<ul>
+<li>
+<span class="math inline">\(w_{ij} = \frac{x_{ij}-\overline{x}_j}{S_{jj}^{1/2}}, \, i = 1, \dots, n, \, j = 1, \dots, k\)</span>, where <span class="math inline">\(S_{jj} = \sum_{i=1}^n(x_{ij}-\overline{x}_j)^2\)</span> is the (corrected) sum of squares for <span class="math inline">\(x_j\)</span>.</li>
+<li>
+<span class="math inline">\(y^0_{i} = \frac{y_{i}-\overline{y}}{SS_T^{1/2}}, \, i = 1, \dots, n\)</span>.</li>
+<li>The new regressor and response have mean 0 and length 1 <span class="math inline">\((\sqrt{\sum_{i=1}^nw_{ij}^2} = 1)\)</span>.</li>
+<li>The new model: <span class="math display">\[y_i^0 = \alpha_1w_{i1} + \alpha_2w_{i2} + \cdots + \alpha_kw_{ik} + \epsilon_i\]</span>
+</li>
+<li>The least-squares estimator for <span class="math inline">\(\bsalpha\)</span>: <span class="math display">\[{\bf a} = {\bf (W'W)}^{-1} {\bf W'y}^0\]</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>
+<span class="math inline">\(S_{jj} = \sum_{i=1}^n(x_{ij}-\overline{x}_j)^2\)</span> is the (corrected) sum of squares for <span class="math inline">\(x_j\)</span>.</li>
+</ul>
+</div>
+</section><section id="comparison" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="comparison">Comparison</h2>
+<ul>
+<li><p><span class="math inline">\({\bf W'W}\)</span> is the correlation matrix formed by <span class="math inline">\(x_1, \dots, x_k\)</span>.</p></li>
+<li><p><span class="math inline">\(\bf W'y^0\)</span> is the correlation between <span class="math inline">\(x_j\)</span> and <span class="math inline">\(y\)</span>.</p></li>
+<li><p><span class="math inline">\({\bf Z'Z} = (n-1) {\bf W'W}\)</span></p></li>
+<li><p><span class="math inline">\({\bf a} = {\bf (Z'Z)}^{-1} {\bf Z'y}^* =  {\bf (W'W)}^{-1} {\bf W'y}^0\)</span></p></li>
+</ul>
+<p><span class="math display">\[b_j = a_j \left( \frac{SS_T}{S_{jj}}\right)^{1/2}, \quad j = 1, 2, \dots, k\]</span> <span class="math display">\[b_0 = \overline{y} - \sum_{j=1}^kb_j\overline{x}_j\]</span></p>
+</section><section id="standardized-coefficients" class="level2"><h2 class="anchored" data-anchor-id="standardized-coefficients">Standardized Coefficients</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## unit normal scaling</span></span>
+<span><span class="va">scale_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">delivery_data</span>, center <span class="op">=</span> <span class="cn">TRUE</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="co">## becomes a matrix</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">scale_data</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    time    cases distance 
+-6.2e-17  8.9e-18  9.8e-17 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">scale_data</span>, <span class="fl">2</span>, <span class="va">sd</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    time    cases distance 
+       1        1        1 </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## No-intercept</span></span>
+<span><span class="va">scale_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span> <span class="op">+</span> <span class="va">distance</span> <span class="op">-</span> <span class="fl">1</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">scale_data</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="va">scale_lm</span><span class="op">$</span><span class="va">coefficients</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   cases distance 
+    0.72     0.30 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## With intercept</span></span>
+<span><span class="va">scale_lm_0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">time</span> <span class="op">~</span> <span class="va">cases</span> <span class="op">+</span> <span class="va">distance</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">scale_data</span><span class="op">)</span><span class="op">)</span>  </span>
+<span><span class="va">scale_lm_0</span><span class="op">$</span><span class="va">coefficients</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)       cases    distance 
+   -1.5e-16     7.2e-01     3.0e-01 </code></pre>
+</div>
+</div>
+<div class="notes">
+
+</div>
+<!-- ## Other Topics -->
+<!-- - Justification of distributional properties -->
+<!-- - Simultaneous confidence intervals (region) -->
+<!-- - Extrapolation problem -->
+<!-- - Maximum likelihood estimation -->
+<!-- - Colliearity -->
+<!-- ## Externally Specified Population Distribution -->
+<!-- A related approach is to rescale based on some standard set outside the data. For example,  -->
+<!-- - In analyses of test scores it is common to express estimates on the scale of standard deviations of test scores across all students in a grade.  -->
+<!-- - A test might be on a 0–100 scale, with fourth graders having a national mean score of 55 and standard deviation of 18.  -->
+<!-- - Then if the analysis is done on the scale of points on the exam, all coefficient estimates and standard errors from analyses of fourth graders are divided by 18 so that they are on this universal scale. -->
+<!-- ## Standardization using reasonable scales -->
+<!-- Sometimes it is useful to keep inputs on familiar scales such as inches, dollars, or years, but make convenient rescalings to aid in the interpretability of coefficients.  -->
+<!-- - For example, we might work with income/\$10000 or age in decades. -->
+<!-- For another example, in Section 10.9 we analyzed party identification, a variable on a 1–7 scale: 1 = strong Democrat, 2 = Democrat, 3 = weak Democrat, 4 = independent, 5 = weak Republican, 6=Republican, 7=strong Republican. Rescaling to (pid 􀀀 4)=4 gives us a variable that equals 􀀀0.5 for Democrats, 0 for moderates, and +0.5 for Republicans, and so the coefficient on this variable is directly interpretable, with a change of 1 comparing a Democrat to a Republican. -->
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>For simplicity and convenience, <span class="math inline">\(N({\bf a}, {\bf B})\)</span> represents a multivariate normal distribution with mean vector <span class="math inline">\({\bf a}\)</span> and covariance matrix <span class="math inline">\({\bf B}\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Assume only <span class="math inline">\(r\)</span> of the <span class="math inline">\(m\)</span> equations are independent.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../slides";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/slides/06-mlr-mat.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
