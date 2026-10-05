@@ -80,17 +80,16 @@ Consider two students:
 
 | Student | Study Hours | Prior GPA |
 |:--|--:|--:|
-| A | 6 | 3.0 |
-| B | 8 | 2.5 |
+| A | 6 | 3.5 |
+| B | 8 | missing |
 
-Using Model 2, determine which student has the **higher predicted exam score**. Show enough work to explain your reasoning.
+Predict their exam score. Who has a higher predicted score? What if later we learn that Student B's prior GPA is 2.5?
 
-\vspace{0.6in}
+\vspace{2in}
 
-What does this example illustrate about making predictions with multiple predictors?
 
-\vspace{0.4in}
+<!-- \vspace{0.4in} -->
 
-**(MSSC)** Suppose that after adding Prior GPA, the Study Hours coefficient had changed from **4.80 to 6.20** instead of decreasing. Is that possible? Explain what kind of relationship among Study Hours, Prior GPA, and Exam Score could make an adjusted coefficient become larger.
+<!-- **(MSSC)** Suppose that after adding Prior GPA, the Study Hours coefficient had changed from **4.80 to 6.20** instead of decreasing. Is that possible? Explain what kind of relationship among Study Hours, Prior GPA, and Exam Score could make an adjusted coefficient become larger. -->
 
 <!-- \vspace{0.6in} -->
