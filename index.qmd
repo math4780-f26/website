@@ -42,7 +42,7 @@ format:
 | 6 | Tue, Oct 6 | Matrix Algebra Review | 🖥️ [mat](slides/06-mat-slides.html) | 👉[3Blue1Blown: matrices](https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=4) |  |  |  |  |  |
 |  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ [mlr-mat](slides/06-mlr-mat-slides.html) |  |  |  |  |  |  |
 | 7 | Tue, Oct 13 | Diagnostics: Residuals and Unusual Data | 🖥️ [diag-unusual](slides/07-diag-unusual-slides.html) |  |  |  |  |  |  |
-|  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ diag-normality |  |  |  |  |  |  |
+|  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ [diag-normality](slides/08-diag-normality-slides.html) |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ diag-const-var |  |  |  |  |  |  |
 |  | Thu, Oct 22 | ***NO CLASS: Midterm break*** |  |  |  | ✍️ HW 4 (due 10/30) |  |  |  |
 | 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ diag-linearity |  |  |  |  |  |  |
