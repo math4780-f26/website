@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>Regression Diagnostics    Normality – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4e2696270196a660e2818279c815d08b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Regression Diagnostics   Normality – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
+<meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/08-diag-normality/unnamed-chunk-2-1.png">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:image:height" content="5932">
+<meta property="og:image:width" content="9600">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Regression Diagnostics <i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> <br> Normality</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Activity/Worksheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description-4780_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guideline for MATH 4780</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description-5780_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Guideline for MATH 5780</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-work_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Group and Proposal</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Supplementary material for MSSC 5780</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLR matrix notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log transformations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model selection criteria</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="08-diag-normality-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Regression Diagnostics <i class="fa-solid fa-stethoscope" aria-label="stethoscope"></i> <br> Normality</h1>
+<p class="subtitle lead">MATH 4780/MSSC 5780 Regression Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="section" class="level1" data-visibility="hidden"><h1 data-visibility="hidden"></h1>
+<section id="what-do-your-data-look-like" class="level2"><h2 class="anchored" data-anchor-id="what-do-your-data-look-like">What Do your Data Look Like</h2>
+<p>We have fitted regression <span class="math inline">\(\hat{y} = 3 + 0.5x\)</span>, <span class="math inline">\(\hat{\sigma}^2 = 1.24\)</span>, <span class="math inline">\(R^2 = 0.67\)</span>. What do the data look like?</p>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:73.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="assumptions-of-linear-regression" class="level2"><h2 class="anchored" data-anchor-id="assumptions-of-linear-regression">Assumptions of Linear Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(Y_i= \beta_0 + \beta_1X_{i1} + \beta_2X_{i2} + \dots + \beta_kX_{ik} + \epsilon_i\)</span></p>
+<ul>
+<li>
+<span class="math inline">\(E(Y \mid X)\)</span> and <span class="math inline">\(X\)</span> are linearly related.</li>
+<li><span class="math inline">\(\small E(\epsilon_i) = 0\)</span></li>
+<li><span class="math inline">\(\small \mathrm{Var}(\epsilon_i) = \sigma^2\)</span></li>
+<li>
+<span class="math inline">\(\small \mathrm{Cov}(\epsilon_i, \epsilon_j) = 0\)</span> for all <span class="math inline">\(i \ne j\)</span>.</li>
+<li>
+<span class="math inline">\(\small \epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)\)</span> (for inference and prediction purpose)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<!-- - How's your exam? -->
+<!-- - We finished the discussion of SLR and MLR. Remember that our regression models are based on some assumptions. In fact these assumptions are quite restricted. -->
+<ul>
+<li>So it’s not that uncommon to see violation of assumptions.</li>
+<li>Today, we are going to learn how to check whether those assumptions are valid or satisfied.</li>
+<li>And probably the following two weeks, if the assumptions are not satisfied, how do we deal with it. OK.</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="midi">
+<div class="danger">
+<!-- - If the assumptions are violated, a different sample could lead to a different conclusion! -->
+<ul>
+<li>For the purpose of estimating the regression line, normality is barely important at all.</li>
+<li>
+<span class="math inline">\(R^2\)</span> tells us how good the model is fitted to the data, but says nothing about the correctness of the model.</li>
+<li>All the inference results are based on the assumed model.</li>
+</ul>
+</div>
+</div>
+</section></section><section id="model-adequacy-checking-and-correction" class="level1"><h1>Model Adequacy Checking and Correction</h1>
+<h2 class="anchored" data-anchor-id="model-adequacy-checking-and-correction">
+<span style="color:red"> Non-normality</span>
+</h2>
+<h2 class="anchored">
+Non-constant Error Variance
+</h2>
+<h2 class="anchored">
+Non-linearity and Lack of Fit
+</h2>
+<div class="notes">
+<ul>
+<li>This week we are going to learn some methods to correct model inadequacy.</li>
+<li>We can either transform our data, our use a more general method, called Generalized Least Squares or Weighted Least Squares.</li>
+<li>
+<span class="math inline">\(\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)\)</span>: <strong>mean 0</strong>, <strong>constant variance</strong>, <strong>normally distributed</strong>, and <strong>uncorrelated</strong>.</li>
+<li>
+<span class="math inline">\(E(\epsilon_i) =0\)</span> implies the function form of the model (<strong>linearity</strong>) is correct.</li>
+</ul>
+</div>
+<section id="non-normality" class="level2"><h2 class="anchored" data-anchor-id="non-normality">Non-normality</h2>
+<!-- - The central limit theorem assures the validity of inferences based on the least-squares (LS) coefficients in all but small samples. -->
+<!-- . . . -->
+<p>Without normality,</p>
+<ul>
+<li>
+<strong>Heavier tailed</strong> errors:
+<ul>
+<li>LS estimators do not have the <strong>smallest</strong> variance among unbiased estimators.</li>
+<li>give rise to <strong>outliers</strong>.</li>
+</ul>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<p>Gauss-Markov does not require normality. With heavy-tailed errors: - OLS remains BLUE under the Gauss–Markov assumptions, but need not be the most efficient estimator among all unbiased estimators. - Extreme errors occur more frequently, producing more observations far from the regression surface. - Because least squares squares residuals, these extreme observations can have a disproportionately large effect on the fit.</p>
+</div>
+</section><section id="non-normality-1" class="level2"><h2 class="anchored" data-anchor-id="non-normality-1">Non-normality</h2>
+<ul>
+<li>
+<strong>Skewed</strong> errors:
+<ul>
+<li>tend to generate outliers in the direction of the skew.</li>
+<li>the conditional mean of <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span> may not be a good measure of center of a highly skewed distribution.</li>
+</ul>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="non-normality-2" class="level2"><h2 class="anchored" data-anchor-id="non-normality-2">Non-normality</h2>
+<ul>
+<li>
+<strong>Multimodal</strong> errors:
+<ul>
+<li>suggest the omission of one or more categorical regressors.</li>
+</ul>
+</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>
+<span class="math inline">\(\epsilon_i \stackrel{iid}{\sim} N(0, \sigma^2)\)</span>: <strong>mean 0</strong>, <strong>constant variance</strong>, <strong>normally distributed</strong>, and <strong>uncorrelated</strong>.</li>
+<li>The form of the model (<strong>linearity</strong>) and the specification of the predictors are correct.</li>
+<li>Check model adequacy by residual plots and lack-of-fit tests.</li>
+<li>Methods for building models when some of the assumptions are violated.
+<ul>
+<li>data transformation</li>
+<li>generalized least squares (GLS) and weighted least squares (WLS)</li>
+</ul>
+</li>
+</ul>
+</div>
+</section><section id="detecting-nonnormality" class="level2"><h2 class="anchored" data-anchor-id="detecting-nonnormality">Detecting Nonnormality</h2>
+<!-- - Under normality, the R-student residuals $t_i$s have mean *zero* and *equal* variances. -->
+<ul>
+<li><p>The R-student residuals <span class="math inline">\(t_i \sim t_{n-p-1}\)</span> if the model assumptions are correct.</p></li>
+<li><p>Compare the distribution of the <span class="math inline">\(t_i\)</span>s to <span class="math inline">\(t_{n-p-1}\)</span> in QQ plot.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>One way to address the assumption of normality is to compare the distribution of the R-student residuals to <span class="math inline">\(t_{n-p-1}\)</span> in QQ plot.</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="qq-plot-of-r-student-residuals-comparing-t_n-p-1" class="level2"><h2 class="anchored" data-anchor-id="qq-plot-of-r-student-residuals-comparing-t_n-p-1">QQ plot of R-Student Residuals Comparing <span class="math inline">\(t_{n-p-1}\)</span>
+</h2>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html">qqPlot</a></span><span class="op">(</span><span class="va">fit_delivery</span>, id <span class="op">=</span> <span class="cn">TRUE</span>, col.lines <span class="op">=</span> <span class="st">"blue"</span>, </span>
+<span>            reps <span class="op">=</span> <span class="fl">1000</span>, ylab <span class="op">=</span> <span class="st">"Ordered R-Student Residuals"</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>The <code>car</code> package calls the R-student residuals <em>studentized</em> residuals.</li>
+<li>if put lm object, <code><a href="https://rdrr.io/pkg/car/man/qqPlot.html">car::qqPlot</a></code> automatically create qqplot for R-student residual comparing with <span class="math inline">\(t_{n-p-1}\)</span> distribution.</li>
+<li>No severe problem in delivery data</li>
+<li>id = controls point identification; if FALSE, no points are identified; can be a list of named arguments to the showLabels function; TRUE is equivalent to list(method=“y”, n=2, cex=1, col=carPalette()[1], location=“lr”), which identifies the 2 points with the 2 points with the most extreme verical values — studentized residuals for the “lm” method.</li>
+</ul>
+</div>
+</section><section id="density-plot-of-r-student-residuals" class="level2"><h2 class="anchored" data-anchor-id="density-plot-of-r-student-residuals">Density plot of R-Student Residuals</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:67.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>The QQ plot draws attention to the tail behavior of the R-student residuals but is less effective in visualizing their distribution as a whole.</li>
+<li>Check histogram or smooth density plot of the R-student residuals to get the general shape of the distribution.</li>
+<li>May be better to add another categorical regressor</li>
+<li>car::densityPlot(rstud, adjust = 2, xlab = “R-Student Residuals”)</li>
+</ul>
+</div>
+</section><section id="correcting-nonnormality" class="level2"><h2 class="anchored" data-anchor-id="correcting-nonnormality">Correcting Nonnormality</h2>
+<ul>
+<li>A response that is close to normal usually makes the assumption of normal errors more tenable. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</li>
+</ul>
+<ul>
+<li>
+<em>Heavier tailed</em> errors:
+<ul>
+<li>Use robust regression downweighting extreme residuals</li>
+</ul>
+</li>
+<li>
+<em>Skewed</em> errors:
+<ul>
+<li>Transform response data for symmetry</li>
+</ul>
+</li>
+<li>
+<em>Multimodal</em> errors:
+<ul>
+<li>Add one or more relevant categorical variables</li>
+</ul>
+</li>
+</ul>
+<div class="alert">
+<p>Want the error or the response <strong>conditional on <span class="math inline">\(x\)</span>s</strong> to be like normal after correction.</p>
+</div>
+<p>. . .</p>
+<div class="danger">
+<ul>
+<li><p>The regression model (we discuss) does <strong>not</strong> assume or require that predictors be normally distributed.</p></li>
+<li><p>It is possible for raw (unconditional) data <span class="math inline">\(y\)</span> to be far from normally distributed.</p></li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>Least absolute deviation regression (Timothy)</li>
+</ul>
+</div>
+</section><section id="transformation-for-symmetry" class="level2"><h2 class="anchored" data-anchor-id="transformation-for-symmetry">Transformation for Symmetry</h2>
+<p><strong>Power transformation: <span class="math inline">\(y \rightarrow y^{\lambda}\)</span></strong></p>
+<ul>
+<li>make the distribution of <span class="math inline">\(y\)</span> more normal, <em>at least more symmetric</em>.</li>
+<li>
+<span class="math inline">\(y\)</span> can take on <em>positive</em> values only.</li>
+<li>
+<span class="math inline">\(y \rightarrow \ln(y)\)</span> for <span class="math inline">\(\lambda = 0.\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<p><strong>Ladder of powers and roots (Tukey, 1977)</strong>:</p>
+<ul>
+<li>No transformation: <span class="math inline">\(\lambda = 1\)</span>
+</li>
+<li>
+<strong>Descending</strong>: <em>spreads out the <strong>small</strong> values of <span class="math inline">\(y\)</span> relative to the large values</em>.
+<ul>
+<li>
+<span class="math inline">\(\lambda = 1/2\)</span> (square root); <span class="math inline">\(\lambda = 0\)</span> (natural log); <span class="math inline">\(\lambda = -1\)</span> (inverse)</li>
+</ul>
+</li>
+<li>
+<strong>Ascending</strong>: <em>spreads out the <strong>large</strong> values relative to the small values</em>.
+<ul>
+<li>
+<span class="math inline">\(\lambda = 2\)</span> (square); <span class="math inline">\(\lambda = 3\)</span> (cube)</li>
+</ul>
+</li>
+</ul>
+<div class="notes">
+<p>if <span class="math inline">\(\lambda\)</span> is descending from <span class="math inline">\(1\)</span> to <span class="math inline">\(-1\)</span>, the fransformation increasingly spreads out the small values of <span class="math inline">\(y\)</span> relative to the large values.</p>
+</div>
+<p>. . .</p>
+<div class="alert">
+<p>The order of <span class="math inline">\(y\)</span> is <em>reversed</em> if <span class="math inline">\(\lambda &lt; 0\)</span> is used. Negative powers are often given a minus sign to preserve ordering.</p>
+</div>
+</section><section id="correcting-skewness-by-power-transformation" class="level2"><h2 class="anchored" data-anchor-id="correcting-skewness-by-power-transformation">Correcting Skewness by Power Transformation</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="box-cox-transformation-on-y" class="level2"><h2 class="anchored" data-anchor-id="box-cox-transformation-on-y">Box-Cox Transformation on <span class="math inline">\(y\)</span>
+</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p>A modified power transformation by <a href="https://www.nuffield.ox.ac.uk/users/cox/cox72.pdf">Box and Cox (1964)</a>:</p>
+<p><span class="math display">\[y^{(\lambda)} = \begin{cases}
+    \frac{y^{\lambda}-1}{\lambda},       &amp; \quad \lambda \ne 0\\
+    \ln y,  &amp; \quad \lambda = 0
+  \end{cases}\]</span></p>
+<div class="alert">
+<ul>
+<li>For all <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(y^{(\lambda)} = 0\)</span> at <span class="math inline">\(y = 1\)</span>.</li>
+<li>The order of the transformed data <span class="math inline">\(y^{(\lambda)}\)</span> is the same as that of <span class="math inline">\(y\)</span>, even for <span class="math inline">\(\lambda &lt; 0.\)</span>
+</li>
+</ul>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>The derivative w.r.t. <span class="math inline">\(y\)</span> of <span class="math inline">\(y^{(\lambda)}\)</span> at <span class="math inline">\(y = 1\)</span> is 1 for any <span class="math inline">\(\lambda\)</span>.</li>
+</ul>
+</div>
+</section><section id="box-cox-transformation-on-y-choose-lambda-analytically" class="level2"><h2 class="anchored" data-anchor-id="box-cox-transformation-on-y-choose-lambda-analytically">Box-Cox Transformation on <span class="math inline">\(y\)</span>: Choose <span class="math inline">\(\lambda\)</span> Analytically</h2>
+<ul>
+<li><p>The model to be fit is <span class="math display">\[y_i^{(\lambda)} = \beta_0 + \beta_1x_{i1}+ \cdots + \beta_kx_{ik} + \epsilon_i\]</span> <!-- - Choose $\lambda$ so that the transformed errors $\epsilon_i^*$ look as nearly normally distributed as possible. --></p></li>
+<li><p>Choose <span class="math inline">\(\lambda\)</span> so that, after transformation and refitting the regression, the residuals are as compatible as possible with the linear-model assumptions.</p></li>
+</ul></section><section id="cia-world-factbook-data" class="level2"><h2 class="anchored" data-anchor-id="cia-world-factbook-data"><a href="https://www.john-fox.ca/RegressionDiagnostics/index.html">CIA World Factbook Data</a></h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre class="my_class600"><code>            gdp infant gini health  region
+Albania    11.1   12.8   34    6.0  Europe
+Algeria    14.3   21.0   35    5.2  Africa
+Argentina  22.1    9.7   46    8.5 America
+Armenia     7.4   13.5   31    4.5  Europe
+Australia  46.6    4.4   30    9.1 Oceania
+Austria    45.4    3.5   26   11.5  Europe
+Azerbaijan 17.9   25.7   34    5.4    Asia
+Bangladesh  3.4   44.1   32    3.6    Asia
+Belarus    18.2    3.6   27    5.0  Europe
+Belgium    41.7    3.4   26   10.8  Europe
+Benin       1.9   55.7   36    4.5  Africa
+Bhutan      7.7   35.9   39    3.8    Asia</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<ul>
+<li>
+<code>gdp</code>: GDP per capita in thousands of U.S. dollars</li>
+<li>
+<code>infant</code>: Infant mortality rate per 1000 live births</li>
+<li>
+<code>gini</code>: Gini coefficient for the distribution of family income</li>
+<li>
+<code>health</code>: Health expenditures as a percentage of GDP</li>
+</ul>
+</div>
+</div>
+</section><section id="r-student-residuals" class="level2"><h2 class="anchored" data-anchor-id="r-student-residuals">R-Student Residuals</h2>
+<ul>
+<li>See how <code>gdp</code>, <code>health</code> and <code>gini</code> affect <code>infant</code>.</li>
+<li>R-Student residuals are right-skewed, suggesting transforming the response, infant mortality, down the ladder of powers.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ciafit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">infant</span> <span class="op">~</span> <span class="va">gdp</span> <span class="op">+</span> <span class="va">health</span> <span class="op">+</span> <span class="va">gini</span>, data <span class="op">=</span> <span class="va">CIA</span><span class="op">)</span></span>
+<span><span class="va">r_stud</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">rstudent</a></span><span class="op">(</span><span class="va">ciafit</span><span class="op">)</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/qqPlot.html">qqPlot</a></span><span class="op">(</span><span class="va">ciafit</span>, id <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/densityPlot.html">densityPlot</a></span><span class="op">(</span><span class="va">r_stud</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:56.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="box-cox-transformation" class="level2"><h2 class="anchored" data-anchor-id="box-cox-transformation">Box-Cox Transformation</h2>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">r_stud</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">lam</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">refit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html">update</a></span><span class="op">(</span></span>
+<span>        <span class="va">ciafit</span>, <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/bcPower.html">bcPower</a></span><span class="op">(</span><span class="va">infant</span>, <span class="va">lam</span><span class="op">)</span> <span class="op">~</span> <span class="va">.</span></span>
+<span>        <span class="op">)</span></span>
+<span>    <span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">rstudent</a></span><span class="op">(</span><span class="va">refit</span><span class="op">)</span>, <span class="va">mat</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="st">"log"</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span></span>
+<span>    <span class="va">mat</span>, id <span class="op">=</span> <span class="cn">FALSE</span>, </span>
+<span>    xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"Powers,"</span> <span class="op">~</span> <span class="va">lambda</span><span class="op">)</span>,</span>
+<span>    ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span></span>
+<span>        <span class="st">"R-Student Residuals for "</span> </span>
+<span>        <span class="op">~</span> <span class="va">Infant</span> <span class="op">^</span> <span class="op">(</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/08-diag-normality/boxcox-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="choose-lambda-analytically" class="level2"><h2 class="anchored" data-anchor-id="choose-lambda-analytically">Choose <span class="math inline">\(\lambda\)</span> Analytically</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/powerTransform.html">powerTransform</a></span><span class="op">(</span><span class="va">ciafit</span>, family <span class="op">=</span> <span class="st">"bcPower"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_class600"><code>bcPower Transformation to Normality 
+   Est Power Rounded Pwr Wald Lwr Bnd Wald Upr Bnd
+Y1     -0.22       -0.33        -0.37       -0.072
+
+Likelihood ratio test that transformation parameter is equal to 0
+ (log transformation)
+                      LRT df  pval
+LR test, lambda = (0)   8  1 0.005
+
+Likelihood ratio test that no transformation is needed
+                      LRT df   pval
+LR test, lambda = (1) 181  1 &lt;2e-16</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\(\hat{\lambda} = -0.22\)</span>, and the <span class="math inline">\(95\%\)</span> CI for <span class="math inline">\(\lambda\)</span> is <span class="math inline">\([-0.37, -0.07]\)</span>.</li>
+<li>
+<span class="math inline">\(\lambda = 1\)</span> not in the interval, providing support for transforming response.</li>
+<li>
+<span class="math inline">\(\lambda = 0\)</span> (log transformation) is slightly outside the interval.</li>
+</ul>
+<div class="notes">
+<p><code><a href="https://rdrr.io/pkg/car/man/powerTransform.html">car::powerTransform()</a></code> uses the maximum likelihood-like approach to select a <span class="math inline">\(\lambda\)</span> estimate, <span class="math inline">\(\hat{\lambda}\)</span>.</p>
+</div>
+</section><section id="other-issues" class="level2"><h2 class="anchored" data-anchor-id="other-issues">Other Issues</h2>
+<ul>
+<li>Apply power transformations to data with zero or negative values by adding a positive constant to the data to make all values positive.
+<ul>
+<li>
+<span class="math inline">\(\log(y + 10)\)</span> if all <span class="math inline">\(y &gt; -10\)</span>.</li>
+</ul>
+</li>
+</ul>
+<div class="notes">
+<p>因此如果 (c) 選得非常大，log transformation 原本「壓縮大值」的效果反而會變弱。</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>Power transformations are effective when the ratio of the largest to smallest values is sufficiently large.
+<ul>
+<li>If <span class="math inline">\(y_{max}/y_{min} \approx 1\)</span>, power transformations are nearly linear.</li>
+<li>Increase the ratio by subtracting a positive constant <span class="math inline">\(c &lt; y_{min}\)</span>, <span class="math inline">\((y_{max} - c)/(y_{min}-c)\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>If acceptable, choose log transformation for direct interpretation.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logciafit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">infant</span><span class="op">)</span> <span class="op">~</span> <span class="va">gdp</span> <span class="op">+</span> <span class="va">health</span> <span class="op">+</span> <span class="va">gini</span>, data <span class="op">=</span> <span class="va">CIA</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">logciafit</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)         gdp      health        gini 
+      3.016      -0.044      -0.055       0.022 </code></pre>
+</div>
+</div>
+<!-- - All else held constant, for one unit increase of `gdp`, the infant mortality rate is expected to be decreased, on average, by 4.3% because $\exp(-0.044) = 0.957$. -->
+<ul>
+<li>Comparing two countries, the one with one unit of <code>dgp</code> higher is expected to have the infant mortality rate (approximately) 4.3% lower than the other.</li>
+</ul>
+<div class="notes">
+<p>Hawkins and Weisberg (2017) - Skewed conditional distribution of <span class="math inline">\(y\)</span> is not a good measure of center. + Create a model for conditional <em>median</em> of the response. (Quantile regression) - OLS regression of the original variable is used to to estimate the expected arithmetic mean and OLS regression of the log transformed outcome variable is to estimated the expected geometric mean of the original variable.</p>
+</div>
+<!-- ## Other Issues {visibility="hidden"} -->
+<!-- - If acceptable, choose log transformation for simple interpratation. -->
+<!-- ```{r} -->
+<!-- logciafit <- lm(log(infant) ~ gdp + health + gini, data = CIA) -->
+<!-- coef(logciafit) -->
+<!-- ``` -->
+<!-- - All else held constant, for one unit increase of `gdp`, the infant mortality rate is expected to be decreased, on average, by 4.3% because $\exp(-0.044) = 0.957$. -->
+<!-- ??? -->
+<!-- https://stats.oarc.ucla.edu/other/mult-pkg/faq/general/faqhow-do-i-interpret-a-regression-model-when-some-variables-are-log-transformed/ -->
+<!-- https://data.library.virginia.edu/interpreting-log-transformations-in-a-linear-model/ -->
+<!-- chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://kenbenoit.net/assets/courses/ME104/logmodels2.pdf -->
+<!-- https://medium.com/@kyawsawhtoon/log-transformation-purpose-and-interpretation-9444b4b049c9 -->
+<!-- https://sites.google.com/site/curtiskephart/ta/econ113/interpreting-beta -->
+<!-- https://stats.stackexchange.com/questions/18480/interpretation-of-log-transformed-predictor-and-or-response -->
+<!-- https://zief0002.github.io/book-8252/nonlinearity-log-transforming-the-predictor.html -->
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Mathematically, an unconditional normal distribution of <span class="math inline">\(Y\)</span> does not guarantee a conditional normal distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>. Normal-looking <span class="math inline">\(Y\)</span> is just a preliminary evidence for normal errors.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../slides";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/slides/08-diag-normality.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
