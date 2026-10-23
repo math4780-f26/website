@@ -1,0 +1,104 @@
+---
+title: "Homework 4"
+subtitle: "Regression Diagnostics and More"
+categories: "Homework"
+editor: source
+params:
+  show_sol: true
+execute:
+  echo: false
+---
+
+::: callout-important
+[Due **Friday, Oct 30, 11:59 PM**]{.red}
+:::
+
+<!-- # Homework Instruction and Requirement -->
+
+<!-- - Homework 1 covers course materials of Week 1 to 2. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not accepted. 
+
+- In your homework, please number questions **in order**.
+
+<!-- - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- Questions started with **(MSSC)** are *required* for MSSC 5780 students, and optional for MATH 4780 students.
+
+
+# Homework Questions
+
+(@) **Interpretation of coefficients.** Suppose we have models
+
+- (1) $\log(y) = \beta_0 + \beta_1 \log(x) + \epsilon$
+
+- (2) $\log(y) = \beta_0 + \beta_1 x + \epsilon$
+
+- (3) $y = \beta_0 + \beta_1 \log(x) + \epsilon$
+
+Here $\log()$ is the natural log with base $e$. What is the meaning of $\beta_1$ in each model? Please explain it mathematically and/or numerically.
+
+<br>
+
+(@) **Statistical significance vs. Practical significance.**  Generate simulated data from $y = 2 - 0.01 x_1 + 0.01 x_2 + 0.02 x_3 + \epsilon$, where $\epsilon \sim N(0, \sigma^2)$. Set the values of $x$s and $\sigma$ yourself. Show that the marginal $t$ test $H_0: \beta_j = 0$ and overall significance $F$ test always get rejected as long as $n$ is large enough, even though $\beta_j$s are tiny and practically zero. 
+
+
+<br>
+
+(@) **Fitting a wrong model.** Suppose you have 100 data points that arose from the following model: $y = 3 + 0.1 x_1 + 0.5 x_2 + \epsilon$, with independent errors drawn from a $t$ distribution with mean 0, scale 5, and 4 degrees of freedom. We shall explore the implications of fitting a standard linear regression to these data. 
+    (a) Simulate data from this model. For simplicity, suppose the values of $x_1$ are simply the integers from 1 to 100, and that the values of $x_2$ are random and equally likely to be 0 or 1. Fit a linear regression (with normal errors) to these data and see if the 68% confidence intervals for the regression coefficients (for each, the estimates $\pm 1$ standard error) cover the true values.
+    (b) Put the above step in a loop and repeat 1000 times. Calculate the confidence coverage for the 68% intervals for each of the three coefficients in the model.
+    (c) Redo (a) and (b) when the degrees of freedom of $\epsilon$ is 1. Compare ypur results.
+    
+
+<br>
+
+
+(@) **Coverage of confidence intervals.** Consider the following procedure: 
+  - Set $n = 100$ and draw $n$ continuous values $x_i$ uniformly distributed between 0 and 10. Then simulate data from the model $y_i = 2 + 3 x_i + \epsilon_i$, for $i = 1, \dots, n$, with independent errors from a **bimodal** distribution.
+  - Regress $y$ on $x$. Let $b_1$ be the estimated slope and $SE(b_1)$ its estimated standard error.
+  - Repeat the above two steps 1000 times. 
+  (a) True or false: the interval should contain the true value approximately 950 times. Explain your answer.
+
+<br>
+
+(@) **Scale of regression coefficients.** A regression was fit to data from different countries, predicting the rate of civil conflicts given a set of geographic and political predictors. Here are the estimated coefficients and their $z$-scores (coefficient divided by standard error), given to three decimal places:
+
+| Predictor | Estimate | z-score |
+|---|---:|---:|
+| Intercept | -3.814 | -20.178 |
+| Conflict before 2000 | 0.020 | 1.861 |
+| Distance to border | 0.000 | 0.450 |
+| Distance to capital | 0.000 | 1.629 |
+| Population | 0.000 | 2.482 |
+| % mountainous | 1.641 | 8.518 |
+| % irrigated | -0.027 | -1.663 |
+| GDP per capita | -0.000 | -3.589 |
+
+Why are the coefficients for distance to border, distance to capital, population, and GDP per capita so small?
+
+<br>
+
+(@) **Influence diagnostics.** An experiment was conducted to study the size of squid eaten by sharks and tuna. The regressors are characteristics of the beak or month of the squid. The [`squid.csv`](./data/squid.csv) data contain the variables
++ $x_1$: Rostral length in inches
++ $x_2$: Wing length in inches
++ $x_3$: Rostral to notch length
++ $x_4$: Notch to wing length
++ $x_5$: Width in inches
++ $y$: Weights in pounds
+    (a) Compute R-student residuals, hat values, Cook's distance, DFFITS, DFBETAS, and COVRATIO measures. Describe how you detect leverage and influential points. Discuss the effect of data points on coefficients, fitted values, and precision of coefficients.
+    (b) Produce the added-variable plot (`car::avPlots()`) for each regressor $x_i, i = 1, \dots, 5$. Are there any joint influence of data points on the regression coefficients?
+
+
+<br>
+
+(@) **(MSSC)** **Regression to the mean.** Francis Galton, one of the original quantitative social scientists, who fit linear models to understand the heredity of human height. Predicting children's heights from parent's heights, he noticed that children of tall parents tended to be taller than average but less tall than their parents. From the other direction, children of shorter parents tended to be shorter than average but less short than their parents. Thus, from one generation to the next, people’s heights have ``regressed" to the average or mean, in statistics jargon.
+    (a) Demonstrate the idea using the data [`height.txt`](./data/height.txt) (in inches) to predict daughter's height from mother's height.
+    (b) If *regression to the mean* is true, does that mean *``daughters will be more average than their mothers, and that if this continues, each generation will be more average than the last, until, after a few generations, everyone will be just about of average height?"* For example, a mother who is 8 inches taller than average is predicted to have a daughter 4 inches taller than average, whose daughter would be predicted to be only 2 inches taller than average, with her daughter predicted to be only an inch taller than average, and so forth. Comment on the correctness of the statement.
+
+<br>
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?

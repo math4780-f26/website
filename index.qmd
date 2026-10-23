@@ -44,7 +44,7 @@ format:
 | 7 | Tue, Oct 13 | Diagnostics: Residuals and Unusual Data | 🖥️ [diag-unusual](slides/07-diag-unusual-slides.html) |  |  |  |  |  |  |
 |  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ [diag-normality](slides/08-diag-normality-slides.html) |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ [diag-const-var](slides/09-diag-const-var-slides.html) |  |  |  |  |  |  |
-|  | Thu, Oct 22 | ***NO CLASS: Midterm break*** |  |  |  | ✍️ HW 4 (due 10/30) |  |  |  |
+|  | Thu, Oct 22 | ***NO CLASS: Midterm break*** |  |  |  | ✍️ [HW 4 (due 10/30)](hw/hw04.html) |  |  |  |
 | 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ diag-linearity |  |  |  | worksheet 3 |  |  |
 |  | Thu, Oct 29 | Diagnostics: Lack of Fit |  |  |  |  |  |  |  |
 | 10 | Tue, Nov 3 | Bootstrapping and Simulation-based Inference | 🖥️ bootstrap |  |  |  |  |  |  |
