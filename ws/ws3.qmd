@@ -1,0 +1,174 @@
+---
+title: "Worksheet-03"
+subtitle: "Regression Diagnostics"
+categories: "Worksheet"
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Diagnostic Cases {.unnumbered}
+
+Four regression analyses show the following patterns.
+
+| Case | Diagnostic pattern |
+|:--:|:------------------------|
+| **A** | A plot of R-student residuals versus fitted values shows a clear **U-shaped pattern**. |
+| **B** | The spread of the R-student residuals is small at low fitted values and becomes wider as the fitted values increase, producing a **funnel shape**. |
+| **C** | Normal Q--Q plot of the R-student residuals follows the line near the center but bends away strongly in both tails |
+| **D** | One observation (black dot) has R-student residual = 0.8, leverage $h_{ii}=0.74$, and Cook's distance = 0.98. All others have leverage below 0.08 and Cook's distance below 0.10 |
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Illustrative diagnostic plots for Cases A--D."
+set.seed(4780)
+
+op <- par(mfrow = c(2, 2), mar = c(3.5, 3.8, 2.2, 1.0), mgp = c(2.2, 0.7, 0))
+
+# Case A: curvature / nonlinearity
+fit_A <- seq(0, 10, length.out = 55)
+rstud_A <- 0.13 * (fit_A - 5)^2 - 1.1 + rnorm(length(fit_A), 0, 0.38)
+plot(fit_A, rstud_A,
+     pch = 19, cex = 0.65,
+     xlab = "Fitted value", ylab = "R-student residual",
+     main = "Case A")
+abline(h = 0, lty = 2)
+lines(lowess(fit_A, rstud_A, f = 2/3), lwd = 2)
+
+# Case B: increasing variance / funnel shape
+fit_B <- seq(1, 10, length.out = 65)
+rstud_B <- rnorm(length(fit_B), 0, 0.14 + 1.12 * fit_B)
+plot(fit_B, rstud_B,
+     pch = 19, cex = 0.65,
+     xlab = "Fitted value", ylab = "R-student residual",
+     main = "Case B")
+abline(h = 0, lty = 2)
+
+# Case C: heavy tails in a normal Q-Q plot
+n_C <- 70
+rstud_C <- sort(rt(n_C, df = 2))
+theo_C <- qnorm(ppoints(n_C))
+plot(theo_C, rstud_C,
+     pch = 19, cex = 0.65,
+     xlab = "Theoretical normal quantile",
+     ylab = "R-student residual quantile",
+     main = "Case C")
+qqline(rstud_C, lwd = 2)
+
+# Case D: a genuinely influential high-leverage point
+# The ordinary observations follow one trend; the far-right point pulls the
+# fitted line noticeably toward itself.
+x_D <- c(1.2691, 1.8295, 1.8795, 1.9219, 2.0688, 2.1018,
+         2.1578, 2.1595, 2.2248, 2.3829, 3.4889, 3.5649,
+         3.5908, 3.9136, 4.1497, 4.4118, 4.7073, 4.9956,
+         5.0605, 5.0988, 5.1212, 5.4495, 5.6167, 5.6370)
+y_D <- c(3.4818, 3.5809, 4.2684, 4.2130, 4.0386, 3.8939,
+         3.7792, 3.3900, 4.5541, 3.1672, 4.9735, 5.2823,
+         5.6187, 6.3150, 6.1817, 5.8394, 6.5643, 5.9283,
+         7.1979, 6.5185, 6.3059, 6.6169, 7.0274, 6.8966)
+
+x_out <- 18
+y_out <- 16.2206
+x_all <- c(x_D, x_out)
+y_all <- c(y_D, y_out)
+
+fit_without <- lm(y_D ~ x_D)
+fit_with <- lm(y_all ~ x_all)
+
+plot(x_all, y_all,
+     pch = 1, cex = 0.8,
+     xlab = "x", ylab = "y",
+     main = "Case D")
+abline(fit_without, lty = 2, lwd = 2)
+abline(fit_with, lwd = 2)
+points(x_out, y_out, pch = 19, cex = 1.15)
+text(x_out, y_out,
+     labels = "  influential observation", pos = 4, cex = 0.76)
+legend("topleft",
+       legend = c("Fit without marked point", "Fit with all observations"),
+       lty = c(2, 1), lwd = 2, bty = "n", cex = 0.72)
+
+par(op)
+```
+
+## What is the most likely problem?
+
+Match each case with the most likely concern.
+
+- nonlinearity
+- nonconstant variance
+- non-normal or heavy-tailed errors
+- unusual leverage or influence
+
+| Case | Most likely concern |
+|:--:|:--|
+| A | __________________________________________ |
+| B | __________________________________________ |
+| C | __________________________________________ |
+| D | __________________________________________ |
+
+Choose **one** case and briefly explain what feature of the diagnostic pattern led you to your answer.
+
+\vspace{0.55in}
+
+## Should we delete this observation?
+
+For Case D:
+
+- **R-student residual = 0.8**
+- leverage = 0.74
+- Cook's distance = 0.98
+
+A student says:
+
+> "Cook's distance is large, so we should delete this observation."
+
+Do you agree? Why or why not?
+
+\vspace{0.6in}
+
+Circle the best description of this observation.
+
+**A.** Clearly an outlier in the response direction  
+**B.** A high-leverage observation that may be influential  
+**C.** A normal observation with no reason for concern  
+**D.** Impossible to evaluate from any diagnostic information
+
+Briefly explain your choice.
+
+\vspace{0.45in}
+
+## What would you do next?
+
+Suppose the **R-student residual-versus-fitted plot** shows the **funnel shape** from Case B.
+
+Three analysts suggest different responses.
+
+**Analyst 1:**  
+> "Ignore it. The fitted regression line is still the same."
+
+**Analyst 2:**  
+> "The unequal spread may affect uncertainty estimates, so I would investigate a transformation or a method that allows nonconstant variance."
+
+**Analyst 3:**  
+> "Delete the observations with the largest R-student residuals until the funnel disappears."
+
+Which response would you defend most strongly?
+
+Analyst: __________
+
+Why?
+
+\vspace{0.65in}
+
+### Leverage and Influence
+
+Can an observation have high leverage $h_{ii}$ but a small residual $e_i = y_i - \hat{y}_i$ and still be influential? Explain the distinction among an outlier, a high-leverage point, and an influential point.

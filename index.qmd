@@ -45,9 +45,9 @@ format:
 |  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ [diag-normality](slides/08-diag-normality-slides.html) |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ [diag-const-var](slides/09-diag-const-var-slides.html) |  |  |  |  |  |  |
 |  | Thu, Oct 22 | ***NO CLASS: Midterm break*** |  |  |  | ✍️ [HW 4 (due 10/30)](hw/hw04.html) |  |  |  |
-| 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ [diag-linearity](slides/10-diag-linearity-slides.html) |  |  |  | worksheet 3 |  |  |
+| 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ [diag-linearity](slides/10-diag-linearity-slides.html) |  |  |  | [worksheet 3](ws/ws3.html) |  |  |
 |  | Thu, Oct 29 | Diagnostics: Lack of Fit |  |  |  |  |  |  |  |
-| 10 | Tue, Nov 3 | Bootstrapping and Simulation-based Inference | 🖥️ bootstrap |  |  |  |  |  |  |
+| 10 | Tue, Nov 3 | Bootstrapping and Simulation-based Inference | 🖥️ [bootstrap](slides/11-bootstrap-slides.html) |  |  |  |  |  |  |
 |  | Thu, Nov 5 | Polynomial Regression | 🖥️ poly-reg |  |  |  |  |  |  |
 | 11 | Tue, Nov 10 | **In-Class Exam** ✅ |  |  |  |  |  |  |  |
 |  | Thu, Nov 12 | Nonparametric Regression | 🖥️ nonpara-reg |  |  | ✍️ HW 5 (due 11/20) |  |  |  |
