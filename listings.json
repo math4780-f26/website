@@ -1,18 +1,19 @@
 [
   {
+    "listing": "/ws.html",
+    "items": [
+      "/ws/ws1.html",
+      "/ws/ws2.html",
+      "/ws/ws3.html"
+    ]
+  },
+  {
     "listing": "/hw.html",
     "items": [
       "/hw/hw01.html",
       "/hw/hw02.html",
       "/hw/hw03.html",
       "/hw/hw04.html"
-    ]
-  },
-  {
-    "listing": "/ws.html",
-    "items": [
-      "/ws/ws1.html",
-      "/ws/ws2.html"
     ]
   }
 ]

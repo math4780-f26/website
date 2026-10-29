@@ -1,96 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://math4780-f26.github.io/website/ws/ws2.html</loc>
-    <lastmod>2026-10-05T21:30:33.772Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws/ws3.html</loc>
+    <lastmod>2026-10-28T17:56:46.381Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/course-syllabus.html</loc>
-    <lastmod>2026-09-02T17:49:48.000Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws/ws1.html</loc>
+    <lastmod>2026-09-18T01:38:54.741Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw.html</loc>
-    <lastmod>2026-08-25T01:03:10.331Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/project-description.html</loc>
+    <lastmod>2023-10-28T02:19:42.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws_new/ws2.html</loc>
-    <lastmod>2026-10-05T21:29:35.083Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws_new/ws3.html</loc>
+    <lastmod>2026-09-12T05:49:03.686Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws_new/ws5.html</loc>
-    <lastmod>2026-09-12T05:52:59.204Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws_new/ws1.html</loc>
+    <lastmod>2026-09-11T23:24:27.617Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws.html</loc>
-    <lastmod>2026-09-11T23:21:33.370Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws_new/ws4.html</loc>
+    <lastmod>2026-09-12T05:50:07.181Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw03-extra.html</loc>
-    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
-  </url>
-  <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw06-extra.html</loc>
-    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
-  </url>
-  <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw03.html</loc>
-    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
-  </url>
-  <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw06.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw08.html</loc>
     <lastmod>2026-08-25T01:03:10.336Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw05.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw01.html</loc>
     <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/project/dataset_variable_guide.html</loc>
-    <lastmod>2026-08-25T01:03:10.400Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw02.html</loc>
+    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/supplemental/model-selection-criteria.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw07.html</loc>
+    <lastmod>2026-08-25T01:03:10.336Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw04.html</loc>
+    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/project-description-4780.html</loc>
+    <lastmod>2023-11-03T02:34:47.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/project/final_project.html</loc>
+    <lastmod>2026-08-25T01:03:10.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/supplemental/log-transformations.html</loc>
     <lastmod>2023-06-15T23:16:22.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/supplemental/slr-derivations.html</loc>
+    <loc>https://math4780-f26.github.io/website/supplemental/model-diagnostics-matrix.html</loc>
     <lastmod>2023-06-15T23:16:22.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/supplemental/mlr-matrix.html</loc>
-    <lastmod>2023-06-15T23:16:22.000Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/07-diag-unusual-slides.html</loc>
+    <lastmod>2026-10-05T00:33:11.371Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/02-overview-slides.html</loc>
-    <lastmod>2026-09-03T16:08:04.723Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/07-diag-unusual.html</loc>
+    <lastmod>2026-10-05T00:33:11.371Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/02-overview.html</loc>
-    <lastmod>2026-09-03T16:08:04.723Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/06-mlr-mat-slides.html</loc>
+    <lastmod>2026-09-28T16:00:23.678Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/05-mlr-slides.html</loc>
-    <lastmod>2026-09-22T15:05:43.322Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/06-mlr-mat.html</loc>
+    <lastmod>2026-09-28T16:00:23.678Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/05-mlr.html</loc>
-    <lastmod>2026-09-22T15:05:43.322Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/08-diag-normality-slides.html</loc>
+    <lastmod>2026-10-12T21:35:55.601Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/01-syllabus-slides.html</loc>
-    <lastmod>2026-09-01T13:41:21.522Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/08-diag-normality.html</loc>
+    <lastmod>2026-10-12T21:35:55.601Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/01-syllabus.html</loc>
-    <lastmod>2026-09-01T13:41:21.522Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/10-diag-linearity-slides.html</loc>
+    <lastmod>2026-10-26T19:43:40.078Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/06-mat-slides.html</loc>
-    <lastmod>2026-09-28T03:34:06.263Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/10-diag-linearity.html</loc>
+    <lastmod>2026-10-26T19:43:40.078Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/06-mat.html</loc>
-    <lastmod>2026-09-28T03:34:06.263Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/11-bootstrap-slides.html</loc>
+    <lastmod>2026-10-28T17:42:19.647Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/slides/11-bootstrap.html</loc>
+    <lastmod>2026-10-28T17:42:19.647Z</lastmod>
   </url>
   <url>
     <loc>https://math4780-f26.github.io/website/slides/04-slr-f26-slides.html</loc>
@@ -102,7 +110,7 @@
   </url>
   <url>
     <loc>https://math4780-f26.github.io/website/index.html</loc>
-    <lastmod>2026-10-27T15:33:18.440Z</lastmod>
+    <lastmod>2026-10-28T17:58:39.560Z</lastmod>
   </url>
   <url>
     <loc>https://math4780-f26.github.io/website/activity-description.html</loc>
@@ -161,91 +169,95 @@
     <lastmod>2026-10-20T15:04:49.677Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/10-diag-linearity.html</loc>
-    <lastmod>2026-10-26T19:43:40.078Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/06-mat.html</loc>
+    <lastmod>2026-09-28T03:34:06.263Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/10-diag-linearity-slides.html</loc>
-    <lastmod>2026-10-26T19:43:40.078Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/06-mat-slides.html</loc>
+    <lastmod>2026-09-28T03:34:06.263Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/08-diag-normality.html</loc>
-    <lastmod>2026-10-12T21:35:55.601Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/01-syllabus.html</loc>
+    <lastmod>2026-09-01T13:41:21.522Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/08-diag-normality-slides.html</loc>
-    <lastmod>2026-10-12T21:35:55.601Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/01-syllabus-slides.html</loc>
+    <lastmod>2026-09-01T13:41:21.522Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/06-mlr-mat.html</loc>
-    <lastmod>2026-09-28T16:00:23.678Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/05-mlr.html</loc>
+    <lastmod>2026-09-22T15:05:43.322Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/06-mlr-mat-slides.html</loc>
-    <lastmod>2026-09-28T16:00:23.678Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/05-mlr-slides.html</loc>
+    <lastmod>2026-09-22T15:05:43.322Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/07-diag-unusual.html</loc>
-    <lastmod>2026-10-05T00:33:11.371Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/02-overview.html</loc>
+    <lastmod>2026-09-03T16:08:04.723Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/slides/07-diag-unusual-slides.html</loc>
-    <lastmod>2026-10-05T00:33:11.371Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/slides/02-overview-slides.html</loc>
+    <lastmod>2026-09-03T16:08:04.723Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/supplemental/model-diagnostics-matrix.html</loc>
+    <loc>https://math4780-f26.github.io/website/supplemental/mlr-matrix.html</loc>
     <lastmod>2023-06-15T23:16:22.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/supplemental/log-transformations.html</loc>
+    <loc>https://math4780-f26.github.io/website/supplemental/slr-derivations.html</loc>
     <lastmod>2023-06-15T23:16:22.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/project/final_project.html</loc>
-    <lastmod>2026-08-25T01:03:10.404Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/supplemental/model-selection-criteria.html</loc>
+    <lastmod>2023-06-15T23:16:22.000Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/project-description-4780.html</loc>
-    <lastmod>2023-11-03T02:34:47.000Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/project/dataset_variable_guide.html</loc>
+    <lastmod>2026-08-25T01:03:10.400Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw04.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw05.html</loc>
     <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw07.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw06.html</loc>
     <lastmod>2026-08-25T01:03:10.336Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw02.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw03.html</loc>
     <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw01.html</loc>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw06-extra.html</loc>
     <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/hw_new/hw08.html</loc>
-    <lastmod>2026-08-25T01:03:10.336Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/hw_new/hw03-extra.html</loc>
+    <lastmod>2026-08-25T01:03:10.335Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws_new/ws4.html</loc>
-    <lastmod>2026-09-12T05:50:07.181Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws.html</loc>
+    <lastmod>2026-09-11T23:21:33.370Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws_new/ws1.html</loc>
-    <lastmod>2026-09-11T23:24:27.617Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws_new/ws5.html</loc>
+    <lastmod>2026-09-12T05:52:59.204Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws_new/ws3.html</loc>
-    <lastmod>2026-09-12T05:49:03.686Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/ws_new/ws2.html</loc>
+    <lastmod>2026-10-05T21:29:35.083Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/project-description.html</loc>
-    <lastmod>2023-10-28T02:19:42.000Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/hw.html</loc>
+    <lastmod>2026-08-25T01:03:10.331Z</lastmod>
   </url>
   <url>
-    <loc>https://math4780-f26.github.io/website/ws/ws1.html</loc>
-    <lastmod>2026-09-18T01:38:54.741Z</lastmod>
+    <loc>https://math4780-f26.github.io/website/course-syllabus.html</loc>
+    <lastmod>2026-09-02T17:49:48.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://math4780-f26.github.io/website/ws/ws2.html</loc>
+    <lastmod>2026-10-05T21:30:33.772Z</lastmod>
   </url>
 </urlset>
