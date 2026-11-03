@@ -2914,7 +2914,7 @@
     "href": "slides/11-poly-reg-slides.html#polynomial-regression-models",
     "title": "Polynomial Regression ▶️",
     "section": "Polynomial Regression Models",
-    "text": "Polynomial Regression Models\n\nA second-order (degree) polynomial in one variable describing quadratic pattern is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\epsilon\\]\nA second-order polynomial in two variables is \\[y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_{11}x_1^2 + \\beta_{22}x_2^2 + \\beta_{12}x_1x_2 + \\epsilon\\]\nThe \\(k\\)th-order polynomial model in one variable is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\cdots + \\beta_kx^k + \\epsilon\\]\nIf we set \\(x_j = x^j\\), this is just a multiple linear regression model with \\(k\\) predictors \\(x_1, x_2, \\dots, x_k\\)!"
+    "text": "Polynomial Regression Models\n\nA second-order (degree) polynomial in one variable describing quadratic pattern is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\epsilon\\]\nThe \\(k\\)th-order polynomial model in one variable is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\cdots + \\beta_kx^k + \\epsilon\\]\nIf we set \\(x_j = x^j\\), this is just a multiple linear regression model with \\(k\\) predictors \\(x_1, x_2, \\dots, x_k\\)!\nA second-order polynomial in two variables is \\[y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_{11}x_1^2 + \\beta_{22}x_2^2 + \\beta_{12}x_1x_2 + \\epsilon\\]"
   },
   {
     "objectID": "slides/11-poly-reg-slides.html#important-considerations",
@@ -3047,7 +3047,7 @@
     "href": "slides/11-poly-reg.html#polynomial-regression-models",
     "title": "Polynomial Regression ▶️",
     "section": "Polynomial Regression Models",
-    "text": "Polynomial Regression Models\n\nA second-order (degree) polynomial in one variable describing quadratic pattern is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\epsilon\\]\nA second-order polynomial in two variables is \\[y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_{11}x_1^2 + \\beta_{22}x_2^2 + \\beta_{12}x_1x_2 + \\epsilon\\]\nThe \\(k\\)th-order polynomial model in one variable is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\cdots + \\beta_kx^k + \\epsilon\\]\nIf we set \\(x_j = x^j\\), this is just a multiple linear regression model with \\(k\\) predictors \\(x_1, x_2, \\dots, x_k\\)!"
+    "text": "Polynomial Regression Models\n\nA second-order (degree) polynomial in one variable describing quadratic pattern is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\epsilon\\]\nThe \\(k\\)th-order polynomial model in one variable is \\[y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\cdots + \\beta_kx^k + \\epsilon\\]\nIf we set \\(x_j = x^j\\), this is just a multiple linear regression model with \\(k\\) predictors \\(x_1, x_2, \\dots, x_k\\)!\nA second-order polynomial in two variables is \\[y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\beta_{11}x_1^2 + \\beta_{22}x_2^2 + \\beta_{12}x_1x_2 + \\epsilon\\]"
   },
   {
     "objectID": "slides/11-poly-reg.html#important-considerations",
