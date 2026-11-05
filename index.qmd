@@ -50,7 +50,7 @@ format:
 | 10 | Tue, Nov 3 | Bootstrapping and Simulation-based Inference | 🖥️ [bootstrap](slides/11-bootstrap-slides.html) |  |  |  |  |  |  |
 |  | Thu, Nov 5 | Polynomial Regression | 🖥️ [poly-reg](slides/11-poly-reg-slides.html) |  |  |  |  |  |  |
 | 11 | Tue, Nov 10 | **In-Class Exam** ✅ |  |  |  |  |  |  |  |
-|  | Thu, Nov 12 | Nonparametric Regression | 🖥️ nonpara-reg |  |  | ✍️ HW 5 (due 11/20) |  |  |  |
+|  | Thu, Nov 12 | Nonparametric Regression | 🖥️ [nonpara-reg](slides/12-nonpara-reg-slides.html) |  |  | ✍️ HW 5 (due 11/20) |  |  |  |
 | 12 | Tue, Nov 17 | Categorical Variables | 🖥️ cat-var |  |  |  |  |  |  |
 |  | Thu, Nov 19 | Categorical Variables |  |  |  |  |  |  |  |
 | 13 | Tue, Nov 24 | Collinearity | 🖥️ collinearity |  |  |  | worksheet 4 |  |  |
