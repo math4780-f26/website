@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>MATH 4780 (MSSC 5780) - Fall 2026 – Nonparametric Regression 🛠</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+<style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+<link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-fb443a5055a3dbdc542b651c2257fef4.css">
+<link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta property="og:title" content="Nonparametric Regression r emo::ji('hammer_and_wrench') – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="../images/bg.png" class="quarto-title-block center"><h1 class="title">Nonparametric Regression 🛠</h1>
+  <p class="subtitle">MATH 4780/MSSC 5780 Regression Analysis</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University
+</div>
+</div>
+</div>
+
+</section><section><section id="nonparametric-regression" class="title-slide slide level1 center"><h1>Nonparametric Regression</h1>
+<h2>
+Nonparametric Kernel Smoother
+</h2>
+<h2>
+Local Regression
+</h2>
+</section><section id="nonparametric-statistics" class="slide level2"><h2>Nonparametric Statistics</h2>
+<ul>
+<li>A general regression model <span class="math inline">\(y = f(x) + \epsilon\)</span>.</li>
+<li>
+<strong>Parametric</strong> model: make an assumption about the shape of <span class="math inline">\(f\)</span>, e.g., <span class="math inline">\(f(x) = \beta_0 + \beta_1 x\)</span>, then learn the <strong>parameters</strong> <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
+</ul>
+<div class="fragment">
+<p>Nonparametric methods do not specify a fixed, finite-dimensional functional form for (f). Instead, they allow the data to determine its shape, subject to assumptions or constraints such as smoothness.</p>
+<ul>
+<li>
+<strong>Nonparametric</strong> methods do NOT specify a fixed, finite-dimensional functional form for <span class="math inline">\(f\)</span>.
+<ul>
+<li>Seek an estimate of <span class="math inline">\(f\)</span> that gets close to the data points without being too rough or wiggly.</li>
+<li>Avoid the possibility that the functional form used to estimate <span class="math inline">\(f\)</span> is very different from the true <span class="math inline">\(f\)</span>.</li>
+<li>Do not reduce the problem of estimating <span class="math inline">\(f\)</span> to a small number of parameters, so more data are required to obtain an accurate estimate of <span class="math inline">\(f\)</span>. <sup>1</sup>
+</li>
+</ul>
+</li>
+</ul>
+<aside class="notes"><ul>
+<li>So far, with a general regression model <span class="math inline">\(y = f(x) + \epsilon\)</span>, we make an assumption about the form or shape of <span class="math inline">\(f\)</span>, for example, <span class="math inline">\(f(x) = \beta_0 + \beta_1 x\)</span>, then learn the <strong>parameters</strong> <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> to understand the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>. This is a <strong>parametric</strong> model.</li>
+<li>
+<strong>Nonparametric</strong> methods do not make assumptions about the form of <span class="math inline">\(f\)</span>.
+<ul>
+<li>They seek an estimate of <span class="math inline">\(f\)</span> that gets close to the data points without being too rough or wiggly.</li>
+<li>The methods avoid the possibility that the functional form used to estimate <span class="math inline">\(f\)</span> is very different from the true <span class="math inline">\(f\)</span>.</li>
+<li>Since they do not reduce the problem of estimating <span class="math inline">\(f\)</span> to a small number of parameters, more observations are required to obtain an accurate estimate for <span class="math inline">\(f\)</span>.</li>
+</ul>
+</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Regression splines is somewhat in between. It is a finite-dimensional <em>parametric</em> model used as a <em>nonparametric</em> function-estimation method.</p></li></ol></aside></section><section id="parametric-vs.-nonparametric-models" class="slide level2"><h2>Parametric vs.&nbsp;Nonparametric Models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Parametric</strong> (Linear regression) <br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/12-nonpara-reg/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>Nonparametric</strong> (Kernel smoother) <br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/12-nonpara-reg/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section><section id="nonparametric-regression-1" class="slide level2"><h2>Nonparametric Regression</h2>
+<ul>
+<li>In (parametric) linear regression, <span class="math inline">\(\small \hat{y}_i(x_i) = \sum_{j=1}^n h_{ij}y_j\)</span>. <!-- - The fitted value for the $i$th response is a linear combination of the original data. -->
+</li>
+<li>Many nonparametric regression methods estimate the regression function using a <em>weighted linear combination of observed responses</em>: <span class="math display">\[\small \hat{y}_i = \sum_{j=1}^n w_{ij}y_j\]</span> where <span class="math inline">\(\sum_{j=1}^nw_{ij} = 1\)</span> or</li>
+</ul>
+<p><span class="math display">\[ \hat f(x_i)=\sum_{j=1}^n w_j(x_i)y_j\]</span></p>
+<div class="alert">
+<p>Generally, <span class="math inline">\(w_{ij}\)</span> is larger when <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span> are closer. <span class="math inline">\(y_i\)</span> is affected more by its <em>neighbors</em>.</p>
+</div>
+<aside class="notes"><p><span class="math display">\[\small {\bf \hat{y} = Xb = X(X'X)^{-1}X'y = Hy},\]</span> - <span class="math inline">\(w_{ij}\)</span>: measures the contribution of the observed response <span class="math inline">\(y_j\)</span> to the fitted value <span class="math inline">\(\hat{y}_i\)</span>. - In linear regression, observations contribute to a global fitted model. In local nonparametric regression, nearby observations receive greater weight when estimating the regression function at a particular location. - OLS：每一個 fitted value 都是 observed responses 的 linear combination，weights 由整體 regression geometry 決定。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="kernel-smoother" class="slide level2"><h2>Kernel Smoother</h2>
+<ul>
+<li>In nonparametric statistics, a <strong>(smoothing) kernel</strong> <span class="math inline">\(K(t)\)</span> is used as a <em>weighting</em> function satisfying
+<ul>
+<li>
+<span class="math inline">\(K(t) \ge 0\)</span> for all <span class="math inline">\(t\)</span>
+</li>
+<li><span class="math inline">\(\int_{-\infty}^{\infty} K(t) \,dt = 1\)</span></li>
+<li>
+<span class="math inline">\(K(-t) = K(t)\)</span> for all <span class="math inline">\(t\)</span>
+</li>
+</ul>
+</li>
+</ul>
+<div class="question">
+<p>Can you give me an kernel function?</p>
+</div>
+</section><section id="kernel-smoother-1" class="slide level2"><h2>Kernel Smoother</h2>
+<ul>
+<li>In nonparametric statistics, a <strong>(smoothing) kernel</strong> <span class="math inline">\(K(t)\)</span> is used as a <em>weighting</em> function satisfying
+<ul>
+<li>
+<span class="math inline">\(K(t) \ge 0\)</span> for all <span class="math inline">\(t\)</span>
+</li>
+<li><span class="math inline">\(\int_{-\infty}^{\infty} K(t) \,dt = 1\)</span></li>
+<li>
+<span class="math inline">\(K(-t) = K(t)\)</span> for all <span class="math inline">\(t\)</span>
+</li>
+</ul>
+</li>
+</ul>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"></section><section id="kernel-smoother-2" class="slide level2"><h2>Kernel Smoother</h2>
+<ul>
+<li><p>Let <span class="math inline">\(\tilde{y}_i\)</span> be the <strong>kernel smoother</strong> of the <span class="math inline">\(i\)</span>th response. Then <span class="math display">\[\small \tilde{y}_i = \sum_{j=1}^n w_{ij}y_j\]</span> where <span class="math inline">\(\sum_{j=1}^nw_{ij} = 1\)</span>, and <span class="math inline">\(w_{ij}\)</span> are determined by a kernel function <span class="math inline">\(K(\cdot)\)</span>.</p></li>
+<li>
+<p>The Nadaraya–Watson kernel regression <sup>1</sup> uses the weights given by <span class="math display">\[\small w_{ij} = \frac{K \left( \frac{x_i - x_j}{b}\right)}{\sum_{k=1}^nK \left( \frac{x_i - x_k}{b}\right)}\]</span></p>
+<ul>
+<li>Parameter <span class="math inline">\(b\)</span> is the <strong>bandwidth</strong> that controls the smoothness of the fitted curve.</li>
+<li>Closer points are given higher weights: <span class="math inline">\(w_{ij}\)</span> is larger if <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span> are closer.</li>
+</ul>
+</li>
+</ul>
+<aside class="notes"><!-- or ${\bf \tilde{y} = S y}$ where ${\bf S} = \left[ w_{ij}\right]$ is the smoothing matrix created by a kernel function $K(\cdot)$. --><ul>
+<li>
+<span class="math inline">\(\tilde{y}_i\)</span>s will not be as much variationed as <span class="math inline">\(y_j\)</span>.</li>
+<li>By weighted averaging, the value <span class="math inline">\(\tilde{y}_i\)</span> is synthesized or integrated by other data points. The average value tends to wash out some unexplained noises, and look more like its other data points.</li>
+<li>These kernel smoothers use a bandwidth, <span class="math inline">\(b\)</span>, to define this neighborhood of interest. Kernel function determines how observations are weighted; bandwidth determines how local the weighted averaging is.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><aside><ol class="aside-footnotes"><li id="fn2"><p>This ensures that <span class="math inline">\(\min_i y_i \le \tilde{y}_i \le \max_i y_i\)</span>. Also, if <span class="math inline">\(y_i = c\)</span> for all <span class="math inline">\(i\)</span> and some constant <span class="math inline">\(c\)</span>, then <span class="math inline">\(\tilde{y}_i = c\)</span>.</p></li></ol></aside></section><section id="gaussian-kernel-smoother-example" class="slide level2"><h2>Gaussian Kernel Smoother Example</h2>
+<!-- ksmooth(x, y, bandwidth = 1, kernel = "normal") -->
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">KernSmooth</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/KernSmooth/man/locpoly.html">locpoly</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, degree <span class="op">=</span> <span class="fl">0</span>, kernel <span class="op">=</span> <span class="st">"normal"</span>, bandwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(y = 2\sin(x) + \epsilon\)</span></li>
+<li><span class="math inline">\(K_b(x_i, x_j) = \frac{1}{b \sqrt{2\pi}}\exp \left( - \frac{(x_i - x_j)^2}{2b^2}\right)\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/12-nonpara-reg/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[\small w_{ij} = \frac{K \left( \frac{x_i - x_j}{b}\right)}{\sum_{k=1}^nK \left( \frac{x_i - x_k}{b}\right)}\]</span> Bandwidth <span class="math inline">\(b\)</span> defines <em>“neighbors”</em> of <span class="math inline">\(x_i\)</span>, and controls the smoothness of the estimated <span class="math inline">\(f\)</span>.</p>
+<div class="alert">
+<ul>
+<li>
+<strong>Large <span class="math inline">\(b\)</span></strong>: More data points have large weights. The fitted curve becomes smoother</li>
+<li>
+<strong>Small <span class="math inline">\(b\)</span></strong>: Less of the data are used, and the resulting curve looks wiggly.</li>
+</ul>
+</div>
+</div></div>
+<aside class="notes"><ul>
+<li>Bandwidth <span class="math inline">\(b\)</span> defines <em>“neighbors”</em> of the specific location of interest, and control the smoothness of the estimated function <span class="math inline">\(f\)</span>.</li>
+<li>When <span class="math inline">\(b\)</span> is large, more data points with large weights are used to predict the response <span class="math inline">\(y_i\)</span> at the specific <span class="math inline">\(x_i\)</span>. The fitted curve becomes smoother as <span class="math inline">\(b\)</span> increases.</li>
+<li>As <span class="math inline">\(b\)</span> decreases, less of the data are used, and the resulting curve looks more wiggly.</li>
+<li>When <span class="math inline">\(b\)</span> is large, more points having large weights to predict the response at the specific <span class="math inline">\(x\)</span>. The resulting plot of predicted values becomes smoother as <span class="math inline">\(b\)</span> increases.</li>
+<li>These kernel smoothers use a bandwidth, <span class="math inline">\(b\)</span>, to define this neighborhood of interest.</li>
+<li>A large value for <span class="math inline">\(b\)</span> results in more of the data being used to predict the response at the specific location. Consequently, the resulting plot of predicted values becomes much smoother as <span class="math inline">\(b\)</span> increases.</li>
+<li>Conversely, as <span class="math inline">\(b\)</span> decreases, less of the data are used to generate the prediction, and the resulting plot looks more “wiggly” or bumpy.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="gaussian-kernel-smoother-example-1" class="slide level2"><h2>Gaussian Kernel Smoother Example</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><aside class="notes"><ul>
+<li>The kernel function shows the weights and how fast the weights decay.</li>
+<li>Point sizes correspond to their kernel weight, or the influence on the fitted or predicted value of <span class="math inline">\(y\)</span> at <span class="math inline">\(x\)</span>.</li>
+<li>To get the estimated fitted curve, we can create a grid of <span class="math inline">\(x\)</span> points. For each <span class="math inline">\(x\)</span>, find its response value by taking weighted average of the data points whose weight is determined by the kernel function.</li>
+<li>The estimated regression function <span class="math inline">\(f\)</span> is the result of connecting all the weighted average responses of the <span class="math inline">\(x\)</span>s in the grid.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="gaussian-kernel-smoother-example-2" class="slide level2"><h2>Gaussian Kernel Smoother Example</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="local-regression" class="slide level2"><h2>Local Regression</h2>
+<!-- - **Local regression** is another nonparametric regression alternative. -->
+<!-- . . . -->
+<ul>
+<li>In ordinary least squares, minimize <span class="math inline">\(\sum_{i=1}^n(y_i - \beta_0 - \beta_1x_i)^2\)</span>
+</li>
+<li>In weighted least squares, minimize <span class="math inline">\(\sum_{i=1}^nw_i(y_i - \beta_0 - \beta_1x_i)^2\)</span>
+</li>
+</ul>
+<div class="fragment">
+<p>In <strong>local weighted linear regression</strong>,</p>
+<ul>
+<li><p>Use a <em>kernel as a weighting function</em> to define neighborhoods and weights to perform weighted least squares.</p></li>
+<li><p>Find the estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_0\)</span> by minimizing <span class="math display">\[\sum_{i=1}^nK_b(x_0, x_i)(y_i - \beta_0 - \beta_1x_i)^2\]</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="danger">
+<ul>
+<li>For every individual <span class="math inline">\(x_0\)</span>, it has its own <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> estimates <span class="math inline">\(\hat{\beta}_0(x_0)\)</span> and <span class="math inline">\(\hat{\beta}_1(x_0)\)</span>.</li>
+<li>It is nonparametric because it estimates <span class="math inline">\(f(x)\)</span> without restricting the entire function to a fixed, finite-dimensional parametric family.</li>
+</ul>
+</div>
+<aside class="notes"><ul>
+<li>
+<strong>Local regression</strong> (local polynomial regression, moving regression) is another nonparametric regression alternative.</li>
+<li>Idea: <em>Use a kernel as a weighting function to define neighborhoods and weights to perform weighted least squares.</em>
+<ul>
+<li>Local weighted linear regression</li>
+<li>Local weighted polynomial regression Local regression fits a different weighted regression model at each location (x_0), allowing the overall fitted relationship to be nonlinear.</li>
+</ul>
+</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="local-regression-1" class="slide level2"><h2>Local Regression</h2>
+<p>In locally weighted linear regression, we find the estimates of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> at <span class="math inline">\(x_0\)</span> by minimizing</p>
+<div class="midi">
+<p><span class="math display">\[\sum_{i=1}^nK_b(x_0, x_i)(y_i - \beta_0 - \beta_1x_i)^2\]</span></p>
+</div>
+<ul>
+<li>Pay more attention to the points that are closer to the target point <span class="math inline">\(x_0\)</span>.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>The estimated (local) linear function and <span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are specifically for the local point <span class="math inline">\(x_0\)</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>If interested in a different target <span class="math inline">\(x_0\)</span>, we need to refit the model.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>In locally weighted polynomial regression, minimize</li>
+</ul>
+<div class="midi">
+<p><span class="math display">\[\sum_{i=1}^nK_b(x_0, x_i)\left(y_i - \beta_0 - \sum_{r=1}^d\beta_rx_i^r\right)^2\]</span></p>
+</div>
+<p><!-- + It is very sensitive to the choice of bandwidth $b$. --> <!-- + Do not use $r > 2$. (overfitting) --></p>
+<div class="alert">
+<p>Nadaraya–Watson kernel smoother is actually a local constant regression.</p>
+</div>
+<aside class="notes"><ul>
+<li>
+<span class="math inline">\(\hat{\beta}_0\)</span> and <span class="math inline">\(\hat{\beta}_1\)</span> are a function of <span class="math inline">\(x_0\)</span> (of course a function of <span class="math inline">\((x_i, y_i)_{i=1}^n\)</span>). Local regression is nonparametric globally, even though it uses parametric models locally. A parametric regression model describes the entire regression function using a fixed, finite number of parameters. A nonparametric regression model treats the unknown regression function as an in finite-dimensional object, whose complexity is not restricted to a fixed number of parameters.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section><section id="local-linear-regression-w-gaussian-kernel-weights" class="slide level2"><h2>Local Linear Regression w/ Gaussian Kernel Weights</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="local-quadratic-regression-w-gaussian-weights" class="slide level2"><h2>Local Quadratic Regression w/ Gaussian Weights</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="boundary-flattening-and-bias" class="slide level2"><h2>Boundary Flattening and Bias</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes"><p>the bias of kernel estimate depends on the distribution of x values, while the bias of the locally linear estimate does not. (Fox) 它主要指的是：在標準的 random-design 假設下，Nadaraya–Watson estimator 的 leading bias 除了受 (f(x)) 的 curvature 影響，也可能受到 predictor density 的變化影響。</p>
+<p>Local linear regression 則可以消除這種與 predictor density gradient 有關的 leading bias term。</p>
+<p>但這不表示 local linear regression 的 bias 完全不受 (x_i) 分布影響，也不表示它沒有 bias。</p>
+<p>更重要的是，local linear regression 可以正確重現局部直線，因此在邊界附近通常比 local constant regression 有更小的 bias。</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="boundary-flattening-and-bias-1" class="slide level2"><h2>Boundary Flattening and Bias</h2>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section><section id="local-polynomial-regression-implementation-3" class="slide level2"><h2>Local Polynomial Regression Implementation <sup>1</sup>
+</h2>
+<!-- Use `KernSmooth` or `locfit` package. [^3] -->
+<!-- - We can use WLS formula with weights computed by a specified kernel. -->
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">KernSmooth</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/KernSmooth/man/locpoly.html">locpoly</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">degree</span>, </span>
+<span>                    kernel <span class="op">=</span> <span class="st">"normal"</span>, </span>
+<span>                    <span class="va">bandwidth</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>
+<code>degree = 1</code>: local linear</li>
+<li>
+<code>degree = 2</code>: local quadratic</li>
+<li>
+<code>degree = 0</code>: <strong>kernel smoother</strong>
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">locfit</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/locfit/man/locfit.html">locfit</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="fu">lp</span><span class="op">(</span><span class="va">x</span>, nn<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span>                      h<span class="op">=</span><span class="fl">0.5</span>, deg<span class="op">=</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>                      weights<span class="op">=</span><span class="fl">1</span>, <span class="va">subset</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Various ways to specify the bandwidth.</li>
+</ul>
+</div></div>
+<div class="alert">
+<p>In Python, we can use <a href="https://pypi.org/project/localreg/0.2.0/"><code>localreg</code></a></p>
+<div class="midi">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="im">from</span> localreg <span class="im">import</span> localreg, rbf</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>localreg(x, y, x0<span class="op">=</span>x0, degree<span class="op">=</span><span class="dv">0</span>, kernel<span class="op">=</span>rbf.gaussian, radius<span class="op">=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<aside class="notes"><!-- # weights: Prior weights (or sample sizes)  --><!-- #          for individual observations. --><!-- # subset: Subset observations in the  --><!-- #         data frame. --><!-- # nn: Nearest neighbor component of  --><!-- #     the smoothing parameter.  --><!-- # h: The constant component of  --><!-- #    the smoothing parameter. --><!-- # deg: Degree of polynomial to use. --><div class="question">
+<p>How does local regression determine the weights?</p>
+</div>
+<ul>
+<li>But why local regression?
+<ul>
+<li>The Nadaraya-Watson kernel is notorious for boundary effects.</li>
+<li>There is a substantial bias at the boundaries.</li>
+<li>
+<em>Intuition</em>: all neighbors are smaller/larger than the boundary point.</li>
+<li>
+<em>Solution</em>: Locally weighted regression can (partially) correct it.</li>
+</ul>
+</li>
+<li>Its most common methods are <strong>LOESS (locally estimated scatterplot smoothing)</strong> and <strong>LOWESS (locally weighted scatterplot smoothing)</strong>.</li>
+<li>Like kernel regression, LOESS uses the data from a neighborhood around the specific location.</li>
+<li>The neighborhood <span class="math inline">\(N(x_0)\)</span> is defined by the <strong>span</strong> parameter <span class="math inline">\(\alpha\)</span>, the fraction of the total points closest to <span class="math inline">\(x_0\)</span>.</li>
+<li>The LOESS uses the points in <span class="math inline">\(N(x_0)\)</span> to generate a weighted least-squares estimate of <span class="math inline">\(y(x_0)\)</span>.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside><aside><ol class="aside-footnotes"><li id="fn3"><p>Local linear regression corrects the boundary bias, but it is still biased near the local maximum and minimum. It flattens out around these values. Local quadratic regression fixes the bias.</p></li></ol></aside></section><section id="loess" class="slide level2"><h2>LOESS</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>LOESS (LOcally Estimated Scatterplot Smoothing)</strong> uses the <strong>tricube</strong> kernel <span class="math inline">\(K(x_0, x_i)\)</span> defined as <span class="math display">\[K\left( \frac{|x_0 - x_i|}{\max_{k \in N(x_0)} |x_0 - x_k|}\right)\]</span> where <span class="math display">\[K(t) = \begin{cases} (1-t^3)^3       &amp; \quad \text{for } 0 \le t \le 1\\ 0 &amp; \quad \text{otherwise } \end{cases}\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="./images/12-nonpara-reg/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li>The neighborhood <span class="math inline">\(N(x_0)\)</span> is defined by the <strong>span</strong> parameter <span class="math inline">\(\alpha\)</span>, the fraction of the total points closest to <span class="math inline">\(x_0\)</span>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/loess.html">loess</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, span <span class="op">=</span> <span class="fl">0.75</span>, degree <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co">## Default setting</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Larger <span class="math inline">\(\alpha\)</span> means more neighbors and smoother fitting.</li>
+</ul>
+<aside class="notes"><p>LOESS is a special case of Local Polynomial Regression Fitting</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="loess-example" class="slide level2"><h2>LOESS Example</h2>
+<ul>
+<li>LOESS uses the points in <span class="math inline">\(N(x_0)\)</span> to generate a WLS estimate of <span class="math inline">\(y(x_0)\)</span>.</li>
+</ul>
+
+<img data-src="./images/12-nonpara-reg/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><aside class="notes"><ul>
+<li>LOESS is a special case of local polynomial regression.</li>
+</ul><style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section></section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Marquette_Golden_Eagles_logo.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://math4780-f26.github.io/website/">🔗 math4780-f26.github.io/website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../site_libs/revealjs/plugin/search/search.js"></script><script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1800,
+
+        height: 1000,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script><script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
+
+</body></html>
