@@ -1,0 +1,178 @@
+---
+title: "Worksheet-01 — Solutions"
+subtitle: "Read a Regression"
+categories: [Worksheet, Solutions]
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  include: true
+---
+
+## Regression Scenario {.unnumbered}
+
+A professor studies the relationship between weekly study time and exam score.
+
+- $Y$ = exam score from 0 to 100
+- $X$ = hours studied during the week before the exam
+
+The fitted regression is
+
+$$
+\widehat{\text{Score}} = 58.4 + 3.15(\text{Study Hours}).
+$$
+
+The 95% confidence interval for the slope is
+
+$$
+(1.91,\;4.39).
+$$
+
+For a student who studies 6 hours:
+
+- fitted mean score = **77.3**
+- 95% confidence interval for the **mean score** = **(74.9, 79.7)**
+- 95% prediction interval for **one new student's score** = **(66.2, 88.4)**
+
+Observed study times range from **1 to 10 hours**.
+
+## Which interpretation would you defend?
+
+Consider these interpretations of the slope 3.15.
+
+**A.** "If a student studies one additional hour, their exam score will increase by 3.15 points."
+
+**B.** "Students who study one additional hour tend to score about 3.15 points higher on average."
+
+**C.** "For every one-hour difference in study time, the model predicts a 3.15-point difference in the mean exam score."
+
+Circle one choice for each statement.
+
+| Statement | Accept | Revise | Reject |
+|:--:|:--:|:--:|:--:|
+| A | ○ | ○ | ○ |
+| B | ○ | ○ | ○ |
+| C | ○ | ○ | ○ |
+
+**Briefly explain your choices.**
+
+::: {.callout-tip title="Solution"}
+| Statement | Assessment | Reason |
+|:--:|:--|:--|
+| **A** | **Reject as stated** | This asserts a guaranteed **individual change** and a **causal effect**. Neither follows from the fitted observational regression. |
+| **B** | **Accept with a clarification** | It communicates an **association in average exam scores**, not a guaranteed increase for a particular student. Better wording: "Students who study one hour more tend to have exam scores about 3.15 points higher, on average." |
+| **C** | **Accept** | This is the most precise interpretation: it explicitly refers to a difference in the **predicted conditional mean**. |
+
+For two study times $x$ and $x+1$,
+
+$$
+\widehat{E}(Y\mid X=x+1)-\widehat{E}(Y\mid X=x)
+=3.15.
+$$
+
+The model describes differences in conditional means; it does not prove that an intervention increasing an individual's study time by one hour would raise their score by 3.15 points.
+
+**Additional inference:** The slope's 95% confidence interval, $(1.91,4.39)$, excludes zero. Under the usual regression assumptions, this provides evidence of a positive association, but still does not establish causation.
+:::
+
+## What would you tell this student?
+
+A student says:
+
+> "I plan to study 6 hours. The regression says my score should be between 74.9 and 79.7."
+
+What would you change or clarify?
+
+::: {.callout-tip title="Solution"}
+The interval **(74.9, 79.7)** is a 95% **confidence interval for the population mean exam score among students studying 6 hours**, not an interval intended to cover an individual student's score.
+
+The fitted mean is **77.3**. Individual scores vary around that mean, so a substantially wider interval is appropriate for predicting one student's outcome.
+
+<!-- A better statement is: "The estimated average score for students who study 6 hours is 77.3, and the 95% confidence interval for that mean is (74.9, 79.7)." -->
+
+The interval **(74.9, 79.7)** is a confidence interval for the **mean score** among students who study 6 hours.
+
+To predict the score of **one new student**, report the fitted score and its **prediction interval**:
+
+$$
+\widehat{Y}(6)=58.4+3.15(6)=\boxed{77.3},
+$$
+
+$$
+\boxed{\text{95\% prediction interval: }(66.2,\;88.4).}
+$$
+
+The prediction interval is wider because it accounts for both uncertainty about the mean response and the variation of **individual scores** around that mean. The 95% refers to the long-run coverage of the prediction-interval procedure under the model assumptions; it does **not** guarantee that this particular student's score will fall within the interval.
+
+:::
+
+<!-- ## Prediction: what would you tell the student? -->
+
+<!-- A student says: -->
+
+<!-- > "I plan to study 6 hours, so my score should be between 74.9 and 79.7." -->
+
+<!-- Would you agree? If not, what would you report instead? -->
+
+<!-- ::: {.callout-tip title="Solution"} -->
+<!-- **No.** To predict the score of **one new student**, report the fitted score and its **prediction interval**: -->
+
+<!-- $$ -->
+<!-- \widehat{Y}(6)=58.4+3.15(6)=\boxed{77.3}, -->
+<!-- $$ -->
+
+<!-- $$ -->
+<!-- \boxed{\text{95\% prediction interval: }(66.2,\;88.4).} -->
+<!-- $$ -->
+
+<!-- The prediction interval is wider because it accounts for both uncertainty about the mean response and the variation of **individual scores** around that mean. The 95% refers to the long-run coverage of the prediction-interval procedure under the model assumptions; it does **not** guarantee that this particular student's score will fall within the interval. -->
+<!-- ::: -->
+
+Now suppose another student plans to study **15 hours**. The fitted value is
+
+$$
+58.4 + 3.15(15) = 105.65.
+$$
+
+Would you trust this prediction? Why or why not?
+
+::: {.callout-tip title="Solution"}
+**No.** The observed study times were only **1 to 10 hours**. A prediction at 15 hours is **extrapolation**, which assumes that the fitted linear relationship continues beyond the observed data without supporting evidence.
+
+In addition, **105.65 exceeds the exam's maximum possible score of 100**. This is a clear warning that the simple linear model is unsuitable for this extrapolation. We should not interpret 105.65 as a plausible literal exam score.
+:::
+
+**(MSSC)** Suppose we redefine the predictor as
+
+$$
+X_c = X - 5,
+$$
+
+so that $X_c=0$ corresponds to studying 5 hours. Without refitting the model, determine the new regression equation. What changes about the intercept and slope? Would any fitted values or predictions change? Explain.
+
+::: {.callout-tip title="Solution (MSSC)"}
+Since $X=X_c+5$, substitute into the original equation:
+
+$$
+\begin{aligned}
+\widehat{Y}
+&=58.4+3.15X\\
+&=58.4+3.15(X_c+5)\\
+&=(58.4+15.75)+3.15X_c\\
+&=\boxed{74.15+3.15X_c}.
+\end{aligned}
+$$
+
+- **Intercept:** Changes from **58.4** (predicted score at 0 study hours) to **74.15** (predicted score at 5 study hours).
+- **Slope:** Remains **3.15 points per study hour**, because subtracting a constant from $X$ does not change the unit or scale of a one-hour difference.
+- **Fitted values and predictions:** **Unchanged**, because the new equation represents exactly the same fitted line in a different coordinate system. Residuals and model fit are also unchanged.
+
+For example, 6 study hours means $X_c=1$:
+
+$$
+\widehat Y=74.15+3.15(1)=77.3.
+$$
+
+The standard error and confidence interval of the **intercept** can change, because the intercept now represents the mean at a different study time. The slope estimate and its confidence interval do not change under this recentering.
+:::

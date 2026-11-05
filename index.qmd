@@ -34,18 +34,18 @@ format:
 | 2 | Tue, Sep 8 | Simple Linear Regression (SLR) | 🖥️ [slr](slides/04-slr-f26-slides.html) |  | [IS Ch 27](https://chenghanyu-introstatsbook.netlify.app/model-reg) |  |  |  |  |
 |  | Thu, Sep 10 | Simple Linear Regression |  |  |  |  |  |  |  |
 | 3 | Tue, Sep 15 | Simple Linear Regression |  | 👉 [regression CI](https://chenghanyustats-introstat-regression-ci.share.connect.posit.cloud/) |  |  |  |  |  |
-|  | Thu, Sep 17 | Simple Linear Regression |  |  |  | ✍️ [HW 2 (due 9/25)](hw/hw02.html) | [worksheet 1](ws/ws1.html) |  |  |
+|  | Thu, Sep 17 | Simple Linear Regression |  |  |  | ✍️ [HW 2 (due 9/25)](hw/hw02.html) | [worksheet 1](ws/ws1.html) [ws1-sol](ws/ws1-sol.html) |  |  |
 | 4 | Tue, Sep 22 | Multiple Linear Regression (MLR) | 🖥️ [mlr](slides/05-mlr-slides.html) |  |  |  |  |  |  |
 |  | Thu, Sep 24 | Multiple Linear Regression |  |  |  |  |  |  |  |
 | 5 | Tue, Sep 29 | Multiple Linear Regression |  |  |  |  |  |  |  |
-|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ [HW 3 (due 10/9)](hw/hw03.html) | [worksheet 2](ws/ws2.html) |  |  |
+|  | Thu, Oct 1 | Multiple Linear Regression |  |  |  | ✍️ [HW 3 (due 10/9)](hw/hw03.html) | [worksheet 2](ws/ws2.html) [ws2-sol](ws/ws2-sol.html) |  |  |
 | 6 | Tue, Oct 6 | Matrix Algebra Review | 🖥️ [mat](slides/06-mat-slides.html) | 👉[3Blue1Blown: matrices](https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=4) |  |  |  |  |  |
 |  | Thu, Oct 8 | MLR in Matrix Form (MSSC only) | 🖥️ [mlr-mat](slides/06-mlr-mat-slides.html) |  |  |  |  |  |  |
 | 7 | Tue, Oct 13 | Diagnostics: Residuals and Unusual Data | 🖥️ [diag-unusual](slides/07-diag-unusual-slides.html) |  |  |  |  |  |  |
 |  | Thu, Oct 15 | Diagnostics: Symmetry and Normality | 🖥️ [diag-normality](slides/08-diag-normality-slides.html) |  |  |  |  |  |  |
 | 8 | Tue, Oct 20 | Diagnostics: Constant Variance | 🖥️ [diag-const-var](slides/09-diag-const-var-slides.html) |  |  |  |  |  |  |
 |  | Thu, Oct 22 | ***NO CLASS: Midterm break*** |  |  |  | ✍️ [HW 4 (due 10/30)](hw/hw04.html) |  |  |  |
-| 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ [diag-linearity](slides/10-diag-linearity-slides.html) |  |  |  | [worksheet 3](ws/ws3.html) |  |  |
+| 9 | Tue, Oct 27 | Diagnostics: Linearity | 🖥️ [diag-linearity](slides/10-diag-linearity-slides.html) |  |  |  | [worksheet 3](ws/ws3.html) [ws3-sol](ws/ws3-sol.html) |  |  |
 |  | Thu, Oct 29 | Diagnostics: Lack of Fit |  |  |  |  |  |  |  |
 | 10 | Tue, Nov 3 | Bootstrapping and Simulation-based Inference | 🖥️ [bootstrap](slides/11-bootstrap-slides.html) |  |  |  |  |  |  |
 |  | Thu, Nov 5 | Polynomial Regression | 🖥️ [poly-reg](slides/11-poly-reg-slides.html) |  |  |  |  |  |  |

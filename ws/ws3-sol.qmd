@@ -1,0 +1,272 @@
+---
+title: "Worksheet-03 — Solutions"
+subtitle: "Regression Diagnostics"
+categories: [Worksheet, Solutions]
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute: 
+  include: true
+---
+
+## Diagnostic Cases {.unnumbered}
+
+Four regression analyses show the following patterns.
+
+| Case | Diagnostic pattern |
+|:--:|:------------------------|
+| **A** | A plot of R-student residuals versus fitted values shows a clear **U-shaped pattern**. |
+| **B** | The spread of the R-student residuals is small at low fitted values and becomes wider as the fitted values increase, producing a **funnel shape**. |
+| **C** | Normal Q--Q plot of the R-student residuals follows the line near the center but bends away strongly in both tails |
+| **D** | One observation (black dot) has R-student residual = 0.8, leverage $h_{ii}=0.74$, and Cook's distance = 0.98. All others have leverage below 0.08 and Cook's distance below 0.10 |
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Illustrative diagnostic plots for Cases A--D."
+set.seed(4780)
+
+op <- par(mfrow = c(2, 2), mar = c(3.5, 3.8, 2.2, 1.0), mgp = c(2.2, 0.7, 0))
+
+# Case A: curvature / nonlinearity
+fit_A <- seq(0, 10, length.out = 55)
+rstud_A <- 0.13 * (fit_A - 5)^2 - 1.1 + rnorm(length(fit_A), 0, 0.38)
+plot(fit_A, rstud_A,
+     pch = 19, cex = 0.65,
+     xlab = "Fitted value", ylab = "R-student residual",
+     main = "Case A")
+abline(h = 0, lty = 2)
+lines(lowess(fit_A, rstud_A, f = 2/3), lwd = 2)
+
+# Case B: increasing variance / funnel shape
+fit_B <- seq(1, 10, length.out = 65)
+rstud_B <- rnorm(length(fit_B), 0, 0.14 + 1.12 * fit_B)
+plot(fit_B, rstud_B,
+     pch = 19, cex = 0.65,
+     xlab = "Fitted value", ylab = "R-student residual",
+     main = "Case B")
+abline(h = 0, lty = 2)
+
+# Case C: heavy tails in a normal Q-Q plot
+n_C <- 70
+rstud_C <- sort(rt(n_C, df = 2))
+theo_C <- qnorm(ppoints(n_C))
+plot(theo_C, rstud_C,
+     pch = 19, cex = 0.65,
+     xlab = "Theoretical normal quantile",
+     ylab = "R-student residual quantile",
+     main = "Case C")
+qqline(rstud_C, lwd = 2)
+
+# Case D: a genuinely influential high-leverage point
+# The ordinary observations follow one trend; the far-right point pulls the
+# fitted line noticeably toward itself.
+x_D <- c(1.2691, 1.8295, 1.8795, 1.9219, 2.0688, 2.1018,
+         2.1578, 2.1595, 2.2248, 2.3829, 3.4889, 3.5649,
+         3.5908, 3.9136, 4.1497, 4.4118, 4.7073, 4.9956,
+         5.0605, 5.0988, 5.1212, 5.4495, 5.6167, 5.6370)
+y_D <- c(3.4818, 3.5809, 4.2684, 4.2130, 4.0386, 3.8939,
+         3.7792, 3.3900, 4.5541, 3.1672, 4.9735, 5.2823,
+         5.6187, 6.3150, 6.1817, 5.8394, 6.5643, 5.9283,
+         7.1979, 6.5185, 6.3059, 6.6169, 7.0274, 6.8966)
+
+x_out <- 18
+y_out <- 16.2206
+x_all <- c(x_D, x_out)
+y_all <- c(y_D, y_out)
+
+fit_without <- lm(y_D ~ x_D)
+fit_with <- lm(y_all ~ x_all)
+
+plot(x_all, y_all,
+     pch = 1, cex = 0.8,
+     xlab = "x", ylab = "y",
+     main = "Case D")
+abline(fit_without, lty = 2, lwd = 2)
+abline(fit_with, lwd = 2)
+points(x_out, y_out, pch = 19, cex = 1.15)
+text(x_out, y_out,
+     labels = "  influential observation", pos = 4, cex = 0.76)
+legend("topleft",
+       legend = c("Fit without marked point", "Fit with all observations"),
+       lty = c(2, 1), lwd = 2, bty = "n", cex = 0.72)
+
+par(op)
+```
+
+## What is the most likely problem?
+
+Match each case with the most likely concern.
+
+- nonlinearity
+- nonconstant variance
+- non-normal or heavy-tailed errors
+- unusual leverage or influence
+
+| Case | Most likely concern |
+|:--:|:--|
+| A | __________________________________________ |
+| B | __________________________________________ |
+| C | __________________________________________ |
+| D | __________________________________________ |
+
+Choose **one** case and briefly explain what feature of the diagnostic pattern led you to your answer.
+
+::: {.callout-tip title="Solution"}
+| Case | Most likely concern | Diagnostic clue |
+|:--:|:--|:--|
+| **A** | **Nonlinearity** | The U-shaped pattern indicates a systematic curved relationship that a straight-line mean function does not capture. |
+| **B** | **Nonconstant variance (heteroskedasticity)** | Residual spread increases with fitted values, forming a funnel. |
+| **C** | **Non-normal or heavy-tailed errors** | The Q--Q plot deviates substantially from the normal reference line in both tails, consistent with a heavier-tailed distribution in this example. |
+| **D** | **Unusual leverage and influence** | The marked point has unusually high leverage and a large Cook's distance; it can affect the fitted coefficients despite a fairly modest studentized residual. |
+
+**Example of an acceptable one-case explanation:** "For Case A, the residuals follow a U-shaped pattern instead of fluctuating randomly around zero. This suggests that the conditional mean relationship may be curved and the linear mean model is misspecified."
+
+The plots are **diagnostic clues**, not proofs of a particular data-generating mechanism. For example, a Q--Q plot can suggest heavy tails, skewness, or other departures from a normal error model depending on its shape.
+:::
+
+## Should we delete this observation?
+
+For Case D:
+
+- **R-student residual = 0.8**
+- leverage = 0.74
+- Cook's distance = 0.98
+
+A student says:
+
+> "Cook's distance is large, so we should delete this observation."
+
+Do you agree? Why or why not?
+
+Circle the best description of this observation.
+
+**A.** Clearly an outlier in the response direction  
+**B.** A high-leverage observation that may be influential  
+**C.** A normal observation with no reason for concern  
+**D.** Impossible to evaluate from any diagnostic information
+
+Briefly explain your choice.
+
+::: {.callout-tip title="Solution"}
+**Do not automatically delete the observation.** Cook's distance measures how much the fitted regression can change when an observation is omitted. A large value flags a point for **investigation**, not automatic removal.
+
+Reasonable follow-up steps are:
+
+1. Verify the observation and its units; check for recording or processing errors.
+2. Determine whether the observation is from the intended target population and examine whether the model form is suitable.
+3. Compare the fitted coefficients, predictions, and conclusions **with and without** this point, and report any material sensitivity.
+4. Exclude it only if there is a defensible **data-quality or scientific reason**, not simply because its influence is large.
+
+**Best multiple-choice answer: B. A high-leverage observation that may be influential.**
+
+- Its leverage is high ($h_{ii}=0.74$), so its predictor values are unusual relative to the rest of the sample.
+- Its R-student residual of $0.8$ is **not particularly large** on the studentized scale, so it is not clearly an outlier in the response direction.
+- Its Cook's distance of $0.98$ is large enough to warrant checking its effect on the fitted model.
+
+In short, **a high-leverage point need not have a large residual to influence the fitted regression**.
+:::
+
+## What would you do next?
+
+Suppose the **R-student residual-versus-fitted plot** shows the **funnel shape** from Case B.
+
+Three analysts suggest different responses.
+
+**Analyst 1:**  
+> "Ignore it. The fitted regression line is still the same."
+
+**Analyst 2:**  
+> "The unequal spread may affect uncertainty estimates, so I would investigate a transformation or a method that allows nonconstant variance."
+
+**Analyst 3:**  
+> "Delete the observations with the largest R-student residuals until the funnel disappears."
+
+Which response would you defend most strongly?
+
+Analyst: __________
+
+Why?
+
+::: {.callout-tip title="Solution"}
+**Analyst 2** gives the strongest response.
+
+A funnel-shaped residual plot suggests that the conditional error variance may change with the fitted mean. Even if ordinary least squares estimates remain unbiased under a correctly specified conditional mean and exogeneity, the **usual homoskedastic standard errors, $t$ tests, confidence intervals, and prediction intervals may be unreliable**.
+
+The next step is to investigate the source of nonconstant variability. Depending on the context, reasonable approaches include a transformation of the response, **heteroskedasticity-robust standard errors** for coefficient inference, or weighted least squares / a variance model if a defensible variance structure is available. A transformation or variance model can also address prediction-interval calibration; robust standard errors alone do not directly fix individual prediction intervals.
+
+**Why not the other analysts?** Analyst 1 ignores the implications for uncertainty. Analyst 3 deletes observations simply because their residuals are large, potentially introducing bias and concealing a genuine feature of the data.
+:::
+
+### Leverage and Influence
+
+Can an observation have high leverage $h_{ii}$ but a small residual $e_i = y_i - \hat{y}_i$ and still be influential? Explain the distinction among an outlier, a high-leverage point, and an influential point.
+
+::: {.callout-tip title="Solution"}
+**Yes, provided its residual is small but not exactly zero and its leverage is sufficiently high.** The point may still substantially change the fitted regression if it is removed.
+
+- **Response outlier:** An observation with an unusually large residual relative to the fitted model (often assessed using an R-student residual).
+- **High-leverage point:** An observation with unusual **predictor values**. Leverage $h_{ii}$ depends on the design matrix $X$, not on the observed response $y_i$.
+- **Influential point:** An observation whose inclusion or deletion meaningfully changes the **fitted coefficients, fitted values, or other model conclusions**. Cook's distance measures one aspect of this sensitivity.
+
+The effect of deleting observation $i$ on an ordinary least squares coefficient vector is
+
+$$
+\widehat{\boldsymbol\beta}_{(-i)}-\widehat{\boldsymbol\beta}
+=-\frac{(X^\top X)^{-1}\boldsymbol x_i e_i}{1-h_{ii}},
+$$
+
+where $\boldsymbol x_i$ is the predictor vector (including the intercept) and $e_i=y_i-\widehat y_i$ is the **ordinary residual** from the full-data fit. Thus, a nonzero residual can have a substantial effect on the fitted coefficients when $h_{ii}$ is close to 1.
+
+The same idea appears in Cook's distance:
+
+$$
+D_i=\frac{e_i^2}{p\,\mathrm{MSE}}\frac{h_{ii}}{(1-h_{ii})^2}
+=\frac{r_i^2}{p}\frac{h_{ii}}{1-h_{ii}},
+$$
+
+where $p$ is the number of fitted regression coefficients (including the intercept) and $r_i=e_i/[s\sqrt{1-h_{ii}}]$ is the **internally studentized** residual. The worksheet instead gives an **externally studentized** residual (R-student residual), which is related but not identical to $r_i$.
+
+**Crucial exception:** If the ordinary residual is **exactly zero**, deleting the point does not change the fitted least-squares coefficients, assuming the reduced design retains full rank. Thus high leverage means **potential** influence, not necessarily **actual** influence.
+:::
+
+<!-- ## Instructor's consistency check {.unnumbered} -->
+
+<!-- ::: {.callout-warning title="The numerical Case D description does not match its plotted data"} -->
+<!-- The Case D table and question give **R-student residual = 0.8**, **leverage = 0.74**, and **Cook's distance = 0.98**, with all other Cook's distances below 0.10. However, applying `rstudent()`, `hatvalues()`, and `cooks.distance()` to the **actual Case D data and `lm()` fit in the plotting chunk above** gives different values. Although the maximum leverage among the other observations is indeed below 0.08, the marked point's reported statistics and the maximum Cook's distance among the other points do not match the code. The conceptual answers above follow the numbers **stated in the worksheet**; the chart is an illustrative example with different numerical diagnostics. -->
+
+<!-- To avoid contradictory teaching material, revise the Case D numbers in the **original worksheet** to match its code, or regenerate its Case D data to match the intended numbers. The original questions have been preserved here. -->
+<!-- ::: -->
+
+<!-- The following R chunk checks the values in the *plotted data* and reports the change in the fitted slope: -->
+
+<!-- ```{r} -->
+<!-- #| echo: true -->
+<!-- #| message: false -->
+<!-- #| warning: false -->
+<!-- idx <- length(x_all) -->
+<!-- check_D <- data.frame( -->
+<!--   quantity = c("R-student residual (marked point)", -->
+<!--                "Leverage (marked point)", -->
+<!--                "Cook's distance (marked point)", -->
+<!--                "Maximum leverage among other points", -->
+<!--                "Maximum Cook's distance among other points", -->
+<!--                "Slope with marked point", -->
+<!--                "Slope without marked point"), -->
+<!--   value = c(rstudent(fit_with)[idx], -->
+<!--             hatvalues(fit_with)[idx], -->
+<!--             cooks.distance(fit_with)[idx], -->
+<!--             max(hatvalues(fit_with)[-idx]), -->
+<!--             max(cooks.distance(fit_with)[-idx]), -->
+<!--             unname(coef(fit_with)[2]), -->
+<!--             unname(coef(fit_without)[2])) -->
+<!-- ) -->
+<!-- knitr::kable(check_D, digits = 3) -->
+<!-- ``` -->
+
+<!-- In this plotted example, the marked observation has an R-student residual of approximately **-1.479**, leverage **0.812**, and Cook's distance **4.491**; the maximum Cook's distance among the other observations is about **0.191**. The fitted slope is approximately **0.780** with the point and **0.863** without it. -->

@@ -1,0 +1,215 @@
+---
+title: "Worksheet-02 — Solutions"
+subtitle: "Multiple Linear Regression"
+categories: [Worksheet, Solutions]
+format:
+  html:
+    html-math-method: mathjax
+editor: source
+execute:
+  include: true
+---
+
+## Regression Scenario {.unnumbered}
+
+A professor studies factors associated with final exam score.
+
+Let
+
+- $Y$ = final exam score,
+- $X_1$ = weekly study hours,
+- $X_2$ = prior GPA.
+
+Two regression models are fitted.
+
+**Model 1: Simple regression**
+
+$$
+\widehat{Y} = 61.2 + 4.80X_1
+$$
+
+**Model 2: Multiple regression**
+
+$$
+\widehat{Y} = 42.7 + 2.90X_1 + 7.60X_2
+$$
+
+In the sample,
+
+- Study Hours and Final Exam have correlation 0.58,
+- Prior GPA and Final Exam have correlation 0.71,
+- Study Hours and Prior GPA have correlation 0.46.
+
+## Which interpretation would you defend?
+
+Consider these interpretations of the Study Hours coefficient **2.90** in Model 2.
+
+**A.** "Studying one additional hour causes a student's exam score to increase by 2.90 points."
+
+**B.** "Among students with the same prior GPA, one additional hour of study is associated with about a 2.90-point difference in mean exam score."
+
+**C.** "Students who study one additional hour score 2.90 points higher on average, regardless of their prior GPA."
+
+Circle one choice for each statement.
+
+| Statement | Accept | Revise | Reject |
+|:--:|:--:|:--:|:--:|
+| A | ○ | ○ | ○ |
+| B | ○ | ○ | ○ |
+| C | ○ | ○ | ○ |
+
+**Briefly explain one of your choices.**
+
+::: {.callout-tip title="Solution"}
+| Statement | Assessment | Reason |
+|:--:|:--|:--|
+| **A** | **Reject as stated** | A regression association does not, by itself, establish a **causal** effect on a given student. |
+| **B** | **Accept** | This correctly interprets the **partial regression coefficient**, comparing study hours **at the same prior GPA**. |
+| **C** | **Revise** | "Regardless of GPA" is ambiguous. The slope is the same **at every fixed GPA** in this additive model, but 2.90 need not describe an **unadjusted comparison** of students whose GPAs differ. |
+
+Mathematically, for any fixed GPA $g$,
+
+$$
+\begin{aligned}
+&\widehat E(Y\mid X_1=x+1,X_2=g)
+ -\widehat E(Y\mid X_1=x,X_2=g)\\
+&\qquad=2.90.
+\end{aligned}
+$$
+
+A precise revision of C is: "**Holding prior GPA constant**, students who study one hour more have a model-predicted mean exam score 2.90 points higher; this predicted difference is the same at every GPA in Model 2."
+
+**Key distinction:** No $X_1X_2$ interaction means that the **conditional slope** of study hours does not depend on GPA. It does not mean that GPA is irrelevant or can be ignored in comparisons between different students.
+:::
+
+<!-- ## Why did the coefficient change? -->
+
+<!-- The Study Hours coefficient changes from **4.80** in Model 1 to **2.90** in Model 2. -->
+
+<!-- A student says: -->
+
+<!-- > "After GPA was added, studying became less important." -->
+
+<!-- Do you agree? Explain why the coefficient may have changed. -->
+
+<!-- ::: {.callout-tip title="Solution"} -->
+<!-- **Not necessarily.** The coefficients answer **different questions**: -->
+
+<!-- - **Model 1:** A one-hour difference in studying is associated with a 4.80-point difference in predicted mean exam score, **without adjusting for GPA**. -->
+<!-- - **Model 2:** A one-hour difference in studying is associated with a 2.90-point difference in predicted mean exam score, **among students with the same GPA**. -->
+
+<!-- Because Study Hours and GPA are positively correlated ($r=0.46$), students who study more also tend to have higher GPAs. Because GPA is itself positively associated with exam score ($r=0.71$), part of the Model 1 study-hours association may reflect GPA differences. After adjusting for GPA, the estimated study-hours slope is smaller. -->
+
+<!-- This change **does not prove** that studying has become less important, nor does it identify a causal effect. The two coefficients are an **unadjusted** and an **adjusted** association, respectively. Assessing the substantive or predictive importance of a variable would require more information than just comparing these two coefficient magnitudes. -->
+
+<!-- **Optional algebraic perspective:** If both regressions are ordinary least squares fits on the same observations, the omitted-variable identity is -->
+
+<!-- $$ -->
+<!-- \widehat\beta_{1,\mathrm{SLR}} -->
+<!-- =\widehat\beta_{1,\mathrm{MLR}} -->
+<!--  +\widehat\beta_{2,\mathrm{MLR}}\widehat\delta_1, -->
+<!-- $$ -->
+
+<!-- where $\widehat\delta_1$ is the slope from regressing GPA on Study Hours. The reported slopes imply -->
+
+<!-- $$ -->
+<!-- \widehat\delta_1=\frac{4.80-2.90}{7.60}=0.25. -->
+<!-- $$ -->
+
+<!-- Thus an increase of one study hour is associated with about 0.25 higher GPA units in the auxiliary regression **if the two fitted models are from the same sample**. This illustrates how positive covariate association can increase the unadjusted study-hours coefficient. -->
+<!-- ::: -->
+
+## Two students, one model
+
+Consider two students:
+
+| Student | Study Hours | Prior GPA |
+|:--|--:|--:|
+| A | 6 | 3.5 |
+| B | 8 | missing |
+
+Predict their exam score. Who has a higher predicted score? What if later we learn that Student B's prior GPA is 2.5?
+
+::: {.callout-tip title="Solution"}
+**Step 1: Predict Student A using Model 2.**
+
+$$
+\begin{aligned}
+\widehat Y_A
+&=42.7+2.90(6)+7.60(3.5)\\
+&=42.7+17.4+26.6\\
+&=\boxed{86.7}.
+\end{aligned}
+$$
+
+**Step 2: Evaluate Student B while GPA is missing.**
+
+We **cannot calculate a numerical Model 2 prediction** for Student B without a GPA value or a defensible procedure for handling that missing predictor. Therefore, we **cannot determine which student has the higher Model 2 prediction** yet. We should not silently set the missing GPA to zero.
+
+**Step 3: Predict Student B when GPA = 2.5.**
+
+$$
+\begin{aligned}
+\widehat Y_B
+&=42.7+2.90(8)+7.60(2.5)\\
+&=42.7+23.2+19.0\\
+&=\boxed{84.9}.
+\end{aligned}
+$$
+
+Consequently, **Student A has the higher predicted score** by
+
+$$
+86.7-84.9=\boxed{1.8\text{ points}}.
+$$
+
+We can verify the comparison directly:
+
+$$
+\widehat Y_B-\widehat Y_A
+=2.90(8-6)+7.60(2.5-3.5)
+=5.8-7.6=-1.8.
+$$
+
+Although B studies **two more hours**, B's GPA is **one point lower**. In this model, those two differences produce a slightly lower predicted score for B.
+
+**Important:** Model 1 could produce predictions using study hours alone, but these are **predictions from a different model**. They do not resolve the missing-GPA issue when the question asks for Model 2 predictions.
+
+**Optional comparison before B's GPA is known:** If B's GPA is denoted by $g$, then
+
+$$
+\widehat Y_B-\widehat Y_A
+=2.90(8-6)+7.60(g-3.5)
+=7.60g-20.8.
+$$
+
+Thus B would have a higher Model 2 prediction than A only if
+
+$$
+g>\frac{20.8}{7.60}\approx 2.737.
+$$
+
+Without B's GPA, the direction of the comparison remains unknown.
+:::
+
+
+<!-- ## Instructor's consistency check {.unnumbered} -->
+
+<!-- ::: {.callout-warning title="The supplied correlations and coefficients are not exactly mutually consistent"} -->
+<!-- The worksheet presents the three correlations and both fitted regressions as if they came from the same sample. For ordinary least squares fits with an intercept on **exactly the same observations**, those summaries must obey an algebraic relationship. In particular, -->
+
+<!-- $$ -->
+<!-- \widehat\beta_{1,\mathrm{MLR}} -->
+<!-- =\widehat\beta_{1,\mathrm{SLR}} -->
+<!-- \frac{r_{1Y}-r_{12}r_{2Y}}{r_{1Y}(1-r_{12}^2)}. -->
+<!-- $$ -->
+
+<!-- Using the reported correlations and simple-regression slope would instead give -->
+
+<!-- $$ -->
+<!-- 4.80\,\frac{0.58-(0.46)(0.71)}{0.58(1-0.46^2)} -->
+<!-- \approx 2.66, -->
+<!-- $$ -->
+
+<!-- not the reported **2.90**. The discrepancy is larger than one would expect from rounding the displayed correlations to two decimals. The **student-facing answers above use each stated model as given**. Before distributing this as a numerical example from one dataset, adjust the model summaries or correlations so they are compatible. -->
+<!-- ::: -->
