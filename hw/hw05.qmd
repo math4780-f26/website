@@ -1,0 +1,54 @@
+---
+title: "Homework 5"
+subtitle: "Regression Diagnostics and More"
+categories: "Homework"
+editor: source
+params:
+  show_sol: true
+execute:
+  echo: false
+---
+
+::: callout-important
+[Due **Friday, Nov 20, 11:59 PM**]{.red}
+:::
+
+<!-- # Homework Instruction and Requirement -->
+
+<!-- - Homework 1 covers course materials of Week 1 to 2. -->
+
+- Please submit your work in *one* **PDF** file to **D2L > Assessments > Dropbox**. Multiple files or a file that is not in pdf format is not accepted. 
+
+- In your homework, please number questions **in order**.
+
+<!-- - It is your responsibility to let me understand what you try to show. If you type your answers, make sure there are no typos. I grade your work based on *what you show, not what you want to show*. If you choose to handwrite your answers, write them neatly. If I can’t read your sloppy handwriting, your answer is judged as wrong. -->
+
+- Questions started with **(MSSC)** are *required* for MSSC 5780 students, and optional for MATH 4780 students.
+
+
+# Homework Questions
+
+(@) **Polynomial and Nonparametrics**. Find data of interest to you with a continuous outcome and one continuous predictor and at least 100 data points. Fit 
+    (a) Polynomial regression with degrees 2 and 5
+    (b) Kernel smoother with bandwidths 0.1 and 0.9
+    (c) Local linear regression with bandwidth 0.5
+    (d) Local quadratic regression with bandwidth 0.5
+    (e) LOESS with spans 0.2 and 0.8
+
+Plot the fitted curves along with the data. Discuss how these fitted models differ.
+
+<br>
+
+
+(@) **Bootstrapped regression**. Consider the [soft drink delivery time data](../slides/data/data-ex-3-1.csv).
+    (a) Find an approximate 95% bootstrap confidence interval on the regression coefficient for `distance` using $B=1000$ bootstrap samples. Compare this to the usual normal-theory confidence interval.
+    (b) Find the bootstrap estimate of the standard deviation of $\hat{\beta}_1$ for `number of caeses` using the following numbers of bootstrap samples: $B=100$, $B=200$, $B=300$, $B=400$, $B=500$. Can you draw any conclusions about how many bootstrap samples are necessary to obtain a reliable estimate of the precision of estimation for $\hat{\beta}_1$?
+
+
+
+<br>
+
+(@) **AI Usage Declaration.** Using GenAI is permitted for this course. If you choose to use GenAI to assist with your homework, you must include a brief statement documenting your use. Please provide the following information:
+    (a) **Why/How I Used AI** Why do you need to use GenAI? Which tool did you use? Describe your prompts or questions. What and how did you ask the AI to help you?
+    (b) **Generated Output** Include a screenshot or excerpt (copy and paste) of the AI’s response.
+    (c) **How I Used the Output** Did you revise it? Did you use it directly, or compare it with your answers? What decisions did you make based on the output?
