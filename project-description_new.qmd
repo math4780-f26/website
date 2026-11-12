@@ -1,0 +1,265 @@
+---
+title: "Final Project Guidelines"
+subtitle: "MATH 4780 / MSSC 5780 — Regression Analysis"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: false
+---
+
+[**This is the latest version of project guideline. It may be revised later.**]{.red}
+
+# Overview
+
+The goal of the final project is to demonstrate that you can **think critically about regression models, use them correctly, and communicate what you learn**. You may choose either of the following options:
+
+- **[Option A — Data Analysis]{.red}:** Investigate a meaningful question using regression analysis of a real data set.
+- **[Option B — New Regression Method]{.red}:** Learn a regression method not covered in class, explain why it is useful, and evaluate it through a computational study.
+
+<!-- **Both options are open to MATH 4780 and MSSC 5780 students.**  -->
+Neither option is inherently better or worth more points. You will be evaluated on the quality of your reasoning, analysis, and communication—not simply on model complexity.
+
+# Project Format and Deliverables
+
+| Students | Project format | Group size | Written report | Oral presentation | Reproducible Code
+|:--|:--|:--|:--|:--|:---|
+| MATH 4780 only | [Group]{.green} | **3 or 4** | ❌ | [**Yes** ]{.green}✅ |   **Yes**
+| MATH 4780 + [MSSC 5780]{.blue} | [Group]{.green} | **4 or 5** |[**Yes** ]{.blue}✅ | [**Yes** ]{.green}✅ |  **Yes**
+| [MSSC 5780]{.blue} only | [Group]{.green} | **3 or 4** | [**Yes** ]{.blue}✅ | [**Yes** ]{.green}✅  |   **Yes**
+| [MSSC 5780]{.blue} only | Individual | **1** | [**Yes** ]{.blue}✅ | ❌ |  **Yes**
+
+- All groups give a presentation of approximately **15 minutes**, followed by **2–3 minutes of Q&A**. **Every member must present a meaningful part** of the work.
+
+- A group can have students from MATH 4780 and/or MSSC 5780.
+
+- Individual MSSC 5780 projects require **only a written report**, not an oral presentation.
+
+- Each , either group or individual, submits **one proposal** and, 
+
+<!-- at the end, **one set of project materials**.  -->
+
+A group of MSSC 5780 students also submits **one joint written report**.
+<!-- - All students are responsible for understanding the entire project, not only the part they personally prepared. -->
+
+## Timeline
+
+| Item | What to submit or do | Deadline |
+|:--|:--|:--|
+| Group formation / individual selection | Send Dr. Yu your *Team name and group member list*, or indicate that you are doing an individual project. | **[Friday, Nov 20, 23:59 PM]{.red}** |
+| Project proposal | Submit a **one-page PDF** with your project title and plan. | **[Friday, Dec 4, 23:59 PM]{.red}** |
+| Group presentations | Present in class; every group member participates. | **[Mon, Dec 14, 10:30 AM -- 12:30 PM]{.red}** |
+| Written report / reproducible code | Submit the required report; code for reproducing results in slides or report | **[Mon, Dec 14, 11:59 PM]{.red}** |
+
+<!-- **The dates above will be updated on the course website.** Submission instructions will be announced in class or on D2L. Contact Dr. Yu before changing your topic substantially after the proposal. -->
+
+## One-Page Proposal
+
+Include:
+
+1. **Title and members:** Project title, names, course, and whether you selected Option A or B.
+2. **Motivation:** What question or methodological problem is interesting, and why does it matter?
+3. **Data or method:** 
+  + Option A, identify the **data source**, **response**, and **potential predictors**.
+  + Option B, identify the **new method** and the **limitation** of traditional regression it addresses.
+4. **Analysis plan:** Explain how you will fit models and evaluate or compare them (including a planned graph, diagnostic, or experiment).
+
+Your plan may evolve or change as you learn more from the data or method. 
+
+The proposal should be concrete enough to show that the project is feasible.
+
+# Project Requirements
+
+## Option A — Data Analysis
+
+Use regression to answer a **specific, meaningful question** with a real data set. Your project should:
+
+1. **State the question and introduce the data.** Describe where the data came from, what the observations represent, and the response and predictors. Discuss important data limitations.
+2. **Explore the data visually.** Include informative plots that guide modeling decisions, rather than charts added only for decoration.
+3. **Build and justify your model(s).** Explain important decisions about variables, transformations, interactions, and model selection. Begin with a reasonable regression model and compare an alternative when informative.
+4. **Check model adequacy.** Use relevant residual and assumption checks, leverage/influence diagnostics, and collinearity diagnostics. Explain what you found and whether changes are needed. Not every diagnostic is equally applicable to every model.
+5. **Answer the question and evaluate the conclusion.** Interpret coefficients or fitted relationships and appropriate measures of uncertainty, model fit, or predictive performance. Discuss limitations and avoid unsupported causal claims.
+
+A good project does not require a model with perfectly satisfied assumptions. If concerns remain, assess their consequences and report them clearly. Using a more complicated model is not automatically better.
+
+For Option A, **do not reuse a data set analyzed in class, the textbook, or homework assignments** without Dr. Yu's approval.
+
+Possible sources of data include
+
+- [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
+- [Kaggle](https://www.kaggle.com/datasets)
+- [Harvard Dataverse](https://dataverse.harvard.edu/)
+- [UCI Machine Learning Repository](https://archive.ics.uci.edu/)
+- [FiveThirtyEight](https://data.fivethirtyeight.com/). 
+
+You are welcome to find data elsewhere.
+
+## Option B — New Regression Method
+
+Choose **one regression method not covered in class** and investigate what it offers beyond a familiar method such as ordinary least squares (OLS). Your project should:
+
+1. **Explain the motivation.** What limitation or modeling need does the new method address? In what settings might it be useful?
+2. **Explain how the method works.** Present its main idea, model or objective function, assumptions, and important parameters in language your classmates can understand. Use equations and diagrams when helpful; lengthy mathematical proofs are not required.
+3. **Implement the method.** Fit it using an appropriate R or Python package (or your own code). Explain key implementation choices, such as tuning parameters.
+4. **Make an informative comparison.** Compare the method with **at least one regression approach learned in class**, under conditions where the difference matters. Use a real-data analysis, a simulation study, or both; choose fair and relevant comparison criteria.
+5. **Critically evaluate the results.** Interpret the findings, identify strengths and weaknesses, and explain **when you would—or would not—recommend** the new method.
+
+**A literature review or software tutorial alone is not sufficient.** The project must contain an original, reproducible computational demonstration. You do **not** need to invent a new statistical method or prove new theoretical results.
+
+Possible topics include
+
+- ridge regression
+- lasso
+- robust regression
+- quantile regression
+- Poisson regression
+- regression trees
+- generalized additive models
+- Bayesian linear regression
+- Gaussian process regression
+- partial least squares regression. 
+
+You may propose another method; select a topic whose scope is manageable within the available time.
+
+A useful Option B experiment might compare OLS and robust regression **with and without outliers**, or OLS and ridge regression under **different degrees of multicollinearity**. The aim is to explain *why* the methods behave differently, not merely announce which one wins.
+
+# Oral Presentations (All Group Projects)
+
+Each group has **12-15 minutes**, followed by **1–3 minutes for questions**. Every member must speak and contribute meaningfully.
+
+A clear presentation will usually follow this sequence:
+
+1. **Motivation and goal:** What are you trying to learn or solve?
+2. **Data and/or method:** What information or regression approach did you use, and why?
+3. **Analysis and evidence:** Show the most informative models, visualizations, diagnostics, or comparisons.
+4. **Conclusions:** What did you find? What are the main limitations?
+
+Focus on **explaining your decisions and results**, not displaying large blocks of code or unedited software output. You should be able to answer questions about your modeling choices.
+
+## Questions and Participation
+
+- **Every presenting group must prepare and ask at least one substantive question about another group's project** during the presentation session.
+<!-- - Questions should address the research question, method, assumptions, comparison, interpretation, or limitations. A thoughtful question is more valuable than a difficult question asked just to challenge the presenters. -->
+- Dr. Yu will coordinate the Q&A order to make sure each group has an opportunity to ask its question.
+- MSSC 5780 students, including those completing individual projects, will participate in evaluating group presentations as described below.
+
+- Individual-project students are **not** required to give a presentation.
+
+# Written Report
+
+<!-- **All MSSC 5780 students, doing either a individual or group project, must submit a written report.** -->
+
+## Report Format
+
+- **Length:** **8–12 pages** for the main report, including figures and tables but excluding the title page, references, and optional appendix. Aim for clarity rather than filling pages.
+- **Text:** 11- or 12-point font; **1.5 or double spacing**; standard margins.
+- **First page:** Project title, author(s), course, project option, and date.
+- **Figures/tables:** Number and caption them; refer to them in the text.
+- **References:** Cite data sources, papers, books, software, code, and other materials you used.
+- **Code:** Submit as separate, runnable files. Do not paste lengthy code into the main report.
+- **Submission:** A PDF report plus reproducible code and the necessary data or data-access instructions.
+
+Use the following **outline as your report template**. You may adjust section titles, but address all of the listed content.
+
+## Option A Report Outline — Data Analysis
+
+**1. Introduction**  
+Introduce the problem, explain why it matters, and state your research question(s).
+
+**2. Data and Exploratory Analysis**  
+Describe the data source, observations, variables, preparation, and key exploratory figures.
+
+**3. Regression Modeling and Diagnostics**  
+Explain your initial model, important modeling decisions, relevant diagnostics, any model revisions, and comparisons of reasonable alternatives.
+
+**4. Results and Interpretation**  
+Answer the research question using the fitted results. Report appropriate uncertainty or predictive evidence; explain what the findings mean in context.
+
+**5. Discussion and Conclusion**  
+Summarize the conclusions, remaining assumptions or concerns, practical limitations, and potential improvements.
+
+**References**  
+List all cited sources. An optional appendix may contain supporting material not essential to the main argument.
+
+## Option B Report Outline — New Regression Method
+
+**1. Introduction and Motivation**  
+Introduce the new method, the problem it addresses, and why the problem matters.
+
+**2. Method and Intuition**  
+Explain how the method works, its model or objective, assumptions, important parameters, and how it differs from a familiar regression method.
+
+**3. Computational Study**  
+Describe your real-data analysis or simulation design, implementation, comparison method(s), and evaluation criteria. Explain why the comparison is fair and informative.
+
+**4. Results and Interpretation**  
+Use informative plots and tables to compare the methods. Explain observed differences and whether the evidence supports your expectations.
+
+**5. Discussion and Conclusion**  
+Summarize strengths, limitations, and the situations in which you would or would not recommend the method.
+
+**References**  
+List all cited sources. An optional appendix may contain additional mathematical or computational details.
+
+# Code, Data, and Academic Integrity
+
+All projects must be **reproducible**:
+
+- Submit the code used to produce the numerical results, tables, and figures in the presentation and/or report.
+- Include the data when permitted, or provide a stable source and clear instructions to obtain it.
+- Give brief instructions for running the analysis and identify important packages or dependencies. Fix random seeds for simulations or other randomized analyses when appropriate.
+- Clearly cite sources and acknowledge outside assistance. **If you use generative AI**, briefly disclose what you used it for and check the accuracy of all code, analyses, and explanations. You remain responsible for understanding and defending the work.
+
+# Evaluation and Grading
+
+**Dr. Yu determines final project grades, with evaluation input from MSSC 5780 students for group presentations.** Graduate students do not grade their own group. Graduate evaluations provide structured feedback and inform the presentation assessment; the final decision is Dr. Yu's. Grades are based on the criteria below, **not mechanically assigned by group ranking**.
+
+## Overall Grading Weights
+
+| Students | Project format |  Written report | Presentation | Reproducible materials |
+|:-----|:--|--:|--:|----:|
+| MATH 4780 only | Group | — | **90%** | **10%** |
+| MATH 4780 + MSSC 5780 | Group | **20%** | **70%** | **10%** |
+| MSSC 5780 only | Group | **30%** | **60%** | **10%** |
+| MSSC 5780 only | individual | **80%** | — | **20%** |
+
+
+
+**Proposal, group formation, and Q&A participation are required course-project milestones.** Missing requirements, failure to participate, or substantially unequal group contributions may affect an individual's project grade at Dr. Yu's discretion.
+
+## Presentation Evaluation (20 Points)
+
+Dr. Yu and MSSC 5780 student evaluators will use the same rubric:
+
+| Criterion | Points | What we look for |
+|:--|--:|:-----------------|
+| **Content and organization** | **8** | Accurate statistical reasoning, clear motivation, appropriate methods, informative analysis/comparisons, interpretation and limitations, logical flow. |
+| **Slide quality** | **4** | Readable, informative figures and tables; clean organization; no excessive code or output. |
+| **Oral delivery** | **4** | Clear explanation, pacing, effective communication, meaningful participation by every member. |
+| **Interaction and Q&A** | **4** | Accurate and thoughtful responses; attention to others' presentations; the group's required substantive question. |
+| **Total** | **20** | |
+
+## Written Report Evaluation
+
+Written reports are evaluated by Dr. Yu using the following criteria:
+
+| Criterion | Weight |
+|:--|--:|
+| Motivation and clarity of the question/problem | 15% |
+| Understanding, correctness, and justification of methods | 25% |
+| Quality of analysis, diagnostics, or computational comparison | 30% |
+| Interpretation, critical evaluation, and limitations | 20% |
+| Writing, organization, figures, and appropriate citations | 10% |
+| **Total** | **100%** |
+
+The same general standards apply to Options A and B, but the evidence differs: Option A emphasizes sound data analysis and diagnostics; Option B emphasizes understanding and an informative comparison of regression methods.
+
+## Individual Contributions to Group Projects
+
+- Group members ordinarily receive the same **group-performance score**, but Dr. Yu may adjust individual grades when documented contributions differ substantially.
+
+- Each group member will identify the teammate who made the **strongest contribution** (do not nominate yourself), and may briefly describe how the work was shared. This feedback informs, but does not automatically determine, individual adjustments.
+
+- Every group member must take part in the work and, for group projects, **present part of the results**. A student who does not present without an approved exception may receive no credit for the presentation component.
+
+[Dr. Yu reserves the right to clarify or revise project procedures, with changes announced to the class.]{.blue}

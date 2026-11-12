@@ -103,12 +103,12 @@ website:
         #     text: Activity work
       - ws.qmd
 
-      - section: "Project"
+      - section: "Final Project"
         contents:
-          - href: project-description-4780_new.qmd
-            text: Guideline for MATH 4780
-          - href: project-description-5780_new.qmd
-            text: Guideline for MATH 5780
+          - href: project-description_new.qmd
+            text: Final Project Guidelines
+          # - href: project-description-5780_new.qmd
+          #   text: Guideline for MATH 5780
           - href: project-work_new.qmd
             text: Project Group and Proposal
       # - project/projet.qmd
