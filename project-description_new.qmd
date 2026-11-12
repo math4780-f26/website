@@ -29,7 +29,7 @@ Neither option is inherently better or worth more points. You will be evaluated 
 | [MSSC 5780]{.blue} only | [Group]{.green} | **3 or 4** | [**Yes** ]{.blue}✅ | [**Yes** ]{.green}✅  |   **Yes**
 | [MSSC 5780]{.blue} only | Individual | **1** | [**Yes** ]{.blue}✅ | ❌ |  **Yes**
 
-- All groups give a presentation of approximately **15 minutes**, followed by **2–3 minutes of Q&A**. **Every member must present a meaningful part** of the work.
+- All groups give a presentation of **12-15 minutes**, followed by **1–3 minutes of Q&A**. **Every member must present a meaningful part** of the work.
 
 - A group can have students from MATH 4780 and/or MSSC 5780.
 
@@ -52,6 +52,23 @@ A group of MSSC 5780 students also submits **one joint written report**.
 | Written report / reproducible code | Submit the required report; code for reproducing results in slides or report | **[Mon, Dec 14, 11:59 PM]{.red}** |
 
 <!-- **The dates above will be updated on the course website.** Submission instructions will be announced in class or on D2L. Contact Dr. Yu before changing your topic substantially after the proposal. -->
+
+
+
+## Deadlines and Late Penalties
+
+Deadlines are mandatory. **Unless Dr. Yu has approved an extension, the following penalties apply:**
+
+| Missed requirement or deadline | Penalty |
+|:--|:--|
+| Group member list or individual-project declaration | **5% of project grade deducted per student** |
+| Project proposal | **5% of project grade deducted per student** |
+| Written report and reproducible materials | **0 points for the final project** if submitted after the deadline without an approved extension |
+
+- A submission is late if it is received **after the announced deadline**. For group submissions, each member shares responsibility for submitting the required materials on time.
+- Point deductions are applied **after the project is graded** and may accumulate. If a required item remains missing, Dr. Yu may assign no credit for the associated component.
+- If you anticipate a problem meeting a deadline, contact Dr. Yu **before the deadline** to request an extension.
+
 
 ## One-Page Proposal
 
