@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Final Project Guidelines – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./project-work_new.qmd" rel="next">
+<link href="./ws.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3419ea62b3ca2d77d3d547f86109e84e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9562b39cbe03d074a12934c1990ff1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fea01ddba8ca299097b76b7c7a4d0d6c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-9562b39cbe03d074a12934c1990ff1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="Final Project Guidelines – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780 / MSSC 5780 — Regression Analysis">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project-description_new.html">Final Project</a></li><li class="breadcrumb-item"><a href="./project-description_new.html">Final Project Guidelines</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Activity/Worksheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project-description_new.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Final Project Guidelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./project-work_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Group and Proposal</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Supplementary material for MSSC 5780</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLR matrix notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log transformations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model selection criteria</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#project-format-and-deliverables" id="toc-project-format-and-deliverables" class="nav-link" data-scroll-target="#project-format-and-deliverables">Project Format and Deliverables</a>
+  <ul class="collapse">
+  <li><a href="#timeline" id="toc-timeline" class="nav-link" data-scroll-target="#timeline">Timeline</a></li>
+  <li><a href="#one-page-proposal" id="toc-one-page-proposal" class="nav-link" data-scroll-target="#one-page-proposal">One-Page Proposal</a></li>
+  </ul></li>
+  <li><a href="#project-requirements" id="toc-project-requirements" class="nav-link" data-scroll-target="#project-requirements">Project Requirements</a>
+  <ul class="collapse">
+  <li><a href="#option-a-data-analysis" id="toc-option-a-data-analysis" class="nav-link" data-scroll-target="#option-a-data-analysis">Option A — Data Analysis</a></li>
+  <li><a href="#option-b-new-regression-method" id="toc-option-b-new-regression-method" class="nav-link" data-scroll-target="#option-b-new-regression-method">Option B — New Regression Method</a></li>
+  </ul></li>
+  <li><a href="#oral-presentations-all-group-projects" id="toc-oral-presentations-all-group-projects" class="nav-link" data-scroll-target="#oral-presentations-all-group-projects">Oral Presentations (All Group Projects)</a>
+  <ul class="collapse">
+  <li><a href="#questions-and-participation" id="toc-questions-and-participation" class="nav-link" data-scroll-target="#questions-and-participation">Questions and Participation</a></li>
+  </ul></li>
+  <li><a href="#written-report" id="toc-written-report" class="nav-link" data-scroll-target="#written-report">Written Report</a>
+  <ul class="collapse">
+  <li><a href="#report-format" id="toc-report-format" class="nav-link" data-scroll-target="#report-format">Report Format</a></li>
+  <li><a href="#option-a-report-outline-data-analysis" id="toc-option-a-report-outline-data-analysis" class="nav-link" data-scroll-target="#option-a-report-outline-data-analysis">Option A Report Outline — Data Analysis</a></li>
+  <li><a href="#option-b-report-outline-new-regression-method" id="toc-option-b-report-outline-new-regression-method" class="nav-link" data-scroll-target="#option-b-report-outline-new-regression-method">Option B Report Outline — New Regression Method</a></li>
+  </ul></li>
+  <li><a href="#code-data-and-academic-integrity" id="toc-code-data-and-academic-integrity" class="nav-link" data-scroll-target="#code-data-and-academic-integrity">Code, Data, and Academic Integrity</a></li>
+  <li><a href="#evaluation-and-grading" id="toc-evaluation-and-grading" class="nav-link" data-scroll-target="#evaluation-and-grading">Evaluation and Grading</a>
+  <ul class="collapse">
+  <li><a href="#overall-grading-weights" id="toc-overall-grading-weights" class="nav-link" data-scroll-target="#overall-grading-weights">Overall Grading Weights</a></li>
+  <li><a href="#presentation-evaluation-20-points" id="toc-presentation-evaluation-20-points" class="nav-link" data-scroll-target="#presentation-evaluation-20-points">Presentation Evaluation (20 Points)</a></li>
+  <li><a href="#written-report-evaluation" id="toc-written-report-evaluation" class="nav-link" data-scroll-target="#written-report-evaluation">Written Report Evaluation</a></li>
+  <li><a href="#individual-contributions-to-group-projects" id="toc-individual-contributions-to-group-projects" class="nav-link" data-scroll-target="#individual-contributions-to-group-projects">Individual Contributions to Group Projects</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/math4780-f26/website/edit/main/project-description_new.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./project-description_new.html">Final Project</a></li><li class="breadcrumb-item"><a href="./project-description_new.html">Final Project Guidelines</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Final Project Guidelines</h1>
+<p class="subtitle lead">MATH 4780 / MSSC 5780 — Regression Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><span class="red"><strong>This is the latest version of project guideline. It may be revised later.</strong></span></p>
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>The goal of the final project is to demonstrate that you can <strong>think critically about regression models, use them correctly, and communicate what you learn</strong>. You may choose either of the following options:</p>
+<ul>
+<li><strong><span class="red">Option A — Data Analysis</span>:</strong> Investigate a meaningful question using regression analysis of a real data set.</li>
+<li><strong><span class="red">Option B — New Regression Method</span>:</strong> Learn a regression method not covered in class, explain why it is useful, and evaluate it through a computational study.</li>
+</ul>
+<!-- **Both options are open to MATH 4780 and MSSC 5780 students.**  -->
+<p>Neither option is inherently better or worth more points. You will be evaluated on the quality of your reasoning, analysis, and communication—not simply on model complexity.</p>
+</section>
+<section id="project-format-and-deliverables" class="level1">
+<h1>Project Format and Deliverables</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Students</th>
+<th style="text-align: left;">Project format</th>
+<th style="text-align: left;">Group size</th>
+<th style="text-align: left;">Written report</th>
+<th style="text-align: left;">Oral presentation</th>
+<th style="text-align: left;">Reproducible Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MATH 4780 only</td>
+<td style="text-align: left;"><span class="green">Group</span></td>
+<td style="text-align: left;"><strong>3 or 4</strong></td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;"><span class="green"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MATH 4780 + <span class="blue">MSSC 5780</span></td>
+<td style="text-align: left;"><span class="green">Group</span></td>
+<td style="text-align: left;"><strong>4 or 5</strong></td>
+<td style="text-align: left;"><span class="blue"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;"><span class="green"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="blue">MSSC 5780</span> only</td>
+<td style="text-align: left;"><span class="green">Group</span></td>
+<td style="text-align: left;"><strong>3 or 4</strong></td>
+<td style="text-align: left;"><span class="blue"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;"><span class="green"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="blue">MSSC 5780</span> only</td>
+<td style="text-align: left;">Individual</td>
+<td style="text-align: left;"><strong>1</strong></td>
+<td style="text-align: left;"><span class="blue"><strong>Yes</strong></span>✅</td>
+<td style="text-align: left;">❌</td>
+<td style="text-align: left;"><strong>Yes</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>All groups give a presentation of approximately <strong>15 minutes</strong>, followed by <strong>2–3 minutes of Q&amp;A</strong>. <strong>Every member must present a meaningful part</strong> of the work.</p></li>
+<li><p>A group can have students from MATH 4780 and/or MSSC 5780.</p></li>
+<li><p>Individual MSSC 5780 projects require <strong>only a written report</strong>, not an oral presentation.</p></li>
+<li><p>Each , either group or individual, submits <strong>one proposal</strong> and,</p></li>
+</ul>
+<!-- at the end, **one set of project materials**.  -->
+<p>A group of MSSC 5780 students also submits <strong>one joint written report</strong>. <!-- - All students are responsible for understanding the entire project, not only the part they personally prepared. --></p>
+<section id="timeline" class="level2">
+<h2 class="anchored" data-anchor-id="timeline">Timeline</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">What to submit or do</th>
+<th style="text-align: left;">Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Group formation / individual selection</td>
+<td style="text-align: left;">Send Dr.&nbsp;Yu your <em>Team name and group member list</em>, or indicate that you are doing an individual project.</td>
+<td style="text-align: left;"><strong><span class="red">Friday, Nov 20, 23:59 PM</span></strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Project proposal</td>
+<td style="text-align: left;">Submit a <strong>one-page PDF</strong> with your project title and plan.</td>
+<td style="text-align: left;"><strong><span class="red">Friday, Dec 4, 23:59 PM</span></strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group presentations</td>
+<td style="text-align: left;">Present in class; every group member participates.</td>
+<td style="text-align: left;"><strong><span class="red">Mon, Dec 14, 10:30 AM – 12:30 PM</span></strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Written report / reproducible code</td>
+<td style="text-align: left;">Submit the required report; code for reproducing results in slides or report</td>
+<td style="text-align: left;"><strong><span class="red">Mon, Dec 14, 11:59 PM</span></strong></td>
+</tr>
+</tbody>
+</table>
+<!-- **The dates above will be updated on the course website.** Submission instructions will be announced in class or on D2L. Contact Dr. Yu before changing your topic substantially after the proposal. -->
+</section>
+<section id="one-page-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="one-page-proposal">One-Page Proposal</h2>
+<p>Include:</p>
+<ol type="1">
+<li><strong>Title and members:</strong> Project title, names, course, and whether you selected Option A or B.</li>
+<li><strong>Motivation:</strong> What question or methodological problem is interesting, and why does it matter?</li>
+<li><strong>Data or method:</strong></li>
+</ol>
+<ul>
+<li>Option A, identify the <strong>data source</strong>, <strong>response</strong>, and <strong>potential predictors</strong>.</li>
+<li>Option B, identify the <strong>new method</strong> and the <strong>limitation</strong> of traditional regression it addresses.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Analysis plan:</strong> Explain how you will fit models and evaluate or compare them (including a planned graph, diagnostic, or experiment).</li>
+</ol>
+<p>Your plan may evolve or change as you learn more from the data or method.</p>
+<p>The proposal should be concrete enough to show that the project is feasible.</p>
+</section>
+</section>
+<section id="project-requirements" class="level1">
+<h1>Project Requirements</h1>
+<section id="option-a-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="option-a-data-analysis">Option A — Data Analysis</h2>
+<p>Use regression to answer a <strong>specific, meaningful question</strong> with a real data set. Your project should:</p>
+<ol type="1">
+<li><strong>State the question and introduce the data.</strong> Describe where the data came from, what the observations represent, and the response and predictors. Discuss important data limitations.</li>
+<li><strong>Explore the data visually.</strong> Include informative plots that guide modeling decisions, rather than charts added only for decoration.</li>
+<li><strong>Build and justify your model(s).</strong> Explain important decisions about variables, transformations, interactions, and model selection. Begin with a reasonable regression model and compare an alternative when informative.</li>
+<li><strong>Check model adequacy.</strong> Use relevant residual and assumption checks, leverage/influence diagnostics, and collinearity diagnostics. Explain what you found and whether changes are needed. Not every diagnostic is equally applicable to every model.</li>
+<li><strong>Answer the question and evaluate the conclusion.</strong> Interpret coefficients or fitted relationships and appropriate measures of uncertainty, model fit, or predictive performance. Discuss limitations and avoid unsupported causal claims.</li>
+</ol>
+<p>A good project does not require a model with perfectly satisfied assumptions. If concerns remain, assess their consequences and report them clearly. Using a more complicated model is not automatically better.</p>
+<p>For Option A, <strong>do not reuse a data set analyzed in class, the textbook, or homework assignments</strong> without Dr.&nbsp;Yu’s approval.</p>
+<p>Possible sources of data include</p>
+<ul>
+<li><a href="https://github.com/rfordatascience/tidytuesday">TidyTuesday</a></li>
+<li><a href="https://www.kaggle.com/datasets">Kaggle</a></li>
+<li><a href="https://dataverse.harvard.edu/">Harvard Dataverse</a></li>
+<li><a href="https://archive.ics.uci.edu/">UCI Machine Learning Repository</a></li>
+<li><a href="https://data.fivethirtyeight.com/">FiveThirtyEight</a>.</li>
+</ul>
+<p>You are welcome to find data elsewhere.</p>
+</section>
+<section id="option-b-new-regression-method" class="level2">
+<h2 class="anchored" data-anchor-id="option-b-new-regression-method">Option B — New Regression Method</h2>
+<p>Choose <strong>one regression method not covered in class</strong> and investigate what it offers beyond a familiar method such as ordinary least squares (OLS). Your project should:</p>
+<ol type="1">
+<li><strong>Explain the motivation.</strong> What limitation or modeling need does the new method address? In what settings might it be useful?</li>
+<li><strong>Explain how the method works.</strong> Present its main idea, model or objective function, assumptions, and important parameters in language your classmates can understand. Use equations and diagrams when helpful; lengthy mathematical proofs are not required.</li>
+<li><strong>Implement the method.</strong> Fit it using an appropriate R or Python package (or your own code). Explain key implementation choices, such as tuning parameters.</li>
+<li><strong>Make an informative comparison.</strong> Compare the method with <strong>at least one regression approach learned in class</strong>, under conditions where the difference matters. Use a real-data analysis, a simulation study, or both; choose fair and relevant comparison criteria.</li>
+<li><strong>Critically evaluate the results.</strong> Interpret the findings, identify strengths and weaknesses, and explain <strong>when you would—or would not—recommend</strong> the new method.</li>
+</ol>
+<p><strong>A literature review or software tutorial alone is not sufficient.</strong> The project must contain an original, reproducible computational demonstration. You do <strong>not</strong> need to invent a new statistical method or prove new theoretical results.</p>
+<p>Possible topics include</p>
+<ul>
+<li>ridge regression</li>
+<li>lasso</li>
+<li>robust regression</li>
+<li>quantile regression</li>
+<li>Poisson regression</li>
+<li>regression trees</li>
+<li>generalized additive models</li>
+<li>Bayesian linear regression</li>
+<li>Gaussian process regression</li>
+<li>partial least squares regression.</li>
+</ul>
+<p>You may propose another method; select a topic whose scope is manageable within the available time.</p>
+<p>A useful Option B experiment might compare OLS and robust regression <strong>with and without outliers</strong>, or OLS and ridge regression under <strong>different degrees of multicollinearity</strong>. The aim is to explain <em>why</em> the methods behave differently, not merely announce which one wins.</p>
+</section>
+</section>
+<section id="oral-presentations-all-group-projects" class="level1">
+<h1>Oral Presentations (All Group Projects)</h1>
+<p>Each group has <strong>12-15 minutes</strong>, followed by <strong>1–3 minutes for questions</strong>. Every member must speak and contribute meaningfully.</p>
+<p>A clear presentation will usually follow this sequence:</p>
+<ol type="1">
+<li><strong>Motivation and goal:</strong> What are you trying to learn or solve?</li>
+<li><strong>Data and/or method:</strong> What information or regression approach did you use, and why?</li>
+<li><strong>Analysis and evidence:</strong> Show the most informative models, visualizations, diagnostics, or comparisons.</li>
+<li><strong>Conclusions:</strong> What did you find? What are the main limitations?</li>
+</ol>
+<p>Focus on <strong>explaining your decisions and results</strong>, not displaying large blocks of code or unedited software output. You should be able to answer questions about your modeling choices.</p>
+<section id="questions-and-participation" class="level2">
+<h2 class="anchored" data-anchor-id="questions-and-participation">Questions and Participation</h2>
+<ul>
+<li><p><strong>Every presenting group must prepare and ask at least one substantive question about another group’s project</strong> during the presentation session. <!-- - Questions should address the research question, method, assumptions, comparison, interpretation, or limitations. A thoughtful question is more valuable than a difficult question asked just to challenge the presenters. --></p></li>
+<li><p>Dr.&nbsp;Yu will coordinate the Q&amp;A order to make sure each group has an opportunity to ask its question.</p></li>
+<li><p>MSSC 5780 students, including those completing individual projects, will participate in evaluating group presentations as described below.</p></li>
+<li><p>Individual-project students are <strong>not</strong> required to give a presentation.</p></li>
+</ul>
+</section>
+</section>
+<section id="written-report" class="level1">
+<h1>Written Report</h1>
+<!-- **All MSSC 5780 students, doing either a individual or group project, must submit a written report.** -->
+<section id="report-format" class="level2">
+<h2 class="anchored" data-anchor-id="report-format">Report Format</h2>
+<ul>
+<li><strong>Length:</strong> <strong>8–12 pages</strong> for the main report, including figures and tables but excluding the title page, references, and optional appendix. Aim for clarity rather than filling pages.</li>
+<li><strong>Text:</strong> 11- or 12-point font; <strong>1.5 or double spacing</strong>; standard margins.</li>
+<li><strong>First page:</strong> Project title, author(s), course, project option, and date.</li>
+<li><strong>Figures/tables:</strong> Number and caption them; refer to them in the text.</li>
+<li><strong>References:</strong> Cite data sources, papers, books, software, code, and other materials you used.</li>
+<li><strong>Code:</strong> Submit as separate, runnable files. Do not paste lengthy code into the main report.</li>
+<li><strong>Submission:</strong> A PDF report plus reproducible code and the necessary data or data-access instructions.</li>
+</ul>
+<p>Use the following <strong>outline as your report template</strong>. You may adjust section titles, but address all of the listed content.</p>
+</section>
+<section id="option-a-report-outline-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="option-a-report-outline-data-analysis">Option A Report Outline — Data Analysis</h2>
+<p><strong>1. Introduction</strong><br>
+Introduce the problem, explain why it matters, and state your research question(s).</p>
+<p><strong>2. Data and Exploratory Analysis</strong><br>
+Describe the data source, observations, variables, preparation, and key exploratory figures.</p>
+<p><strong>3. Regression Modeling and Diagnostics</strong><br>
+Explain your initial model, important modeling decisions, relevant diagnostics, any model revisions, and comparisons of reasonable alternatives.</p>
+<p><strong>4. Results and Interpretation</strong><br>
+Answer the research question using the fitted results. Report appropriate uncertainty or predictive evidence; explain what the findings mean in context.</p>
+<p><strong>5. Discussion and Conclusion</strong><br>
+Summarize the conclusions, remaining assumptions or concerns, practical limitations, and potential improvements.</p>
+<p><strong>References</strong><br>
+List all cited sources. An optional appendix may contain supporting material not essential to the main argument.</p>
+</section>
+<section id="option-b-report-outline-new-regression-method" class="level2">
+<h2 class="anchored" data-anchor-id="option-b-report-outline-new-regression-method">Option B Report Outline — New Regression Method</h2>
+<p><strong>1. Introduction and Motivation</strong><br>
+Introduce the new method, the problem it addresses, and why the problem matters.</p>
+<p><strong>2. Method and Intuition</strong><br>
+Explain how the method works, its model or objective, assumptions, important parameters, and how it differs from a familiar regression method.</p>
+<p><strong>3. Computational Study</strong><br>
+Describe your real-data analysis or simulation design, implementation, comparison method(s), and evaluation criteria. Explain why the comparison is fair and informative.</p>
+<p><strong>4. Results and Interpretation</strong><br>
+Use informative plots and tables to compare the methods. Explain observed differences and whether the evidence supports your expectations.</p>
+<p><strong>5. Discussion and Conclusion</strong><br>
+Summarize strengths, limitations, and the situations in which you would or would not recommend the method.</p>
+<p><strong>References</strong><br>
+List all cited sources. An optional appendix may contain additional mathematical or computational details.</p>
+</section>
+</section>
+<section id="code-data-and-academic-integrity" class="level1">
+<h1>Code, Data, and Academic Integrity</h1>
+<p>All projects must be <strong>reproducible</strong>:</p>
+<ul>
+<li>Submit the code used to produce the numerical results, tables, and figures in the presentation and/or report.</li>
+<li>Include the data when permitted, or provide a stable source and clear instructions to obtain it.</li>
+<li>Give brief instructions for running the analysis and identify important packages or dependencies. Fix random seeds for simulations or other randomized analyses when appropriate.</li>
+<li>Clearly cite sources and acknowledge outside assistance. <strong>If you use generative AI</strong>, briefly disclose what you used it for and check the accuracy of all code, analyses, and explanations. You remain responsible for understanding and defending the work.</li>
+</ul>
+</section>
+<section id="evaluation-and-grading" class="level1">
+<h1>Evaluation and Grading</h1>
+<p><strong>Dr.&nbsp;Yu determines final project grades, with evaluation input from MSSC 5780 students for group presentations.</strong> Graduate students do not grade their own group. Graduate evaluations provide structured feedback and inform the presentation assessment; the final decision is Dr.&nbsp;Yu’s. Grades are based on the criteria below, <strong>not mechanically assigned by group ranking</strong>.</p>
+<section id="overall-grading-weights" class="level2">
+<h2 class="anchored" data-anchor-id="overall-grading-weights">Overall Grading Weights</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Students</th>
+<th style="text-align: left;">Project format</th>
+<th style="text-align: right;">Written report</th>
+<th style="text-align: right;">Presentation</th>
+<th style="text-align: right;">Reproducible materials</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">MATH 4780 only</td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>90%</strong></td>
+<td style="text-align: right;"><strong>10%</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MATH 4780 + MSSC 5780</td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: right;"><strong>20%</strong></td>
+<td style="text-align: right;"><strong>70%</strong></td>
+<td style="text-align: right;"><strong>10%</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MSSC 5780 only</td>
+<td style="text-align: left;">Group</td>
+<td style="text-align: right;"><strong>30%</strong></td>
+<td style="text-align: right;"><strong>60%</strong></td>
+<td style="text-align: right;"><strong>10%</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">MSSC 5780 only</td>
+<td style="text-align: left;">individual</td>
+<td style="text-align: right;"><strong>80%</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>20%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proposal, group formation, and Q&amp;A participation are required course-project milestones.</strong> Missing requirements, failure to participate, or substantially unequal group contributions may affect an individual’s project grade at Dr.&nbsp;Yu’s discretion.</p>
+</section>
+<section id="presentation-evaluation-20-points" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-evaluation-20-points">Presentation Evaluation (20 Points)</h2>
+<p>Dr.&nbsp;Yu and MSSC 5780 student evaluators will use the same rubric:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: right;">Points</th>
+<th style="text-align: left;">What we look for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Content and organization</strong></td>
+<td style="text-align: right;"><strong>8</strong></td>
+<td style="text-align: left;">Accurate statistical reasoning, clear motivation, appropriate methods, informative analysis/comparisons, interpretation and limitations, logical flow.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Slide quality</strong></td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td style="text-align: left;">Readable, informative figures and tables; clean organization; no excessive code or output.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Oral delivery</strong></td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td style="text-align: left;">Clear explanation, pacing, effective communication, meaningful participation by every member.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Interaction and Q&amp;A</strong></td>
+<td style="text-align: right;"><strong>4</strong></td>
+<td style="text-align: left;">Accurate and thoughtful responses; attention to others’ presentations; the group’s required substantive question.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>20</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="written-report-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="written-report-evaluation">Written Report Evaluation</h2>
+<p>Written reports are evaluated by Dr.&nbsp;Yu using the following criteria:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Criterion</th>
+<th style="text-align: right;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Motivation and clarity of the question/problem</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Understanding, correctness, and justification of methods</td>
+<td style="text-align: right;">25%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quality of analysis, diagnostics, or computational comparison</td>
+<td style="text-align: right;">30%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Interpretation, critical evaluation, and limitations</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Writing, organization, figures, and appropriate citations</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total</strong></td>
+<td style="text-align: right;"><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The same general standards apply to Options A and B, but the evidence differs: Option A emphasizes sound data analysis and diagnostics; Option B emphasizes understanding and an informative comparison of regression methods.</p>
+</section>
+<section id="individual-contributions-to-group-projects" class="level2">
+<h2 class="anchored" data-anchor-id="individual-contributions-to-group-projects">Individual Contributions to Group Projects</h2>
+<ul>
+<li><p>Group members ordinarily receive the same <strong>group-performance score</strong>, but Dr.&nbsp;Yu may adjust individual grades when documented contributions differ substantially.</p></li>
+<li><p>Each group member will identify the teammate who made the <strong>strongest contribution</strong> (do not nominate yourself), and may briefly describe how the work was shared. This feedback informs, but does not automatically determine, individual adjustments.</p></li>
+<li><p>Every group member must take part in the work and, for group projects, <strong>present part of the results</strong>. A student who does not present without an approved exception may receive no credit for the presentation component.</p></li>
+</ul>
+<p><span class="blue">Dr.&nbsp;Yu reserves the right to clarify or revise project procedures, with changes announced to the class.</span></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./ws.html" class="pagination-link" aria-label="Class Activity/Worksheet">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Class Activity/Worksheet</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./project-work_new.qmd" class="pagination-link" aria-label="Project Group and Proposal">
+        <span class="nav-page-text">Project Group and Proposal</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/project-description_new.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
