@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>Categorical Variables 🛠 – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4e2696270196a660e2818279c815d08b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Categorical Variables r emo::ji('hammer_and_wrench') – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
+<meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/13-cat-var/unnamed-chunk-2-1.png">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:image:height" content="5932">
+<meta property="og:image:width" content="9600">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Categorical Variables 🛠</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Activity/Worksheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description_new.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project Guidelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-work_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Group and Proposal</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Supplementary material for MSSC 5780</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLR matrix notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log transformations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model selection criteria</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="13-cat-var-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Categorical Variables 🛠</h1>
+<p class="subtitle lead">MATH 4780/MSSC 5780 Regression Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="section" class="level1" data-visibility="hidden"><h1 data-visibility="hidden"></h1>
+<section id="categorical-variables" class="level2"><h2 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h2>
+<ul>
+<li>Examine the relationship between <strong>numerical</strong> response and <strong>categorical</strong> predictors. <!-- - When a categorical variable has many levels/categories, they're encoded to **dummy variables**.     -->
+<ul>
+<li>
+<span style="color:blue"> <strong>Gender</strong> (Female 👩, Male 👨, Other 🏳️‍🌈) </span>: Gender income/wage gap</li>
+<li>
+<span style="color:blue"> <strong>Country</strong> (USA 🇺🇸, Canada 🇨🇦, UK 🇬🇧, Germany 🇩🇪, Japan 🇯🇵, Korea 🇰🇷) </span>: Meat consumption level</li>
+<li>
+<span style="color:blue"> <strong>Political Party</strong> (Republican 🔴, Democratic 🔵, Other ⚫) </span>: Donation to healthcare</li>
+</ul>
+</li>
+</ul>
+<!-- $$x = \begin{cases} 0  & \quad \text{male}\\ 1  & \quad \text{female}\\ 2 & \quad \text{other} \end{cases}$$ --><!-- $$x = \begin{cases} 0  & \quad \text{female}\\ 1 & \quad \text{other} \\ 2 & \quad \text{male} \end{cases}$$ --><div class="notes">
+<ul>
+<li>In regression, we may also want to examine the relationship between <strong>numerical</strong> response and <strong>categorical (qualitative)</strong> predictors.</li>
+<li>When a categorical variable has many levels/categories, they’re encoded to <strong>dummy variables</strong> or <strong>indicator variables</strong>.
+<ul>
+<li><span style="color:blue"> <strong>Gender</strong> has two levels: female and male </span></li>
+<li><span style="color:blue"> <strong>Blood Type</strong>: A, B, AB and O </span></li>
+<li><span style="color:blue"> <strong>Education</strong>: high school, bachelor, master, doctoral </span></li>
+</ul>
+</li>
+<li>In reality there are lots of categorical variables, especially in social science studies.</li>
+<li>Categorical variables are equally important as numerical variables.</li>
+</ul>
+<!-- $$x = \begin{cases} 0  & \quad \text{male}\\ 1  & \quad \text{female} \end{cases}$$ --><!-- $$x = \begin{cases} 0  & \quad \text{female}\\ 1  & \quad \text{male} \end{cases}$$ -->
+</div>
+</section><section id="categorical-variable-in-regression" class="level2"><h2 class="anchored" data-anchor-id="categorical-variable-in-regression">Categorical Variable in Regression</h2>
+<!-- **Without** categorical variable *Gender* -->
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>May draw inappropriate height-weight relationship if gender factor is ignored.</li>
+<li>Because female tend to be shorter and weight less.</li>
+<li>Moreover, the weight increased may be at different rate in gender.</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>With</strong> categorical variable <em>Gender</em></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Inappropriate height-weight relationship if gender factor is ignored.</li>
+<li>The two groups have different <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>A more appropriate regression model should include the gender variable when we explain the relationship between height and weight.</li>
+<li>The two groups in general will have different <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>. And the difference is generally quite significant.</li>
+<li>This example tells us not only numerical variables, it is also important to include relevant categorical variables that greatly affect the response of interest.</li>
+</ul>
+</div>
+<!-- - For a categorical variable having the *nominal* level of measurements, we use **dummy** variables or **indicator** variables to assign a set of levels to the variable to account for the effect that the variable may have on the response. -->
+<!--   + **Nominal** level of measurements: The indicator *level* itself has no meaningful ordering. It is just used to distinguish the variable's effect on the response. -->
+<!--   + **Ordinal** level of measurements:  -->
+<!-- [FIGURE] -->
+</section><section id="categorical-variable-in-regression-simpsons-paradox" class="level2"><h2 class="anchored" data-anchor-id="categorical-variable-in-regression-simpsons-paradox">Categorical Variable in Regression: Simpson’s Paradox</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Without</strong> categorical variable <em>Exam Difficulty</em></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>With</strong> categorical variable <em>Exam Difficulty</em></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>
+<strong>Marginal relationship:</strong> More study hours are associated with lower exam scores.</li>
+<li>
+<strong>Conditional relationship:</strong> More study hours are associated with higher exam scores within each difficulty level.</li>
+<li>
+<strong>Simpson’s paradox:</strong> An association reverses direction when a third variable is taken into account.</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>Students taking difficult exams tend to study more but receive lower scores.</li>
+<li>Within each difficulty level, students who study more tend to receive higher scores.</li>
+<li>Ignoring exam difficulty leads to a misleading interpretation of the relationship.</li>
+<li>Exam difficulty is a confounding variable.</li>
+</ul>
+</div>
+</section><section id="example-8.1-tool-life-data-lra" class="level2"><h2 class="anchored" data-anchor-id="example-8.1-tool-life-data-lra">Example 8.1 <a href="./data/data-ex-8-1.csv">Tool Life Data</a> (LRA)</h2>
+<p>Relate the effective life (hours) of a cutting tool <span class="math inline">\((y)\)</span> used on a lathe to</p>
+<ul>
+<li><p>the lathe <em>speed</em> in revolutions per minute <span class="math inline">\((x_1)\)</span> (Numerical)</p></li>
+<li><p>the <em>type</em> of cutting tool used <span class="math inline">\((x_2)\)</span> (Categorical)</p></li>
+</ul>
+<!-- <br> --><div class="columns">
+<div class="midi">
+<div class="column" style="width:25%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre class="my_class800"><code>   hours speed type
+1     19   610    A
+2     15   950    A
+3     17   720    A
+4     15   840    A
+5     13   980    A
+6     24   530    A
+7     13   680    A
+8     23   540    A
+9     13   890    A
+10    19   730    A
+11    30   670    B
+12    27   770    B
+13    25   880    B
+14    26  1000    B
+15    33   760    B
+16    36   590    B
+17    26   910    B
+18    37   650    B
+19    35   810    B
+20    44   500    B</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:75%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Scatterplot of life against speed without considering the type of cutting tool.</li>
+<li>We may think the distance between data points and the regression fit is a pure random noise, and their variation is that big.</li>
+<li>But in fact those variations may be due to some other variables that are not included in the model, like the type of the tool.</li>
+</ul>
+</div>
+</section><section id="indicator-variable" class="level2"><h2 class="anchored" data-anchor-id="indicator-variable">Indicator Variable</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Tool type can be represented as: <span class="math display">\[x_2 = \begin{cases} 0  &amp; \quad \text{Tool type A}\\ 1  &amp; \quad \text{Tool type B} \end{cases}\]</span> where <span class="math inline">\(x_2\)</span> is a <strong>dummy variable</strong>.</li>
+<li>If a <em>first-order</em> model is appropriate: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \epsilon, \quad \epsilon \sim N(0, \sigma^2)\]</span>
+</li>
+<li>Assume that the <em>variance is the same for both levels</em> (type A and B).</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>When we label data points by their tool type, we can clearly see that given the same level of the speed, type B tends to have longer life than type A.</li>
+<li>So if we simply ignore the tool type, and predict the tool life based solely on the speed, we are gonna have pretty large prediction error.</li>
+<li>Our fitted line is sort of between the two types, so we underestimates the life of tool B, and overestimate the life of tool A.</li>
+<li>To model and describe the effect of the categorical variable, we use a so-called dummy variable, or indicator variable.</li>
+<li>For example here, we consider two different types of cutting tool, A and B.</li>
+<li><span class="math inline">\(x_2 = \begin{cases} 0  &amp; \quad \text{Tool type A}\\ 1  &amp; \quad \text{Tool type B} \end{cases}\)</span></li>
+<li>If the categorical variable has two categories, we need one dummy variable.</li>
+<li>In general, if a categorical variable has <span class="math inline">\(k\)</span> categories, we are gonna need <span class="math inline">\(k-1\)</span> dummy variables put in the regression model.</li>
+<li>
+<em>first-order</em> means no interaction terms as well as higher polynomial orders.</li>
+</ul>
+</div>
+</section><section id="interpretation-of-coefficients" class="level2"><h2 class="anchored" data-anchor-id="interpretation-of-coefficients">Interpretation of Coefficients</h2>
+<ul>
+<li>For Tool type <strong>A</strong> <span class="math inline">\((x_2 = 0)\)</span> the model becomes: <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(0) + \epsilon \\ &amp;= \beta_0+\beta_1x_1+ \epsilon \end{align}\]</span>
+</li>
+<li>For Tool type <strong>B</strong> <span class="math inline">\((x_2 = 1)\)</span> the model becomes: <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(1) + \epsilon \\ &amp;= (\beta_0 + \beta_2)+\beta_1x_1+ \epsilon \end{align}\]</span>
+</li>
+<li>Changing from type A to B induces a <strong>change in the intercept</strong>, but <strong>the slope is unchanged</strong> and <strong>identical</strong>.</li>
+<li>Type A is the baseline level.</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Changing from type A to B induces a <strong>change in the intercept (slope is unchanged and identical)</strong>.</li>
+<li>The model includes the response shifting effect.</li>
+<li>Assume that the <em>variance is the same for both levels</em> (type A and B) of the categorical variable.</li>
+<li>Type A is the baseline level. The baseline level is the level corresponding to the dummy variable being zero.</li>
+<li>The original intercept term is for the baseline level.</li>
+</ul>
+</div>
+</section><section id="parallel-regression-lines" class="level2"><h2 class="anchored" data-anchor-id="parallel-regression-lines">Parallel Regression Lines</h2>
+<ul>
+<li>Two <strong>parallel</strong> regression lines with a common slope <span class="math inline">\(\beta_1\)</span> and different intercepts.</li>
+<li>
+<span class="math inline">\(\beta_2\)</span> measures the <em>difference in mean tool life</em> resulting from changing from tool type A to B.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \epsilon\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/fig8_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><span class="math inline">\(\hat{y} = b_0 + b_1 x_1 + b_2 x_2\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Two <strong>parallel</strong> regression lines with a common slope <span class="math inline">\(\beta_1\)</span> and different intercepts.</li>
+<li>
+<span class="math inline">\(\beta_2\)</span> expresses the difference in heights between the two lines, measuring the difference in mean tool life resulting from changing from tool type A to type B.</li>
+</ul>
+</div>
+</section><section id="model-fitting" class="level2"><h2 class="anchored" data-anchor-id="model-fitting">Model Fitting</h2>
+<ul>
+<li>The categorical variable should be of type <code>character</code> or <code>factor</code>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">tool_data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   20 obs. of  3 variables:
+ $ hours: num  18.7 14.5 17.4 14.5 13.4 ...
+ $ speed: num  610 950 720 840 980 530 680 540 890 730 ...
+ $ type : chr  "A" "A" "A" "A" ...</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">full_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">hours</span> <span class="op">~</span> <span class="va">speed</span> <span class="op">+</span> <span class="va">type</span>, data <span class="op">=</span> <span class="va">tool_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">full_model</span><span class="op">)</span><span class="op">$</span><span class="va">coef</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   36.986     3.5104    10.5  7.2e-09
+speed         -0.027     0.0045    -5.9  1.8e-05
+typeB         15.004     1.3597    11.0  3.6e-09</code></pre>
+</div>
+</div>
+<ul>
+<li><span class="math inline">\(\hat{y} = 37 -0.027x_1 +15x_2\)</span></li>
+<li>All else held constant, type B tools are expected, on average, to have 15 hours <em>longer</em> life than the baseline.</li>
+</ul>
+<div class="notes">
+<ul>
+<li>The dummy variable will be created based on the factor level that is created when the categorical variable is transformed to be of type factor.</li>
+<li>By default, the factor level is created in alphabetical order.</li>
+<li>Can specify level using argument levels in factor() function.</li>
+<li>If factor has been created, can use relevel() to relevel the factor.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>  B
+A 0
+B 1</code></pre>
+</div>
+</div>
+</div>
+</section><section id="model-checking" class="level2"><h2 class="anchored" data-anchor-id="model-checking">Model Checking</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Same variance of the errors for both A and B?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<p>Approximately normal</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<p>Model specification</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="single-model-vs.-separate-models" class="level2"><h2 class="anchored" data-anchor-id="single-model-vs.-separate-models">Single Model vs.&nbsp;Separate Models</h2>
+<ul>
+<li>Two separate models, one for each type, could have been fit to the data. <span class="math display">\[y^A = \beta_0^A+\beta_1^Ax_1^A+ \epsilon^A, \quad \epsilon^A \sim N(0, \sigma_A^2)\]</span> <span class="math display">\[y^B = \beta_0^B+\beta_1^Bx_1^B+ \epsilon^B, \quad \epsilon^B \sim N(0, \sigma_B^2)\]</span>
+</li>
+</ul>
+<div class="question">
+<p>If performing well, the single-model approach with dummy variables is preferred.</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>Only one equation to work with, <span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \epsilon\)</span>, a simpler practical result.</li>
+</ul>
+<p>. . .</p>
+<!-- - Both lines are assumed to have the same slope $\beta_1$ and error variance $\sigma^2$. -->
+<!--   + Combine the data to produce a single estimate of the common parameters. -->
+<!--   + Use more data to estimate the parameters, and the estimation quality would be better. -->
+<ul>
+<li>If the common slope and equal variance assumptions are reasonable, combining the data allows us to estimate the shared parameters more precisely.</li>
+</ul>
+<div class="notes">
+<p>Smaller sampling variability. Smaller standard errors. More precise parameter estimates. Potentially more accurate predictions. - Since two regression lines are expected to model the relationship between tool life and lathe speed, we could have fit two separate models with no dummy variables to the data.</p>
+</div>
+</section><section id="difference-in-slope" class="level2"><h2 class="anchored" data-anchor-id="difference-in-slope">Difference in Slope</h2>
+<ul>
+<li>If we expect <em>the slopes to differ</em>, include an <strong>interaction</strong> term between the variables: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + {\color{blue}{\beta_3x_1x_2}} + \epsilon\]</span>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Tool type A <span class="math inline">\((x_2 = 0)\)</span>: <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(0) + \beta_3x_1(0) + \epsilon \\ &amp;= \beta_0+\beta_1x_1+ \epsilon \end{align}\]</span>
+</li>
+<li>Tool type B <span class="math inline">\((x_2 = 1)\)</span>: <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(1) + \beta_3x_1(1) + \epsilon \\ &amp;= (\beta_0+ \beta_2) + (\beta_1+\beta_3)x_1+ \epsilon \end{align}\]</span>
+<ul>
+<li>
+<span class="math inline">\(\beta_2\)</span> is the change in the <em>intercept</em> caused by changing from type A to type B.</li>
+<li>
+<span class="math inline">\(\beta_3\)</span> is the change in the <em>slope</em> caused by changing from type A to type B.</li>
+</ul>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>If we expect <em>the slopes to differ</em>, we can model this phenomenon by including an <strong>interaction</strong> term between the variables.</li>
+<li>Back to the tool life data, and say we believe there may be different slopes for the two tools. The model we can fit to account for the change in slope is: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2 + \epsilon\]</span>
+</li>
+<li>Tool type A : <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(0) + \beta_3x_1(0) + \epsilon \\ &amp;= \beta_0+\beta_1x_1+ \epsilon \end{align}\]</span>
+</li>
+<li>Tool type B : <span class="math display">\[\begin{align} y &amp;= \beta_0+\beta_1x_1+\beta_2(1) + \beta_3x_1(1) + \epsilon \\ &amp;= (\beta_0+ \beta_2) + (\beta_1+\beta_3)x_1+ \epsilon \end{align}\]</span> <!-- .question[ --> <!-- How do we create a model with different slopes? --> <!-- ] -->
+</li>
+</ul>
+<!-- -- -->
+</div>
+</section><section id="response-function-for-the-tool-life-example" class="level2"><h2 class="anchored" data-anchor-id="response-function-for-the-tool-life-example">Response Function for the Tool Life Example</h2>
+<ul>
+<li>
+<span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2 + \epsilon\)</span> defines two regression lines with different slopes and intercepts. <!-- - $\beta_2$ is the change in the *intercept* caused by changing from type A to type B. --> <!-- - $\beta_3$ is the change in the *slope* caused by changing from type A to type B. --> <!-- - Type A is the baseline level. -->
+</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2+\epsilon\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/fig8_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><span class="math inline">\(\hat{y} = b_0 + b_1 x_1 + b_2x_2 + b_3 x_1 x_2\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Type A is the baseline level</li>
+</ul>
+</div>
+</section><section id="regression-model-with-interaction" class="level2"><h2 class="anchored" data-anchor-id="regression-model-with-interaction">Regression Model with Interaction</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">full_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">hours</span> <span class="op">~</span> <span class="va">speed</span> <span class="op">+</span> <span class="va">type</span> <span class="op">+</span> <span class="va">speed</span><span class="op">:</span><span class="va">type</span>, data <span class="op">=</span> <span class="va">tool_data</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = hours ~ speed + type + speed:type, data = tool_data)
+
+Coefficients:
+(Intercept)        speed        typeB  speed:typeB  
+    32.7748      -0.0210      23.9706      -0.0119  </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">full_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">hours</span> <span class="op">~</span> <span class="va">speed</span><span class="op">*</span><span class="va">type</span>, data <span class="op">=</span> <span class="va">tool_data</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = hours ~ speed * type, data = tool_data)
+
+Coefficients:
+(Intercept)        speed        typeB  speed:typeB  
+    32.7748      -0.0210      23.9706      -0.0119  </code></pre>
+</div>
+</div>
+<!-- - Fit the model $$y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2 + \epsilon$$ -->
+<ul>
+<li>The fitted model is <span class="math display">\[\hat{y} = 32.8-0.02x_1+23.97x_2 -0.01x_1x_2\]</span>
+</li>
+</ul></section><section id="regression-lines" class="level2"><h2 class="anchored" data-anchor-id="regression-lines">Regression Lines</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \epsilon\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2+\epsilon\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="two-models" class="level2"><h2 class="anchored" data-anchor-id="two-models">Two Models</h2>
+<ul>
+<li>The model <span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_1x_2 + \epsilon\)</span> is equivalent to fitting two separate regressions:
+<ul>
+<li><span class="math inline">\(y = \beta_0+\beta_1x_1+ \epsilon\)</span></li>
+<li>
+<span class="math inline">\(y = \alpha_0 + \alpha_1x_1+ \epsilon\)</span>, <span class="math inline">\(\quad \alpha_0 = \beta_0 + \beta_2\)</span>, <span class="math inline">\(\quad \alpha_1 = \beta_1 + \beta_3\)</span>.</li>
+</ul>
+</li>
+</ul>
+<!-- $$y^A = \beta_0^A+\beta_1^Ax_1^A+ \epsilon^A$$ --><!-- $$y^B = \beta_0^B+\beta_1^Bx_1^B+ \epsilon^B$$ --><div class="question">
+<p>How do we test if the 2 regressions are identical?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>Can use the extra sum of squares method by comparing the full and reduced models.</li>
+<li><span class="math inline">\(H_0: \beta_2 = \beta_3 = 0 \quad H_1: \beta_2 \ne 0 \text{ and(or) } \beta_3 \ne 0\)</span></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><p>We can test whether the relationship between tool speed and expected tool life differs between the two tool types, either in the intercept, the slope, or both.</p></li>
+<li><p>Rejecting <span class="math inline">\(H_0\)</span> indicates that the two regression lines are different, but does not necessarily indicate the presence of an interaction effect.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>test if the categorical variable affect intercept and or slope.</li>
+<li>In other words, we can test if the tool type affects the effect of tool speed on the tool life.</li>
+</ul>
+</div>
+</section><section id="test-effect-of-tool-type" class="level2"><h2 class="anchored" data-anchor-id="test-effect-of-tool-type">Test Effect of Tool Type</h2>
+<ul>
+<li><span class="math inline">\(H_0: \beta_2 = \beta_3 = 0 \quad H_1: \beta_2 \ne 0 \text{ and(or) } \beta_3 \ne 0\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reduced_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">hours</span> <span class="op">~</span> <span class="va">speed</span>, data <span class="op">=</span> <span class="va">tool_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/anova.html">anova</a></span><span class="op">(</span><span class="va">reduced_model</span>, <span class="va">full_model</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: hours ~ speed
+Model 2: hours ~ speed * type
+  Res.Df  RSS Df Sum of Sq    F  Pr(&gt;F)    
+1     18 1282                              
+2     16  141  2      1141 64.8 2.1e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li><p><span class="math inline">\(F_{test} = \frac{SS_R(\beta_2, \beta_3 |\beta_1, \beta_0)/2}{MS_{res}} = \frac{1141/2}{141/16} = 64.75 &gt; F_{\alpha, 2, 20-4}\)</span></p></li>
+<li><p>The two regression lines are not identical.</p></li>
+</ul></section><section id="more-than-2-categories" class="level2"><h2 class="anchored" data-anchor-id="more-than-2-categories">More than 2 Categories</h2>
+<ul>
+<li>For a categorical predictor with <span class="math inline">\(m\)</span> levels, we need <span class="math inline">\(m-1\)</span> dummies.</li>
+<li>Three tool types, A, B, and C. Then two indicators <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> will be needed:</li>
+</ul>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Tool Type</th>
+<th style="text-align: center;"><span class="math inline">\(x_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_3\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The regression model (common slope) is <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \epsilon\]</span>
+</li>
+<li>Type A is the baseline level.</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Type A is the baseline level. The base line level is the category corresponding value zero for all dummies.</li>
+<li>
+<span class="math inline">\(\beta_0\)</span> is the intercept when A is used.</li>
+<li>
+<span class="math inline">\(\beta_2\)</span> is the change in the intercept when the tool changes from A to B.</li>
+<li>
+<span class="math inline">\(\beta_3\)</span> is the change in the intercept when the tool changes from A to C.</li>
+<li>What is the change in the intercept when the tool changes from B to C.</li>
+</ul>
+</div>
+</section><section id="example-8.3-more-than-2-levels-lra" class="level2"><h2 class="anchored" data-anchor-id="example-8.3-more-than-2-levels-lra">Example 8.3: More Than 2 Levels (LRA)</h2>
+<ul>
+<li>An electric utility is investigating the effect of the <em>size</em> of a single family house <span class="math inline">\((x_1)\)</span> and the <em>type</em> of air conditioning used on the total electricity consumption <span class="math inline">\((y)\)</span>.</li>
+</ul>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Type of Air Conditioning</th>
+<th style="text-align: center;"><span class="math inline">\(x_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_4\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">No air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Window units</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Heat pump</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Central air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<div class="question">
+<p>Which type is the baseline level?</p>
+</div>
+<div class="notes">
+<ul>
+<li>An electric utility is investigating the effect of the <em>size</em> of a single family house <span class="math inline">\((x_1)\)</span> and the <em>type</em> of air conditioning used in the house on the total electricity consumption during summer months <span class="math inline">\((y)\)</span>.</li>
+<li>Since there are 4 categories, 3 dummy variables are used to differentiate their effect on <span class="math inline">\(y\)</span>.</li>
+<li>No air conditioning is the baseline level</li>
+</ul>
+</div>
+</section><section id="example-8.3-dummy-variables" class="level2"><h2 class="anchored" data-anchor-id="example-8.3-dummy-variables">Example 8.3: Dummy Variables</h2>
+<p>The regression model is <span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \epsilon\)</span></p>
+<div class="notes">
+<ul>
+<li>2 predictors, but 4 x’s, because x2, x3 and x4 are for the variable Type of Air</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<p><em>“No air conditioning”</em> is the baseline level.</p>
+<p><br></p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Type of Air Conditioning</th>
+<th style="text-align: center;"><span class="math inline">\(x_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_4\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">No air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Window units</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Heat pump</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Central air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<div class="midi">
+<p>If the house has</p>
+<ul>
+<li>no air conditioning,</li>
+</ul>
+<p><span class="math display">\[y = \beta_0+\beta_1x_1 + \epsilon\]</span></p>
+<ul>
+<li>window units,</li>
+</ul>
+<p><span class="math display">\[y = (\beta_0 + \beta_2)+\beta_1x_1 + \epsilon\]</span></p>
+<ul>
+<li>a heat pump,</li>
+</ul>
+<p><span class="math display">\[y = (\beta_0 + \beta_3) +\beta_1x_1 + \epsilon\]</span></p>
+<ul>
+<li>central air conditioning,</li>
+</ul>
+<p><span class="math display">\[y = (\beta_0 + \beta_4) +\beta_1x_1 + \epsilon\]</span></p>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>The type <em>“No air conditioning”</em> is the baseline level.</li>
+<li>The model assumes that the relationship between electricity consumption and the size of the house is linear and the slope does not depend on the type of air conditioning system employed.</li>
+<li>The parameters β 2 , β 3 , and β 4 modify the height (or intercept) of the regression model for the different types of air conditioning systems.</li>
+<li>That is, β 2 , β 3 , and β 4 measure the effect of window units, a heat pump, and a central air conditioning system, respectively, compared to no air conditioning.</li>
+<li>Furthermore, other effects can be determined by directly comparing the appropriate regression coefficients. For example, β 3 − β 4 reflects the relative efficiency of a heat pump compared to central air conditioning.</li>
+<li>Negative means saving more energy.</li>
+</ul>
+</div>
+</section><section id="example-8.3-interaction" class="level2"><h2 class="anchored" data-anchor-id="example-8.3-interaction">Example 8.3: Interaction</h2>
+<div class="question">
+<p>Do you think the model <span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \epsilon\)</span> is reasonable?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>It seems unrealistic to assume that the slope <span class="math inline">\(\beta_1\)</span> relating mean electricity consumption to the house size does NOT depend on air-conditioning type.</li>
+<li>The consumption increases with the house size.</li>
+<li>The <strong>rate of increase should be different</strong> because a more efficient central air conditioning system should have a consumption rate lower than window units.</li>
+<li>Add <strong>interaction</strong> between the house size and the type of air conditioning: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6 x_1x_3 + \beta_7 x_1x_4 + \epsilon\]</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>It would seem unrealistic to assume that the slope of the regression function relating mean electricity consumption to the size of the house does not depend on the type of air conditioning system.</li>
+<li>We would expect the mean electricity consumption to increase with the size of the house, but the <strong>rate of increase should be different</strong> for a central air conditioning system than for window units because central air conditioning should be more efficient than window units for larger houses.</li>
+<li>There should be an <strong>interaction</strong> between the size of the house and the type of air conditioning system: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6 x_1x_3 + \beta_7 x_1x_4 + \epsilon\]</span>
+</li>
+<li>The assumption that the variance of energy consumption does not depend on the type of air conditioning system used may be inappropriate.</li>
+</ul>
+</div>
+</section><section id="example-8.3-unique-slope-and-intercept" class="level2"><h2 class="anchored" data-anchor-id="example-8.3-unique-slope-and-intercept">Example 8.3: Unique Slope and Intercept</h2>
+<p><span class="math inline">\(y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6 x_1x_3 + \beta_7 x_1x_4 + \epsilon\)</span></p>
+<p>. . .</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<p><em>“No air conditioning”</em> is the baseline level.</p>
+<p><br></p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: center;">Type of Air Conditioning</th>
+<th style="text-align: center;"><span class="math inline">\(x_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_4\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">No air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Window units</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Heat pump</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Central air conditioning</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<div class="midi">
+<ul>
+<li><p>No air conditioning: <span class="math display">\[y = \beta_0+\beta_1x_1 + \epsilon\]</span></p></li>
+<li><p>Window units: <span class="math display">\[y = (\beta_0 + \beta_2)+(\beta_1+\beta_5)x_1 + \epsilon\]</span></p></li>
+<li><p>Heat pump: <span class="math display">\[y = (\beta_0 + \beta_3) +(\beta_1+\beta_6)x_1 + \epsilon\]</span></p></li>
+<li><p>Central air conditioning: <span class="math display">\[y  = (\beta_0 + \beta_4) +(\beta_1+\beta_7)x_1 + \epsilon\]</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\(\beta_5\)</span> is the effect of window units on the slope, comparing to the slope when no air conditioning is used.</li>
+</ul></section><section id="more-than-one-categorical-variable-model" class="level2"><h2 class="anchored" data-anchor-id="more-than-one-categorical-variable-model">More Than One Categorical Variable: Model</h2>
+<ul>
+<li>Frequently several categorical variables must be incorporated into the model.</li>
+<li>Suppose in the cutting tool life example a second categorical variable, the <em>type of cutting oil used</em>, must be considered.</li>
+<li>Assuming that the variable has two levels: <span class="math display">\[x_3 = \begin{cases} 0  &amp; \quad \text{low-viscosity oil used}\\ 1  &amp; \quad \text{medium-viscosity oil used} \end{cases}\]</span>
+</li>
+<li>A regression model relating tool life <span class="math inline">\((y)\)</span> to cutting speed <span class="math inline">\((x_1)\)</span>, tool type <span class="math inline">\((x_2)\)</span>, and type of cutting oil <span class="math inline">\((x_3)\)</span> is <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \epsilon\]</span>
+</li>
+</ul>
+<p>. . .</p>
+<div class="alert">
+<p>❗ The model has the <em>same</em> expression as the model with <em>only one categorical variable having 3 categories</em>. But the meaning is totally different!</p>
+</div>
+<div class="notes">
+<ul>
+<li>Clearly the slope β 1 of the regression model relating tool life to cutting speed does not depend on either the type of tool or the type of cutting oil. The intercept of the regression line depends on these factors in an additive fashion.</li>
+</ul>
+</div>
+</section><section id="more-than-one-categorical-variable-interaction" class="level2"><h2 class="anchored" data-anchor-id="more-than-one-categorical-variable-interaction">More Than One Categorical Variable: Interaction</h2>
+<ul>
+<li>Add interactions between cutting speed <span class="math inline">\(x_1\)</span> and the two categorical variables: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + {\color{blue}{\beta_4x_1x_2}} + {\color{blue}{\beta_5x_1x_3}} + \epsilon\]</span>
+</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 38%">
+<col style="width: 23%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Tool Type</th>
+<th style="text-align: center;">Cutting Oil</th>
+<th style="text-align: left;">Regression Model</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A <span class="math inline">\(\small (x_2 = 0)\)</span>
+</td>
+<td style="text-align: center;">Low-viscosity <span class="math inline">\(\small (x_3 = 0)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = \beta_0+\beta_1x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B <span class="math inline">\(\small (x_2 = 1)\)</span>
+</td>
+<td style="text-align: center;">Low-viscosity <span class="math inline">\(\small (x_3 = 0)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_2) + (\beta_1+\beta_4)x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">A <span class="math inline">\(\small (x_2 = 0)\)</span>
+</td>
+<td style="text-align: center;">Medium-viscosity <span class="math inline">\(\small (x_3 = 1)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_3) + (\beta_1+\beta_5)x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B <span class="math inline">\(\small (x_2 = 1)\)</span>
+</td>
+<td style="text-align: center;">Medium-viscosity <span class="math inline">\(\small (x_3 = 1)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_2 + \beta_3) + (\beta_1+\beta_4 + \beta_5)x_1 + \epsilon\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Each combination results in a separate regression line with different slopes and intercepts.</li>
+<li>Changing from low to medium-viscosity cutting oil changes the intercept by <span class="math inline">\(\beta_3\)</span> and the slope by <span class="math inline">\(\beta_5\)</span> <strong>regardless of the type of tool used.</strong>
+</li>
+<li>No interaction between the 2 categorical variables.</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Each combination of tool type and cutting oil results in a separate regression line, with different slopes and intercepts.</li>
+<li>Changing from low to medium-viscosity cutting oil changes the intercept by <span class="math inline">\(\beta_3\)</span> and the slope by <span class="math inline">\(\beta_5\)</span> <strong>regardless of the type of tool used.</strong> <!-- - Various types of interaction effects may be added to the model. --> The model is still additive with respect to the levels of the indicator variables.</li>
+</ul>
+</div>
+</section><section id="interaction-between-categorical-variables" class="level2"><h2 class="anchored" data-anchor-id="interaction-between-categorical-variables">Interaction between Categorical Variables</h2>
+<ul>
+<li>Add a <em>cross-product</em> term involving the two dummy variables <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> to the model: <span class="math display">\[y = \beta_0+\beta_1x_1+\beta_2x_2 + \beta_3x_3 + \beta_4x_1x_2 + \beta_5x_1x_3 + {\color{blue}{\beta_6x_2x_3}} + \epsilon\]</span>
+</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 41%">
+<col style="width: 22%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: center;">Tool Type</th>
+<th style="text-align: center;">Cutting Oil</th>
+<th style="text-align: left;">Regression Model</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A <span class="math inline">\(\small (x_2 = 0)\)</span>
+</td>
+<td style="text-align: center;">Low-viscosity <span class="math inline">\(\small (x_3 = 0)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = \beta_0+\beta_1x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B <span class="math inline">\(\small (x_2 = 1)\)</span>
+</td>
+<td style="text-align: center;">Low-viscosity <span class="math inline">\(\small (x_3 = 0)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_2) + (\beta_1+\beta_4)x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">A <span class="math inline">\(\small (x_2 = 0)\)</span>
+</td>
+<td style="text-align: center;">Medium-viscosity <span class="math inline">\(\small (x_3 = 1)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_3) + (\beta_1+\beta_5)x_1 + \epsilon\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B <span class="math inline">\(\small (x_2 = 1)\)</span>
+</td>
+<td style="text-align: center;">Medium-viscosity <span class="math inline">\(\small (x_3 = 1)\)</span>
+</td>
+<td style="text-align: left;"><span class="math inline">\(\small y = (\beta_0+ \beta_2 + \beta_3 + \beta_6) + (\beta_1+\beta_4 + \beta_5)x_1 + \epsilon\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Changing from low to medium-viscosity cutting oil changes the intercept by <span class="math inline">\(\beta_3\)</span> if tool type A is used.</li>
+<li>The same change in cutting oil changes the intercept by <span class="math inline">\(\beta_3 + \beta_6\)</span> if tool type B is used.</li>
+</ul>
+<div class="notes">
+<ul>
+<li>The addition of the cross-product term <span class="math inline">\(\beta_6x_2x_3\)</span> results in the effect of one indicator variable on the intercept depending on the level of the other indicator variable.</li>
+</ul>
+</div>
+</section><section id="comparing-regression-models" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="comparing-regression-models">Comparing Regression Models</h2>
+<ul>
+<li>Consider simple linear regression where the <span class="math inline">\(n\)</span> observations can be formed into <span class="math inline">\(M\)</span> groups, with the <span class="math inline">\(m\)</span>-th group having <span class="math inline">\(n_m\)</span> observations.</li>
+<li>The most general model consists of <span class="math inline">\(M\)</span> separate equations: <span class="math display">\[y = \beta_{0m} + \beta_{1m}x + \epsilon, \quad m = 1, 2, \dots, M\]</span>
+</li>
+<li>We are interested in comparing this general model to a more restrictive one.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="parallel-lines-example-8.1-where-m-2" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="parallel-lines-example-8.1-where-m-2">Parallel Lines (Example 8.1 where <span class="math inline">\(M = 2\)</span>)</h2>
+<p>All <span class="math inline">\(M\)</span> slopes are identical <span class="math inline">\(H_0: \beta_{11} = \beta_{12} = \cdots = \beta_{1M} = \beta_1\)</span></p>
+<ul>
+<li><p><strong>Full Model</strong> <span class="math inline">\((F)\)</span>: <span class="math inline">\(y = \beta_{0m} + \beta_{1m}x + \epsilon, \quad m = 1, 2, \dots, M\)</span>.</p></li>
+<li><p><strong>Reduced Model</strong> <span class="math inline">\((R)\)</span>: <span class="math inline">\(y = \beta_0 + \beta_1x + \color{blue}{\beta_2D_1 + \beta_3D_2 + \cdots + \beta_{M-1}D_{M-1}}+\epsilon\)</span>, where <span class="math inline">\(D_1, \dots, D_{M-1}\)</span> are dummies.</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>
+<span class="math inline">\(F_{test} = \frac{(SS_{res}(R) - SS_{res}(F))/(df_{R} - df_{F})}{SS_{res}(F)/df_{F}}\)</span>
+<ul>
+<li><span class="math inline">\(df_{R} = n - (M+1)\)</span></li>
+<li><span class="math inline">\(df_{F} = n - 2M\)</span></li>
+<li>
+<span class="math inline">\(SS_{res}(F)\)</span> is the sum of <span class="math inline">\(SS_{res}\)</span> from each separate regression</li>
+</ul>
+</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<!-- - All $M$ slopes are identical, $\beta_{11} = \beta_{12} = \cdots = \beta_{1M}$, but the intercepts may differ. -->
+<!-- - This is the type of problem encountered in  -->
+<ul>
+<li>Use the extra-sum-of-squares method to test the hypothesis</li>
+<li>All <span class="math inline">\(M\)</span> slopes are identical, <span class="math inline">\(\beta_{11} = \beta_{12} = \cdots = \beta_{1M}\)</span>, but the intercepts may differ.</li>
+<li>
+<strong>Reduced Model</strong> <span class="math inline">\((RM)\)</span>: <span class="math inline">\(y = \beta_0 + \beta_1x + \beta_2D_1 + \beta_3D_2 + \cdots + \beta_{M-1}D_{M-1}+\epsilon\)</span>, where <span class="math inline">\(D_1, \dots, D_{M-1}\)</span> are dummy variables.</li>
+<li>
+<span class="math inline">\(F_{test} = \dfrac{(SS_{res}(RM) - SS_{res}(FM))/(df_{RM} - df_{FM})}{SS_{res}(FM)/df_{FM}}\)</span>
+<ul>
+<li><span class="math inline">\(df_{RM} = n - (M+1)\)</span></li>
+<li><span class="math inline">\(df_{FM} = \sum_{m=1}^M(n_m - 2) = n - 2M\)</span></li>
+<li>
+<span class="math inline">\(SS_{res}(FM)\)</span> is the sum of <span class="math inline">\(SS_{res}\)</span> from each separate regression</li>
+</ul>
+</li>
+<li>If the reduced model is as satisfactory as the full model, then <span class="math inline">\(F_{test}\)</span> will be small compared to <span class="math inline">\(F_{\alpha,df_{RM}−df_{FM}, df_{FM}}.\)</span>
+</li>
+</ul>
+</div>
+</section><section id="concurrent-lines" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="concurrent-lines">Concurrent Lines</h2>
+<ul>
+<li>All <span class="math inline">\(M\)</span> intercepts are equal, <span class="math inline">\(H_0: \beta_{01} = \beta_{02} = \cdots = \beta_{0M}= \beta_0\)</span>
+</li>
+<li>
+<strong>Reduced model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x + \color{blue}{\beta_2xD_1 + \beta_3xD_2 + \cdots + \beta_{M-1}xD_{M-1}}+\epsilon\)</span>.
+<ul>
+<li><span class="math inline">\(df_{R} = n - (M+1)\)</span></li>
+</ul>
+</li>
+<li>Assume concurrence at the origin.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-26-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>All <span class="math inline">\(M\)</span> intercepts are equal, <span class="math inline">\(H_0: \beta_{01} = \beta_{02} = \cdots = \beta_{0M}\)</span>, but the slopes may differ.</li>
+<li>
+<strong>Reduced model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x +\beta_2xD_1 + \beta_3xD_2 + \cdots + \beta_{M-1}xD_{M-1}+\epsilon\)</span>.
+<ul>
+<li><span class="math inline">\(df_{R} = n - (M+1)\)</span></li>
+</ul>
+</li>
+<li>Assume concurrence at the origin.</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>All <span class="math inline">\(M\)</span> intercepts are equal, <span class="math inline">\(H_0: \beta_{01} = \beta_{02} = \cdots = \beta_{0M}\)</span>, but the slopes may differ.</li>
+<li>
+<strong>Reduced model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x +\beta_2xD_1 + \beta_3xD_2 + \cdots + \beta_{M-1}xD_{M-1}+\epsilon\)</span>.
+<ul>
+<li><span class="math inline">\(df_{R} = n - (M+1)\)</span></li>
+</ul>
+</li>
+<li>Assume concurrence at the origin.</li>
+</ul>
+</div>
+</section><section id="coincident-lines" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="coincident-lines">Coincident Lines</h2>
+<ul>
+<li>Both the <span class="math inline">\(M\)</span> slopes and the <span class="math inline">\(M\)</span> intercepts are the same,<br><span class="math inline">\(H_0: \beta_{11} = \beta_{12} = \cdots = \beta_{1M} = \beta_1\)</span>, <span class="math inline">\(\beta_{01} = \beta_{02} = \cdots = \beta_{0M} = \beta_0\)</span>
+</li>
+<li>
+<strong>Reduced model</strong>: <span class="math inline">\(y = \beta_0 + \beta_1x+\epsilon\)</span>
+<ul>
+<li><span class="math inline">\(df_{R} = n - 2\)</span></li>
+</ul>
+</li>
+<li>Dummy variables are not necessary in the test of coincidence.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/13-cat-var/unnamed-chunk-27-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="naming-inputs" class="level2"><h2 class="anchored" data-anchor-id="naming-inputs">Naming Inputs</h2>
+<ul>
+<li><p>When an input has only two levels, we prefer to code it with a single variable and name it appropriately.</p></li>
+<li><p>For example, the name <code>male</code> is more descriptive than <code>sex_1</code> and <code>sex_2</code>.</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>
+<code>male</code> = 1 for males and 0 for females</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>
+<code>sex_1</code> = 1 for females and 0 otherwise</li>
+<li>
+<code>sex_2</code> = 1 for males and 0 otherwise</li>
+</ul>
+</div>
+</div>
+</section><section id="index-and-indicator-variables" class="level2"><h2 class="anchored" data-anchor-id="index-and-indicator-variables">Index and Indicator Variables</h2>
+<ul>
+<li>
+<strong>Index variables</strong> divide a population into categories.
+<ul>
+<li>
+<code>male</code> = 1 for males and 0 for females</li>
+<li>
+<code>age</code> = 1 for ages 18–29, 2 for ages 30–44, 3 for ages 45–64, 4 for ages 65+</li>
+<li>
+<code>state</code> = 1 for Alabama, …, 50 for Wyoming</li>
+<li>
+<code>county</code> indexes for the 3082 counties in the United States.</li>
+</ul>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<p><strong>Indicator variables</strong> are 0/1 predictors based on index variables.</p>
+<ul>
+<li>
+<code>sex_1</code> = 1 for females and 0 otherwise</li>
+<li>
+<code>sex_2</code> = 1 for males and 0 otherwise</li>
+<li>
+<code>age_1</code> = 1 for ages 18–29 and 0 otherwise</li>
+<li>
+<code>age_2</code> = 1 for ages 30–44 and 0 otherwise</li>
+<li>
+<code>age_3</code> = 1 for ages 45–64 and 0 otherwise</li>
+<li>
+<code>age_4</code> = 1 for ages 65+ and 0 otherwise</li>
+<li>50 indicators for state</li>
+<li>3082 indicators for county</li>
+</ul>
+</li>
+</ul>
+<!-- ## Interpretation --></section><section id="using-continuous-rather-than-discrete-predictors" class="level2"><h2 class="anchored" data-anchor-id="using-continuous-rather-than-discrete-predictors">Using Continuous rather than Discrete Predictors</h2>
+<ul>
+<li><p>A common mistake is to take a numerical measure and replace it with a binary “pass/fail” score</p></li>
+<li><p>Suppose we tried to predict election winners, rather than continuous votes.</p></li>
+<li><p>Such a model would not work as well, as it would discard much of the information in the data. (for example, the distinction between a candidate receiving 51% or 65% of the vote)</p></li>
+<li><p>Even if our only goal is to predict the winners, we are better off predicting continuous vote shares and then transforming them into predictions about winners.</p></li>
+</ul>
+<!-- - Avoid discretizing continuous variables --><!-- - Using discrete rather than continuous predictors --></section><section id="using-discrete-rather-than-continuous-predictors" class="level2"><h2 class="anchored" data-anchor-id="using-discrete-rather-than-continuous-predictors">Using Discrete rather than Continuous Predictors</h2>
+<ul>
+<li><p>Include age with four indicator variables: 18–29, 30–44, 45–64, and 65+</p></li>
+<li><p>Income “under $50k,” “$50k–$100k,” “$100k-$250k”, “over $250k”</p></li>
+</ul>
+<!-- - In some cases, however, it is convenient to discretize a continuous variable if a simple parametric relation does not seem appropriate. -->
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script></section></section></main><!-- /main --><script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../slides";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/slides/13-cat-var.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
