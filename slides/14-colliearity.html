@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
+<title>Collinearity – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4e2696270196a660e2818279c815d08b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+<meta property="og:title" content="Collinearity – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
+<meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/14-colliearity/unnamed-chunk-1-1.png">
+<meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:image:height" content="4800">
+<meta property="og:image:width" content="9600">
+</head>
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Collinearity</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../images/logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/math4780-f26/website" title="GitHub organization" class="quarto-navigation-tool px-1" aria-label="GitHub organization"><i class="bi bi-github"></i></a>
+    <a href="https://d2l.mu.edu/d2l/home/630388" title="D2L" class="quarto-navigation-tool px-1" aria-label="D2L"><i class="bi bi-person-fill"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Information</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../hw.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homework</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ws.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Class Activity/Worksheet</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Final Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-description_new.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final Project Guidelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project-work_new.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Group and Proposal</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Supplementary material for MSSC 5780</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-diagnostics-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model diagnostics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/mlr-matrix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">MLR matrix notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/log-transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Log transformations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supplemental/model-selection-criteria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model selection criteria</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="14-collinearity-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Collinearity</h1>
+<p class="subtitle lead">MATH 4780/MSSC 5780 Regression Analysis</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr.&nbsp;Cheng-Han Yu <br> Department of Mathematical and Statistical Sciences <br> Marquette University </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="section" class="level1" data-visibility="hidden"><h1 data-visibility="hidden"></h1>
+
+</section><section id="collinearity" class="level1"><h1>Collinearity</h1>
+<h2 class="anchored" data-anchor-id="collinearity">
+Meaning
+</h2>
+<h2 class="anchored">
+Sources
+</h2>
+<h2 class="anchored">
+Effects
+</h2>
+<h2 class="anchored">
+Diagnostics
+</h2>
+<h2 class="anchored">
+Solutions
+</h2>
+<section id="what-is-collinearity" class="level2"><h2 class="anchored" data-anchor-id="what-is-collinearity">What is Collinearity</h2>
+<ul>
+<li>
+<strong>Collinearity</strong> refers to the situation in which <strong>two or more predictors are closely related to one another</strong>.</li>
+<li>
+<code>limit</code> and <code>age</code> appear to have no obvious relationship, which is good!</li>
+<li>
+<code>limit</code> and <code>rating</code> are highly correlated, and they are said to be <em>collinear</em>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Collinearity is a fundamental problem with the data rather than model specification.</li>
+<li>There is usually no satisfactory solution for a true collinearity problem.</li>
+<li>Collinearity means some regressors in your model are highly correlated.</li>
+<li>We want to have regressors that are <strong>NOT <em>moving with each other</em></strong>.</li>
+<li>Ideally we desire to have <strong>orthogonal</strong> regressors.</li>
+<li>The intuition is, we hope predictors can explain the variation of <span class="math inline">\(y\)</span>, right? That’s why we put these predictors in the model.</li>
+<li>And ideally we hope each predictor can explain a part of variation of <span class="math inline">\(y\)</span> that can only be explained by that predictor and cannot be explained by any other predictors.</li>
+<li>This kind of partition can be done if all the predictors are orthogonal.</li>
+<li>If x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of <span class="math inline">\(y\)</span>.</li>
+<li>Think about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.</li>
+<li>So we actually use two predictors to explain the same variation of <span class="math inline">\(y\)</span>, which is redundant.</li>
+<li>The model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.</li>
+<li>Later, we’ll see why we don’t want the predictors to be correlated.</li>
+<li>There are lots of bad effects on our regression model.</li>
+</ul>
+</div>
+</section><section id="sources-of-collinearity" class="level2"><h2 class="anchored" data-anchor-id="sources-of-collinearity">Sources of Collinearity</h2>
+<p>Four primary sources</p>
+<ul>
+<li>The data collection method employed</li>
+<li>Constraints on the model or in the population</li>
+<li>Model specification</li>
+<li>A model with <span class="math inline">\(p&gt;n\)</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Let’s see what causes Collinearity. Here are 4 sources of Collinearity.</li>
+<li>The data collection method employed: the way we collect our data may cause the predictors to be moving together. We need to be more careful, and see if we can collect our data in another way, so that the correlation between predictors can be alleviated or weakened.</li>
+<li>Constraints on the model or in the population: If two predictors are correlated in nature, then it is unavoidable to have Collinearity, and if we want to keep the two predictors in our model, we should consider other methods other than OLS.</li>
+<li>Model specification: Polynomial regression.</li>
+<li>A <span class="math inline">\(p&gt;n\)</span> model</li>
+</ul>
+</div>
+</section><section id="data-collection" class="level2"><h2 class="anchored" data-anchor-id="data-collection">Data Collection</h2>
+<ul>
+<li>Collinearity occurs when only a subspace of the entire sample space has been explored.</li>
+<li>May be able to reduce this collinearity through the sampling technique used.</li>
+<li>
+<em>There is no physical reason why you can’t sample in that area</em>.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="constraints" class="level2"><h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
+<ul>
+<li>Physical constraints are present, and the collinearity will exist regardless of collection method.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="model-specification" class="level2"><h2 class="anchored" data-anchor-id="model-specification">Model Specification</h2>
+<ul>
+<li>Polynomial terms can cause ill-conditioning in <span class="math inline">\({\bf X'X}\)</span>.</li>
+<li>As the order of the model increases, <span class="math inline">\({\bf X'X}\)</span> matrix inversion will become inaccurate, and error can be introduced into the parameter estimates.</li>
+<li>If range on a regressor variable is small, adding an <span class="math inline">\(x^2\)</span> term can result in significant collinearity.</li>
+</ul>
+<div class="notes">
+<p><span class="math inline">\(x\)</span> and <span class="math inline">\(x^2\)</span> are highly (linearly correlated) - Polynomial terms can cause ill-conditioning (a sign of Collinearity) in the <span class="math inline">\(({\bf X'X})\)</span> matrix. - As the order of the model increases, <span class="math inline">\(({\bf X'X})\)</span> matrix inversion will become more inaccurate, and error can be introduced into the parameter estimates - If range on a regressor variable is small, adding <span class="math inline">\(x^2\)</span> term can result in significant Collinearity.</p>
+</div>
+</section><section id="pn-model" class="level2"><h2 class="anchored" data-anchor-id="pn-model">
+<span class="math inline">\(p&gt;n\)</span> Model</h2>
+<ul>
+<li>More regressor variables than observations.</li>
+<li>The best way to counter this is to remove/reconstruct regressor variables.
+<ul>
+<li>Principal Component Regression</li>
+<li>Variable Selection (Next Topic)</li>
+</ul>
+</li>
+</ul></section><section id="consequence-of-collinearity" class="level2"><h2 class="anchored" data-anchor-id="consequence-of-collinearity">Consequence of Collinearity</h2>
+<ol type="1">
+<li>👉 <strong>Large variances and covariances</strong> for the LSE <span class="math inline">\(b_j\)</span>s.</li>
+</ol>
+<!-- $$({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$$  --><ol start="2" type="1">
+<li>👉 Tends to produce LSE <span class="math inline">\(b_j\)</span> that are <strong>too large in absolute value</strong>. Therefore, the vector <span class="math inline">\({\bf b}\)</span>, on average, is much longer than the vector <span class="math inline">\(\boldsymbol \beta\)</span>.</li>
+</ol>
+<div class="alert">
+<ul>
+<li>Large variances and large magnitude of coefficients lead to <strong>instable</strong> and <strong>wrong signed</strong> coefficients.</li>
+<li>Poor coefficients do not necessarily imply bad fit or poor prediction.</li>
+<li>The predictions should be confined to the <span class="math inline">\(x\)</span> space where the collinearity holds approximately. <!-- - Collinearity causes very poor *extrapolated* prediction. -->
+</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>The squared distance from <span class="math inline">\({\bf b}\)</span> to <span class="math inline">\(\bsbeta\)</span> is <span class="math inline">\(D^2 = \sum_{j=1}^k(b_j - \beta_j)^2\)</span>.</li>
+<li>The <em>expected</em> squared distance is <span class="math display">\[E(D^2) = E\left(\sum_{j=1}^k(b_j - \beta_j)^2 \right) = \sum_{j=1}^kE\left[(b_j - \beta_j)^2\right] = \sum_{j=1}^k\mathrm{Var}(b_j) = \sigma^2 \mathrm{tr}\left[({\bf X'X})^{-1}\right]\]</span>
+</li>
+<li>Strong Collinearity between <span class="math inline">\(x\)</span>’s results in</li>
+<li>the trace of a matrix (Tr) is the sum of the diagonal elements.</li>
+</ul>
+</div>
+</section><section id="perfectly-correlated-regressors" class="level2"><h2 class="anchored" data-anchor-id="perfectly-correlated-regressors">Perfectly Correlated Regressors</h2>
+<ul>
+<li><p>Suppose the true population regression equation is <span class="math inline">\(y = 3 + 4x\)</span>.</p></li>
+<li><p>Suppose we try estimating that equation using perfectly correlated variables <span class="math inline">\(x\)</span> and <span class="math inline">\(z = x/10\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{aligned}\hat{y}&amp;= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2z\\
+&amp;= \hat{\beta}_0 + \hat{\beta}_1x  + \hat{\beta}_2\frac{x}{10}\\
+&amp;= \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x
+\end{aligned}
+\]</span> <!-- $$\hat{y} = \hat{\beta}_0 + \bigg(\hat{\beta}_1 + \frac{\hat{\beta}_2}{10}\bigg)x$$ --></p>
+<p>. . .</p>
+<!-- -   Can set $\hat{\beta}_1$ and $\hat{\beta}_2$ to any two numbers such that $\hat{\beta}_1 + \frac{\hat{\beta}_2}{10} \approx 4$. -->
+<ul>
+<li><p>Unable to choose the “best” combination of <span class="math inline">\(\hat{\beta}_1\)</span> and <span class="math inline">\(\hat{\beta}_2\)</span>.</p></li>
+<li><p>The data contain enough information to estimate the combined effect of the two predictors, but not enough information to estimate their individual effects.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Collinearity is a fundamental problem with the data rather than model specification.</li>
+<li>There is usually no satisfactory solution for a true collinearity problem.</li>
+<li>Collinearity means some regressors in your model are highly correlated.</li>
+<li>We want to have regressors that are <strong>NOT <em>moving with each other</em></strong>.</li>
+<li>Ideally we desire to have <strong>orthogonal</strong> regressors.</li>
+<li>The intuition is, we hope predictors can explain the variation of <span class="math inline">\(y\)</span>, right? That’s why we put these predictors in the model.</li>
+<li>And ideally we hope each predictor can explain a part of variation of <span class="math inline">\(y\)</span> that can only be explained by that predictor and cannot be explained by any other predictors.</li>
+<li>This kind of partition can be done if all the predictors are orthogonal.</li>
+<li>If x1 and x2 are highly correlated, meaning that they are moving together, then the two predictors are gonna explain a large part of the same variation of of <span class="math inline">\(y\)</span>.</li>
+<li>Think about it. If x1 and y are correlated in some way, and x1 and x2 are highly correlated, it means that x2 and y are going to be correlated in same way as x1 and y.</li>
+<li>So we actually use two predictors to explain the same variation of <span class="math inline">\(y\)</span>, which is redundant.</li>
+<li>The model will be confused and may not be able to understand this explained variation is due to x1 or due to x2.</li>
+<li>Later, we’ll see why we don’t want the predictors to be correlated.</li>
+<li>There are lots of bad effects on our regression model.</li>
+</ul>
+</div>
+</section><section id="section-1" class="level2"><h2 class="anchored" data-anchor-id="section-1"></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/No_collinearity.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/Perfect_collinearity.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="section-2" class="level2"><h2 class="anchored" data-anchor-id="section-2"></h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th>Property</th>
+<th>Perfect Collinearity</th>
+<th>Near Collinearity</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{X}^\top\mathbf{X}\)</span></td>
+<td>Singular</td>
+<td>Nearly singular</td>
+</tr>
+<tr class="even">
+<td>OLS solution</td>
+<td>Infinitely many</td>
+<td>Unique</td>
+</tr>
+<tr class="odd">
+<td>Individual coefficients</td>
+<td>Not identifiable</td>
+<td>Difficult to estimate accurately</td>
+</tr>
+<tr class="even">
+<td>Fitted values</td>
+<td>Unique</td>
+<td>Unique</td>
+</tr>
+<tr class="odd">
+<td>Prediction</td>
+<td>Can still be accurate</td>
+<td>Can still be accurate</td>
+</tr>
+</tbody>
+</table></section><section id="collinearity-diagnostics" class="level2"><h2 class="anchored" data-anchor-id="collinearity-diagnostics">Collinearity Diagnostics</h2>
+<p>Ideal characteristics of a collinearity diagnostic:</p>
+<ul>
+<li>Correctly indicate if collinearity is present</li>
+<li>How severe the problem is</li>
+<li>Provide insight as to which regressors are causing the problem</li>
+</ul></section><section id="examination-of-the-correlation-matrix-of-xs" class="level2"><h2 class="anchored" data-anchor-id="examination-of-the-correlation-matrix-of-xs">Examination of the Correlation Matrix of <span class="math inline">\(x\)</span>s</h2>
+<ul>
+<li><p>After <em>unit length scaling</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <span class="math inline">\({\bf X'X} = \left[r_{st}\right]_{k\times k}\)</span> is the <em>correlation</em> matrix of <span class="math inline">\(x\)</span>s denoted as <span class="math inline">\({\bf \Sigma}\)</span>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> For example, <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span></p></li>
+<li><p><span class="math inline">\(r_{st}\)</span> is the <strong>pairwise</strong> correlation between <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span>.</p></li>
+<li><p>Large <span class="math inline">\(|r_{st}|\)</span> is an indication of collinearity.</p></li>
+<li><p>When <strong>more than two</strong> regressors are involved in collinearity, there may be instances when <em>collinearity is present, but the pairwise correlations are not large.</em></p></li>
+<li><p>Inspecting <span class="math inline">\(r_{st}\)</span> is not sufficient for detecting more complex collinearity.</p></li>
+</ul>
+<div class="notes">
+<p>After unit length scaling, <span class="math inline">\({\bf X'X}\)</span> is the correlation matrix of regressors. - If we scale and center the regressors, we have the correlation matrix. <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span> - The off diagonal elements of the centered and scaled <span class="math inline">\({\bf X'X}\)</span> matrix are the <strong>pairwise</strong> correlations between <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span>, denoted as <span class="math inline">\(r_{ij}\)</span>. For example, <span class="math inline">\(r_{12} = 0.992\)</span>. - If <span class="math inline">\(|r_{ij}| \approx 1\)</span>, there is an indication of Collinearity. But, the opposite does not always hold. - When there are <em>more than two regressors</em>, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4) - Inspection of the <span class="math inline">\(r_{ij}\)</span> is not sufficient for detecting anything more complex than <em>pairwise</em> Collinearity.</p>
+</div>
+</section><section id="variance-inflation-factors" class="level2"><h2 class="anchored" data-anchor-id="variance-inflation-factors">Variance Inflation Factors</h2>
+<!-- - $\small ({\bf X}_1'{\bf X}_1)^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ $\quad \small ({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$ -->
+<ul>
+<li><p>The diagonals of <span class="math inline">\({\bf \Sigma}^{-1} = {\bf C}\)</span> in correlation form are called <strong>variance inflation factors</strong> <span class="math display">\[\text{VIF}_j = {\bf C}_{jj}\]</span></p></li>
+<li><p>Example: <span class="math display">\[{\bf \Sigma} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}; \quad {\bf \Sigma}^{-1} = \begin{bmatrix} 62.8 &amp; -62.2 \\ -62.2 &amp; 62.8 \end{bmatrix}\]</span> and <span class="math inline">\(\text{VIF}_1 = 62.8\)</span>.</p></li>
+</ul>
+<div class="alert">
+<ul>
+<li>The collinearity produces an inflation in the variances of the estimated coefficients, an increase in <em>60-fold</em> over the <em>ideal case</em> when the two regressors are orthogonal.</li>
+<li>VIFs <span class="math inline">\(&gt; 10\)</span> are considered significant.</li>
+</ul>
+</div>
+</section><section id="variance-inflation-factors-1" class="level2"><h2 class="anchored" data-anchor-id="variance-inflation-factors-1">Variance Inflation Factors</h2>
+<p><span class="math display">\[\text{VIF}_j = \frac{1}{1 - R^2_{X_j | X_{-j}}}\]</span> where <span class="math inline">\(R^2_{X_j | X_{-j}}\)</span> is the coefficient of determination obtained when <span class="math inline">\(x_j\)</span> is regressed on the other regressors <span class="math inline">\(x_i\)</span>s, <span class="math inline">\(i \ne j\)</span>.</p>
+<p><span class="math display">\[\mathrm{Var}(b_j) = \frac{s^2}{\sum_{i=1}^n(x_{ij} - \bar{x}_j)^2} \times \text{VIF}_j\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\text{VIF}_j\)</span> measures the <strong>combined</strong> effect of the dependencies among the regressors on the variance of <span class="math inline">\(b_j\)</span>.</p></li>
+<li><p>If <span class="math inline">\(x_j\)</span> is <em>near linearly dependent</em> on some subset of the remaining regressors, <span class="math inline">\({\bf C}_{jj}\)</span> is large.</p></li>
+</ul>
+<div class="question">
+<p>Remember what does linear (in)dependence mean?</p>
+</div>
+<div class="notes">
+<p><span class="math display">\[\text{VIF}_j = {\bf C}_{jj} = \frac{1}{1 - R^2_j}\]</span> + <span class="math inline">\(R_j^2\)</span>: the coefficient of determination obtained when <span class="math inline">\(x_j\)</span> is regressed on the remaining regressors <span class="math inline">\(x_i, i \ne j\)</span>. - If <span class="math inline">\(x_j\)</span> can be explained a lot from other regressors, <span class="math inline">\(x_j\)</span> is probably unnecessary in the regression model when all others are in the model. When it is in the model, the model cannot understand what the real effect the predictor can provide, and therefore its coefficient has a large variance. - The regressors that have high VIFs probably have poorly estimated coefficients. - The Collinearity produces an inflation in the variances of the estimated coefficients, an increase in <em>60-fold</em> over the <em>ideal case</em> when the two regressors are orthogonal. - Since the variance of the j th regression coefficients is C jj σ 2 , we can view C jj as the factor by which the variance of ˆβj is increased due to near - linear dependences among the regressors.</p>
+</div>
+</section><section id="hospital-manpower-data" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower-data">
+<a href="./data/manpower.csv">Hospital Manpower</a> Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manpower</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_class600"><code>       y  x1    x2    x3    x4   x5
+1    567  16  2463   473  18.0  4.5
+2    697  44  2048  1340   9.5  6.9
+3   1033  20  3940   620  12.8  4.3
+4   1604  19  6505   568  36.7  3.9
+5   1611  49  5723  1498  35.7  5.5
+6   1613  45 11520  1366  24.0  4.6
+7   1854  55  5779  1687  43.3  5.6
+8   2161  59  5969  1640  46.7  5.2
+9   2306  94  8461  2872  78.7  6.2
+10  3504 128 20106  3655 180.5  6.2
+11  3572  96 13313  2912  60.9  5.9
+12  3741 131 10771  3921 103.7  4.9
+13  4027 127 15543  3866 126.8  5.5
+14 10344 253 36194  7684 157.7  7.0
+15 11732 409 34703 12446 169.4 10.8
+16 15415 464 39204 14098 331.4  7.0
+17 18854 510 86533 15524 371.6  6.3</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><span class="math inline">\(y\)</span>: Monthly man-hours</p>
+<p><br></p>
+<p><span class="math inline">\(x_1\)</span>: Average daily patient load</p>
+<p><br></p>
+<p><span class="math inline">\(x_2\)</span>: Monthly X-ray exposures</p>
+<p><br></p>
+<p><span class="math inline">\(x_3\)</span>: Monthly occupied bed days</p>
+<p><br></p>
+<p><span class="math inline">\(x_4\)</span>: Eligible population in the area / 1000</p>
+<p><br></p>
+<p><span class="math inline">\(x_5\)</span>: Average length of patients’ stay in days</p>
+</div>
+</div>
+<div class="question">
+<p>Do you expect to see positive or negative relationship between <span class="math inline">\(y\)</span> and each <span class="math inline">\(x_i\)</span>?</p>
+</div>
+</section><section id="hospital-manpower---pairwise-dependence" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---pairwise-dependence">Hospital Manpower - Pairwise Dependence</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="hospital-manpower---model-fit" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---model-fit">Hospital Manpower - Model Fit</h2>
+<div class="cell" data-layout-align="center" data-output.lines="[10,11,12,13,14,15,16,20,21]">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_full</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">manpower</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">summ_full</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_full</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>...
+             Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 1962.9482  1071.3617    1.83    0.094 .
+x1           -15.8517    97.6530   -0.16    0.874  
+x2             0.0559     0.0213    2.63    0.023 *
+x3             1.5896     3.0921    0.51    0.617  
+x4            -4.2187     7.1766   -0.59    0.569  
+x5          -394.3141   209.6395   -1.88    0.087 .
+Residual standard error: 642 on 11 degrees of freedom
+Multiple R-squared:  0.991, Adjusted R-squared:  0.987 
+...</code></pre>
+</div>
+</div>
+<div class="question">
+<p>Excellent fit. But any issues of the this fitted result?</p>
+</div>
+<p>. . .</p>
+<ul>
+<li>The coefficients <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_4\)</span> and <span class="math inline">\(b_5\)</span> are <strong>negative.</strong>
+</li>
+<li>In the case of <span class="math inline">\(x_1\)</span>, an increase in patient load, when other <span class="math inline">\(x\)</span>’s are held constant, corresponds to a decrease in hospital manpower. (<strong>wrong sign</strong> due to large variance)</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Even though the regression model fits the data quite well, the rather curious signs on the regression coefficients may be the result of the effect of Collinearity.</li>
+</ul>
+</div>
+</section><section id="hospital-manpower---vif" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---vif">Hospital Manpower - VIF</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">manpower</span><span class="op">[</span>, <span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="op">(</span><span class="va">Sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     x1   x2   x3   x4   x5
+x1 1.00 0.91 1.00 0.94 0.67
+x2 0.91 1.00 0.91 0.91 0.45
+x3 1.00 0.91 1.00 0.93 0.67
+x4 0.94 0.91 0.93 1.00 0.46
+x5 0.67 0.45 0.67 0.46 1.00</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">C</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/solve.html">solve</a></span><span class="op">(</span><span class="va">Sig</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      x1    x2    x3     x4    x5
+x1  9598  11.9 -9247 -318.8 -93.9
+x2    12   7.9   -18   -1.9   1.8
+x3 -9247 -18.5  8933  294.4  83.4
+x4  -319  -1.9   294   23.3   6.4
+x5   -94   1.8    83    6.4   4.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## VIF </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">C</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    x1     x2     x3     x4     x5 
+9597.6    7.9 8933.1   23.3    4.3 </code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## put the fitted model in vif()</span></span>
+<span><span class="op">(</span><span class="va">vif_all</span> <span class="op">&lt;-</span> <span class="fu">car</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/car/man/vif.html">vif</a></span><span class="op">(</span><span class="va">lm_full</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    x1     x2     x3     x4     x5 
+9597.6    7.9 8933.1   23.3    4.3 </code></pre>
+</div>
+</div>
+<p><span class="math inline">\(x_1\)</span> <code>Average daily patient load</code> and <span class="math inline">\(x_3\)</span> <code>Monthly occupied bed days</code> are highly correlated.</p>
+</section><section id="hospital-manpower---confidence-interval" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---confidence-interval">Hospital Manpower - Confidence Interval</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Marginally, <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_3\)</span> vary a lot. The CI for <span class="math inline">\(\beta_1\)</span> and CI for <span class="math inline">\(\beta_3\)</span> both contain zero.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>    2.5 % 97.5 %
+x1 -230.8  199.1
+x3   -5.2    8.4</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>But very confident that <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_3\)</span> cannot be both zero.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>The model is quite not sure how much <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> affect <span class="math inline">\(y\)</span>.</li>
+</ul>
+</div>
+</section><section id="hospital-manpower---confidence-interval-1" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---confidence-interval-1">Hospital Manpower - Confidence Interval</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\(x_4\)</span> and <span class="math inline">\(x_5\)</span> are not highly correlated pairwisely. <span class="math inline">\(r_{45} = 0.46\)</span>.</li>
+<li>However, their CI is still inflated due to the collinearity effect of <em>other</em> variables.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>   2.5 % 97.5 %
+x4   -20     12
+x5  -856     67</code></pre>
+</div>
+</div>
+<div class="notes">
+<p>Don’t just look at the pairwise correlation</p>
+</div>
+</section><section id="eigensystem-analysis-condition-indices" class="level2"><h2 class="anchored" data-anchor-id="eigensystem-analysis-condition-indices">Eigensystem Analysis: Condition Indices</h2>
+<ul>
+<li>The eigenvalues of <span class="math inline">\({\bf \Sigma}\)</span> (the correlation matrix of <span class="math inline">\(\bf X\)</span>), <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span>, can measure collinearity.<br>
+</li>
+<li>If there are one or more near-linear dependencies, one or more of the <span class="math inline">\(\lambda_i\)</span>s will be (relatively) <em>small</em>. <!-- - **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$.  --> <!-- - $\kappa > 100$ implies collinearity. --> <!-- - $\kappa$ does not tell us *how many* regressors are involved. -->
+</li>
+<li>
+<strong>Condition indices</strong> of <span class="math inline">\({\bf \Sigma}\)</span> are <span class="math inline">\(\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}\)</span>.</li>
+<li>The number of <span class="math inline">\(\kappa_j &gt; 1000\)</span> is a measure of the number of near-linear dependencies in <span class="math inline">\({\bf \Sigma}.\)</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>The eigenvalues of <span class="math inline">\({\bf X'X}\)</span>, <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span>, can measure Collinearity.<br>
+</li>
+<li>If there are one or more near-linear dependencies in the data, one or more of the <span class="math inline">\(\lambda_i\)</span>s will be small.</li>
+<li>
+<strong>Condition number</strong> of <span class="math inline">\({\bf X'X}\)</span> is <span class="math inline">\(\kappa = \frac{\lambda_{max}}{\lambda_{min}}\)</span>.</li>
+<li>
+<span class="math inline">\(\kappa &gt; 100\)</span> implies Collinearity.</li>
+<li>
+<span class="math inline">\(\kappa\)</span> does not tell us <em>how many</em> regressors are involved.</li>
+<li>
+<strong>Condition indices</strong> of <span class="math inline">\({\bf X'X}\)</span> is <span class="math inline">\(\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}\)</span>.</li>
+<li>The number of <span class="math inline">\(\kappa_j &gt; 1000\)</span> is a measure of the number of near-linear dependencies in <span class="math inline">\({\bf X'X}.\)</span>
+</li>
+</ul>
+</div>
+</section><section id="hospital-manpower---eigensystem-analysis" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---eigensystem-analysis">Hospital Manpower - Eigensystem Analysis</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">eigen_Sig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/eigen.html">eigen</a></span><span class="op">(</span><span class="va">Sig</span><span class="op">)</span></span>
+<span><span class="co">## eigenvalues</span></span>
+<span><span class="op">(</span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="va">eigen_Sig</span><span class="op">$</span><span class="va">values</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.2e+00 6.7e-01 9.5e-02 4.1e-02 5.4e-05</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Conditional indices</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">/</span> <span class="va">lambda</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     1.0     6.3    44.4   103.1 77769.7</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\(\lambda_5 \approx 0\)</span> and <span class="math inline">\(\kappa_5 \approx 77770\)</span>, indicating collinearity.</li>
+</ul>
+<div class="alert">
+<p>Eigenvalues are listed in a decreasing order, <span class="math inline">\(\lambda_1 &gt; \lambda_2 &gt; \cdots &gt; \lambda_k\)</span>, and <span class="math inline">\(\lambda_5\)</span> is <em>not</em> the eigenvalue of <span class="math inline">\(x_5\)</span>.</p>
+</div>
+<div class="notes">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]     [,2]  [,3]  [,4]    [,5]
+[1,] -0.49 -0.00203  0.17 -0.47  0.7195
+[2,] -0.45 -0.33561 -0.80  0.19  0.0012
+[3,] -0.48 -0.00085  0.15 -0.51 -0.6941
+[4,] -0.46 -0.31080  0.54  0.63 -0.0234
+[5,] -0.33  0.88925 -0.12  0.29 -0.0068</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 1 1 1 1</code></pre>
+</div>
+</div>
+<p>There is one near linear dependency.</p>
+</div>
+</section><section id="eigensystem-analysis-eigendecomposition" class="level2"><h2 class="anchored" data-anchor-id="eigensystem-analysis-eigendecomposition">Eigensystem Analysis: Eigendecomposition</h2>
+<ul>
+<li>Eigendecomposition <span class="math display">\[{\bf \Sigma = V\boldsymbol \Lambda V'}\]</span>
+<ul>
+<li>
+<span class="math inline">\(\boldsymbol \Lambda\)</span> is a <span class="math inline">\(k \times k\)</span> diagonal matrix whose elements are <span class="math inline">\(\lambda_j\)</span>.</li>
+<li>
+<span class="math inline">\({\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_k]\)</span> is a <span class="math inline">\(k \times k\)</span> orthogonal matrix whose columns are the eigenvectors of <span class="math inline">\({\bf \Sigma}\)</span>.</li>
+</ul>
+</li>
+<li>If <span class="math inline">\(\lambda_j \approx 0\)</span>, the associated <span class="math inline">\({\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'\)</span> describes how (and what) regressors are linearly dependent: <span class="math display">\[\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}\]</span>
+</li>
+</ul>
+<!-- - $\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}$: The "weights" $c_i$ are the individual elements in the ${\bf v}_j$. --><div class="notes">
+<ul>
+<li>If <span class="math inline">\(\lambda_j \approx 0\)</span>, the associated <span class="math inline">\({\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'\)</span> describes the nature of this linear dependence.</li>
+<li>
+<span class="math inline">\(\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}\)</span>: The “weights” <span class="math inline">\(c_i\)</span> are the individual elements in the <span class="math inline">\({\bf v}_j\)</span>.</li>
+</ul>
+</div>
+</section><section id="hospital-manpower---eigensystem-analysis-1" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---eigensystem-analysis-1">Hospital Manpower - Eigensystem Analysis</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## eigenvector matrix</span></span>
+<span><span class="op">(</span><span class="va">V</span> <span class="op">&lt;-</span> <span class="va">eigen_Sig</span><span class="op">$</span><span class="va">vectors</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]     [,2]  [,3]  [,4]    [,5]
+[1,] -0.49 -0.00203  0.17 -0.47  0.7195
+[2,] -0.45 -0.33561 -0.80  0.19  0.0012
+[3,] -0.48 -0.00085  0.15 -0.51 -0.6941
+[4,] -0.46 -0.31080  0.54  0.63 -0.0234
+[5,] -0.33  0.88925 -0.12  0.29 -0.0068</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\({\bf X}{\bf v}_5 = \sum_{i=1}^5v_{i5}{\bf x}_i \approx {\bf 0}\)</span>.</li>
+<li><span class="math inline">\(0.720 {\bf x}_1 + 0.001 {\bf x}_2 - 0.694 {\bf x}_3 - 0.023 {\bf x}_4 - 0.007 {\bf x}_5 \approx {\bf 0}\)</span></li>
+<li>Highly correlated <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> causes collinearity.</li>
+</ul>
+<div class="alert">
+<ul>
+<li>All <span class="math inline">\({\bf x}\)</span>s here are unit length scaled.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">X_s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">X</span>, <span class="fl">2</span>, <span class="va">unit_len_scale</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">X_s</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="va">V</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre class="my_class800"><code>          [,1]
+ [1,] -0.00037
+ [2,] -0.00144
+ [3,]  0.00032
+ [4,] -0.00058
+ [5,] -0.00108
+ [6,]  0.00047
+ [7,] -0.00131
+ [8,]  0.00492
+ [9,] -0.00225
+[10,]  0.00230
+[11,] -0.00050
+[12,]  0.00209
+[13,] -0.00251
+[14,] -0.00016
+[15,]  0.00131
+[16,] -0.00098
+[17,] -0.00023</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]  [,3]  [,4]    [,5]
+[1,]  4.2 0.00 0.000 0.000 0.0e+00
+[2,]  0.0 0.67 0.000 0.000 0.0e+00
+[3,]  0.0 0.00 0.095 0.000 0.0e+00
+[4,]  0.0 0.00 0.000 0.041 0.0e+00
+[5,]  0.0 0.00 0.000 0.000 5.4e-05</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Orthogonal matrix</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">V</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    0    0    0    0
+[2,]    0    1    0    0    0
+[3,]    0    0    1    0    0
+[4,]    0    0    0    1    0
+[5,]    0    0    0    0    1</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">##  V(Lambda)V' = X'X</span></span>
+<span><span class="va">V</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,] 1.00 0.91 1.00 0.94 0.67
+[2,] 0.91 1.00 0.91 0.91 0.45
+[3,] 1.00 0.91 1.00 0.93 0.67
+[4,] 0.94 0.91 0.93 1.00 0.46
+[5,] 0.67 0.45 0.67 0.46 1.00</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## near-zero vector</span></span>
+<span><span class="va">X_s</span><span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span><span class="va">V</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+ [1,] -0.00037
+ [2,] -0.00144
+ [3,]  0.00032
+ [4,] -0.00058
+ [5,] -0.00108
+ [6,]  0.00047
+ [7,] -0.00131
+ [8,]  0.00492
+ [9,] -0.00225
+[10,]  0.00230
+[11,] -0.00050
+[12,]  0.00209
+[13,] -0.00251
+[14,] -0.00016
+[15,]  0.00131
+[16,] -0.00098
+[17,] -0.00023</code></pre>
+</div>
+</div>
+</div>
+</section><section id="eigensystem-analysis-variance-proportion" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="eigensystem-analysis-variance-proportion">Eigensystem Analysis: Variance Proportion</h2>
+<!-- - ${\bf X'X = V\bsLambda V'}$, therefore ${\bf (X'X)^{-1} = V\bsLambda^{-1} V'}$ -->
+<!-- - $\var\left( {\bf b} \right) = \sigma^2 {\bf (X'X)} ^{-1} = \sigma^2 {\bf V\bsLambda^{-1} V'}$ -->
+<!-- - $\var\left( b_j \right) = \sigma^2 \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i} =\sigma^2\text{VIF}_j$ -->
+<ul>
+<li>
+<span class="math inline">\(\text{VIF}_j = \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i}\)</span> <!-- - $\sum_{j=1}^k \var\left( b_j \right) =\sigma^2 \sum_{i=1}^k\sum_{j=1}^k\frac{v_{ji}^2}{\lambda_i} = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}$ (length of ${\bf v}_j$ is 1) -->
+</li>
+<li>
+<span class="math inline">\(\pi_{ij} = \frac{v_{ji}^2/\lambda_i}{\text{VIF}_j}\)</span> is the <strong>variance decomposition proportion</strong> that measures the proportion of the variance of <span class="math inline">\(b_j\)</span> contributed by <span class="math inline">\(\lambda_i\)</span>.</li>
+<li>
+<span class="math inline">\(\pi_{ij} &gt; 0.5\)</span> indicates collinearity.</li>
+</ul>
+<div class="alert">
+<ul>
+<li>A small <span class="math inline">\(\lambda_i\)</span>, accompanied by a subset of regressors with high variance proportions <span class="math inline">\(\pi_{ij}\)</span> represents a dependency involving the regressors in that subset.</li>
+<li>If <span class="math inline">\(\pi_{32}\)</span> and <span class="math inline">\(\pi_{34}\)</span> are large, <span class="math inline">\(\lambda_3\)</span> is associated with a collinearity that inflats the variance of <span class="math inline">\(b_2\)</span> and <span class="math inline">\(b_4\)</span>.</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>
+<span class="math inline">\({\bf X'X = V\bsLambda V'}\)</span>, therefore <span class="math inline">\({\bf (X'X)^{-1} = V\bsLambda^{-1} V'}\)</span>
+</li>
+<li><span class="math inline">\(\mathrm{Var}\left( {\bf b} \right) = \sigma^2 {\bf (X'X)} ^{-1} = \sigma^2 {\bf V\bsLambda^{-1} V'}\)</span></li>
+<li><span class="math inline">\(\mathrm{Var}\left( b_j \right) = \sigma^2 \sum_{i=1}^k\frac{v_{ji}^2}{\lambda_i} =\sigma^2\text{VIF}_j\)</span></li>
+<li>
+<span class="math inline">\(\sum_{j=1}^k \mathrm{Var}\left( b_j \right) =\sigma^2 \sum_{i=1}^k\sum_{j=1}^k\frac{v_{ji}^2}{\lambda_i} = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}\)</span> (length of <span class="math inline">\({\bf v}_j\)</span> is 1)</li>
+<li>
+<span class="math inline">\(\pi_{ij} = \frac{v_{ji}^2/\lambda_i}{\text{VIF}_j}\)</span> is the <strong>variance decomposition proportion</strong>, which is attributed to (or blamed on) the colliearity characterized by the eigenvalue <span class="math inline">\(\lambda_i\)</span>.</li>
+<li>
+<span class="math inline">\(\pi_{ij} &gt; 0.5\)</span> indicates Collinearity.</li>
+</ul>
+<p>A small <span class="math inline">\(\lambda_i\)</span>, accompanied by a subset of regressors with high variance proportions <span class="math inline">\(\pi_{ij}\)</span>: + represents a dependency involving the regressors in that subset, and the dependency is damaging to the precision of estimation of the coefficients in the subset.</p>
+</div>
+</section><section id="hospital-manpower---variance-proportion" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="hospital-manpower---variance-proportion">Hospital Manpower - Variance Proportion</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Variance Proportion</span></span>
+<span><span class="va">var_prop</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">V</span>, <span class="va">lambda</span>, <span class="va">vif_all</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co">## diag(1 / lambda) means divide by lambda row-wise</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">V</span> <span class="op">^</span> <span class="fl">2</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="va">lambda</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">vif_all</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">var_prop</span><span class="op">(</span>V <span class="op">=</span> <span class="va">V</span>, lambda <span class="op">=</span> <span class="va">lambda</span>, vif_all <span class="op">=</span> <span class="va">vif_all</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        [,1]   [,2]    [,3]   [,4]   [,5]
+[1,] 0.00001 0.0062 0.00001 0.0022 0.0062
+[2,] 0.00000 0.0213 0.00000 0.0062 0.2768
+[3,] 0.00003 0.8607 0.00003 0.1309 0.0328
+[4,] 0.00056 0.1087 0.00071 0.4237 0.4851
+[5,] 0.99940 0.0031 0.99925 0.4370 0.1991</code></pre>
+</div>
+</div>
+<ul>
+<li>
+<span class="math inline">\(\pi_{51}\)</span> and <span class="math inline">\(\pi_{53}\)</span> are large, indicating that <span class="math inline">\(\lambda_5\)</span> is inflating the variance of <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_3\)</span>.</li>
+</ul>
+<div class="notes">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## diag(V (Lambda)^-1 V') = VIF</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="va">V</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">lambda</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html">%*%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9597.6    7.9 8933.1   23.3    4.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vif_all</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    x1     x2     x3     x4     x5 
+9597.6    7.9 8933.1   23.3    4.3 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## sum(vif) = sum(1/lambda)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu">vif</span><span class="op">(</span><span class="va">lm_full</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18566</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">lambda</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 18566</code></pre>
+</div>
+</div>
+</div>
+</section><section id="other-diagnostics" class="level2"><h2 class="anchored" data-anchor-id="other-diagnostics">Other Diagnostics</h2>
+<p>Collinearity may exist if</p>
+<ul>
+<li><p>overall <span class="math inline">\(F\)</span>-test for regression is significant, but individual <span class="math inline">\(t\)</span>-tests are all non-significant.</p></li>
+<li>
+<p>the coefficient estimates are <strong>instable</strong></p>
+<ul>
+<li>adding or removing a regressor produces large changes in the estimates</li>
+<li>deleting one or more observations results in large changes in the estimates</li>
+<li>if the signs or magnitudes of the estimates are contrary to prior expectation</li>
+</ul>
+</li>
+</ul></section><section id="hospital-manpower---significance" class="level2"><h2 class="anchored" data-anchor-id="hospital-manpower---significance">Hospital Manpower - Significance</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_full</span><span class="op">$</span><span class="va">coefficients</span>  <span class="co">## t-test not significant</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept) 1962.948    1.1e+03    1.83    0.094
+x1           -15.852    9.8e+01   -0.16    0.874
+x2             0.056    2.1e-02    2.63    0.023
+x3             1.590    3.1e+00    0.51    0.617
+x4            -4.219    7.2e+00   -0.59    0.569
+x5          -394.314    2.1e+02   -1.88    0.087</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">summ_full</span><span class="op">$</span><span class="va">fstatistic</span>  <span class="co">## F-test significant</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>value numdf dendf 
+  238     5    11 </code></pre>
+</div>
+</div>
+<p>. . .</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lm_no_x3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span><span class="va">x3</span>, data <span class="op">=</span> <span class="va">manpower</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">lm_no_x3</span><span class="op">)</span><span class="op">$</span><span class="va">coef</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept) 2161.962    967.871     2.2  4.5e-02
+x1            34.284      4.897     7.0  1.4e-05
+x2             0.057      0.021     2.8  1.7e-02
+x4            -6.600      5.311    -1.2  2.4e-01
+x5          -440.297    183.696    -2.4  3.4e-02</code></pre>
+</div>
+</div>
+</section><section id="diagonastics-summary" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="diagonastics-summary">Diagonastics Summary</h2>
+<div class="alert">
+<p><em>Summary</em>:</p>
+<ul>
+<li>Eigenvalue (or ratios): assess the seriousness of a particular dependency</li>
+<li>Variance proportion: signify what regressors are involved and to what extent</li>
+<li>VIF: determine the damage to the individual coefficient</li>
+</ul>
+</div>
+</section><section id="methods-for-dealing-with-collinearity" class="level2"><h2 class="anchored" data-anchor-id="methods-for-dealing-with-collinearity">Methods for Dealing with Collinearity</h2>
+<p><strong>Data collection</strong>: <span style="color:blue"> Collect more data to break up the collinearity </span> in the existing data</p>
+<p><br></p>
+<p>. . .</p>
+<p><strong>Model specification/An overdefined model</strong>: Respecify the model</p>
+<ul>
+<li>
+<span style="color:blue"> <em>redefining</em> the regressors </span>: Use <span class="math inline">\(x = x_1+x_2\)</span> or <span class="math inline">\(x = x_1x_2\)</span>.
+<ul>
+<li>Avoid combining regressors in different units.</li>
+</ul>
+</li>
+<li>
+<span style="color:blue"> <em>eliminating</em> regressors </span>: remove <span class="math inline">\(x_1\)</span> or <span class="math inline">\(x_2\)</span>.
+<ul>
+<li>May damage the predictive power if the removed regressors have significant explanatory power. (Variable selection)</li>
+<li>If we remove <span class="math inline">\(x_2\)</span>, we estimate the <em>marginal</em> relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1\)</span>, ignoring <span class="math inline">\(x_2\)</span>, rather than the <em>partial</em> relationship conditioning on <span class="math inline">\(x_2\)</span>.</li>
+</ul>
+</li>
+</ul>
+<p>. . .</p>
+<p><strong>Constraint on the model or in the population</strong>: Say goodbye to least-squares estimation.</p>
+<ul>
+<li><span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span></li>
+</ul></section><section id="unbiased-vs.-biased-estimators" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="unbiased-vs.-biased-estimators">Unbiased vs.&nbsp;Biased Estimators</h2>
+<ul>
+<li>The LSE <span class="math inline">\({\bf b}\)</span> is <em>unbiased</em>, i.e., <span class="math inline">\(E({\bf b}) = \boldsymbol \beta\)</span>.</li>
+<li>LSE is a BLUE: has <em>minimum variance</em> among all <em>unbiased</em> linear estimators</li>
+<li><em>No guarantee that this variance will be small.</em></li>
+<li>When collinearity exists, <span class="math inline">\(\mathrm{Var}({\bf b})\)</span> is largely inflated.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-34-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<p>implying that confidence intervals on β would be wide and the point estimate ˆb is very unstable.</p>
+</div>
+</section><section id="biased-estimators" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="biased-estimators">Biased Estimators</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>A good estimator is the one that <em>balances bias and variance well</em>, or the one that <em>minimizes the mean square error</em> <span class="math display">\[\small \text{MSE}(\hat{\beta}) = E[(\hat{\beta} - \beta)^2] = \mathrm{Var}(\hat{\beta}) + \text{bias}(\hat{\beta})^2\]</span></p>
+<ul>
+<li>Biasedness and variance have a <em>trade-off</em> relationship!</li>
+<li>Find a <strong>biased</strong> estimator <span class="math inline">\({\bf \hat{b}}\)</span> that has <em>smaller variance and MSE</em> than <span class="math inline">\({\bf b}\)</span>.</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-35-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+<!-- .question[ -->
+<!-- Can we obtain an estimator that has a smaller variance? -->
+<!-- ] -->
+</div>
+</section><section id="ridge-regression-motivation" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="ridge-regression-motivation">Ridge Regression: Motivation</h2>
+<ul>
+<li>
+<span class="math inline">\({\bf \Sigma} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\)</span> <span class="math inline">\(\quad {\bf  \Sigma}^{-1} = \begin{bmatrix} 62.8 &amp; -62.2 \\ -62.2 &amp; 62.8 \end{bmatrix}\)</span>
+</li>
+<li>
+<span class="math inline">\(\lambda_1 = 1.992\)</span> and <span class="math inline">\(\lambda_2 = 0.008\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<span class="math inline">\({\bf \Sigma} = \begin{bmatrix} 1 &amp; 0\\ 0 &amp; 1 \end{bmatrix}\)</span> <span class="math inline">\(\quad {\bf \Sigma}^{-1} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span>
+</li>
+<li>
+<span class="math inline">\(\lambda_1 = 1\)</span> and <span class="math inline">\(\lambda_2 = 1\)</span>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>IDEA: To make <span class="math inline">\({\bf \Sigma}\)</span> behave more like the orthogonal case. But how?</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Use <span class="math inline">\(({\bf X'X + \delta I})\)</span> with a small <span class="math inline">\(\delta &gt;0\)</span>.</li>
+<li>The eigenvalues of <span class="math inline">\(({\bf X'X + \delta I})\)</span> are <span class="math inline">\(\lambda_1+\delta\)</span> and <span class="math inline">\(\lambda_2 + \delta\)</span>.</li>
+<li>If <span class="math inline">\(\delta = 0.1\)</span>, <span class="math inline">\(({\bf X'X + \delta I}) = \begin{bmatrix} 1.1 &amp; 0.992 \\ 0.992 &amp; 1.1 \end{bmatrix}\)</span> and <span class="math inline">\(({\bf X'X + \delta I})^{-1} = \begin{bmatrix} 4.87 &amp; -4.39 \\ -4.39 &amp; 4.87 \end{bmatrix}\)</span>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>The diagonals <em>do not dominate</em> as in the orthogonal case whose matrix diagonals dominate and <span class="math inline">\(\lambda_1 = \lambda_2 = 1\)</span>. Adding <span class="math inline">\(\delta\)</span> to the main diagonal effectively replaces <span class="math inline">\(\lambda\)</span> by <span class="math inline">\(\lambda+\delta\)</span>.</li>
+</ul>
+</div>
+</section><section id="ridge-regression-estimator" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="ridge-regression-estimator">Ridge Regression Estimator</h2>
+<ul>
+<li><p>With a small <span class="math inline">\(\delta &gt;0\)</span>, the ridge estimator <span class="math inline">\({\bf b}_R\)</span> is <span class="math display">\[{\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}\]</span></p></li>
+<li><p><span class="math inline">\({\bf b}_R\)</span> is a <em>biased</em> estimator for <span class="math inline">\(\boldsymbol \beta\)</span>.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>
+<span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_{Ri} \right) \le \sum_{i=1}^k \mathrm{Var}\left( b_i \right)\)</span> with equality when <span class="math inline">\(\delta = 0\)</span>.</li>
+</ul>
+</div>
+<p>. . .</p>
+<ul>
+<li>As <span class="math inline">\(\delta\)</span> increases,
+<ul>
+<li>
+<span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_{Ri} \right)\)</span> decreases</li>
+<li>Bias <span class="math inline">\(E\left[ {\bf b}_R \right] - \boldsymbol \beta\)</span> increases</li>
+<li>
+<span class="math inline">\(R^2\)</span> decreases (it’s OK as we care more about stable estimates and better prediction)</li>
+</ul>
+</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Choose <span class="math inline">\(\delta\)</span> by the <strong>ridge trace</strong> that is a plot of <span class="math inline">\(\{ b_{Ri} \}_{i=1}^k\)</span> vs.&nbsp;<span class="math inline">\(\delta\)</span>.
+<ul>
+<li>Select a small value of <span class="math inline">\(\delta\)</span> at which the ridge estimates <span class="math inline">\({\bf b}_R\)</span> are stable.</li>
+</ul>
+</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Cross Validation</li>
+<li>The ridge estimator <span class="math inline">\({\bf b}_R\)</span> is <span class="math display">\[{\bf b}_R = ({\bf X'X + \delta I})^{-1}{\bf X'y}\]</span>
+</li>
+<li>
+<span class="math inline">\({\bf b}_R\)</span> is a <em>biased</em> estimator of <span class="math inline">\(\bsbeta\)</span>: <span class="math display">\[E\left[ {\bf b}_R \right] = E\left[({\bf X'X + \delta I})^{-1}{\bf X'y} \right]  = E\left[({\bf X'X + \delta I})^{-1}({\bf X'X}){\bf b}\right] = {\bf Z_{\delta}}\bsbeta\]</span>
+</li>
+<li>The covariance matrix of <span class="math inline">\({\bf b}_R\)</span> is <span class="math display">\[\mathrm{Var}\left({\bf b}_R \right) = \sigma^2 ({\bf X'X + \delta I})^{-1}{\bf X'X }({\bf X'X + \delta I})^{-1}\]</span>
+</li>
+<li>For LSE, <span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_i \right) = \sigma^2\sum_{i=1}^k\frac{1}{\lambda_i}\)</span>
+</li>
+<li>For ridge estimator, <span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_{Ri} \right) = \sigma^2\sum_{i=1}^k\frac{\lambda_i}{(\lambda_i+\delta)^2}\)</span>
+</li>
+<li>
+<span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_{Ri} \right) \le \sum_{i=1}^k \mathrm{Var}\left( b_i \right)\)</span> with equality when <span class="math inline">\(\delta = 0\)</span>.</li>
+<li>As <span class="math inline">\(\delta\)</span> increases, <span class="math inline">\(\sum_{i=1}^k \mathrm{Var}\left( b_{Ri} \right)\)</span> decreases.</li>
+</ul>
+</div>
+</section><section id="hospital-manpower---ridge-regression" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="hospital-manpower---ridge-regression">Hospital Manpower - Ridge Regression</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="midi">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">manpower_scale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">manpower</span>, <span class="fl">2</span>, <span class="va">scale</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">manpower_scale</span><span class="op">)</span></span>
+<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">ridge_fit</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">lm.ridge</a></span><span class="op">(</span></span>
+<span>  <span class="va">y</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span><span class="fl">1</span>, data <span class="op">=</span> <span class="va">df</span>, lambda <span class="op">=</span> <span class="va">delta</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html">matplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">ridge_fit</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>,</span>
+<span>        xlab <span class="op">=</span> <span class="st">"delta"</span>, ylab <span class="op">=</span> <span class="st">"Coef"</span>, </span>
+<span>        main <span class="op">=</span> <span class="st">"Ridge Trace"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">==</span> <span class="fl">0.07</span><span class="op">)</span>, </span>
+<span>       col <span class="op">=</span> <span class="st">"orange"</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-37-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">
+
+</div>
+</section><section id="hospital-manpower---ridge-regression-1" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="hospital-manpower---ridge-regression-1">Hospital Manpower - Ridge Regression</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="./images/14-colliearity/unnamed-chunk-39-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p><span class="math inline">\(\tilde{x}_{ij} = \frac{x_{ij} - \overline{x}_j}{\sqrt{\sum_{i=1}^n (x_{ij} - \overline{x}_j)^2}}\)</span> for <span class="math inline">\(~~i = 1, 2, \dots, n\)</span>, <span class="math inline">\(~~ j = 1, 2, \dots, k\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The term <em>correlation</em> is a bit of misnomer. The regressors are not random variables. The correlation coefficient <span class="math inline">\(r_{st}\)</span> does measure linear dependency between <em><span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span> in the data</em>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../slides";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/math4780-f26\.github\.io\/website\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Cheng-Han Yu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/math4780-f26/website/edit/main/slides/14-colliearity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/math4780-f26/website/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+</body></html>
