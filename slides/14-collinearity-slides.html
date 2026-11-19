@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 <meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
-<title>MATH 4780 (MSSC 5780) - Fall 2026 – Collinearity</title>
+<title>MATH 4780 (MSSC 5780) - Fall 2026 – Multicollinearity</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -198,7 +198,7 @@
     }
   </style>
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
-<meta property="og:title" content="Collinearity – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:title" content="Multicollinearity – MATH 4780 (MSSC 5780) - Fall 2026">
 <meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
 <meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
 </head>
@@ -206,7 +206,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="../images/bg.png" class="quarto-title-block center"><h1 class="title">Collinearity</h1>
+<section id="title-slide" data-background-image="../images/bg.png" class="quarto-title-block center"><h1 class="title">Multicollinearity</h1>
   <p class="subtitle">MATH 4780/MSSC 5780 Regression Analysis</p>
 
 <div class="quarto-title-authors">
@@ -475,12 +475,20 @@ Solutions
 <li>How severe the problem is</li>
 <li>Provide insight as to which regressors are causing the problem</li>
 </ul></section><section id="examination-of-the-correlation-matrix-of-xs" class="slide level2"><h2>Examination of the Correlation Matrix of <span class="math inline">\(x\)</span>s</h2>
+<!-- - After *unit length scaling*[^1], ${\bf X'X} = \left[r_{st}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^2] For example, -->
+<!-- $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$ -->
 <ul>
-<li><p>After <em>unit length scaling</em><sup>1</sup>, <span class="math inline">\({\bf X'X} = \left[r_{st}\right]_{k\times k}\)</span> is the <em>correlation</em> matrix of <span class="math inline">\(x\)</span>s denoted as <span class="math inline">\({\bf \Sigma}\)</span>. <sup>2</sup> For example, <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span></p></li>
-<li><p><span class="math inline">\(r_{st}\)</span> is the <strong>pairwise</strong> correlation between <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span>.</p></li>
-<li><p>Large <span class="math inline">\(|r_{st}|\)</span> is an indication of collinearity.</p></li>
-<li><p>When <strong>more than two</strong> regressors are involved in collinearity, there may be instances when <em>collinearity is present, but the pairwise correlations are not large.</em></p></li>
-<li><p>Inspecting <span class="math inline">\(r_{st}\)</span> is not sufficient for detecting more complex collinearity.</p></li>
+<li>
+<span class="math inline">\({\bf \Sigma} = \left[r_{st}\right]_{k\times k}\)</span> is the <em>correlation</em> matrix of <span class="math inline">\(x\)</span>s. For example, <span class="math display">\[{\bf \Sigma} = \left[r_{st}\right]_{k\times k} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span>
+</li>
+</ul>
+<!-- $${\bf \Sigma} = \left[r_{st}\right]_{k\times k} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$ --><ul>
+<li>
+<span class="math inline">\(r_{st}\)</span> is the <strong>pairwise</strong> correlation between <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span>.</li>
+<li>Large <span class="math inline">\(|r_{st}|\)</span> is an indication of collinearity.</li>
+<li>When <strong>more than two</strong> regressors are involved in collinearity, there may be instances when <em>collinearity is present, but the pairwise correlations are not large.</em>
+</li>
+<li>Inspecting <span class="math inline">\(r_{st}\)</span> is not sufficient for detecting more complex collinearity.</li>
 </ul>
 <aside class="notes"><p>After unit length scaling, <span class="math inline">\({\bf X'X}\)</span> is the correlation matrix of regressors. - If we scale and center the regressors, we have the correlation matrix. <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span> - The off diagonal elements of the centered and scaled <span class="math inline">\({\bf X'X}\)</span> matrix are the <strong>pairwise</strong> correlations between <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span>, denoted as <span class="math inline">\(r_{ij}\)</span>. For example, <span class="math inline">\(r_{12} = 0.992\)</span>. - If <span class="math inline">\(|r_{ij}| \approx 1\)</span>, there is an indication of Collinearity. But, the opposite does not always hold. - When there are <em>more than two regressors</em>, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4) - Inspection of the <span class="math inline">\(r_{ij}\)</span> is not sufficient for detecting anything more complex than <em>pairwise</em> Collinearity.</p>
 <style type="text/css">
@@ -493,7 +501,52 @@ Solutions
           width: 1px!important;
           overflow: hidden!important;
           display:block!important;
-      }</style></aside><aside><ol class="aside-footnotes"><li id="fn1"><p><span class="math inline">\(\tilde{x}_{ij} = \frac{x_{ij} - \overline{x}_j}{\sqrt{\sum_{i=1}^n (x_{ij} - \overline{x}_j)^2}}\)</span> for <span class="math inline">\(~~i = 1, 2, \dots, n\)</span>, <span class="math inline">\(~~ j = 1, 2, \dots, k\)</span>.</p></li><li id="fn2"><p>The term <em>correlation</em> is a bit of misnomer. The regressors are not random variables. The correlation coefficient <span class="math inline">\(r_{st}\)</span> does measure linear dependency between <em><span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span> in the data</em>.</p></li></ol></aside></section><section id="variance-inflation-factors" class="slide level2"><h2>Variance Inflation Factors</h2>
+      }</style></aside></section><section id="pairwise-collinearity-vs.-multicollinearity" class="slide level2"><h2>Pairwise Collinearity vs.&nbsp;Multicollinearity</h2>
+<p>Multicollinearity occurs when a predictor can be expressed exactly or approximately as a linear combination of other predictors: <span class="math display">\[
+\mathbf{x}_j \approx \sum_{\ell\ne j}a_\ell\mathbf{x}_\ell.
+\]</span></p>
+<p>Multicollinearity does not necessarily require a high correlation between any pair of predictors.</p>
+<table class="caption-top">
+<thead><tr class="header">
+<th>Property</th>
+<th>Pairwise Collinearity</th>
+<th>More Complex Multicollinearity</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Number of predictors involved</td>
+<td>Two</td>
+<td>Three or more</td>
+</tr>
+<tr class="even">
+<td>Linear relationship</td>
+<td><span class="math inline">\(x_2 \approx ax_1\)</span></td>
+<td><span class="math inline">\(x_3 \approx ax_1 + bx_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Large pairwise correlation</td>
+<td>Yes</td>
+<td>Not necessarily</td>
+</tr>
+<tr class="even">
+<td>Detectable by inspecting pairwise correlations</td>
+<td>Yes</td>
+<td>Not always</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes"><div class="line-block">Can cause singularity | Yes | Yes |</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section><section id="variance-inflation-factors" class="slide level2"><h2>Variance Inflation Factors</h2>
 <!-- - $\small ({\bf X}_1'{\bf X}_1)^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ $\quad \small ({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$ -->
 <ul>
 <li><p>The diagonals of <span class="math inline">\({\bf \Sigma}^{-1} = {\bf C}\)</span> in correlation form are called <strong>variance inflation factors</strong> <span class="math display">\[\text{VIF}_j = {\bf C}_{jj}\]</span></p></li>

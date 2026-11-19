@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.10.18">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Dr.&nbsp;Cheng-Han Yu   Department of Mathematical and Statistical Sciences   Marquette University">
-<title>Collinearity – MATH 4780 (MSSC 5780) - Fall 2026</title>
+<title>Multicollinearity – MATH 4780 (MSSC 5780) - Fall 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -131,7 +131,7 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="Collinearity – MATH 4780 (MSSC 5780) - Fall 2026">
+<meta property="og:title" content="Multicollinearity – MATH 4780 (MSSC 5780) - Fall 2026">
 <meta property="og:description" content="MATH 4780/MSSC 5780 Regression Analysis">
 <meta property="og:image" content="https://math4780-f26.github.io/website/slides/images/14-colliearity/unnamed-chunk-1-1.png">
 <meta property="og:site_name" content="MATH 4780 (MSSC 5780) - Fall 2026">
@@ -145,7 +145,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Collinearity</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Multicollinearity</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -277,7 +277,7 @@ window.Quarto = {
     <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="14-collinearity-slides.html"><i class="bi bi-file-slides"></i>RevealJS (live)</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Collinearity</h1>
+<h1 class="title">Multicollinearity</h1>
 <p class="subtitle lead">MATH 4780/MSSC 5780 Regression Analysis</p>
 </div>
 
@@ -542,15 +542,60 @@ Solutions
 <li>How severe the problem is</li>
 <li>Provide insight as to which regressors are causing the problem</li>
 </ul></section><section id="examination-of-the-correlation-matrix-of-xs" class="level2"><h2 class="anchored" data-anchor-id="examination-of-the-correlation-matrix-of-xs">Examination of the Correlation Matrix of <span class="math inline">\(x\)</span>s</h2>
+<!-- - After *unit length scaling*[^1], ${\bf X'X} = \left[r_{st}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^2] For example, -->
+<!-- $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$ -->
 <ul>
-<li><p>After <em>unit length scaling</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, <span class="math inline">\({\bf X'X} = \left[r_{st}\right]_{k\times k}\)</span> is the <em>correlation</em> matrix of <span class="math inline">\(x\)</span>s denoted as <span class="math inline">\({\bf \Sigma}\)</span>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> For example, <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span></p></li>
-<li><p><span class="math inline">\(r_{st}\)</span> is the <strong>pairwise</strong> correlation between <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span>.</p></li>
-<li><p>Large <span class="math inline">\(|r_{st}|\)</span> is an indication of collinearity.</p></li>
-<li><p>When <strong>more than two</strong> regressors are involved in collinearity, there may be instances when <em>collinearity is present, but the pairwise correlations are not large.</em></p></li>
-<li><p>Inspecting <span class="math inline">\(r_{st}\)</span> is not sufficient for detecting more complex collinearity.</p></li>
+<li>
+<span class="math inline">\({\bf \Sigma} = \left[r_{st}\right]_{k\times k}\)</span> is the <em>correlation</em> matrix of <span class="math inline">\(x\)</span>s. For example, <span class="math display">\[{\bf \Sigma} = \left[r_{st}\right]_{k\times k} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span>
+</li>
+</ul>
+<!-- $${\bf \Sigma} = \left[r_{st}\right]_{k\times k} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$ --><ul>
+<li>
+<span class="math inline">\(r_{st}\)</span> is the <strong>pairwise</strong> correlation between <span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span>.</li>
+<li>Large <span class="math inline">\(|r_{st}|\)</span> is an indication of collinearity.</li>
+<li>When <strong>more than two</strong> regressors are involved in collinearity, there may be instances when <em>collinearity is present, but the pairwise correlations are not large.</em>
+</li>
+<li>Inspecting <span class="math inline">\(r_{st}\)</span> is not sufficient for detecting more complex collinearity.</li>
 </ul>
 <div class="notes">
 <p>After unit length scaling, <span class="math inline">\({\bf X'X}\)</span> is the correlation matrix of regressors. - If we scale and center the regressors, we have the correlation matrix. <span class="math display">\[{\bf X'X} = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\]</span> - The off diagonal elements of the centered and scaled <span class="math inline">\({\bf X'X}\)</span> matrix are the <strong>pairwise</strong> correlations between <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span>, denoted as <span class="math inline">\(r_{ij}\)</span>. For example, <span class="math inline">\(r_{12} = 0.992\)</span>. - If <span class="math inline">\(|r_{ij}| \approx 1\)</span>, there is an indication of Collinearity. But, the opposite does not always hold. - When there are <em>more than two regressors</em>, there may be instances when Collinearity is present, but the pairwise correlations do not indicate a problem. (Webster, Gunst, and Mason [1974] Table 9.4) - Inspection of the <span class="math inline">\(r_{ij}\)</span> is not sufficient for detecting anything more complex than <em>pairwise</em> Collinearity.</p>
+</div>
+</section><section id="pairwise-collinearity-vs.-multicollinearity" class="level2"><h2 class="anchored" data-anchor-id="pairwise-collinearity-vs.-multicollinearity">Pairwise Collinearity vs.&nbsp;Multicollinearity</h2>
+<p>Multicollinearity occurs when a predictor can be expressed exactly or approximately as a linear combination of other predictors: <span class="math display">\[
+\mathbf{x}_j \approx \sum_{\ell\ne j}a_\ell\mathbf{x}_\ell.
+\]</span></p>
+<p>Multicollinearity does not necessarily require a high correlation between any pair of predictors.</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Property</th>
+<th>Pairwise Collinearity</th>
+<th>More Complex Multicollinearity</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Number of predictors involved</td>
+<td>Two</td>
+<td>Three or more</td>
+</tr>
+<tr class="even">
+<td>Linear relationship</td>
+<td><span class="math inline">\(x_2 \approx ax_1\)</span></td>
+<td><span class="math inline">\(x_3 \approx ax_1 + bx_2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Large pairwise correlation</td>
+<td>Yes</td>
+<td>Not necessarily</td>
+</tr>
+<tr class="even">
+<td>Detectable by inspecting pairwise correlations</td>
+<td>Yes</td>
+<td>Not always</td>
+</tr>
+</tbody>
+</table>
+<div class="notes">
+<div class="line-block">Can cause singularity | Yes | Yes |</div>
 </div>
 </section><section id="variance-inflation-factors" class="level2"><h2 class="anchored" data-anchor-id="variance-inflation-factors">Variance Inflation Factors</h2>
 <!-- - $\small ({\bf X}_1'{\bf X}_1)^{-1} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$ $\quad \small ({\bf X}_2'{\bf X}_2)^{-1} = \begin{bmatrix} 63.94 & -63.44 \\ -63.44 & 63.94 \end{bmatrix}$ -->
@@ -1321,11 +1366,7 @@ eyJjb250ZW50cyI6W119
 </div>
 <script type="vfs-file">
 W10=
-</script></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-<ol>
-<li id="fn1"><p><span class="math inline">\(\tilde{x}_{ij} = \frac{x_{ij} - \overline{x}_j}{\sqrt{\sum_{i=1}^n (x_{ij} - \overline{x}_j)^2}}\)</span> for <span class="math inline">\(~~i = 1, 2, \dots, n\)</span>, <span class="math inline">\(~~ j = 1, 2, \dots, k\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>The term <em>correlation</em> is a bit of misnomer. The regressors are not random variables. The correlation coefficient <span class="math inline">\(r_{st}\)</span> does measure linear dependency between <em><span class="math inline">\(x_s\)</span> and <span class="math inline">\(x_t\)</span> in the data</em>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></div></main><!-- /main --><script type="ojs-module-contents">
+</script></section></section></main><!-- /main --><script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script><script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
