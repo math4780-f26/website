@@ -441,7 +441,7 @@ Solutions
 </div>
 </section><section id="perfectly-correlated-regressors" class="level2"><h2 class="anchored" data-anchor-id="perfectly-correlated-regressors">Perfectly Correlated Regressors</h2>
 <ul>
-<li><p>Suppose the true population regression equation is <span class="math inline">\(y = 3 + 4x\)</span>.</p></li>
+<li><p>Suppose the true population regression equation is <span class="math inline">\(E(y \mid x) = 3 + 4x\)</span>.</p></li>
 <li><p>Suppose we try estimating that equation using perfectly correlated variables <span class="math inline">\(x\)</span> and <span class="math inline">\(z = x/10\)</span>.</p></li>
 </ul>
 <p><span class="math display">\[
@@ -541,7 +541,8 @@ Solutions
 <li>Correctly indicate if collinearity is present</li>
 <li>How severe the problem is</li>
 <li>Provide insight as to which regressors are causing the problem</li>
-</ul></section><section id="examination-of-the-correlation-matrix-of-xs" class="level2"><h2 class="anchored" data-anchor-id="examination-of-the-correlation-matrix-of-xs">Examination of the Correlation Matrix of <span class="math inline">\(x\)</span>s</h2>
+</ul></section><section id="examination-of-the-correlation-matrix-of-xs-1" class="level2"><h2 class="anchored" data-anchor-id="examination-of-the-correlation-matrix-of-xs-1">Examination of the Correlation Matrix of <span class="math inline">\(x\)</span>s <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</h2>
 <!-- - After *unit length scaling*[^1], ${\bf X'X} = \left[r_{st}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^2] For example, -->
 <!-- $${\bf X'X} = \begin{bmatrix} 1 & 0.992 \\ 0.992 & 1 \end{bmatrix}$$ -->
 <ul>
@@ -831,17 +832,52 @@ x5  -856     67</code></pre>
 <div class="notes">
 <p>Don’t just look at the pairwise correlation</p>
 </div>
+<!-- ## Eigensystem Analysis: Condition Indices -->
+<!-- - The eigenvalues of ${\bf \Sigma}$ (the correlation matrix of $\bf X$), $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure collinearity. -->
+<!-- - If there are one or more near-linear dependencies, one or more of the $\lambda_i$s will be (relatively) *small*. -->
+<!-- - **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$.  -->
+<!-- - $\kappa > 100$ implies collinearity. -->
+<!-- - $\kappa$ does not tell us *how many* regressors are involved. -->
+<!-- - **Condition indices** of ${\bf \Sigma}$ are $\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}$. -->
+<!-- - The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf \Sigma}.$ -->
 </section><section id="eigensystem-analysis-condition-indices" class="level2"><h2 class="anchored" data-anchor-id="eigensystem-analysis-condition-indices">Eigensystem Analysis: Condition Indices</h2>
 <ul>
-<li>The eigenvalues of <span class="math inline">\({\bf \Sigma}\)</span> (the correlation matrix of <span class="math inline">\(\bf X\)</span>), <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span>, can measure collinearity.<br>
-</li>
-<li>If there are one or more near-linear dependencies, one or more of the <span class="math inline">\(\lambda_i\)</span>s will be (relatively) <em>small</em>. <!-- - **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$.  --> <!-- - $\kappa > 100$ implies collinearity. --> <!-- - $\kappa$ does not tell us *how many* regressors are involved. -->
+<li><p>The eigenvalues of the correlation matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> can be used to detect multicollinearity.</p></li>
+<li><p><strong>Small eigenvalues</strong> indicate near-linear dependencies among predictors.</p></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>
+<p>The <strong>condition indices <span class="math inline">\(\kappa\)</span></strong> are defined as</p>
+<p><span class="math display">\[
+\kappa_j=\sqrt{\frac{\lambda_{\max}}{\lambda_j}},
+\qquad j=1,\ldots,k.
+\]</span></p>
 </li>
 <li>
-<strong>Condition indices</strong> of <span class="math inline">\({\bf \Sigma}\)</span> are <span class="math inline">\(\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}\)</span>.</li>
-<li>The number of <span class="math inline">\(\kappa_j &gt; 1000\)</span> is a measure of the number of near-linear dependencies in <span class="math inline">\({\bf \Sigma}.\)</span>
+<p>Large condition indices indicate severe near-linear dependencies.</p>
+<ul>
+<li>
+<span class="math inline">\(\kappa_j&gt;10\)</span>: Potential multicollinearity.</li>
+<li>
+<span class="math inline">\(\kappa_j&gt;30\)</span>: Common rule of thumb for serious multicollinearity.</li>
+</ul>
 </li>
 </ul>
+<p>. . .</p>
+<ul>
+<li><p>The number of large condition indices provides an indication of the number of near-linear dependencies, <strong>not the number of predictors involved</strong>.</p></li>
+<li><p>Eigenvalues measure the severity of linear dependencies, while eigenvectors help identify the linear combinations of predictors involved.</p></li>
+</ul>
+<div class="notes">
+<ul>
+<li>If the predictors are linearly dependent, at least one eigenvalue is exactly zero.</li>
+<li>If the predictors are nearly linearly dependent, at least one eigenvalue is close to zero.</li>
+<li>The number of zero eigenvalues equals the number of independent exact linear dependencies.</li>
+<li>Condition index thresholds are guidelines, not formal statistical tests.</li>
+<li>Variance-decomposition proportions can help identify the predictors involved in near-linear dependencies.</li>
+</ul>
+</div>
 <div class="notes">
 <ul>
 <li>The eigenvalues of <span class="math inline">\({\bf X'X}\)</span>, <span class="math inline">\(\lambda_1, \lambda_2, \dots, \lambda_k\)</span>, can measure Collinearity.<br>
@@ -906,8 +942,10 @@ x5  -856     67</code></pre>
 <span class="math inline">\({\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_k]\)</span> is a <span class="math inline">\(k \times k\)</span> orthogonal matrix whose columns are the eigenvectors of <span class="math inline">\({\bf \Sigma}\)</span>.</li>
 </ul>
 </li>
-<li>If <span class="math inline">\(\lambda_j \approx 0\)</span>, the associated <span class="math inline">\({\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'\)</span> describes how (and what) regressors are linearly dependent: <span class="math display">\[\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}\]</span>
-</li>
+</ul>
+<!-- - If $\lambda_j \approx 0$, the associated ${\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'$ describes how (and what) regressors are linearly dependent: --><!-- $$\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}$$ --><ul>
+<li><p>If <span class="math inline">\(\lambda_j\approx0\)</span>, the corresponding eigenvector <span class="math inline">\(\mathbf v_j\)</span> provides the weights of a linear combination of standardized predictors that is approximately zero. <span class="math display">\[\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}\]</span></p></li>
+<li><p>The magnitudes of these weights help identify which predictors are involved in the near-linear dependence.</p></li>
 </ul>
 <!-- - $\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}$: The "weights" $c_i$ are the individual elements in the ${\bf v}_j$. --><div class="notes">
 <ul>
@@ -1113,7 +1151,7 @@ x5  -856     67</code></pre>
 <ul>
 <li><p>overall <span class="math inline">\(F\)</span>-test for regression is significant, but individual <span class="math inline">\(t\)</span>-tests are all non-significant.</p></li>
 <li>
-<p>the coefficient estimates are <strong>instable</strong></p>
+<p>the coefficient estimates are <strong>unstable</strong></p>
 <ul>
 <li>adding or removing a regressor produces large changes in the estimates</li>
 <li>deleting one or more observations results in large changes in the estimates</li>
@@ -1183,7 +1221,7 @@ x5          -440.297    183.696    -2.4  3.4e-02</code></pre>
 </li>
 </ul>
 <p>. . .</p>
-<p><strong>Constraint on the model or in the population</strong>: Say goodbye to least-squares estimation.</p>
+<p><strong>Constraint on the model or in the population</strong>: If collinearity cannot be adequately reduced through data collection or model respecification, consider alternative estimation methods.</p>
 <ul>
 <li><span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span></li>
 </ul></section><section id="unbiased-vs.-biased-estimators" class="level2" data-visibility="hidden"><h2 data-visibility="hidden" class="anchored" data-anchor-id="unbiased-vs.-biased-estimators">Unbiased vs.&nbsp;Biased Estimators</h2>
@@ -1366,7 +1404,10 @@ eyJjb250ZW50cyI6W119
 </div>
 <script type="vfs-file">
 W10=
-</script></section></section></main><!-- /main --><script type="ojs-module-contents">
+</script></section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p><span class="math inline">\(\tilde{x}_{ij} = \frac{x_{ij} - \overline{x}_j}{\sqrt{\sum_{i=1}^n (x_{ij} - \overline{x}_j)^2}}\)</span> for <span class="math inline">\(~~i = 1, 2, \dots, n\)</span>, <span class="math inline">\(~~ j = 1, 2, \dots, k\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script type="ojs-module-contents">
 eyJjb250ZW50cyI6W119
 </script><script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
