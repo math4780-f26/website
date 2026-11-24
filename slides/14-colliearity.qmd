@@ -245,7 +245,7 @@ $x$ and $x^2$ are highly (linearly correlated)
 
 ## Perfectly Correlated Regressors
 
-- Suppose the true population regression equation is $y = 3 + 4x$.
+- Suppose the true population regression equation is $E(y \mid x) = 3 + 4x$.
 
 - Suppose we try estimating that equation using perfectly correlated variables $x$ and $z = x/10$.
 
@@ -332,7 +332,7 @@ Ideal characteristics of a collinearity diagnostic:
 + Provide insight as to which regressors are causing the problem
 
 
-## Examination of the Correlation Matrix of $x$s
+## Examination of the Correlation Matrix of $x$s [^1]
 
 
 <!-- - After *unit length scaling*[^1], ${\bf X'X} = \left[r_{st}\right]_{k\times k}$ is the *correlation* matrix of $x$s denoted as ${\bf \Sigma}$. [^2] For example, -->
@@ -643,15 +643,49 @@ Don't just look at the pairwise correlation
 
 
 
-## Eigensystem Analysis: Condition Indices
-- The eigenvalues of ${\bf \Sigma}$ (the correlation matrix of $\bf X$), $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure collinearity.  
-- If there are one or more near-linear dependencies, one or more of the $\lambda_i$s will be (relatively) *small*.
+<!-- ## Eigensystem Analysis: Condition Indices -->
+
+<!-- - The eigenvalues of ${\bf \Sigma}$ (the correlation matrix of $\bf X$), $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure collinearity. -->
+<!-- - If there are one or more near-linear dependencies, one or more of the $\lambda_i$s will be (relatively) *small*. -->
 <!-- - **Condition number** of ${\bf X'X}$ is $\kappa = \frac{\lambda_{max}}{\lambda_{min}}$.  -->
 <!-- - $\kappa > 100$ implies collinearity. -->
 <!-- - $\kappa$ does not tell us *how many* regressors are involved. -->
-- **Condition indices** of ${\bf \Sigma}$ are $\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}$. 
-- The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf \Sigma}.$
+<!-- - **Condition indices** of ${\bf \Sigma}$ are $\kappa_j = \frac{\lambda_{max}}{\lambda_{j}}$. -->
+<!-- - The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf \Sigma}.$ -->
 
+
+## Eigensystem Analysis: Condition Indices
+
+- The eigenvalues of the correlation matrix $\boldsymbol{\Sigma}$ can be used to detect multicollinearity.
+
+- **Small eigenvalues** indicate near-linear dependencies among predictors.
+
+. . .
+
+- The **condition indices $\kappa$** are defined as
+
+  $$
+  \kappa_j=\sqrt{\frac{\lambda_{\max}}{\lambda_j}},
+  \qquad j=1,\ldots,k.
+  $$
+
+- Large condition indices indicate severe near-linear dependencies.
+  - $\kappa_j>10$: Potential multicollinearity.
+  - $\kappa_j>30$: Common rule of thumb for serious multicollinearity.
+
+. . .
+
+- The number of large condition indices provides an indication of the number of near-linear dependencies, **not the number of predictors involved**.
+
+- Eigenvalues measure the severity of linear dependencies, while eigenvectors help identify the linear combinations of predictors involved.
+
+::: notes
+- If the predictors are linearly dependent, at least one eigenvalue is exactly zero.
+- If the predictors are nearly linearly dependent, at least one eigenvalue is close to zero.
+- The number of zero eigenvalues equals the number of independent exact linear dependencies.
+- Condition index thresholds are guidelines, not formal statistical tests.
+- Variance-decomposition proportions can help identify the predictors involved in near-linear dependencies.
+:::
 
 ::: notes
 - The eigenvalues of ${\bf X'X}$, $\lambda_1, \lambda_2, \dots, \lambda_k$, can measure Collinearity.  
@@ -663,7 +697,9 @@ Don't just look at the pairwise correlation
 - The number of $\kappa_j > 1000$ is a measure of the number of near-linear dependencies in  ${\bf X'X}.$
 :::
 
+
 ## Hospital Manpower - Eigensystem Analysis
+
 ```{r}
 #| echo: true
 #| code-line-numbers: false
@@ -697,8 +733,14 @@ There is one near linear dependency.
 - Eigendecomposition $${\bf \Sigma = V\bLambda V'}$$
   + $\bLambda$ is a $k \times k$ diagonal matrix whose elements are $\lambda_j$.
   + ${\bf V} = [{\bf v}_1 \quad {\bf v}_2 \quad \dots \quad {\bf v}_k]$ is a $k \times k$ orthogonal matrix whose columns are the eigenvectors of ${\bf \Sigma}$.
-- If $\lambda_j \approx 0$, the associated ${\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'$ describes how (and what) regressors are linearly dependent:
+  
+<!-- - If $\lambda_j \approx 0$, the associated ${\bf v}_j = (v_{1j}, v_{2j}, \dots, v_{kj})'$ describes how (and what) regressors are linearly dependent: -->
+<!-- $$\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}$$ -->
+
+- If $\lambda_j\approx0$, the corresponding eigenvector $\mathbf v_j$ provides the weights of a linear combination of standardized predictors that is approximately zero. 
 $$\sum_{i=1}^kv_{ij}{\bf x}_i \cong \mathbf{0}$$
+
+- The magnitudes of these weights help identify which predictors are involved in the near-linear dependence.
 
 <!-- - $\sum_{i=1}^kc_i{\bf x}_i \cong \mathbf{0}$: The "weights" $c_i$ are the individual elements in the ${\bf v}_j$. -->
 
@@ -884,7 +926,7 @@ Collinearity may exist if
 
 - overall $F$-test for regression is significant, but individual $t$-tests are all non-significant.
 
-- the coefficient estimates are **instable**
+- the coefficient estimates are **unstable**
   + adding or removing a regressor produces large changes in the estimates
   + deleting one or more observations results in large changes in the estimates
   + if the signs or magnitudes of the estimates are contrary to prior expectation
@@ -943,7 +985,7 @@ summary(lm_no_x3)$coef
 
 . . .
 
-**Constraint on the model or in the population**: Say goodbye to least-squares estimation.
+**Constraint on the model or in the population**: If collinearity cannot be adequately reduced through data collection or model respecification, consider alternative estimation methods.
 
   + <span style="color:blue"> Ridge Regression, Principal Component Regression, Bayesian Regression, etc </span>
 
