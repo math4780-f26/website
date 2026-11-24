@@ -2,28 +2,32 @@
 title: "Project work"
 ---
 
-Here shows group project's proposal.
+<!-- Here shows group project's proposal. -->
 
-## MATH 4780
+## MATH 4780: Oral Presentation
 
--   [Group 1: Vanessa Lattas, Dylan Catrdoza, Violet Wang](proposal/proposal_venessa.pdf)
+-   [The Analysts](): Miranda Dobbs, Lauren Pintar, Riley Ramiro, Maya Forcier
 
--   [Group 2: Alberto Gamez Gonzalez, Serena Yang, Donny Robbins](proposal/proposal_senera.pdf)
+-   [XXX](): Wilson von Bohlen, Beth Lasquite, Bobby Giannos, Edwin Garcia
 
--   [Group 3: Davion Cook, Danny O'Shea, Nathan Fisher](proposal/proposal_nathan.pdf)
+-   [Coefficient Crew](): Spencer O'Brien, Aaron Walker, Danielle Idzi
 
--   [Group 4: Nicky Diaz, Andrew Hiller, Ethan Baierl](proposal/proposal_nicky.pdf)
+-   [Least Squares Legends](): Alex Dezelan, Karlo Jakovcevic, Gavin Cedrone, Keegan Vaculik
 
--   [Group 5: Jake Konrad, Patrick Campbell, Kayley Reith](proposal/proposal_kayley.pdf)
 
--   [Group 6: Ray Sun, Huangkun Chen, T.J. Whapham](proposal/proposal_ray.pdf)
+## MATH 4780 + MSSC 5780: Oral Presentation and Written Report
 
-## MSSC 5780
+-   [Best Fit](): Emma Schwenker, Filip Kisielewski (5780), Dorien Vazquez, Carmelo Knight
 
--   [Group 1: Sylvester Mensah, Navid Mohseni, Adam Reeson](proposal/proposal_adam.pdf)
 
--   [Group 2: Timothy Goodwin, Raquel Cutlan](proposal/proposal_rachel_tim.docx)
+## MSSC 5780: Individual and Written Report
 
--   [Group 3: Samantha Juedemann, David Aguilera, Tanjina Zaman](proposal/proposal_david.pdf)
+-   [Jackie Christianson]()
 
--   [Group 4: Edward Liu, Anesti Sotirovski](proposal/proposal_edward_anesti.pdf)
+-   [Zawwad Bin Saif]()
+
+-   [Luis Groff-Hinojosa]()
+
+-   [Madeline Pressman]()
+
+-   [Stephanie Yoshida]()

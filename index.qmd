@@ -53,7 +53,7 @@ format:
 |  | Thu, Nov 12 | Nonparametric Regression | 🖥️ [nonpara-reg](slides/12-nonpara-reg-slides.html) |  |  | ✍️ [HW 5 (due 11/20)](hw/hw05.html) |  | 📂[Guidelines](project-description_new.qmd) |
 | 12 | Tue, Nov 17 | Categorical Variables | 🖥️ [cat-var](slides/13-cat-var-slides.html) |  |  |  |  |  |
 |  | Thu, Nov 19 | Categorical Variables |  |  |  |  |  | **Project team up due 11/20** |
-| 13 | Tue, Nov 24 | Collinearity | 🖥️ [collinearity](slides/14-collinearity-slides.html) |  |  |  | worksheet 4 |  |
+| 13 | Tue, Nov 24 | Collinearity | 🖥️ [collinearity](slides/14-collinearity-slides.html) |  |  |  | worksheet 4 | [Project groups](project-work.html) |
 |  | Thu, Nov 26 | ***NO CLASS: Thanksgiving*** |  |  |  |  |  |  |
 | 14 | Tue, Dec 1 | Variable Selection | 🖥️ var-select |  |  |  |  |  |
 |  | Thu, Dec 3 | Variable Selection |  |  |  | ✍️ HW 6 (due 12/11) |  | **Project proposal due 12/4** |

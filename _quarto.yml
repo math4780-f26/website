@@ -109,7 +109,7 @@ website:
             text: Final Project Guidelines
           # - href: project-description-5780_new.qmd
           #   text: Guideline for MATH 5780
-          - href: project-work_new.qmd
+          - href: project-work.qmd
             text: Project Group and Proposal
       # - project/projet.qmd
       # - ae.qmd
